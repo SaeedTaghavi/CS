@@ -1,0 +1,194 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Operating System | notes\n\u00b6\n\n\nIn this website, I'll work on my notes when I have class of \nOperating System, Spring 2018\n by Professor \nTei-Wei Kuo\n\n\nThe materials are mainly from the \nOperating System Concepts, 9th Edition\n.\n\n\nPlease don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.\n\n\nGetting Started\n\u00b6\n\n\nThanks to \nMkDocs\n and \nMaterial for MkDocs\n! \n\n\nThe website is beautifully rendered!\n\n\nMore Informations\n\u00b6\n\n\nFor more informations please visit \nmy github site\n.\n\n\nMy blog: \nJay's Blog\n\n\nMail to: \nwalkccray@gmail.com\n\n\nBy Jay Chen on April 13, 2018.",
+            "title": "Preface"
+        },
+        {
+            "location": "/#operating-system-notes",
+            "text": "In this website, I'll work on my notes when I have class of  Operating System, Spring 2018  by Professor  Tei-Wei Kuo  The materials are mainly from the  Operating System Concepts, 9th Edition .  Please don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.",
+            "title": "Operating System | notes"
+        },
+        {
+            "location": "/#getting-started",
+            "text": "Thanks to  MkDocs  and  Material for MkDocs !   The website is beautifully rendered!",
+            "title": "Getting Started"
+        },
+        {
+            "location": "/#more-informations",
+            "text": "For more informations please visit  my github site .  My blog:  Jay's Blog  Mail to:  walkccray@gmail.com  By Jay Chen on April 13, 2018.",
+            "title": "More Informations"
+        },
+        {
+            "location": "/Ch01/",
+            "text": "Dummy\n\u00b6",
+            "title": "Chapter 1 Introduction"
+        },
+        {
+            "location": "/Ch01/#dummy",
+            "text": "",
+            "title": "Dummy"
+        },
+        {
+            "location": "/Ch02/",
+            "text": "Chapter 2 Operating-System Structures\n\u00b6\n\n\nObjectives:\n\n\n\n\n\n\nTo describe the services an operating system provides to users, processes, and other systems.\n\n\n\n\n\n\nTo discuss the various ways of structuring an operating system.\n\n\n\n\n\n\nTo explain how operating systems are installed and customized and how they boot.\n\n\n\n\n\n\n2.1 Operating-System Services\n\u00b6\n\n\n\n\n\n\n\n\nUser interface (UI)\n\n\n\n\ncommand-line interface (CLI)\n\n\nbatch interface\n\n\ngraphical user interface \n\n\n\n\n\n\n\n\nProgram execution. OS load a program into memory -> run that program -> end execution\n\n\n\n\nnormally\n\n\nabnormally (error)\n\n\n\n\n\n\n\n\nI/O operations. A running program may require I/O:\n\n\n\n\nfile\n\n\nI/O device: recording to a CD or DVD ...\n\n\n\n\n\n\n\n\nFile-system manipulation.\n\n\n\n\nread/write files\n\n\ncreate/delete them by name\n\n\nsearch\n\n\nlist file (ls)\n\n\n\n\n\n\n\n\nCommunications.\n\n\n\n\nshared memory\n\n\nmessage passing: packets of information in predefined formats are moved between processes by the operating system\n\n\n\n\n\n\n\n\nError detection\n\n\n\n\n\n\nResource allocation\n\n\n\n\n\n\nAccounting. users can be billed\n\n\n\n\n\n\nProtection and security\n\n\n\n\n\n\n2.2 User and Operating-System Interface\n\u00b6\n\n\n2.2.1 Command Interpreters\n\u00b6\n\n\nOn systems with multiple command interpreters to choose from, the interpreters are known as \nshells\n.\n\n\n\n\n\n\nthe command interpreter itself contains the code to execute the command.\n\n\n\n\n\n\nthe command interpreter merely uses the command to identify a file to be loaded into memory and executed.\n\n\n\n\neg. \nrm\n\n\n\n\n\n\n\n\n2.2.2 Graphical User Interfaces\n\u00b6\n\n\n\n\ndesktop\n\n\nicons\n\n\nfolder\n\n\nmouse\n\n\ngestures on the touchscreen\n\n\n\n\n2.2.3 Choice of Interface\n\u00b6\n\n\n\n\nshell scripts\n\n\neg. \nUNIX\n and \nLinux\n.\n\n\n\n\n\n\n\n\n2.3 Systems Calls\n\u00b6\n\n\n\n\nSystem calls provide an interface to the services made available by an operating system.\n\n\neg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!\n\n\n\n\nC/C++\n\n\n\n\nEach read and write must return status information regarding various possible error conditions.\n\n\n\n\napplication programming interface (API): it specifies a set of functions\n\n\nWindows API\n\n\nPOSIX API\n\n\nUNIX\n\n\nLinux\n\n\nmacOS\n\n\n\n\n\n\nJava API\n\n\n\n\n\n\n\n\nlibc\n: UNIX and Linux for programs written in C\n\n\nWhy prefer API rather than invoking actual system calls?\n\n\n\n\nprotability (expected to run on any system)\n\n\nactual system calls can be more difficult to learn\n\n\n\n\nThe relationship between an \nAPI\n, the \nsystem-call interface\n, and the \nOS\n\n\n\b\n\n\nThe caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.\n\n\nMake explicit to implicit\n\n\nThree general methods are used to pass parameters to the operating system.\n\n\n\n\n\n\nthrough registers (Linux and Solaris)\n\n\n\n\nblock,\n\n\ntable, \n\n\nmemory, \n\n\nand the address of the\n\n\n\n\n\n\n\n\nplaced or pushed onto the stack -> popped off the stack by the OS\n\n\n\n\n\n\n\n\n2.4 Types of System Calls\n\u00b6\n\n\n2.4.1 Process Control\n\u00b6\n\n\nA running program halts either\n\n\n\n\nnormally: \nend()\n\n\nabnormally: \nabort()\n\n\n\n\nerror -> dump (written to disk, may be examined by a debugger)\n\n\nMore severe errors can be indicated by a higher-level error parameter.\n\n\neg. Standard C Library\n\n\n\n\n2.4.2 File Management\n\u00b6\n\n\n2.4.3 Device Management\n\u00b6\n\n\n2.4.4 Information Maintenance\n\u00b6\n\n\nMany systems provide system calls to \ndump()\n memory. This provision is useful for debugging. A program trace lists each system call as it is executed. Even microprocessors provide a CPU mode known as single step, in which a trap is executed by the CPU after every instruction. The trap is usually caught by a debugger.\n\n\n2.4.5 Communication\n\u00b6\n\n\n2.4.6 Protection\n\u00b6\n\n\n2.5 System Programs\n\u00b6\n\n\n2.6 Operating-System Design and Implementation\n\u00b6\n\n\n2.6.1 Design Goals\n\u00b6\n\n\n2.6.2 Mechanisms and Policies\n\u00b6\n\n\n2.6.3 Implementation\n\u00b6",
+            "title": "Chapter 2 Operating-System Structures"
+        },
+        {
+            "location": "/Ch02/#chapter-2-operating-system-structures",
+            "text": "Objectives:    To describe the services an operating system provides to users, processes, and other systems.    To discuss the various ways of structuring an operating system.    To explain how operating systems are installed and customized and how they boot.",
+            "title": "Chapter 2 Operating-System Structures"
+        },
+        {
+            "location": "/Ch02/#21-operating-system-services",
+            "text": "User interface (UI)   command-line interface (CLI)  batch interface  graphical user interface      Program execution. OS load a program into memory -> run that program -> end execution   normally  abnormally (error)     I/O operations. A running program may require I/O:   file  I/O device: recording to a CD or DVD ...     File-system manipulation.   read/write files  create/delete them by name  search  list file (ls)     Communications.   shared memory  message passing: packets of information in predefined formats are moved between processes by the operating system     Error detection    Resource allocation    Accounting. users can be billed    Protection and security",
+            "title": "2.1 Operating-System Services"
+        },
+        {
+            "location": "/Ch02/#22-user-and-operating-system-interface",
+            "text": "",
+            "title": "2.2 User and Operating-System Interface"
+        },
+        {
+            "location": "/Ch02/#221-command-interpreters",
+            "text": "On systems with multiple command interpreters to choose from, the interpreters are known as  shells .    the command interpreter itself contains the code to execute the command.    the command interpreter merely uses the command to identify a file to be loaded into memory and executed.   eg.  rm",
+            "title": "2.2.1 Command Interpreters"
+        },
+        {
+            "location": "/Ch02/#222-graphical-user-interfaces",
+            "text": "desktop  icons  folder  mouse  gestures on the touchscreen",
+            "title": "2.2.2 Graphical User Interfaces"
+        },
+        {
+            "location": "/Ch02/#223-choice-of-interface",
+            "text": "shell scripts  eg.  UNIX  and  Linux .",
+            "title": "2.2.3 Choice of Interface"
+        },
+        {
+            "location": "/Ch02/#23-systems-calls",
+            "text": "System calls provide an interface to the services made available by an operating system.  eg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!   C/C++   Each read and write must return status information regarding various possible error conditions.   application programming interface (API): it specifies a set of functions  Windows API  POSIX API  UNIX  Linux  macOS    Java API     libc : UNIX and Linux for programs written in C  Why prefer API rather than invoking actual system calls?   protability (expected to run on any system)  actual system calls can be more difficult to learn   The relationship between an  API , the  system-call interface , and the  OS  \b  The caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.  Make explicit to implicit  Three general methods are used to pass parameters to the operating system.    through registers (Linux and Solaris)   block,  table,   memory,   and the address of the     placed or pushed onto the stack -> popped off the stack by the OS",
+            "title": "2.3 Systems Calls"
+        },
+        {
+            "location": "/Ch02/#24-types-of-system-calls",
+            "text": "",
+            "title": "2.4 Types of System Calls"
+        },
+        {
+            "location": "/Ch02/#241-process-control",
+            "text": "A running program halts either   normally:  end()  abnormally:  abort()   error -> dump (written to disk, may be examined by a debugger)  More severe errors can be indicated by a higher-level error parameter.  eg. Standard C Library",
+            "title": "2.4.1 Process Control"
+        },
+        {
+            "location": "/Ch02/#242-file-management",
+            "text": "",
+            "title": "2.4.2 File Management"
+        },
+        {
+            "location": "/Ch02/#243-device-management",
+            "text": "",
+            "title": "2.4.3 Device Management"
+        },
+        {
+            "location": "/Ch02/#244-information-maintenance",
+            "text": "Many systems provide system calls to  dump()  memory. This provision is useful for debugging. A program trace lists each system call as it is executed. Even microprocessors provide a CPU mode known as single step, in which a trap is executed by the CPU after every instruction. The trap is usually caught by a debugger.",
+            "title": "2.4.4 Information Maintenance"
+        },
+        {
+            "location": "/Ch02/#245-communication",
+            "text": "",
+            "title": "2.4.5 Communication"
+        },
+        {
+            "location": "/Ch02/#246-protection",
+            "text": "",
+            "title": "2.4.6 Protection"
+        },
+        {
+            "location": "/Ch02/#25-system-programs",
+            "text": "",
+            "title": "2.5 System Programs"
+        },
+        {
+            "location": "/Ch02/#26-operating-system-design-and-implementation",
+            "text": "",
+            "title": "2.6 Operating-System Design and Implementation"
+        },
+        {
+            "location": "/Ch02/#261-design-goals",
+            "text": "",
+            "title": "2.6.1 Design Goals"
+        },
+        {
+            "location": "/Ch02/#262-mechanisms-and-policies",
+            "text": "",
+            "title": "2.6.2 Mechanisms and Policies"
+        },
+        {
+            "location": "/Ch02/#263-implementation",
+            "text": "",
+            "title": "2.6.3 Implementation"
+        },
+        {
+            "location": "/Ch03/",
+            "text": "Chapter 3 Process Concept\n\u00b6\n\n\n3.1 Process Concept\n\u00b6\n\n\n\n\nProcess\n\n\nA program in execution, the basis of all computation.\n\n\n\n\n\n\nbatch system: jobs (= process)\n\n\ntime-shared system: user programs or tasks\n\n\n\n\n3.1.1 The process\n\u00b6\n\n\nProcess consists:\n\n\n\n\ntext\n section: program code\n\n\ndata\n section: contains \nglobal variables\n\n\nheap\n: memory\n\n\ncurrent activity (\nprogram counter\n + \nregisters\n)\n\n\n\bstack\n: contains \ntemporary data\n\n\nfunction parameters\n\n\nreturn addresses\n\n\n\n\nlocal variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProgram\n\n\nProcess\n\n\n\n\n\n\n\n\n\n\npassive\n entity\n\n\nactive\n entity\n\n\n\n\n\n\na file containing a list of instructions stored on disk (executable file)\n\n\nprogram counter: specifying the next instruction to execute + a set of associated resources\n\n\n\n\n\n\n\n\nWhen an executable file is loaded into memory: \nprogram -> process\n\n\n\n\ndouble-clicking an icon\n\n\nprog.exe\n\n\na.out\n\n\n\n\nTwo different processes: the text section are equivalent, the data, heap and stack vary.\n\n\nProcess can be an execution environment for other code. (\nsimulation\n)\n\n\neg.\n\n\njava\n \ntestProgram\n\n\n\n\n\n\n\nInfo\n\n\nThe command \njava\n runs the JVM as an ordinary process, then executes the Java program \ntestProgram\n in the VM.\n\n\n\n\n3.1.2 Process State\n\u00b6\n\n\n\n\nNew\n.\n\n\nRunning\n: execute instructions\n\n\nWaiting\n: wait some event (I/O, signal)\n\n\nReady\n: wait to be assigned to a processor\n\n\nTerminated\n.\n\n\n\n\n\n\n\n\nNote\n\n\nOnly \n1\n process run on any processor. (Many processes may be \nready\n and \nwaiting\n.)\n\n\n\n\n3.1.3 Process Control Block\n\u00b6\n\n\n\n\nProcess state\n.\n\n\nProgram counter\n: address of the next instruction.\n\n\nCPU registers\n: accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.\n\n\nCPU-scheduling information\n.\n\n\nMemory-management information\n.\n\n\nAccounting information\n: the amount of CPU and real time used, time limits, account numbers, job or process numbers.\n\n\nI/O status information\n: the list of I/O devices allocated to the process, a list of open \ufb01les.\n\n\n\n\n\n\n3.2 Process Scheduling\n\u00b6\n\n\n\n\nMultiprogramming\n: to have some process running at all times -> maximize CPU utilization\n\n\n\n\nTime sharing\n: switch the CPU among processes.\n\n\n\n\n\n\nProcess scheduler\n: selects an available process\n\n\n\n\n\n\n3.2.1 Scheduling Queues\n\u00b6\n\n\nAs processes enter the system, they are put into a \njob queue\n.\n\n\nJob queue\n: consists of all processes in the system.\n\n\nReady queue\n: keep \nready\n and \nwaiting\n processes.\n\n\n\n\n\n\nWhen a process exit, it is removed from all queues and has its PCB and resources deallocated.\n\n\n3.2.2 Schedulers\n\u00b6\n\n\nProcesses are first spooled to a mass-storage device (eg. disk). Then \n\n\n\n\n\n\nthe \nlong-term scheduler\n, or \njob scheduler\n\n\n\n\nselects processes from this pool.\n\n\nloads theme into memory \nfor\n execution.\n\n\n\n\n\n\n\n\nthe \nshort-term scheduler\n, or \nCPU scheduler\n\n\n\n\nselects from among the processes that are ready to execute\n\n\nallocates CPU to one of them.\n\n\n\n\n\n\n\n\nNotice:\n\n\n\n\n\n\nthe \nlong-trem scheduler\n\n\n\n\ncontrols the \ndegree of multiprogramming\n (# processes)\n\n\nselects a good \nprocess mix\n of I/O-bound and CPU-bound.\n\n\n\n\n\n\n\n\nthe \nmedium-term scheduler\n: swapping.\n\n\n\n\n\n\n\n\n3.2.3 Context Switch\n\u00b6\n\n\n\n\nWhen a context switch occurs\n\n\nThe kernel saves the context of the old process in its PCB and loads the saved context of the new process scheduled to run.\n\n\n\n\n3.3 Operations on Processes\n\u00b6\n\n\n3.3.1 Process Creation\n\u00b6\n\n\n\n\nprocess identifier (pid)\n\n\nAn integer number, which provides a unique value for each process in the system, and it can be used as an \nindex\n to access various attributes of a process within the kernel.\n\n\n\n\n\n\ninit\n\n\nA process has pid = 1, and serves as the root parent process for all user processes.\n\n\n\n\n\n\nWhen a process creates a child process, that child process may obtain the resources from\n\n\n\n\nOS\n\n\na subset of parent process\n\n\n\n\nWhen a process creates a new process:\n\n\n\n\nThe parent continues to execute concurrently with its children.\n\n\nThe parent waits until some or all of its children have terminated.\n\n\n\n\nThere are also two address-space possibilities for the new process:\n\n\n\n\nThe child process is a duplicate of the parent process (it has the same program and data as the parent).\n\n\nThe child process has a new program loaded into it.\n\n\n\n\n\n\nfork()\n\n\nThe new process created by \nfork()\n consists",
+            "title": "Chapter 3 Processes"
+        },
+        {
+            "location": "/Ch03/#chapter-3-process-concept",
+            "text": "",
+            "title": "Chapter 3 Process Concept"
+        },
+        {
+            "location": "/Ch03/#31-process-concept",
+            "text": "Process  A program in execution, the basis of all computation.    batch system: jobs (= process)  time-shared system: user programs or tasks",
+            "title": "3.1 Process Concept"
+        },
+        {
+            "location": "/Ch03/#311-the-process",
+            "text": "Process consists:   text  section: program code  data  section: contains  global variables  heap : memory  current activity ( program counter  +  registers )  \bstack : contains  temporary data  function parameters  return addresses   local variables          Program  Process      passive  entity  active  entity    a file containing a list of instructions stored on disk (executable file)  program counter: specifying the next instruction to execute + a set of associated resources     When an executable file is loaded into memory:  program -> process   double-clicking an icon  prog.exe  a.out   Two different processes: the text section are equivalent, the data, heap and stack vary.  Process can be an execution environment for other code. ( simulation )  eg.  java   testProgram    Info  The command  java  runs the JVM as an ordinary process, then executes the Java program  testProgram  in the VM.",
+            "title": "3.1.1 The process"
+        },
+        {
+            "location": "/Ch03/#312-process-state",
+            "text": "New .  Running : execute instructions  Waiting : wait some event (I/O, signal)  Ready : wait to be assigned to a processor  Terminated .     Note  Only  1  process run on any processor. (Many processes may be  ready  and  waiting .)",
+            "title": "3.1.2 Process State"
+        },
+        {
+            "location": "/Ch03/#313-process-control-block",
+            "text": "Process state .  Program counter : address of the next instruction.  CPU registers : accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.  CPU-scheduling information .  Memory-management information .  Accounting information : the amount of CPU and real time used, time limits, account numbers, job or process numbers.  I/O status information : the list of I/O devices allocated to the process, a list of open \ufb01les.",
+            "title": "3.1.3 Process Control Block"
+        },
+        {
+            "location": "/Ch03/#32-process-scheduling",
+            "text": "Multiprogramming : to have some process running at all times -> maximize CPU utilization   Time sharing : switch the CPU among processes.    Process scheduler : selects an available process",
+            "title": "3.2 Process Scheduling"
+        },
+        {
+            "location": "/Ch03/#321-scheduling-queues",
+            "text": "As processes enter the system, they are put into a  job queue .  Job queue : consists of all processes in the system.  Ready queue : keep  ready  and  waiting  processes.    When a process exit, it is removed from all queues and has its PCB and resources deallocated.",
+            "title": "3.2.1 Scheduling Queues"
+        },
+        {
+            "location": "/Ch03/#322-schedulers",
+            "text": "Processes are first spooled to a mass-storage device (eg. disk). Then     the  long-term scheduler , or  job scheduler   selects processes from this pool.  loads theme into memory  for  execution.     the  short-term scheduler , or  CPU scheduler   selects from among the processes that are ready to execute  allocates CPU to one of them.     Notice:    the  long-trem scheduler   controls the  degree of multiprogramming  (# processes)  selects a good  process mix  of I/O-bound and CPU-bound.     the  medium-term scheduler : swapping.",
+            "title": "3.2.2 Schedulers"
+        },
+        {
+            "location": "/Ch03/#323-context-switch",
+            "text": "When a context switch occurs  The kernel saves the context of the old process in its PCB and loads the saved context of the new process scheduled to run.",
+            "title": "3.2.3 Context Switch"
+        },
+        {
+            "location": "/Ch03/#33-operations-on-processes",
+            "text": "",
+            "title": "3.3 Operations on Processes"
+        },
+        {
+            "location": "/Ch03/#331-process-creation",
+            "text": "process identifier (pid)  An integer number, which provides a unique value for each process in the system, and it can be used as an  index  to access various attributes of a process within the kernel.    init  A process has pid = 1, and serves as the root parent process for all user processes.    When a process creates a child process, that child process may obtain the resources from   OS  a subset of parent process   When a process creates a new process:   The parent continues to execute concurrently with its children.  The parent waits until some or all of its children have terminated.   There are also two address-space possibilities for the new process:   The child process is a duplicate of the parent process (it has the same program and data as the parent).  The child process has a new program loaded into it.    fork()  The new process created by  fork()  consists",
+            "title": "3.3.1 Process Creation"
+        }
+    ]
+}
