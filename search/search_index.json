@@ -21,264 +21,364 @@
             "title": "More Informations"
         },
         {
-            "location": "/Ch01/",
+            "location": "/Chap01/",
             "text": "Dummy\n\u00b6",
             "title": "Chapter 1 Introduction"
         },
         {
-            "location": "/Ch01/#dummy",
+            "location": "/Chap01/#dummy",
             "text": "",
             "title": "Dummy"
         },
         {
-            "location": "/Ch02/",
+            "location": "/Chap02/",
             "text": "Chapter 2 Operating-System Structures\n\u00b6\n\n\nObjectives:\n\n\n\n\n\n\nTo describe the services an operating system provides to users, processes, and other systems.\n\n\n\n\n\n\nTo discuss the various ways of structuring an operating system.\n\n\n\n\n\n\nTo explain how operating systems are installed and customized and how they boot.\n\n\n\n\n\n\n2.1 Operating-System Services\n\u00b6\n\n\n\n\n\n\n\n\nUser interface (UI)\n\n\n\n\ncommand-line interface (CLI)\n\n\nbatch interface\n\n\ngraphical user interface \n\n\n\n\n\n\n\n\nProgram execution. OS load a program into memory -> run that program -> end execution\n\n\n\n\nnormally\n\n\nabnormally (error)\n\n\n\n\n\n\n\n\nI/O operations. A running program may require I/O:\n\n\n\n\nfile\n\n\nI/O device: recording to a CD or DVD ...\n\n\n\n\n\n\n\n\nFile-system manipulation.\n\n\n\n\nread/write files\n\n\ncreate/delete them by name\n\n\nsearch\n\n\nlist file (ls)\n\n\n\n\n\n\n\n\nCommunications.\n\n\n\n\nshared memory\n\n\nmessage passing: packets of information in predefined formats are moved between processes by the operating system\n\n\n\n\n\n\n\n\nError detection\n\n\n\n\n\n\nResource allocation\n\n\n\n\n\n\nAccounting. users can be billed\n\n\n\n\n\n\nProtection and security\n\n\n\n\n\n\n2.2 User and Operating-System Interface\n\u00b6\n\n\n2.2.1 Command Interpreters\n\u00b6\n\n\nOn systems with multiple command interpreters to choose from, the interpreters are known as \nshells\n.\n\n\n\n\n\n\nthe command interpreter itself contains the code to execute the command.\n\n\n\n\n\n\nthe command interpreter merely uses the command to identify a file to be loaded into memory and executed.\n\n\n\n\neg. \nrm\n\n\n\n\n\n\n\n\n2.2.2 Graphical User Interfaces\n\u00b6\n\n\n\n\ndesktop\n\n\nicons\n\n\nfolder\n\n\nmouse\n\n\ngestures on the touchscreen\n\n\n\n\n2.2.3 Choice of Interface\n\u00b6\n\n\n\n\nshell scripts\n\n\neg. \nUNIX\n and \nLinux\n.\n\n\n\n\n\n\n\n\n2.3 Systems Calls\n\u00b6\n\n\n\n\nSystem calls provide an interface to the services made available by an operating system.\n\n\neg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!\n\n\n\n\nC/C++\n\n\n\n\nEach read and write must return status information regarding various possible error conditions.\n\n\n\n\napplication programming interface (API): it specifies a set of functions\n\n\nWindows API\n\n\nPOSIX API\n\n\nUNIX\n\n\nLinux\n\n\nmacOS\n\n\n\n\n\n\nJava API\n\n\n\n\n\n\n\n\nlibc\n: UNIX and Linux for programs written in C\n\n\nWhy prefer API rather than invoking actual system calls?\n\n\n\n\nprotability (expected to run on any system)\n\n\nactual system calls can be more difficult to learn\n\n\n\n\nThe relationship between an \nAPI\n, the \nsystem-call interface\n, and the \nOS\n\n\n\b\n\n\nThe caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.\n\n\nMake explicit to implicit\n\n\nThree general methods are used to pass parameters to the operating system.\n\n\n\n\n\n\nthrough registers (Linux and Solaris)\n\n\n\n\nblock,\n\n\ntable, \n\n\nmemory, \n\n\nand the address of the\n\n\n\n\n\n\n\n\nplaced or pushed onto the stack -> popped off the stack by the OS\n\n\n\n\n\n\n\n\n2.4 Types of System Calls\n\u00b6\n\n\n2.4.1 Process Control\n\u00b6\n\n\nA running program halts either\n\n\n\n\nnormally: \nend()\n\n\nabnormally: \nabort()\n\n\n\n\nerror -> dump (written to disk, may be examined by a debugger)\n\n\nMore severe errors can be indicated by a higher-level error parameter.\n\n\neg. Standard C Library\n\n\n\n\n2.4.2 File Management\n\u00b6\n\n\n2.4.3 Device Management\n\u00b6\n\n\n2.4.4 Information Maintenance\n\u00b6\n\n\nMany systems provide system calls to \ndump()\n memory. This provision is useful for debugging. A program trace lists each system call as it is executed. Even microprocessors provide a CPU mode known as single step, in which a trap is executed by the CPU after every instruction. The trap is usually caught by a debugger.\n\n\n2.4.5 Communication\n\u00b6\n\n\n2.4.6 Protection\n\u00b6\n\n\n2.5 System Programs\n\u00b6\n\n\n2.6 Operating-System Design and Implementation\n\u00b6\n\n\n2.6.1 Design Goals\n\u00b6\n\n\n2.6.2 Mechanisms and Policies\n\u00b6\n\n\n2.6.3 Implementation\n\u00b6",
             "title": "Chapter 2 Operating-System Structures"
         },
         {
-            "location": "/Ch02/#chapter-2-operating-system-structures",
+            "location": "/Chap02/#chapter-2-operating-system-structures",
             "text": "Objectives:    To describe the services an operating system provides to users, processes, and other systems.    To discuss the various ways of structuring an operating system.    To explain how operating systems are installed and customized and how they boot.",
             "title": "Chapter 2 Operating-System Structures"
         },
         {
-            "location": "/Ch02/#21-operating-system-services",
+            "location": "/Chap02/#21-operating-system-services",
             "text": "User interface (UI)   command-line interface (CLI)  batch interface  graphical user interface      Program execution. OS load a program into memory -> run that program -> end execution   normally  abnormally (error)     I/O operations. A running program may require I/O:   file  I/O device: recording to a CD or DVD ...     File-system manipulation.   read/write files  create/delete them by name  search  list file (ls)     Communications.   shared memory  message passing: packets of information in predefined formats are moved between processes by the operating system     Error detection    Resource allocation    Accounting. users can be billed    Protection and security",
             "title": "2.1 Operating-System Services"
         },
         {
-            "location": "/Ch02/#22-user-and-operating-system-interface",
+            "location": "/Chap02/#22-user-and-operating-system-interface",
             "text": "",
             "title": "2.2 User and Operating-System Interface"
         },
         {
-            "location": "/Ch02/#221-command-interpreters",
+            "location": "/Chap02/#221-command-interpreters",
             "text": "On systems with multiple command interpreters to choose from, the interpreters are known as  shells .    the command interpreter itself contains the code to execute the command.    the command interpreter merely uses the command to identify a file to be loaded into memory and executed.   eg.  rm",
             "title": "2.2.1 Command Interpreters"
         },
         {
-            "location": "/Ch02/#222-graphical-user-interfaces",
+            "location": "/Chap02/#222-graphical-user-interfaces",
             "text": "desktop  icons  folder  mouse  gestures on the touchscreen",
             "title": "2.2.2 Graphical User Interfaces"
         },
         {
-            "location": "/Ch02/#223-choice-of-interface",
+            "location": "/Chap02/#223-choice-of-interface",
             "text": "shell scripts  eg.  UNIX  and  Linux .",
             "title": "2.2.3 Choice of Interface"
         },
         {
-            "location": "/Ch02/#23-systems-calls",
+            "location": "/Chap02/#23-systems-calls",
             "text": "System calls provide an interface to the services made available by an operating system.  eg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!   C/C++   Each read and write must return status information regarding various possible error conditions.   application programming interface (API): it specifies a set of functions  Windows API  POSIX API  UNIX  Linux  macOS    Java API     libc : UNIX and Linux for programs written in C  Why prefer API rather than invoking actual system calls?   protability (expected to run on any system)  actual system calls can be more difficult to learn   The relationship between an  API , the  system-call interface , and the  OS  \b  The caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.  Make explicit to implicit  Three general methods are used to pass parameters to the operating system.    through registers (Linux and Solaris)   block,  table,   memory,   and the address of the     placed or pushed onto the stack -> popped off the stack by the OS",
             "title": "2.3 Systems Calls"
         },
         {
-            "location": "/Ch02/#24-types-of-system-calls",
+            "location": "/Chap02/#24-types-of-system-calls",
             "text": "",
             "title": "2.4 Types of System Calls"
         },
         {
-            "location": "/Ch02/#241-process-control",
+            "location": "/Chap02/#241-process-control",
             "text": "A running program halts either   normally:  end()  abnormally:  abort()   error -> dump (written to disk, may be examined by a debugger)  More severe errors can be indicated by a higher-level error parameter.  eg. Standard C Library",
             "title": "2.4.1 Process Control"
         },
         {
-            "location": "/Ch02/#242-file-management",
+            "location": "/Chap02/#242-file-management",
             "text": "",
             "title": "2.4.2 File Management"
         },
         {
-            "location": "/Ch02/#243-device-management",
+            "location": "/Chap02/#243-device-management",
             "text": "",
             "title": "2.4.3 Device Management"
         },
         {
-            "location": "/Ch02/#244-information-maintenance",
+            "location": "/Chap02/#244-information-maintenance",
             "text": "Many systems provide system calls to  dump()  memory. This provision is useful for debugging. A program trace lists each system call as it is executed. Even microprocessors provide a CPU mode known as single step, in which a trap is executed by the CPU after every instruction. The trap is usually caught by a debugger.",
             "title": "2.4.4 Information Maintenance"
         },
         {
-            "location": "/Ch02/#245-communication",
+            "location": "/Chap02/#245-communication",
             "text": "",
             "title": "2.4.5 Communication"
         },
         {
-            "location": "/Ch02/#246-protection",
+            "location": "/Chap02/#246-protection",
             "text": "",
             "title": "2.4.6 Protection"
         },
         {
-            "location": "/Ch02/#25-system-programs",
+            "location": "/Chap02/#25-system-programs",
             "text": "",
             "title": "2.5 System Programs"
         },
         {
-            "location": "/Ch02/#26-operating-system-design-and-implementation",
+            "location": "/Chap02/#26-operating-system-design-and-implementation",
             "text": "",
             "title": "2.6 Operating-System Design and Implementation"
         },
         {
-            "location": "/Ch02/#261-design-goals",
+            "location": "/Chap02/#261-design-goals",
             "text": "",
             "title": "2.6.1 Design Goals"
         },
         {
-            "location": "/Ch02/#262-mechanisms-and-policies",
+            "location": "/Chap02/#262-mechanisms-and-policies",
             "text": "",
             "title": "2.6.2 Mechanisms and Policies"
         },
         {
-            "location": "/Ch02/#263-implementation",
+            "location": "/Chap02/#263-implementation",
             "text": "",
             "title": "2.6.3 Implementation"
         },
         {
-            "location": "/Ch03/",
+            "location": "/Chap03/",
             "text": "Chapter 3 Process Concept\n\u00b6\n\n\n3.1 Process Concept\n\u00b6\n\n\n\n\nProcess\n\n\nA program in execution, the basis of all computation.\n\n\n\n\n\n\nbatch system: jobs (= process)\n\n\ntime-shared system: user programs or tasks\n\n\n\n\n3.1.1 The process\n\u00b6\n\n\nProcess consists:\n\n\n\n\ntext\n section: program code\n\n\ndata\n section: contains \nglobal variables\n\n\nheap\n: memory\n\n\ncurrent activity (\nprogram counter\n + \nregisters\n)\n\n\n\bstack\n: contains \ntemporary data\n\n\nfunction parameters\n\n\nreturn addresses\n\n\n\n\nlocal variables\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProgram\n\n\nProcess\n\n\n\n\n\n\n\n\n\n\npassive\n entity\n\n\nactive\n entity\n\n\n\n\n\n\na file containing a list of instructions stored on disk (executable file)\n\n\nprogram counter: specifying the next instruction to execute + a set of associated resources\n\n\n\n\n\n\n\n\nWhen an executable file is loaded into memory: \nprogram -> process\n\n\n\n\ndouble-clicking an icon\n\n\nprog.exe\n\n\na.out\n\n\n\n\nTwo different processes: the text section are equivalent, the data, heap and stack vary.\n\n\nProcess can be an execution environment for other code. (\nsimulation\n)\n\n\neg.\n\n\n    \njava\n \ntestProgram\n\n\n\n\n\n\n\nThe command \njava\n runs the JVM as an ordinary process, then executes the Java program \ntestProgram\n in the VM.\n\n\n\n\n3.1.2 Process State\n\u00b6\n\n\n\n\nNew\n.\n\n\nRunning\n: execute instructions\n\n\nWaiting\n: wait some event (I/O, signal)\n\n\nReady\n: wait to be assigned to a processor\n\n\nTerminated\n.\n\n\n\n\n\n\n\n\nProcess and Processor\n\n\nOnly \n1\n process run on any processor. (Many processes may be \nready\n and \nwaiting\n.)\n\n\n\n\n3.1.3 Process Control Block\n\u00b6\n\n\n\n\nProcess state\n.\n\n\nProgram counter\n: address of the next instruction.\n\n\nCPU registers\n: accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.\n\n\nCPU-scheduling information\n.\n\n\nMemory-management information\n.\n\n\nAccounting information\n: the amount of CPU and real time used, time limits, account numbers, job or process numbers.\n\n\nI/O status information\n: the list of I/O devices allocated to the process, a list of open files.\n\n\n\n\n\n\n3.2 Process Scheduling\n\u00b6\n\n\n\n\nMultiprogramming\n: to have some process running at all times -> maximize CPU utilization\n\n\n\n\nTime sharing\n: switch the CPU among processes.\n\n\n\n\n\n\nProcess scheduler\n: selects an available process\n\n\n\n\n\n\n3.2.1 Scheduling Queues\n\u00b6\n\n\nAs processes enter the system, they are put into a \njob queue\n.\n\n\nJob queue\n: consists of all processes in the system.\n\n\nReady queue\n: keep \nready\n and \nwaiting\n processes.\n\n\n\n\n\n\nWhen a process exit, it is removed from all queues and has its PCB and resources deallocated.\n\n\n3.2.2 Schedulers\n\u00b6\n\n\nProcesses are first spooled to a mass-storage device (eg. disk). Then \n\n\n\n\n\n\nLong-term scheduler\n (job)\n\n\n\n\nselects processes from this pool.\n\n\nloads theme into memory \nfor\n execution.\n\n\n\n\n\n\n\n\nShort-term scheduler\n (CPU)\n\n\n\n\nselects from among the processes that are ready to execute\n\n\nallocates CPU to one of them.\n\n\n\n\n\n\n\n\nNotice:\n\n\n\n\n\n\nthe \nlong-trem scheduler\n\n\n\n\ncontrols the \ndegree of multiprogramming\n (# processes)\n\n\nselects a good \nprocess mix\n of I/O-bound and CPU-bound.\n\n\n\n\n\n\n\n\nthe \nmedium-term scheduler\n: swapping.\n\n\n\n\n\n\n\n\n3.2.3 Context Switch\n\u00b6\n\n\n\n\nWhen a context switch occurs\n\n\nThe kernel saves the context of the old process in its PCB and loads the saved context of the new process scheduled to run.\n\n\n\n\n3.3 Operations on Processes\n\u00b6\n\n\n3.3.1 Process Creation\n\u00b6\n\n\n\n\nProcess Identifier (pid)\n\n\nAn integer number, which provides a unique value for each process in the system, and it can be used as an \nindex\n to access various attributes of a process within the kernel.\n\n\n\n\n\n\ninit process\n\n\nA process has pid = 1, and serves as the root parent process for all user processes.\n\n\n\n\n\n\nWhen a process creates a child process, that child process may obtain the resources from\n\n\n\n\nOS\n\n\na subset of parent process\n\n\n\n\nWhen a process creates a new process:\n\n\n\n\nThe parent continues to execute concurrently with its children.\n\n\nThe parent waits until some or all of its children have terminated.\n\n\n\n\nThere are also two address-space possibilities for the new process:\n\n\n\n\nThe child process is a duplicate of the parent process (it has the same program and data as the parent).\n\n\nThe child process has a new program loaded into it.\n\n\n\n\n\n\nfork()\n\n\nThe new process created by \nfork()\n consists of a copy of the address of parent process.\n\n\n\n\nReturn code:\n\n\n\n\nchild process: 0.\n\n\nparent process: pid of the child.\n\n\n\n\n\n\nAfter \nfork()\n syscall\n\n\nOne of the two processes uses the \nexec()\n syscall to replace the process's memory space with a new program.\n\n\n\n\nCreating a separate process using the UNIX \nfork()\n system call.\n\n\nint\n \nmain\n()\n \n{\n \n    \npid\n \nt\n \npid\n;\n\n\n    \n/* fork a child process */\n\n    \npid\n \n=\n \nfork\n();\n\n    \nif\n \n(\npid\n \n<\n \n0\n)\n \n{\n                      \n/* error occurred */\n\n        \nfprintf\n(\nstderr\n,\n \n\"Fork Failed\"\n);\n\n        \nreturn\n \n1\n;\n\n    \n}\n \nelse\n \nif\n \n(\npid\n \n==\n \n0\n)\n \n{\n              \n/* child process */\n\n        \nexeclp\n(\n\"/bin/ls\"\n,\n \n\"ls\"\n,\n \nNULL\n);\n  \n/* a version of the `exec()` */\n\n    \n}\n \nelse\n \n{\n                            \n/* parent process */\n\n        \n/* parent will wait for the child to complete */\n\n        \nwait\n(\nNULL\n);\n\n        \nprintf\n(\n\"Child Complete\"\n);\n\n    \n}\n\n    \nreturn\n \n0\n;\n\n\n}\n\n\n\n\n\n\n3.3.2 Process Termination\n\u00b6\n\n\nA process terminates when it finishes executing its final statement and asks the operating system to delete it by using the \nexit()\n system call.\n\n\n\n\nTerminating process\n\n\nA parent needs to know the identities of its children if it is to terminate them.\n\n\n\n\nA parent can terminate its children by:\n\n\n\n\nThe child use too much resources. (The parent have a mechanism to inspect the state of its children.)\n\n\nThe task assigned to the child is no longer required.\n\n\nThe parent is exiting.\n\n\n\n\n\n\nCascading Termination\n\n\nIf a process terminates (either normally or abnormally), then all its children must also be terminated.\n\n\n\n\nexit()\n may be called either directly or indirectly (\nreturn\n):\n\n\n    \nexit\n(\n1\n);\n    \n/* directly exit with status 1 */\n\n\n\n\n\n\n\nProcess Table Entry (PTE)\n\n\nContains the process's exit status.\n\n\n\n\n\n\nZombie\n\n\nA process terminated, but whose parent hasn't called \nwait()\n. Once the parent calls \nwait()\n, the pid of the zombie process and its entry in the PTE are released.\n\n\n\n\nThe \ninit\n process periodically invokes \nwait()\n to collect and release the orphan's pid and PTE\n\n\n3.4 Interprocess Communication\n\u00b6\n\n\nProcesses have two classifications:\n\n\n\n\nindependent\n\n\ncooperating\n\n\nInformation sharing.\n\n\nComputation speedup - multicore.\n\n\nModularity.\n\n\nConvenience - parallel tasks.\n\n\n\n\n\n\n\n\nInterprocess communication (IPC):\n\n\n\n\nshared memory: slower (syscalls are required.)\n\n\nmessage passing: faster (syscalls are required only to establish shared memory regions.)\n\n\n\n\n\n\n3.4.1 Shared-Memory Systems\n\u00b6\n\n\nproducer\u2013consumer problem\n\u00b6\n\n\nA \nproducer\n process produces information that is consumed by a \nconsumer\n process.\n\n\neg.\n\n\n\n\na compiler produce assembly code that is consumed by an assembler. The assembler, in turn, may produce object modules that are consumed by the loader.\n\n\na server as a producer and a client as a consumer.\n\n\n\n\nWe need a buffer which resides in a region of shared memory (producer & consumer), and can be filled by the producer and emptied by the consumer.\n\n\n\n\nunbounded buffer\n\n\nbounded buffer (more practical)\n\n\n\n\nImplement the shared \nbuffer\n as a circular array.\n\n#define BUFFER_SIZE 10\n\n\n\ntypedef\n \nstruct\n \n{\n\n    \n...\n\n\n}\n \nitem\n;\n\n\n\nitem\n \nbuffer\n[\nBUFFER_SIZE\n];\n\n\nint\n \nin\n \n=\n \n0\n;\n     \n/* points to the next free position */\n\n\nint\n \nout\n \n=\n \n0\n;\n    \n/* points to the first full position */\n\n\n\n\nwhile\n \n(\ntrue\n)\n \n{\n\n    \n/* produce an item in next_produced */\n\n\n    \nwhile\n \n(((\nin\n \n+\n \n1\n)\n \n%\n \nBUFFER_SIZE\n)\n \n==\n \nout\n)\n\n        \n;\n \n/* do nothing */\n\n\n    \nbuffer\n[\nin\n]\n \n=\n \nnext_produced\n;\n\n    \nin\n \n=\n \n(\nin\n \n+\n \n1\n)\n \n%\n \nBUFFER_SIZE\n;\n\n\n}\n\n\n\n\n\nitem\n \nnext_consumed\n;\n\n\n\nwhile\n \n(\ntrue\n)\n \n{\n\n    \nwhile\n \n(\nin\n \n==\n \nout\n)\n\n        \n;\n \n/* do nothing */\n\n\n        \nnext_consumed\n \n=\n \nbuffer\n[\nout\n];\n\n        \nout\n \n=\n \n(\nout\n \n+\n \n1\n)\n \n%\n \nBUFFER_SIZE\n;\n\n\n        \n/* consume the item in next_consumed */\n\n\n}\n\n\n\n\n\n3.4.2 Message-Passing Systems\n\u00b6\n\n\nMessage passing provides a mechanism to allow processes to communicate and to synchronize their actions \nwithout sharing the same address space\n.\n\n\n\n\nCommunication link\n\n\nIf processes $P$ and $Q$ want to communicate, they must send messages to and receive messages from each other.\n\n\n\n\nSeveral implentation of \nsend()\n/\nreceive()\n operations:\n- Direct of indirect communication\n- Synchronous or asynchronous communication\n- Automatic or explicit buffering\n\n\n3.4.2.1 Naming\n\u00b6\n\n\n\n\n\n\nDirect communication\n\n\nThe messages are sent to and received from processes.\n\n\n\n\n\n\nSymmetry ()\n\n\n\n\nsend(P, message)\n\n\nreceive(Q, message)\n\n\n\n\n\n\n\n\nAsymmetry\n\n\n\n\nsend(P, message)\n\n\nreceive(id, message)\n\n\n\n\n\n\n\n\n\n\n\n\nIndirect communication\n\n\nThe messages are sent to and received from \nmailboxes\n, or \nports\n.\n\n\n\n\nsend(A, message)\n \u2014 Send a message to mailbox A.\n\n\nreceive(A, message)\n \u2014 Receive a message from mailbox A.\n\n\n\n\n\n\n\n\nThe process that creates a new mailbox is that mailbox's owner by default.\n\n\n\n\nA mailbox can be owned by the OS.\n\n\n\n\n3.4.2.2 Synchronization\n\u00b6\n\n\nMessage passing may be either\n\n\n\n\n\n\nBlocking (synchronous)\n\n\n\n\nBlocking send. (blocked until the message is received)\n\n\nBlocking receive.\n\n\n\n\n\n\n\n\nNonblocking (asynchronous)\n\n\n\n\nNonblocking send.\n\n\nNonblocking receive. (valid message or a null)\n\n\n\n\n\n\n\n\n\n\nRendezvous\n\n\nWhen both \nsend()\n and \nreceive()\n are blocking.\n\n\n\n\n3.4.2.3 Buffering\n\u00b6\n\n\nMessages reside in a temporary queue:\n\n\n\n\nZero capacity. (no buffering)\n\n\nBounded capacity.\n\n\nUnbounded capacity.\n\n\n\n\n3.5 Examples of IPC Systems\n\u00b6\n\n\n3.5.1 An Example: POSIX Shared Memory\n\u00b6\n\n\nmessage\n \nnext_consumed\n;\n\n\n\nwhile\n \n(\ntrue\n)\n \n{\n\n    \nreceive\n(\nnext_consumed\n);\n\n\n    \n/* consume the item in next consumed */\n\n\n}\n\n\n\n\n\nA process must first create a shared-memory:\n\n\n    \nshm_fd\n \n=\n \nshm_open\n(\nname\n,\n \nO_CREAT\n \n|\n \nO_RDRW\n,\n \n0666\n);\n\n\n\n\n\nThe \nftruncate()\n function configure the size of the object in bytes:\n\n\n    \nftruncate\n(\nshm_fd\n,\n \n4096\n);\n\n\n\n\n\n3.5.2 An Example: Mach\n\u00b6\n\n\nEven system calls are made by messages. When a task is created, two special mailboxes\n\n\n\n\nthe Kernel mailbox and \n\n\nthe Notify mailbox\n\n\n\n\nare also created.\n\n\nThere are three syscalls needed:\n\n\n\n\n\n\nmsg_send()\n\n\nIf the mailbox is full:\n\n\n\n\nWait indefinitely until there is room in the mailbox.\n\n\nWait at most $n$ milliseconds.\n\n\nDo not wait at all but rather return immediately.\n\n\nTemporarily cache a message. (server tasks)\n\n\n\n\n\n\n\n\nmsg_receive()\n\n\n\n\nmsg_rpc()\n: sends a message and waits for exactly one return message from the sender.\n\n\n\n\n\n\nRemote\n\n\nThe RPC (Remote Procedure Call) models a typical subroutine procedure call but can work between systems.\n\n\n\n\n\n\nport_allocate()\n\n\nCreates a new mailbox and allocates space for its queue of messages.\n\n\n\n\nMach guarantees that multiple messages from the same sender are queued in first-in, first-out (FIFO) order but does not guarantee an absolute ordering.\n\n\n\n\nOne task can either own or receive from a mailbox\n\n\n\n\n\n\nMailbox set\n\n\nA collection of mailboxes.\n\n\n\n\n\n\nport_status()\n\n\neg. # of messages in a mailbox.\n\n\n\n\n3.5.3 An Example: Windows\n\u00b6\n\n\nApplication programs can be considered clients of a subsystem server.\n\n\n\n\nAdvanced Local Procedure Call (ALPC)\n\n\nIt is used for communication between two processes \non the same machine\n.\n\n\n\n\nWindows uses two types of ports:\n\n\n\n\nconnection ports\n\n\ncommunication ports\n\n\n\n\n\n\nCallback\n\n\nAllows the client and server to accept requests when they would normally be expecting a reply.\n\n\n\n\nWhen an ALPC channel is created, 1 of 3 message-passing techniques is chosen:\n\n\n\n\nSmall messages: using the port's message queue.\n\n\nLarger messages: passed through a \nsection object\n (a region of shared memory.)\n\n\nVery large messages: calling API to read/write directly into the address space.\n\n\n\n\n\n\n3.6 Communication in Client\u2013Server Systems\n\u00b6\n\n\n3.6.1 Sockets\n\u00b6\n\n\n\n\nSocket\n\n\nAn endpoint for communication. (IP + port#)\n\n\n\n\nA pair of processes communicating over a network employs \na pair\n of sockets\u2014one for each process.\n\n\n\n\nSocket behavior\n\n\nThe server waits for incoming client requests by listening to a specified port. Once a request is received, the server accepts a connection from the client socket to complete the connection.\n\n\n\n\nWell-known ports: (all ports below 1024 are considered well known)\n\n\n\n\n23: telnet\n\n\n21: FTP\n\n\n80: HTTP\n\n\n\n\n\n\nJava provides:\n\n\n\n\nConnection-oriented (TCP) sockets: \nSocket\n.\n\n\nConnectionless (UDP) sockets: \nDatagramSocket\n.\n\n\nMulticastSocket\n: a subclass of \nDatagramSocket\n. It allows data to be sent to multiple recipients.\n\n\n\n\n\n\nLoopback\n\n\nIP address 127.0.0.1.\n\n\n\n\n3.6.2 Remote Procedure Calls\n\u00b6\n\n\nThe RPC was designed as a way to abstract the procedure-call mechanism for use between systems with network connections.\n\n\nEach message is addressed to an RPC daemon listening to a port on the remote system, and each contains an identifier specifying the function to execute and the parameters to pass to that function.\n\n\n\n\nThe semantics of RPCs allows a client to invoke a procedure on a remote host as it would invoke a procedure locally.\n\n\n\n\n\n\nstub\n\n\nThe RPC system hides the details that allow communication to take place by providing a stub on the client side.\n\n\n\n\n\n\nmarshal\n\n\nParameter marshalling involves packaging the parameters into a form that can be transmitted over a network.\n\n\n\n\nProcedure of RPCs:\n\n\n\n\nThe client invokes a RPC\n\n\nRPC system\n\n\ncalls the appropriate stub (client side).\n\n\npasses the stub the parameters to the RPC.\n\n\n\n\n\n\nMarshals parameter: packaging the parameters into a form that can be transmitted over a network.\n\n\nThe stub transmits a message to the server using message passing.\n\n\nA stub (server side) \n\n\nreceives this message\n\n\ninvokes the procedure on the server.\n\n\n\n\n\n\n(optional) Return values using the same technique.\n\n\n\n\nIssues for RPC\n\n\n\n\nData representation\n\n\nExternal Data Representation (XDR)\n\n\nParameter marshalling\n\n\n\n\n\n\nSemantics of a call\n\n\nat most once\n\n\nexactly once (ACK)\n\n\n\n\n\n\nBinding of the client and server port\n\n\nMatchmaker (a rendezvous mechanism)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3.6.3 Pipes\n\u00b6\n\n\nIn implementing a pipe, four issues:\n\n\n\n\nDoes the pipe allow bidirectional communication, or is communication unidirectional?\n\n\nIf two-way communication is allowed, is it half duplex (data can travel only one way at a time) or full duplex (data can travel in both directions at the same time)?\n\n\nMust a relationship (such as parent\u2013child) exist between the communicating processes?\n\n\nCan the pipes communicate over a network, or must the communicating processes reside on the same machine?\n\n\n\n\n3.6.3.1 Ordinary Pipes\n\u00b6\n\n\n    \npipe\n(\nint\n \nfd\n[])\n\n\n\n\n\n\n\nOrdinarya pipes on on Windows: \nanonymous pipes\n (similar to UNIX.)\n\n\n3.6.3.2 Named Pipes\n\u00b6\n\n\n\n\n\n\n\n\nOrdinary Pipes\n\n\nNamed Pipes\n\n\n\n\n\n\n\n\n\n\nunidirectional\n\n\nbidirectional\n\n\n\n\n\n\nparent-child required\n\n\nnot required\n\n\n\n\n\n\n\n\n\n\nIn UNIX, named pipes = FIFOs. A FIFO is created with the \nmkfifo()\n.\n\n\n\n\nPipes in practice:\n\n\n \n# In this scenario, the ls command serves as the producer, and its output is consumed by the more command.\n\n $ ls \n|\n more",
             "title": "Chapter 3 Processes"
         },
         {
-            "location": "/Ch03/#chapter-3-process-concept",
+            "location": "/Chap03/#chapter-3-process-concept",
             "text": "",
             "title": "Chapter 3 Process Concept"
         },
         {
-            "location": "/Ch03/#31-process-concept",
+            "location": "/Chap03/#31-process-concept",
             "text": "Process  A program in execution, the basis of all computation.    batch system: jobs (= process)  time-shared system: user programs or tasks",
             "title": "3.1 Process Concept"
         },
         {
-            "location": "/Ch03/#311-the-process",
+            "location": "/Chap03/#311-the-process",
             "text": "Process consists:   text  section: program code  data  section: contains  global variables  heap : memory  current activity ( program counter  +  registers )  \bstack : contains  temporary data  function parameters  return addresses   local variables          Program  Process      passive  entity  active  entity    a file containing a list of instructions stored on disk (executable file)  program counter: specifying the next instruction to execute + a set of associated resources     When an executable file is loaded into memory:  program -> process   double-clicking an icon  prog.exe  a.out   Two different processes: the text section are equivalent, the data, heap and stack vary.  Process can be an execution environment for other code. ( simulation )  eg.       java   testProgram    The command  java  runs the JVM as an ordinary process, then executes the Java program  testProgram  in the VM.",
             "title": "3.1.1 The process"
         },
         {
-            "location": "/Ch03/#312-process-state",
+            "location": "/Chap03/#312-process-state",
             "text": "New .  Running : execute instructions  Waiting : wait some event (I/O, signal)  Ready : wait to be assigned to a processor  Terminated .     Process and Processor  Only  1  process run on any processor. (Many processes may be  ready  and  waiting .)",
             "title": "3.1.2 Process State"
         },
         {
-            "location": "/Ch03/#313-process-control-block",
+            "location": "/Chap03/#313-process-control-block",
             "text": "Process state .  Program counter : address of the next instruction.  CPU registers : accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.  CPU-scheduling information .  Memory-management information .  Accounting information : the amount of CPU and real time used, time limits, account numbers, job or process numbers.  I/O status information : the list of I/O devices allocated to the process, a list of open files.",
             "title": "3.1.3 Process Control Block"
         },
         {
-            "location": "/Ch03/#32-process-scheduling",
+            "location": "/Chap03/#32-process-scheduling",
             "text": "Multiprogramming : to have some process running at all times -> maximize CPU utilization   Time sharing : switch the CPU among processes.    Process scheduler : selects an available process",
             "title": "3.2 Process Scheduling"
         },
         {
-            "location": "/Ch03/#321-scheduling-queues",
+            "location": "/Chap03/#321-scheduling-queues",
             "text": "As processes enter the system, they are put into a  job queue .  Job queue : consists of all processes in the system.  Ready queue : keep  ready  and  waiting  processes.    When a process exit, it is removed from all queues and has its PCB and resources deallocated.",
             "title": "3.2.1 Scheduling Queues"
         },
         {
-            "location": "/Ch03/#322-schedulers",
+            "location": "/Chap03/#322-schedulers",
             "text": "Processes are first spooled to a mass-storage device (eg. disk). Then     Long-term scheduler  (job)   selects processes from this pool.  loads theme into memory  for  execution.     Short-term scheduler  (CPU)   selects from among the processes that are ready to execute  allocates CPU to one of them.     Notice:    the  long-trem scheduler   controls the  degree of multiprogramming  (# processes)  selects a good  process mix  of I/O-bound and CPU-bound.     the  medium-term scheduler : swapping.",
             "title": "3.2.2 Schedulers"
         },
         {
-            "location": "/Ch03/#323-context-switch",
+            "location": "/Chap03/#323-context-switch",
             "text": "When a context switch occurs  The kernel saves the context of the old process in its PCB and loads the saved context of the new process scheduled to run.",
             "title": "3.2.3 Context Switch"
         },
         {
-            "location": "/Ch03/#33-operations-on-processes",
+            "location": "/Chap03/#33-operations-on-processes",
             "text": "",
             "title": "3.3 Operations on Processes"
         },
         {
-            "location": "/Ch03/#331-process-creation",
+            "location": "/Chap03/#331-process-creation",
             "text": "Process Identifier (pid)  An integer number, which provides a unique value for each process in the system, and it can be used as an  index  to access various attributes of a process within the kernel.    init process  A process has pid = 1, and serves as the root parent process for all user processes.    When a process creates a child process, that child process may obtain the resources from   OS  a subset of parent process   When a process creates a new process:   The parent continues to execute concurrently with its children.  The parent waits until some or all of its children have terminated.   There are also two address-space possibilities for the new process:   The child process is a duplicate of the parent process (it has the same program and data as the parent).  The child process has a new program loaded into it.    fork()  The new process created by  fork()  consists of a copy of the address of parent process.   Return code:   child process: 0.  parent process: pid of the child.    After  fork()  syscall  One of the two processes uses the  exec()  syscall to replace the process's memory space with a new program.   Creating a separate process using the UNIX  fork()  system call.  int   main ()   {  \n     pid   t   pid ; \n\n     /* fork a child process */ \n     pid   =   fork (); \n     if   ( pid   <   0 )   {                        /* error occurred */ \n         fprintf ( stderr ,   \"Fork Failed\" ); \n         return   1 ; \n     }   else   if   ( pid   ==   0 )   {                /* child process */ \n         execlp ( \"/bin/ls\" ,   \"ls\" ,   NULL );    /* a version of the `exec()` */ \n     }   else   {                              /* parent process */ \n         /* parent will wait for the child to complete */ \n         wait ( NULL ); \n         printf ( \"Child Complete\" ); \n     } \n     return   0 ;  }",
             "title": "3.3.1 Process Creation"
         },
         {
-            "location": "/Ch03/#332-process-termination",
+            "location": "/Chap03/#332-process-termination",
             "text": "A process terminates when it finishes executing its final statement and asks the operating system to delete it by using the  exit()  system call.   Terminating process  A parent needs to know the identities of its children if it is to terminate them.   A parent can terminate its children by:   The child use too much resources. (The parent have a mechanism to inspect the state of its children.)  The task assigned to the child is no longer required.  The parent is exiting.    Cascading Termination  If a process terminates (either normally or abnormally), then all its children must also be terminated.   exit()  may be called either directly or indirectly ( return ):       exit ( 1 );      /* directly exit with status 1 */    Process Table Entry (PTE)  Contains the process's exit status.    Zombie  A process terminated, but whose parent hasn't called  wait() . Once the parent calls  wait() , the pid of the zombie process and its entry in the PTE are released.   The  init  process periodically invokes  wait()  to collect and release the orphan's pid and PTE",
             "title": "3.3.2 Process Termination"
         },
         {
-            "location": "/Ch03/#34-interprocess-communication",
+            "location": "/Chap03/#34-interprocess-communication",
             "text": "Processes have two classifications:   independent  cooperating  Information sharing.  Computation speedup - multicore.  Modularity.  Convenience - parallel tasks.     Interprocess communication (IPC):   shared memory: slower (syscalls are required.)  message passing: faster (syscalls are required only to establish shared memory regions.)",
             "title": "3.4 Interprocess Communication"
         },
         {
-            "location": "/Ch03/#341-shared-memory-systems",
+            "location": "/Chap03/#341-shared-memory-systems",
             "text": "",
             "title": "3.4.1 Shared-Memory Systems"
         },
         {
-            "location": "/Ch03/#producerconsumer-problem",
+            "location": "/Chap03/#producerconsumer-problem",
             "text": "A  producer  process produces information that is consumed by a  consumer  process.  eg.   a compiler produce assembly code that is consumed by an assembler. The assembler, in turn, may produce object modules that are consumed by the loader.  a server as a producer and a client as a consumer.   We need a buffer which resides in a region of shared memory (producer & consumer), and can be filled by the producer and emptied by the consumer.   unbounded buffer  bounded buffer (more practical)   Implement the shared  buffer  as a circular array. #define BUFFER_SIZE 10  typedef   struct   { \n     ...  }   item ;  item   buffer [ BUFFER_SIZE ];  int   in   =   0 ;       /* points to the next free position */  int   out   =   0 ;      /* points to the first full position */   while   ( true )   { \n     /* produce an item in next_produced */ \n\n     while   ((( in   +   1 )   %   BUFFER_SIZE )   ==   out ) \n         ;   /* do nothing */ \n\n     buffer [ in ]   =   next_produced ; \n     in   =   ( in   +   1 )   %   BUFFER_SIZE ;  }   item   next_consumed ;  while   ( true )   { \n     while   ( in   ==   out ) \n         ;   /* do nothing */ \n\n         next_consumed   =   buffer [ out ]; \n         out   =   ( out   +   1 )   %   BUFFER_SIZE ; \n\n         /* consume the item in next_consumed */  }",
             "title": "producer\u2013consumer problem"
         },
         {
-            "location": "/Ch03/#342-message-passing-systems",
+            "location": "/Chap03/#342-message-passing-systems",
             "text": "Message passing provides a mechanism to allow processes to communicate and to synchronize their actions  without sharing the same address space .   Communication link  If processes $P$ and $Q$ want to communicate, they must send messages to and receive messages from each other.   Several implentation of  send() / receive()  operations:\n- Direct of indirect communication\n- Synchronous or asynchronous communication\n- Automatic or explicit buffering",
             "title": "3.4.2 Message-Passing Systems"
         },
         {
-            "location": "/Ch03/#3421-naming",
+            "location": "/Chap03/#3421-naming",
             "text": "Direct communication  The messages are sent to and received from processes.    Symmetry ()   send(P, message)  receive(Q, message)     Asymmetry   send(P, message)  receive(id, message)       Indirect communication  The messages are sent to and received from  mailboxes , or  ports .   send(A, message)  \u2014 Send a message to mailbox A.  receive(A, message)  \u2014 Receive a message from mailbox A.     The process that creates a new mailbox is that mailbox's owner by default.   A mailbox can be owned by the OS.",
             "title": "3.4.2.1 Naming"
         },
         {
-            "location": "/Ch03/#3422-synchronization",
+            "location": "/Chap03/#3422-synchronization",
             "text": "Message passing may be either    Blocking (synchronous)   Blocking send. (blocked until the message is received)  Blocking receive.     Nonblocking (asynchronous)   Nonblocking send.  Nonblocking receive. (valid message or a null)      Rendezvous  When both  send()  and  receive()  are blocking.",
             "title": "3.4.2.2 Synchronization"
         },
         {
-            "location": "/Ch03/#3423-buffering",
+            "location": "/Chap03/#3423-buffering",
             "text": "Messages reside in a temporary queue:   Zero capacity. (no buffering)  Bounded capacity.  Unbounded capacity.",
             "title": "3.4.2.3 Buffering"
         },
         {
-            "location": "/Ch03/#35-examples-of-ipc-systems",
+            "location": "/Chap03/#35-examples-of-ipc-systems",
             "text": "",
             "title": "3.5 Examples of IPC Systems"
         },
         {
-            "location": "/Ch03/#351-an-example-posix-shared-memory",
+            "location": "/Chap03/#351-an-example-posix-shared-memory",
             "text": "message   next_consumed ;  while   ( true )   { \n     receive ( next_consumed ); \n\n     /* consume the item in next consumed */  }   A process must first create a shared-memory:       shm_fd   =   shm_open ( name ,   O_CREAT   |   O_RDRW ,   0666 );   The  ftruncate()  function configure the size of the object in bytes:       ftruncate ( shm_fd ,   4096 );",
             "title": "3.5.1 An Example: POSIX Shared Memory"
         },
         {
-            "location": "/Ch03/#352-an-example-mach",
+            "location": "/Chap03/#352-an-example-mach",
             "text": "Even system calls are made by messages. When a task is created, two special mailboxes   the Kernel mailbox and   the Notify mailbox   are also created.  There are three syscalls needed:    msg_send()  If the mailbox is full:   Wait indefinitely until there is room in the mailbox.  Wait at most $n$ milliseconds.  Do not wait at all but rather return immediately.  Temporarily cache a message. (server tasks)     msg_receive()   msg_rpc() : sends a message and waits for exactly one return message from the sender.    Remote  The RPC (Remote Procedure Call) models a typical subroutine procedure call but can work between systems.    port_allocate()  Creates a new mailbox and allocates space for its queue of messages.   Mach guarantees that multiple messages from the same sender are queued in first-in, first-out (FIFO) order but does not guarantee an absolute ordering.   One task can either own or receive from a mailbox    Mailbox set  A collection of mailboxes.    port_status()  eg. # of messages in a mailbox.",
             "title": "3.5.2 An Example: Mach"
         },
         {
-            "location": "/Ch03/#353-an-example-windows",
+            "location": "/Chap03/#353-an-example-windows",
             "text": "Application programs can be considered clients of a subsystem server.   Advanced Local Procedure Call (ALPC)  It is used for communication between two processes  on the same machine .   Windows uses two types of ports:   connection ports  communication ports    Callback  Allows the client and server to accept requests when they would normally be expecting a reply.   When an ALPC channel is created, 1 of 3 message-passing techniques is chosen:   Small messages: using the port's message queue.  Larger messages: passed through a  section object  (a region of shared memory.)  Very large messages: calling API to read/write directly into the address space.",
             "title": "3.5.3 An Example: Windows"
         },
         {
-            "location": "/Ch03/#36-communication-in-clientserver-systems",
+            "location": "/Chap03/#36-communication-in-clientserver-systems",
             "text": "",
             "title": "3.6 Communication in Client\u2013Server Systems"
         },
         {
-            "location": "/Ch03/#361-sockets",
+            "location": "/Chap03/#361-sockets",
             "text": "Socket  An endpoint for communication. (IP + port#)   A pair of processes communicating over a network employs  a pair  of sockets\u2014one for each process.   Socket behavior  The server waits for incoming client requests by listening to a specified port. Once a request is received, the server accepts a connection from the client socket to complete the connection.   Well-known ports: (all ports below 1024 are considered well known)   23: telnet  21: FTP  80: HTTP    Java provides:   Connection-oriented (TCP) sockets:  Socket .  Connectionless (UDP) sockets:  DatagramSocket .  MulticastSocket : a subclass of  DatagramSocket . It allows data to be sent to multiple recipients.    Loopback  IP address 127.0.0.1.",
             "title": "3.6.1 Sockets"
         },
         {
-            "location": "/Ch03/#362-remote-procedure-calls",
+            "location": "/Chap03/#362-remote-procedure-calls",
             "text": "The RPC was designed as a way to abstract the procedure-call mechanism for use between systems with network connections.  Each message is addressed to an RPC daemon listening to a port on the remote system, and each contains an identifier specifying the function to execute and the parameters to pass to that function.   The semantics of RPCs allows a client to invoke a procedure on a remote host as it would invoke a procedure locally.    stub  The RPC system hides the details that allow communication to take place by providing a stub on the client side.    marshal  Parameter marshalling involves packaging the parameters into a form that can be transmitted over a network.   Procedure of RPCs:   The client invokes a RPC  RPC system  calls the appropriate stub (client side).  passes the stub the parameters to the RPC.    Marshals parameter: packaging the parameters into a form that can be transmitted over a network.  The stub transmits a message to the server using message passing.  A stub (server side)   receives this message  invokes the procedure on the server.    (optional) Return values using the same technique.   Issues for RPC   Data representation  External Data Representation (XDR)  Parameter marshalling    Semantics of a call  at most once  exactly once (ACK)    Binding of the client and server port  Matchmaker (a rendezvous mechanism)",
             "title": "3.6.2 Remote Procedure Calls"
         },
         {
-            "location": "/Ch03/#363-pipes",
+            "location": "/Chap03/#363-pipes",
             "text": "In implementing a pipe, four issues:   Does the pipe allow bidirectional communication, or is communication unidirectional?  If two-way communication is allowed, is it half duplex (data can travel only one way at a time) or full duplex (data can travel in both directions at the same time)?  Must a relationship (such as parent\u2013child) exist between the communicating processes?  Can the pipes communicate over a network, or must the communicating processes reside on the same machine?",
             "title": "3.6.3 Pipes"
         },
         {
-            "location": "/Ch03/#3631-ordinary-pipes",
+            "location": "/Chap03/#3631-ordinary-pipes",
             "text": "pipe ( int   fd [])    Ordinarya pipes on on Windows:  anonymous pipes  (similar to UNIX.)",
             "title": "3.6.3.1 Ordinary Pipes"
         },
         {
-            "location": "/Ch03/#3632-named-pipes",
+            "location": "/Chap03/#3632-named-pipes",
             "text": "Ordinary Pipes  Named Pipes      unidirectional  bidirectional    parent-child required  not required      In UNIX, named pipes = FIFOs. A FIFO is created with the  mkfifo() .   Pipes in practice:    # In this scenario, the ls command serves as the producer, and its output is consumed by the more command. \n $ ls  |  more",
             "title": "3.6.3.2 Named Pipes"
+        },
+        {
+            "location": "/Chap04/",
+            "text": "Chapter 2 Operating-System Structures\n\u00b6\n\n\nObjectives:\n\n\n\n\n\n\nTo describe the services an operating system provides to users, processes, and other systems.\n\n\n\n\n\n\nTo discuss the various ways of structuring an operating system.\n\n\n\n\n\n\nTo explain how operating systems are installed and customized and how they boot.\n\n\n\n\n\n\n2.1 Operating-System Services\n\u00b6\n\n\n\n\n\n\n\n\nUser interface (UI)\n\n\n\n\ncommand-line interface (CLI)\n\n\nbatch interface\n\n\ngraphical user interface \n\n\n\n\n\n\n\n\nProgram execution. OS load a program into memory -> run that program -> end execution\n\n\n\n\nnormally\n\n\nabnormally (error)\n\n\n\n\n\n\n\n\nI/O operations. A running program may require I/O:\n\n\n\n\nfile\n\n\nI/O device: recording to a CD or DVD ...\n\n\n\n\n\n\n\n\nFile-system manipulation.\n\n\n\n\nread/write files\n\n\ncreate/delete them by name\n\n\nsearch\n\n\nlist file (ls)\n\n\n\n\n\n\n\n\nCommunications.\n\n\n\n\nshared memory\n\n\nmessage passing: packets of information in predefined formats are moved between processes by the operating system\n\n\n\n\n\n\n\n\nError detection\n\n\n\n\n\n\nResource allocation\n\n\n\n\n\n\nAccounting. users can be billed\n\n\n\n\n\n\nProtection and security\n\n\n\n\n\n\n2.2 User and Operating-System Interface\n\u00b6\n\n\n2.2.1 Command Interpreters\n\u00b6\n\n\nOn systems with multiple command interpreters to choose from, the interpreters are known as \nshells\n.\n\n\n\n\n\n\nthe command interpreter itself contains the code to execute the command.\n\n\n\n\n\n\nthe command interpreter merely uses the command to identify a file to be loaded into memory and executed.\n\n\n\n\neg. \nrm\n\n\n\n\n\n\n\n\n2.2.2 Graphical User Interfaces\n\u00b6\n\n\n\n\ndesktop\n\n\nicons\n\n\nfolder\n\n\nmouse\n\n\ngestures on the touchscreen\n\n\n\n\n2.2.3 Choice of Interface\n\u00b6\n\n\n\n\nshell scripts\n\n\neg. \nUNIX\n and \nLinux\n.\n\n\n\n\n\n\n\n\n2.3 Systems Calls\n\u00b6\n\n\n\n\nSystem calls provide an interface to the services made available by an operating system.\n\n\neg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!\n\n\n\n\nC/C++\n\n\n\n\nEach read and write must return status information regarding various possible error conditions.\n\n\n\n\napplication programming interface (API): it specifies a set of functions\n\n\nWindows API\n\n\nPOSIX API\n\n\nUNIX\n\n\nLinux\n\n\nmacOS\n\n\n\n\n\n\nJava API\n\n\n\n\n\n\n\n\nlibc\n: UNIX and Linux for programs written in C\n\n\nWhy prefer API rather than invoking actual system calls?\n\n\n\n\nprotability (expected to run on any system)\n\n\nactual system calls can be more difficult to learn\n\n\n\n\nThe relationship between an \nAPI\n, the \nsystem-call interface\n, and the \nOS\n\n\n\b\n\n\nThe caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.\n\n\nMake explicit to implicit\n\n\nThree general methods are used to pass parameters to the operating system.\n\n\n\n\n\n\nthrough registers (Linux and Solaris)\n\n\n\n\nblock,\n\n\ntable, \n\n\nmemory, \n\n\nand the address of the\n\n\n\n\n\n\n\n\nplaced or pushed onto the stack -> popped off the stack by the OS\n\n\n\n\n\n\n\n\n2.4 Types of System Calls\n\u00b6\n\n\n2.4.1 Process Control\n\u00b6\n\n\nA running program halts either\n\n\n\n\nnormally: \nend()\n\n\nabnormally: \nabort()\n\n\n\n\nerror -> dump (written to disk, may be examined by a debugger)\n\n\nMore severe errors can be indicated by a higher-level error parameter.\n\n\neg. Standard C Library\n\n\n\n\n2.4.2 File Management\n\u00b6\n\n\n2.4.3 Device Management\n\u00b6\n\n\n2.4.4 Information Maintenance\n\u00b6\n\n\nMany systems provide system calls to \ndump()\n memory. This provision is useful for debugging. A program trace lists each system call as it is executed. Even microprocessors provide a CPU mode known as single step, in which a trap is executed by the CPU after every instruction. The trap is usually caught by a debugger.\n\n\n2.4.5 Communication\n\u00b6\n\n\n2.4.6 Protection\n\u00b6\n\n\n2.5 System Programs\n\u00b6\n\n\n2.6 Operating-System Design and Implementation\n\u00b6\n\n\n2.6.1 Design Goals\n\u00b6\n\n\n2.6.2 Mechanisms and Policies\n\u00b6\n\n\n2.6.3 Implementation\n\u00b6",
+            "title": "Chapter 4 Threads"
+        },
+        {
+            "location": "/Chap04/#chapter-2-operating-system-structures",
+            "text": "Objectives:    To describe the services an operating system provides to users, processes, and other systems.    To discuss the various ways of structuring an operating system.    To explain how operating systems are installed and customized and how they boot.",
+            "title": "Chapter 2 Operating-System Structures"
+        },
+        {
+            "location": "/Chap04/#21-operating-system-services",
+            "text": "User interface (UI)   command-line interface (CLI)  batch interface  graphical user interface      Program execution. OS load a program into memory -> run that program -> end execution   normally  abnormally (error)     I/O operations. A running program may require I/O:   file  I/O device: recording to a CD or DVD ...     File-system manipulation.   read/write files  create/delete them by name  search  list file (ls)     Communications.   shared memory  message passing: packets of information in predefined formats are moved between processes by the operating system     Error detection    Resource allocation    Accounting. users can be billed    Protection and security",
+            "title": "2.1 Operating-System Services"
+        },
+        {
+            "location": "/Chap04/#22-user-and-operating-system-interface",
+            "text": "",
+            "title": "2.2 User and Operating-System Interface"
+        },
+        {
+            "location": "/Chap04/#221-command-interpreters",
+            "text": "On systems with multiple command interpreters to choose from, the interpreters are known as  shells .    the command interpreter itself contains the code to execute the command.    the command interpreter merely uses the command to identify a file to be loaded into memory and executed.   eg.  rm",
+            "title": "2.2.1 Command Interpreters"
+        },
+        {
+            "location": "/Chap04/#222-graphical-user-interfaces",
+            "text": "desktop  icons  folder  mouse  gestures on the touchscreen",
+            "title": "2.2.2 Graphical User Interfaces"
+        },
+        {
+            "location": "/Chap04/#223-choice-of-interface",
+            "text": "shell scripts  eg.  UNIX  and  Linux .",
+            "title": "2.2.3 Choice of Interface"
+        },
+        {
+            "location": "/Chap04/#23-systems-calls",
+            "text": "System calls provide an interface to the services made available by an operating system.  eg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!   C/C++   Each read and write must return status information regarding various possible error conditions.   application programming interface (API): it specifies a set of functions  Windows API  POSIX API  UNIX  Linux  macOS    Java API     libc : UNIX and Linux for programs written in C  Why prefer API rather than invoking actual system calls?   protability (expected to run on any system)  actual system calls can be more difficult to learn   The relationship between an  API , the  system-call interface , and the  OS  \b  The caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.  Make explicit to implicit  Three general methods are used to pass parameters to the operating system.    through registers (Linux and Solaris)   block,  table,   memory,   and the address of the     placed or pushed onto the stack -> popped off the stack by the OS",
+            "title": "2.3 Systems Calls"
+        },
+        {
+            "location": "/Chap04/#24-types-of-system-calls",
+            "text": "",
+            "title": "2.4 Types of System Calls"
+        },
+        {
+            "location": "/Chap04/#241-process-control",
+            "text": "A running program halts either   normally:  end()  abnormally:  abort()   error -> dump (written to disk, may be examined by a debugger)  More severe errors can be indicated by a higher-level error parameter.  eg. Standard C Library",
+            "title": "2.4.1 Process Control"
+        },
+        {
+            "location": "/Chap04/#242-file-management",
+            "text": "",
+            "title": "2.4.2 File Management"
+        },
+        {
+            "location": "/Chap04/#243-device-management",
+            "text": "",
+            "title": "2.4.3 Device Management"
+        },
+        {
+            "location": "/Chap04/#244-information-maintenance",
+            "text": "Many systems provide system calls to  dump()  memory. This provision is useful for debugging. A program trace lists each system call as it is executed. Even microprocessors provide a CPU mode known as single step, in which a trap is executed by the CPU after every instruction. The trap is usually caught by a debugger.",
+            "title": "2.4.4 Information Maintenance"
+        },
+        {
+            "location": "/Chap04/#245-communication",
+            "text": "",
+            "title": "2.4.5 Communication"
+        },
+        {
+            "location": "/Chap04/#246-protection",
+            "text": "",
+            "title": "2.4.6 Protection"
+        },
+        {
+            "location": "/Chap04/#25-system-programs",
+            "text": "",
+            "title": "2.5 System Programs"
+        },
+        {
+            "location": "/Chap04/#26-operating-system-design-and-implementation",
+            "text": "",
+            "title": "2.6 Operating-System Design and Implementation"
+        },
+        {
+            "location": "/Chap04/#261-design-goals",
+            "text": "",
+            "title": "2.6.1 Design Goals"
+        },
+        {
+            "location": "/Chap04/#262-mechanisms-and-policies",
+            "text": "",
+            "title": "2.6.2 Mechanisms and Policies"
+        },
+        {
+            "location": "/Chap04/#263-implementation",
+            "text": "",
+            "title": "2.6.3 Implementation"
         }
     ]
 }
