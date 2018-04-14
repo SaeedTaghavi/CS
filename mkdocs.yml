@@ -54,7 +54,8 @@ markdown_extensions:
 pages:
   - Preface: index.md
   - PART ONE | OVERVIEW:
-    - Chapter 1 Introduction: Ch01.md
-    - Chapter 2 Operating-System Structures: Ch02.md
+    - Chapter 1 Introduction: Chap01.md
+    - Chapter 2 Operating-System Structures: Chap02.md
   - PART TWO | PROCESS MANAGEMENT:
-    - Chapter 3 Processes: Ch03.md
+    - Chapter 3 Processes: Chap03.md
+    - Chapter 4 Threads: Chap04.md
