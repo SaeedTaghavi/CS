@@ -15,6 +15,7 @@ copyright: 'Copyright &copy; 2018 Jay Chen'
 theme:
   name: 'material'
   language: 'en'
+  favicon: 'assets/favicon.png'
   palette:
     primary: 'Light Blue'
     accent: 'Blue'
