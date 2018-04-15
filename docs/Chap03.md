@@ -16,7 +16,7 @@ Process consists:
 - **data** section: contains *global variables*
 - **heap**: memory
 - current activity (*program counter* + *registers*)
-- **stack**: contains *temporary data*
+- **stack**: contains *temporary data*:
     - function parameters
     - return addresses
     - local variables
@@ -29,7 +29,7 @@ Process consists:
 | *passive* entity | *active* entity |
 | a file containing a list of instructions stored on disk (executable file) | program counter: specifying the next instruction to execute + a set of associated resources |
 
-When an executable file is loaded into memory: **program -> process**
+When an executable file is loaded into memory: **program $\to$ process**
 
 - double-clicking an icon
 - prog.exe
@@ -51,42 +51,41 @@ eg.
 ### 3.1.2 Process State
 
 - **New**.
-- **Running**: execute instructions
-- **Waiting**: wait some event (I/O, signal)
-- **Ready**: wait to be assigned to a processor
+- **Running**. Execute instructions
+- **Waiting**. Wait some event (I/O, signal)
+- **Ready**. Wait to be assigned to a processor
 - **Terminated**.
 
 ![normal](assets/images/3.2.png)
 
 !!! info "Process and Processor"
-    Only **1** process run on any processor. (Many processes may be **ready** and **waiting**.)
+    Only **1** process runs on any processor. (Many processes may be **ready** and **waiting**.)
 
 ### 3.1.3 Process Control Block
 
 - **Process state**.
-- **Program counter**: address of the next instruction.
-- **CPU registers**: accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.
+- **Program counter**. Address of the next instruction.
+- **CPU registers**. Accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.
 - **CPU-scheduling information**.
 - **Memory-management information**.
-- **Accounting information**: the amount of CPU and real time used, time limits, account numbers, job or process numbers.
-- **I/O status information**: the list of I/O devices allocated to the process, a list of open files.
+- **Accounting information**. The amount of CPU and real time used, time limits, account numbers, job or process numbers.
+- **I/O status information**. The list of I/O devices allocated to the process, a list of open files.
 
 ![normal](assets/images/3.4.png)
 
 ## 3.2 Process Scheduling
 
-- **Multiprogramming**: to have some process running at all times -> maximize CPU utilization
-- **Time sharing**: switch the CPU among processes.
-
-- **Process scheduler**: selects an available process
+- **Multiprogramming**. To have some process running at all times $\to$ maximize CPU utilization.
+- **Time sharing**. Switch the CPU among processes.
+- **Process scheduler**. Selects an available process.
 
 ### 3.2.1 Scheduling Queues
 
 As processes enter the system, they are put into a **job queue**.
 
-**Job queue**: consists of all processes in the system.
+**Job queue**. Consists of all processes in the system.
 
-**Ready queue**: keep *ready* and *waiting* processes.
+**Ready queue**. Keep *ready* and *waiting* processes.
 
 ![normal](assets/images/3.5.png)
 
@@ -108,14 +107,12 @@ Processes are first spooled to a mass-storage device (eg. disk). Then
     1. selects from among the processes that are ready to execute
     2. allocates CPU to one of them.
 
-*Notice:*
+!!! info "Long-term scheduler"
+    - Controls the **degree of multiprogramming** (# processes).
+    - Selects a good **process mix** of I/O-bound and CPU-bound.
 
-- the **long-trem scheduler**
-
-    - controls the **degree of multiprogramming** (# processes)
-    - selects a good **process mix** of I/O-bound and CPU-bound.
-
-- the **medium-term scheduler**: swapping.
+!!! info "Medium-term scheduler"
+    Swapping.
 
 ![normal](assets/images/3.7.png)
 
@@ -141,12 +138,12 @@ When a process creates a child process, that child process may obtain the resour
 - OS
 - a subset of parent process
 
-When a process creates a new process:
+When a process creates a new process
 
 1. The parent continues to execute concurrently with its children.
 2. The parent waits until some or all of its children have terminated.
 
-There are also two address-space possibilities for the new process:
+There are also two address-space possibilities for the new process
 
 1. The child process is a duplicate of the parent process (it has the same program and data as the parent).
 2. The child process has a new program loaded into it.
@@ -154,7 +151,7 @@ There are also two address-space possibilities for the new process:
 !!! note "`fork()`"
     The new process created by `fork()` consists of a copy of the address of parent process.
 
-Return code:
+Return code
 
 - child process: 0.
 - parent process: pid of the child.
@@ -192,7 +189,7 @@ A process terminates when it finishes executing its final statement and asks the
 !!! info "Terminating process"
     A parent needs to know the identities of its children if it is to terminate them.
 
-A parent can terminate its children by:
+A parent can terminate its children by
 
 - The child use too much resources. (The parent have a mechanism to inspect the state of its children.)
 - The task assigned to the child is no longer required.
@@ -213,23 +210,23 @@ A parent can terminate its children by:
 !!! note "Zombie"
     A process terminated, but whose parent hasn't called `wait()`. Once the parent calls `wait()`, the pid of the zombie process and its entry in the PTE are released.
 
-The `init` process periodically invokes `wait()` to collect and release the orphan's pid and PTE
+The `init` process periodically invokes `wait()` to collect and release the orphan's pid and PTE.
 
 ## 3.4 Interprocess Communication
 
 Processes have two classifications:
 
-- independent
-- cooperating
-    - Information sharing.
-    - Computation speedup - multicore.
-    - Modularity.
-    - Convenience - parallel tasks.
+- Independent
+- Cooperating
+    - Information sharing
+    - Computation speedup - multicore
+    - Modularity
+    - Convenience - parallel tasks
 
-Interprocess communication (IPC):
+Interprocess communication (IPC)
 
-- shared memory: slower (syscalls are required.)
-- message passing: faster (syscalls are required only to establish shared memory regions.)
+- Shared memory: slower (syscalls are required.)
+- Message passing: faster (syscalls are required only to establish shared memory regions.)
 
 ![normal](assets/images/3.12.png)
 
@@ -241,13 +238,13 @@ A **producer** process produces information that is consumed by a **consumer** p
 
 eg.
 
-- a compiler produce assembly code that is consumed by an assembler. The assembler, in turn, may produce object modules that are consumed by the loader.
-- a server as a producer and a client as a consumer.
+- A compiler produce assembly code that is consumed by an assembler. The assembler, in turn, may produce object modules that are consumed by the loader.
+- A server as a producer and a client as a consumer.
 
 We need a buffer which resides in a region of shared memory (producer & consumer), and can be filled by the producer and emptied by the consumer.
 
-- unbounded buffer
-- bounded buffer (more practical)
+- Unbounded buffer
+- Bounded buffer (more practical)
 
 Implement the shared `buffer` as a circular array.
 ```c
@@ -480,11 +477,11 @@ Each message is addressed to an RPC daemon listening to a port on the remote sys
 !!! info ""
     The semantics of RPCs allows a client to invoke a procedure on a remote host as it would invoke a procedure locally.
 
-!!! note "stub"
+!!! note "Stub"
     The RPC system hides the details that allow communication to take place by providing a stub on the client side.
 
-!!! note "marshal"
-    Parameter marshalling involves packaging the parameters into a form that can be transmitted over a network.
+!!! note "Parameter marshalling"
+    Packaging the parameters into a form that can be transmitted over a network.
 
 Procedure of RPCs:
 
@@ -499,16 +496,16 @@ Procedure of RPCs:
     - invokes the procedure on the server.
 6. (optional) Return values using the same technique.
 
-Issues for RPC
+Issues for RPC:
 
 - Data representation
     - External Data Representation (XDR)
         - Parameter marshalling
-    - Semantics of a call
-        - at most once
-        - exactly once (ACK)
-    - Binding of the client and server port
-        - Matchmaker (a rendezvous mechanism)
+- Semantics of a call
+    - at most once
+    - exactly once (ACK)
+- Binding of the client and server port
+    - Matchmaker (a rendezvous mechanism)
 
 ![normal](assets/images/3.23.png)
 
