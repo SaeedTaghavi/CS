@@ -9,7 +9,7 @@ repo_name: 'walkccc/OSnotes'
 repo_url: 'https://github.com/walkccc/OSnotes'
 
 # Copyright
-copyright: 'Copyright &copy; 2018 Jay Chen'
+copyright: 'Built by <a href="http://github.com/walkccc">Jay Chen</a> &copy; 2017 - 2018'
 
 # Configuration
 theme:
