@@ -940,7 +940,7 @@
 <li><strong>data</strong> section: contains <em>global variables</em></li>
 <li><strong>heap</strong>: memory</li>
 <li>current activity (<em>program counter</em> + <em>registers</em>)</li>
-<li><strong>stack</strong>: contains <em>temporary data</em><ul>
+<li><strong>stack</strong>: contains <em>temporary data</em>:<ul>
 <li>function parameters</li>
 <li>return addresses</li>
 <li>
@@ -968,7 +968,7 @@
 </tr>
 </tbody>
 </table>
-<p>When an executable file is loaded into memory: <strong>program -&gt; process</strong></p>
+<p>When an executable file is loaded into memory: <strong>program $\to$ process</strong></p>
 <ul>
 <li>double-clicking an icon</li>
 <li>prog.exe</li>
@@ -986,41 +986,37 @@
 <h3 id="312-process-state">3.1.2 Process State<a class="headerlink" href="#312-process-state" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>New</strong>.</li>
-<li><strong>Running</strong>: execute instructions</li>
-<li><strong>Waiting</strong>: wait some event (I/O, signal)</li>
-<li><strong>Ready</strong>: wait to be assigned to a processor</li>
+<li><strong>Running</strong>. Execute instructions</li>
+<li><strong>Waiting</strong>. Wait some event (I/O, signal)</li>
+<li><strong>Ready</strong>. Wait to be assigned to a processor</li>
 <li><strong>Terminated</strong>.</li>
 </ul>
 <p><img alt="normal" src="../assets/images/3.2.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Process and Processor</p>
-<p>Only <strong>1</strong> process run on any processor. (Many processes may be <strong>ready</strong> and <strong>waiting</strong>.)</p>
+<p>Only <strong>1</strong> process runs on any processor. (Many processes may be <strong>ready</strong> and <strong>waiting</strong>.)</p>
 </div>
 <h3 id="313-process-control-block">3.1.3 Process Control Block<a class="headerlink" href="#313-process-control-block" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Process state</strong>.</li>
-<li><strong>Program counter</strong>: address of the next instruction.</li>
-<li><strong>CPU registers</strong>: accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.</li>
+<li><strong>Program counter</strong>. Address of the next instruction.</li>
+<li><strong>CPU registers</strong>. Accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.</li>
 <li><strong>CPU-scheduling information</strong>.</li>
 <li><strong>Memory-management information</strong>.</li>
-<li><strong>Accounting information</strong>: the amount of CPU and real time used, time limits, account numbers, job or process numbers.</li>
-<li><strong>I/O status information</strong>: the list of I/O devices allocated to the process, a list of open files.</li>
+<li><strong>Accounting information</strong>. The amount of CPU and real time used, time limits, account numbers, job or process numbers.</li>
+<li><strong>I/O status information</strong>. The list of I/O devices allocated to the process, a list of open files.</li>
 </ul>
 <p><img alt="normal" src="../assets/images/3.4.png" /></p>
 <h2 id="32-process-scheduling">3.2 Process Scheduling<a class="headerlink" href="#32-process-scheduling" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Multiprogramming</strong>: to have some process running at all times -&gt; maximize CPU utilization</li>
-<li>
-<p><strong>Time sharing</strong>: switch the CPU among processes.</p>
-</li>
-<li>
-<p><strong>Process scheduler</strong>: selects an available process</p>
-</li>
+<li><strong>Multiprogramming</strong>. To have some process running at all times $\to$ maximize CPU utilization.</li>
+<li><strong>Time sharing</strong>. Switch the CPU among processes.</li>
+<li><strong>Process scheduler</strong>. Selects an available process.</li>
 </ul>
 <h3 id="321-scheduling-queues">3.2.1 Scheduling Queues<a class="headerlink" href="#321-scheduling-queues" title="Permanent link">&para;</a></h3>
 <p>As processes enter the system, they are put into a <strong>job queue</strong>.</p>
-<p><strong>Job queue</strong>: consists of all processes in the system.</p>
-<p><strong>Ready queue</strong>: keep <em>ready</em> and <em>waiting</em> processes.</p>
+<p><strong>Job queue</strong>. Consists of all processes in the system.</p>
+<p><strong>Ready queue</strong>. Keep <em>ready</em> and <em>waiting</em> processes.</p>
 <p><img alt="normal" src="../assets/images/3.5.png" /></p>
 <p><img alt="normal" src="../assets/images/3.6.png" /></p>
 <p>When a process exit, it is removed from all queues and has its PCB and resources deallocated.</p>
@@ -1042,19 +1038,17 @@
 </ol>
 </li>
 </ul>
-<p><em>Notice:</em></p>
+<div class="admonition info">
+<p class="admonition-title">Long-term scheduler</p>
 <ul>
-<li>
-<p>the <strong>long-trem scheduler</strong></p>
-<ul>
-<li>controls the <strong>degree of multiprogramming</strong> (# processes)</li>
-<li>selects a good <strong>process mix</strong> of I/O-bound and CPU-bound.</li>
+<li>Controls the <strong>degree of multiprogramming</strong> (# processes).</li>
+<li>Selects a good <strong>process mix</strong> of I/O-bound and CPU-bound.</li>
 </ul>
-</li>
-<li>
-<p>the <strong>medium-term scheduler</strong>: swapping.</p>
-</li>
-</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Medium-term scheduler</p>
+<p>Swapping.</p>
+</div>
 <p><img alt="normal" src="../assets/images/3.7.png" /></p>
 <h3 id="323-context-switch">3.2.3 Context Switch<a class="headerlink" href="#323-context-switch" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
@@ -1077,12 +1071,12 @@
 <li>OS</li>
 <li>a subset of parent process</li>
 </ul>
-<p>When a process creates a new process:</p>
+<p>When a process creates a new process</p>
 <ol>
 <li>The parent continues to execute concurrently with its children.</li>
 <li>The parent waits until some or all of its children have terminated.</li>
 </ol>
-<p>There are also two address-space possibilities for the new process:</p>
+<p>There are also two address-space possibilities for the new process</p>
 <ol>
 <li>The child process is a duplicate of the parent process (it has the same program and data as the parent).</li>
 <li>The child process has a new program loaded into it.</li>
@@ -1091,7 +1085,7 @@
 <p class="admonition-title"><code>fork()</code></p>
 <p>The new process created by <code>fork()</code> consists of a copy of the address of parent process.</p>
 </div>
-<p>Return code:</p>
+<p>Return code</p>
 <ul>
 <li>child process: 0.</li>
 <li>parent process: pid of the child.</li>
@@ -1126,7 +1120,7 @@
 <p class="admonition-title">Terminating process</p>
 <p>A parent needs to know the identities of its children if it is to terminate them.</p>
 </div>
-<p>A parent can terminate its children by:</p>
+<p>A parent can terminate its children by</p>
 <ul>
 <li>The child use too much resources. (The parent have a mechanism to inspect the state of its children.)</li>
 <li>The task assigned to the child is no longer required.</li>
@@ -1148,23 +1142,23 @@
 <p class="admonition-title">Zombie</p>
 <p>A process terminated, but whose parent hasn't called <code>wait()</code>. Once the parent calls <code>wait()</code>, the pid of the zombie process and its entry in the PTE are released.</p>
 </div>
-<p>The <code>init</code> process periodically invokes <code>wait()</code> to collect and release the orphan's pid and PTE</p>
+<p>The <code>init</code> process periodically invokes <code>wait()</code> to collect and release the orphan's pid and PTE.</p>
 <h2 id="34-interprocess-communication">3.4 Interprocess Communication<a class="headerlink" href="#34-interprocess-communication" title="Permanent link">&para;</a></h2>
 <p>Processes have two classifications:</p>
 <ul>
-<li>independent</li>
-<li>cooperating<ul>
-<li>Information sharing.</li>
-<li>Computation speedup - multicore.</li>
-<li>Modularity.</li>
-<li>Convenience - parallel tasks.</li>
+<li>Independent</li>
+<li>Cooperating<ul>
+<li>Information sharing</li>
+<li>Computation speedup - multicore</li>
+<li>Modularity</li>
+<li>Convenience - parallel tasks</li>
 </ul>
 </li>
 </ul>
-<p>Interprocess communication (IPC):</p>
+<p>Interprocess communication (IPC)</p>
 <ul>
-<li>shared memory: slower (syscalls are required.)</li>
-<li>message passing: faster (syscalls are required only to establish shared memory regions.)</li>
+<li>Shared memory: slower (syscalls are required.)</li>
+<li>Message passing: faster (syscalls are required only to establish shared memory regions.)</li>
 </ul>
 <p><img alt="normal" src="../assets/images/3.12.png" /></p>
 <h3 id="341-shared-memory-systems">3.4.1 Shared-Memory Systems<a class="headerlink" href="#341-shared-memory-systems" title="Permanent link">&para;</a></h3>
@@ -1172,13 +1166,13 @@
 <p>A <strong>producer</strong> process produces information that is consumed by a <strong>consumer</strong> process.</p>
 <p>eg.</p>
 <ul>
-<li>a compiler produce assembly code that is consumed by an assembler. The assembler, in turn, may produce object modules that are consumed by the loader.</li>
-<li>a server as a producer and a client as a consumer.</li>
+<li>A compiler produce assembly code that is consumed by an assembler. The assembler, in turn, may produce object modules that are consumed by the loader.</li>
+<li>A server as a producer and a client as a consumer.</li>
 </ul>
 <p>We need a buffer which resides in a region of shared memory (producer &amp; consumer), and can be filled by the producer and emptied by the consumer.</p>
 <ul>
-<li>unbounded buffer</li>
-<li>bounded buffer (more practical)</li>
+<li>Unbounded buffer</li>
+<li>Bounded buffer (more practical)</li>
 </ul>
 <p>Implement the shared <code>buffer</code> as a circular array.
 <div class="highlight"><pre><span></span><span class="cp">#define BUFFER_SIZE 10</span>
@@ -1409,12 +1403,12 @@
 <p>The semantics of RPCs allows a client to invoke a procedure on a remote host as it would invoke a procedure locally.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">stub</p>
+<p class="admonition-title">Stub</p>
 <p>The RPC system hides the details that allow communication to take place by providing a stub on the client side.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">marshal</p>
-<p>Parameter marshalling involves packaging the parameters into a form that can be transmitted over a network.</p>
+<p class="admonition-title">Parameter marshalling</p>
+<p>Packaging the parameters into a form that can be transmitted over a network.</p>
 </div>
 <p>Procedure of RPCs:</p>
 <ol>
@@ -1433,11 +1427,13 @@
 </li>
 <li>(optional) Return values using the same technique.</li>
 </ol>
-<p>Issues for RPC</p>
+<p>Issues for RPC:</p>
 <ul>
 <li>Data representation<ul>
 <li>External Data Representation (XDR)<ul>
 <li>Parameter marshalling</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Semantics of a call<ul>
@@ -1447,8 +1443,6 @@
 </li>
 <li>Binding of the client and server port<ul>
 <li>Matchmaker (a rendezvous mechanism)</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
