@@ -5,12 +5,12 @@
 !!! note "Process"
     A program in execution, the basis of all computation.
 
- - batch system: jobs (= process)
- - time-shared system: user programs or tasks
+ - Batch system: jobs (= process)
+ - Time-shared system: user programs or tasks
 
 ### 3.1.1 The process
 
-Process consists:
+Process consists
 
 - **text** section: program code
 - **data** section: contains *global variables*
@@ -29,11 +29,13 @@ Process consists:
 | *passive* entity | *active* entity |
 | a file containing a list of instructions stored on disk (executable file) | program counter: specifying the next instruction to execute + a set of associated resources |
 
-When an executable file is loaded into memory: **program $\to$ process**
+When
 
 - double-clicking an icon
 - prog.exe
 - a.out
+
+an executable file is loaded into memory: **program $\to$ process**.
 
 Two different processes: the text section are equivalent, the data, heap and stack vary.
 
@@ -153,8 +155,8 @@ There are also two address-space possibilities for the new process
 
 Return code
 
-- child process: 0.
-- parent process: pid of the child.
+- Child process: 0.
+- Parent process: pid of the child.
 
 !!! info "After `fork()` syscall"
     One of the two processes uses the `exec()` syscall to replace the process's memory space with a new program.
@@ -232,7 +234,7 @@ Interprocess communication (IPC)
 
 ### 3.4.1 Shared-Memory Systems
 
-#### producer–consumer problem
+#### Producer–consumer problem
 
 A **producer** process produces information that is consumed by a **consumer** process.
 
@@ -380,8 +382,8 @@ The `ftruncate()` function configure the size of the object in bytes:
 
 Even system calls are made by messages. When a task is created, two special mailboxes
 
-- the Kernel mailbox and 
-- the Notify mailbox
+- kernel mailbox
+- notify mailbox
 
 are also created.
 
@@ -423,10 +425,10 @@ Application programs can be considered clients of a subsystem server.
 !!! note "Advanced Local Procedure Call (ALPC)"
     It is used for communication between two processes _on the same machine_.
 
-Windows uses two types of ports:
+Windows uses two types of ports
 
-- connection ports
-- communication ports
+- Connection ports
+- Communication ports
 
 !!! note "Callback"
     Allows the client and server to accept requests when they would normally be expecting a reply.

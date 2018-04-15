@@ -468,8 +468,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#producerconsumer-problem" title="producer–consumer problem" class="md-nav__link">
-    producer–consumer problem
+  <a href="#producerconsumer-problem" title="Producer–consumer problem" class="md-nav__link">
+    Producer–consumer problem
   </a>
   
 </li>
@@ -766,8 +766,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#producerconsumer-problem" title="producer–consumer problem" class="md-nav__link">
-    producer–consumer problem
+  <a href="#producerconsumer-problem" title="Producer–consumer problem" class="md-nav__link">
+    Producer–consumer problem
   </a>
   
 </li>
@@ -930,11 +930,11 @@
 <p>A program in execution, the basis of all computation.</p>
 </div>
 <ul>
-<li>batch system: jobs (= process)</li>
-<li>time-shared system: user programs or tasks</li>
+<li>Batch system: jobs (= process)</li>
+<li>Time-shared system: user programs or tasks</li>
 </ul>
 <h3 id="311-the-process">3.1.1 The process<a class="headerlink" href="#311-the-process" title="Permanent link">&para;</a></h3>
-<p>Process consists:</p>
+<p>Process consists</p>
 <ul>
 <li><strong>text</strong> section: program code</li>
 <li><strong>data</strong> section: contains <em>global variables</em></li>
@@ -968,12 +968,13 @@
 </tr>
 </tbody>
 </table>
-<p>When an executable file is loaded into memory: <strong>program $\to$ process</strong></p>
+<p>When</p>
 <ul>
 <li>double-clicking an icon</li>
 <li>prog.exe</li>
 <li>a.out</li>
 </ul>
+<p>an executable file is loaded into memory: <strong>program $\to$ process</strong>.</p>
 <p>Two different processes: the text section are equivalent, the data, heap and stack vary.</p>
 <p>Process can be an execution environment for other code. (<strong>simulation</strong>)</p>
 <p>eg.</p>
@@ -1087,8 +1088,8 @@
 </div>
 <p>Return code</p>
 <ul>
-<li>child process: 0.</li>
-<li>parent process: pid of the child.</li>
+<li>Child process: 0.</li>
+<li>Parent process: pid of the child.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">After <code>fork()</code> syscall</p>
@@ -1162,7 +1163,7 @@
 </ul>
 <p><img alt="normal" src="../assets/images/3.12.png" /></p>
 <h3 id="341-shared-memory-systems">3.4.1 Shared-Memory Systems<a class="headerlink" href="#341-shared-memory-systems" title="Permanent link">&para;</a></h3>
-<h4 id="producerconsumer-problem">producer–consumer problem<a class="headerlink" href="#producerconsumer-problem" title="Permanent link">&para;</a></h4>
+<h4 id="producerconsumer-problem">Producer–consumer problem<a class="headerlink" href="#producerconsumer-problem" title="Permanent link">&para;</a></h4>
 <p>A <strong>producer</strong> process produces information that is consumed by a <strong>consumer</strong> process.</p>
 <p>eg.</p>
 <ul>
@@ -1305,8 +1306,8 @@
 <h3 id="352-an-example-mach">3.5.2 An Example: Mach<a class="headerlink" href="#352-an-example-mach" title="Permanent link">&para;</a></h3>
 <p>Even system calls are made by messages. When a task is created, two special mailboxes</p>
 <ul>
-<li>the Kernel mailbox and </li>
-<li>the Notify mailbox</li>
+<li>kernel mailbox</li>
+<li>notify mailbox</li>
 </ul>
 <p>are also created.</p>
 <p>There are three syscalls needed:</p>
@@ -1352,10 +1353,10 @@
 <p class="admonition-title">Advanced Local Procedure Call (ALPC)</p>
 <p>It is used for communication between two processes <em>on the same machine</em>.</p>
 </div>
-<p>Windows uses two types of ports:</p>
+<p>Windows uses two types of ports</p>
 <ul>
-<li>connection ports</li>
-<li>communication ports</li>
+<li>Connection ports</li>
+<li>Communication ports</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Callback</p>

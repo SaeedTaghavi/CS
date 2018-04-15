@@ -383,6 +383,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#412-benefits" title="4.1.2 Benefits" class="md-nav__link">
+    4.1.2 Benefits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-multicore-programming" title="4.2 Multicore Programming" class="md-nav__link">
+    4.2 Multicore Programming
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-programming-challenges" title="4.2.1 Programming Challenges" class="md-nav__link">
+    4.2.1 Programming Challenges
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -439,6 +466,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#412-benefits" title="4.1.2 Benefits" class="md-nav__link">
+    4.1.2 Benefits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-multicore-programming" title="4.2 Multicore Programming" class="md-nav__link">
+    4.2 Multicore Programming
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-programming-challenges" title="4.2.1 Programming Challenges" class="md-nav__link">
+    4.2.1 Programming Challenges
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -465,7 +519,81 @@
                 
                 <h1 id="chapter-4-threads">Chapter 4 Threads<a class="headerlink" href="#chapter-4-threads" title="Permanent link">&para;</a></h1>
 <h2 id="41-overview">4.1 Overview<a class="headerlink" href="#41-overview" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Thread</p>
+<p>A basit unit of CPU utilization.</p>
+</div>
+<p>A thread shares</p>
+<ul>
+<li>code section</li>
+<li>data section</li>
+<li>OS resources (eg. open files and signals)</li>
+<li>
+<p>A thread have its own</p>
+</li>
+<li>
+<p>thread ID</p>
+</li>
+<li>program counter</li>
+<li>register set</li>
+<li>stack</li>
+</ul>
+<p><img alt="normal" src="../assets/images/4.1.png" /></p>
 <h3 id="411-motivation">4.1.1 Motivation<a class="headerlink" href="#411-motivation" title="Permanent link">&para;</a></h3>
+<p>It is generally more efficient to use one process that contains multiple threads since process creation is time consuming and resource intensive.</p>
+<p><img alt="normal" src="../assets/images/4.2.png" /></p>
+<h3 id="412-benefits">4.1.2 Benefits<a class="headerlink" href="#412-benefits" title="Permanent link">&para;</a></h3>
+<p>The benefits of multithreaded:</p>
+<ol>
+<li><strong>Responsiveness</strong>.</li>
+<li><strong>Resource sharing</strong>.</li>
+<li><strong>Economy</strong>.</li>
+<li><strong>Scalability</strong>.</li>
+</ol>
+<h2 id="42-multicore-programming">4.2 Multicore Programming<a class="headerlink" href="#42-multicore-programming" title="Permanent link">&para;</a></h2>
+<p>A more recent, similar trend in system design is to place multiple computing cores on a single chip.</p>
+<div class="admonition note">
+<p class="admonition-title">Multicore or Multiprocessor systems</p>
+<p>The cores appear across CPU chips or within CPU chips.</p>
+</div>
+<p>Consider an application with 4 threads.</p>
+<ul>
+<li>
+<p>With a single core</p>
+<p><img alt="small" src="../assets/images/4.3.png" /></p>
+</li>
+<li>
+<p>With multiple cores</p>
+<p><img alt="small" src="../assets/images/4.4.png" /></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Parallelism</th>
+<th align="center">Concurrency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Perform more than one task simultaneously.</td>
+<td align="center">Allow all the tasks to make prograss.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Amdahl's Law</p>
+<p>If $S$ is the portion cannot be accelerated by $N$ cores (serially).</p>
+<p>$$speedup \le \frac{1}{S + \frac{(1 - S)}{N}}$$</p>
+</div>
+<h3 id="421-programming-challenges">4.2.1 Programming Challenges<a class="headerlink" href="#421-programming-challenges" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Identifying tasks.</li>
+<li>Balance. (Equal value)</li>
+<li>Data splitting.</li>
+<li>Data dependency.</li>
+<li>Testing and debugging.</li>
+</ol>
                 
                   
                 
