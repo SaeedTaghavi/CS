@@ -1,0 +1,753 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Notes of Operating System">
+      
+      
+        <link rel="canonical" href="https://walkccc.github.io/OSnotes/Chap05/">
+      
+      
+        <meta name="author" content="Jay Chen">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.2">
+    
+    
+      
+        <title>Chapter 5 Process Synchronization - Operating System | notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../css/style.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
+		c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63
+		c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996
+		c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136
+		c-4.187,0.767-9.469,1.092-15.846,1c-6.374-0.089-12.991-0.757-19.842-1.999c-6.854-1.231-13.229-4.086-19.13-8.559
+		c-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559
+		c-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-0.951-2.568-2.098-3.711-3.429c-1.142-1.331-1.997-2.663-2.568-3.997
+		c-0.572-1.335-0.098-2.43,1.427-3.289c1.525-0.859,4.281-1.276,8.28-1.276l5.708,0.853c3.807,0.763,8.516,3.042,14.133,6.851
+		c5.614,3.806,10.229,8.754,13.846,14.842c4.38,7.806,9.657,13.754,15.846,17.847c6.184,4.093,12.419,6.136,18.699,6.136
+		c6.28,0,11.704-0.476,16.274-1.423c4.565-0.952,8.848-2.383,12.847-4.285c1.713-12.758,6.377-22.559,13.988-29.41
+		c-10.848-1.14-20.601-2.857-29.264-5.14c-8.658-2.286-17.605-5.996-26.835-11.14c-9.235-5.137-16.896-11.516-22.985-19.126
+		c-6.09-7.614-11.088-17.61-14.987-29.979c-3.901-12.374-5.852-26.648-5.852-42.826c0-23.035,7.52-42.637,22.557-58.817
+		c-7.044-17.318-6.379-36.732,1.997-58.24c5.52-1.715,13.706-0.428,24.554,3.853c10.85,4.283,18.794,7.952,23.84,10.994
+		c5.046,3.041,9.089,5.618,12.135,7.708c17.705-4.947,35.976-7.421,54.818-7.421s37.117,2.474,54.823,7.421l10.849-6.849
+		c7.419-4.57,16.18-8.758,26.262-12.565c10.088-3.805,17.802-4.853,23.134-3.138c8.562,21.509,9.325,40.922,2.279,58.24
+		c15.036,16.18,22.559,35.787,22.559,58.817c0,16.178-1.958,30.497-5.853,42.966c-3.9,12.471-8.941,22.457-15.125,29.979
+		c-6.191,7.521-13.901,13.85-23.131,18.986c-9.232,5.14-18.182,8.85-26.84,11.136c-8.662,2.286-18.415,4.004-29.263,5.146
+		c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995
+		c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906
+		C438.536,184.851,428.728,148.168,409.132,114.573z"/>
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#chapter-5-process-synchronization" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://walkccc.github.io/OSnotes" title="Operating System | notes" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Operating System | notes
+              </span>
+              <span class="md-header-nav__topic">
+                Chapter 5 Process Synchronization
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/walkccc/OSnotes/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      walkccc/OSnotes
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Operating System | notes
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/walkccc/OSnotes/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      walkccc/OSnotes
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      PART ONE | OVERVIEW
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        PART ONE | OVERVIEW
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Chap01/" title="Chapter 1 Introduction" class="md-nav__link">
+      Chapter 1 Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Chap02/" title="Chapter 2 Operating-System Structures" class="md-nav__link">
+      Chapter 2 Operating-System Structures
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      PART TWO | PROCESS MANAGEMENT
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        PART TWO | PROCESS MANAGEMENT
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Chap03/" title="Chapter 3 Processes" class="md-nav__link">
+      Chapter 3 Processes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Chap04/" title="Chapter 4 Threads" class="md-nav__link">
+      Chapter 4 Threads
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Chapter 5 Process Synchronization
+      </label>
+    
+    <a href="./" title="Chapter 5 Process Synchronization" class="md-nav__link md-nav__link--active">
+      Chapter 5 Process Synchronization
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-background" title="5.1 Background" class="md-nav__link">
+    5.1 Background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-the-critical-section-problem" title="5.2 The Critical-Section Problem" class="md-nav__link">
+    5.2 The Critical-Section Problem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-petersons-solution" title="5.3 Peterson's Solution" class="md-nav__link">
+    5.3 Peterson's Solution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-synchronization-hardware" title="5.4 Synchronization Hardware" class="md-nav__link">
+    5.4 Synchronization Hardware
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-background" title="5.1 Background" class="md-nav__link">
+    5.1 Background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-the-critical-section-problem" title="5.2 The Critical-Section Problem" class="md-nav__link">
+    5.2 The Critical-Section Problem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-petersons-solution" title="5.3 Peterson's Solution" class="md-nav__link">
+    5.3 Peterson's Solution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-synchronization-hardware" title="5.4 Synchronization Hardware" class="md-nav__link">
+    5.4 Synchronization Hardware
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/walkccc/OSnotes/edit/master/docs/Chap05.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="chapter-5-process-synchronization">Chapter 5 Process Synchronization<a class="headerlink" href="#chapter-5-process-synchronization" title="Permanent link">&para;</a></h1>
+<h2 id="51-background">5.1 Background<a class="headerlink" href="#51-background" title="Permanent link">&para;</a></h2>
+<p>Recall <a href="../../Chap03/#producerconsumer-problem">producer–consumer problem</a>. We modify it as follows:</p>
+<div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* produce an item in next_produced */</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">BUFFER_SIZE</span><span class="p">)</span>
+        <span class="p">;</span> <span class="cm">/* do nothing */</span>
+
+    <span class="n">buffer</span><span class="p">[</span><span class="n">in</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_produced</span><span class="p">;</span>
+    <span class="n">in</span> <span class="o">=</span> <span class="p">(</span><span class="n">in</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">BUFFER_SIZE</span><span class="p">;</span>
+    <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">;</span> <span class="cm">/* do nothing */</span>
+
+        <span class="n">next_consumed</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[</span><span class="n">out</span><span class="p">];</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">BUFFER_SIZE</span><span class="p">;</span>
+        <span class="n">counter</span><span class="o">--</span><span class="p">;</span>
+
+        <span class="cm">/* consume the item in next_consumed */</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Suppose <code>counter == 5</code> initially. After executing <code>counter++</code> in producer or <code>counter--</code> in consumer. The value of <code>counter</code> may be $4$, $5$, or $6$!</p>
+<p>\begin{array}{lllll}
+T_0: producer &amp; \text{execute} &amp; register_1 = \text{counter} &amp; \{register_1 = 5\} \\
+T_1: producer &amp; \text{execute} &amp; register_1 = register_1 + 1 &amp; \{register_1 = 6\} \\
+T_2: consumer &amp; \text{execute} &amp; register_2 = \text{counter} &amp; \{register_2 = 5\} \\
+T_3: consumer &amp; \text{execute} &amp; register_2 = register_2 - 1 &amp; \{register_2 = 4\} \\
+T_4: producer &amp; \text{execute} &amp; \text{counter} = register_1 &amp; \{counter = 6\} \\
+T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{counter = 4\}
+\end{array}</p>
+<div class="admonition note">
+<p class="admonition-title">Race condition</p>
+<p>Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the <em>particular order</em> in which the access takes place.</p>
+</div>
+<p>We need to ensure that only one process at a time can be manipulating the variable <code>counter</code>.</p>
+<h2 id="52-the-critical-section-problem">5.2 The Critical-Section Problem<a class="headerlink" href="#52-the-critical-section-problem" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Critical section</p>
+<p>In which the process may be changing common variables, updating a table, writing a file, and so on.</p>
+</div>
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="cm">/* entry section */</span>
+        <span class="c1">// critical section</span>
+    <span class="cm">/* exit section */</span>
+        <span class="c1">// remainder section</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<p>A solution to the critical-section problem must satisfy:</p>
+<ol>
+<li><strong>Mutual exclusion</strong></li>
+<li><strong>Progree</strong>. Cannot be postponed indefinitely.</li>
+<li><strong>Bounded waiting</strong></li>
+</ol>
+<p>Two general approches are used to handle critical sections:</p>
+<ol>
+<li><strong>Preemptive kernels</strong></li>
+<li><strong>Nonpreemptive kernels</strong></li>
+</ol>
+<p>Why anyone favor a preemptive kernel over a nonpreemptive one?</p>
+<ul>
+<li>Responsive.</li>
+<li>More suitable for real-time programming.</li>
+</ul>
+<h2 id="53-petersons-solution">5.3 Peterson's Solution<a class="headerlink" href="#53-petersons-solution" title="Permanent link">&para;</a></h2>
+<p>Peterson's solution is restricted to two processes that alternate execution between their critical sections and remainder sections. The processes are named $P_i$ and $P_j$.</p>
+<p>Shared data items:</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>
+<span class="n">boolean</span> <span class="n">flag</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span> <span class="o">==</span> <span class="n">j</span><span class="p">);</span>
+        <span class="cm">/* critical section */</span>
+
+    <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<div class="admonition info">
+<p>If both processes try to enter at the same time, <code>turn</code> will be set to both $i$ and $j$ at roughly the same time. <em>Only one of these assignments will last.</em></p>
+</div>
+<p><em>Proof</em></p>
+<ol>
+<li>Mutual exclusion is preserved.</li>
+<li>The progress requirement is satisfied.</li>
+<li>The bounded-waiting requirement is met.</li>
+</ol>
+<h2 id="54-synchronization-hardware">5.4 Synchronization Hardware<a class="headerlink" href="#54-synchronization-hardware" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Atomic</p>
+<p>Modern computer allow us either to test and modify the content of a word or to swap the contents of two words <strong>atomically</strong>—that is, as one uninterruptible.</p>
+</div>
+<p>Although following algorithms satisfy the mutual-exclusion requirement, they don't satisfy the bounded-waiting requirement.</p>
+<div class="highlight"><pre><span></span><span class="n">boolean</span> <span class="nf">test_and_set</span><span class="p">(</span><span class="n">boolean</span> <span class="o">*</span><span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">boolean</span> <span class="n">rv</span> <span class="o">=</span> <span class="o">*</span><span class="n">target</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">target</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">rv</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">))</span>
+        <span class="p">;</span> <span class="cm">/* do nothing */</span>
+
+        <span class="cm">/* critical section */</span>
+
+    <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+        <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">compare_and_swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">value</span><span class="p">,</span> <span class="kt">int</span> <span class="n">expected</span><span class="p">,</span> <span class="kt">int</span> <span class="n">new_value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">value</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">value</span> <span class="o">==</span> <span class="n">expected</span><span class="p">)</span>
+        <span class="o">*</span><span class="n">value</span> <span class="o">=</span> <span class="n">new_value</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">compare_and_swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">;</span> <span class="cm">/* do nothing */</span>
+
+        <span class="cm">/* critical section */</span>
+
+    <span class="n">lock</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<p>Following algorithms satisfies all the critical-section requirements.</p>
+<div class="highlight"><pre><span></span><span class="n">boolean</span> <span class="n">waiting</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+<span class="n">boolean</span> <span class="n">lock</span><span class="p">;</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+    <span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+        <span class="cm">/* critical section */</span>
+
+    <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">((</span><span class="n">j</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+        <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Chap04/" title="Chapter 4 Threads" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Chapter 4 Threads
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Built by <a href="http://github.com/walkccc">Jay Chen</a> &copy; 2017 - 2018
+          </div>
+        Work hard, Play hard.
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/walkccc" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://walkccc.github.io/CLRS" class="md-footer-social__link fa fa-book"></a>
+    
+      <a href="https://walkccc.github.io/MemoryGame" class="md-footer-social__link fa fa-gamepad"></a>
+    
+      <a href="https://www.linkedin.com/in/jay-chen-57852313a" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://www.instagram.com/walkccc" class="md-footer-social__link fa fa-instagram"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b438e6c5.js"></script>
+      
+      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
+      
+        <script src="../js/touch.js"></script>
+      
+        <script src="../js/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
