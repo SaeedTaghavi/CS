@@ -2,15 +2,15 @@
 
 ## 4.1 Overview
 
-!!! note "Thread"
+!!! note "Thread–Lightweight process (LWP)"
     A basit unit of CPU utilization.
 
 A thread shares
 
 - code section
 - data section
-- OS resources (eg. open files and signals)
-- 
+- OS resources (eg. open files and signals) 
+
 A thread have its own
 
 - thread ID
@@ -30,10 +30,10 @@ It is generally more efficient to use one process that contains multiple threads
 
 The benefits of multithreaded:
 
-1. **Responsiveness**.
-2. **Resource sharing**.
-3. **Economy**.
-4. **Scalability**.
+1. **Responsiveness**
+2. **Resource sharing**
+3. **Economy**
+4. **Scalability/Utilization**
 
 ## 4.2 Multicore Programming
 
@@ -54,7 +54,7 @@ Consider an application with 4 threads.
 
 | Parallelism | Concurrency |
 | :--: | :--: |
-| Perform more than one task simultaneously. | Allow all the tasks to make prograss. |
+| Perform more than one task simultaneously. | Allow all the tasks to make progress. |
 
 !!! note "Amdahl's Law"
     If $S$ is the portion cannot be accelerated by $N$ cores (serially).
@@ -63,11 +63,11 @@ Consider an application with 4 threads.
 
 ### 4.2.1 Programming Challenges
 
-1. Identifying tasks.
-2. Balance. (Equal value)
-3. Data splitting.
-4. Data dependency.
-5. Testing and debugging.
+1. Identifying tasks: Dividing Activities
+2. Balance (Equal value)
+3. Data splitting
+4. Data dependency
+5. Testing and debugging
 
 ### 4.2.2 Types of Parallelism
 
@@ -89,15 +89,35 @@ $$\sum_{i = 0}^{N - 1} arr[i] = \sum_{i = 0}^{N / 2 - 1} arr[i] (\text{thread } 
 
 ### 4.3.1 Many-to-One Model
 
+- pros:
+    - Efficiency
+
+- cons:
+    - One blocking syscall blocks all.
+    - No parallelism for multiple processors.
+
 eg. Green threads (Solaris)
 
 ![small](assets/images/4.5.png)
 
 ### 4.3.2 One-to-One Model
 
+- pros:
+    - One syscall blocks one thread.
+
+- cons:
+    - Overheads in creating a kernel thread.
+
+eg. Windows NT/2000/XP, Linux, OS/2, Solaris 9
+
 ![small](assets/images/4.6.png)
 
 ### 4.3.3 Many-to-Many Model
+
+- pros:
+    - A combination of parallelism and efficiency.
+
+eg. Solaris 2 & 9, IRIX, HP-UX, Tru64 UNIX
 
 ![small](assets/images/4.7.png)
 ![small](assets/images/4.8.png)
@@ -109,14 +129,14 @@ eg. Green threads (Solaris)
 
 Three main thread libraries:
 
-- POSIX Pthreads
-- Windows
-- Java
+- POSIX Pthreads: User or kernel level
+- Windows: Kernel level
+- Java: Level depending on the thread library on the host system.
 
 Two general strategie for creating threads:
 
-- asynchronous threading: parent doesn't know children.
-- synchronous threading: parent must wait for all of its children. (***fork-join***)
+- Asynchronous threading: parent doesn't know children.
+- Synchronous threading: parent must wait for all of its children. (***fork-join***)
 
 All of the following examples use synchronous threading.
 
@@ -150,8 +170,9 @@ The issue of multithreaded server:
 The benefits of thread pools:
 
 1. Speed
-2. Limited number of threads, which is good for OS.
+2. Limited # of threads, which is good for OS.
 3. Seperating the task of creating tasks allows us to use different strategies.
+4. Dynamic or static thread pools
 
 eg. `QueueUserWorkItem()`, `java.util.concurrent`.
 
@@ -159,6 +180,8 @@ eg. `QueueUserWorkItem()`, `java.util.concurrent`.
 
 !!! note "OpenMP"
     A set of compiler directivese and APIs to support parallel programming in shared memory environment.
+
+    Threads with divided workload are created automatically based on # of cores or a set bound.
 
 !!! note "Parallel regions"
     Blocks of code that may run in parallel.
@@ -206,7 +229,7 @@ eg. Intel's Threading Building Blocks (TBB), `java.util.concurrent`.
 
 ## 4.6 Threading Issues
 
-### The `fork()` and `exec()` System Calls
+### 4.6.1 The `fork()` and `exec()` System Calls
 
 `fork()`:
 

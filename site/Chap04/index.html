@@ -540,8 +540,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-fork-and-exec-system-calls" title="The fork() and exec() System Calls" class="md-nav__link">
-    The fork() and exec() System Calls
+  <a href="#461-the-fork-and-exec-system-calls" title="4.6.1 The fork() and exec() System Calls" class="md-nav__link">
+    4.6.1 The fork() and exec() System Calls
   </a>
   
 </li>
@@ -614,6 +614,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Chap05/" title="Chapter 5 Process Synchronization" class="md-nav__link">
+      Chapter 5 Process Synchronization
+    </a>
   </li>
 
         
@@ -814,8 +826,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#the-fork-and-exec-system-calls" title="The fork() and exec() System Calls" class="md-nav__link">
-    The fork() and exec() System Calls
+  <a href="#461-the-fork-and-exec-system-calls" title="4.6.1 The fork() and exec() System Calls" class="md-nav__link">
+    4.6.1 The fork() and exec() System Calls
   </a>
   
 </li>
@@ -902,20 +914,18 @@
                 <h1 id="chapter-4-threads">Chapter 4 Threads<a class="headerlink" href="#chapter-4-threads" title="Permanent link">&para;</a></h1>
 <h2 id="41-overview">4.1 Overview<a class="headerlink" href="#41-overview" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
-<p class="admonition-title">Thread</p>
+<p class="admonition-title">Thread–Lightweight process (LWP)</p>
 <p>A basit unit of CPU utilization.</p>
 </div>
 <p>A thread shares</p>
 <ul>
 <li>code section</li>
 <li>data section</li>
-<li>OS resources (eg. open files and signals)</li>
-<li>
+<li>OS resources (eg. open files and signals) </li>
+</ul>
 <p>A thread have its own</p>
-</li>
-<li>
-<p>thread ID</p>
-</li>
+<ul>
+<li>thread ID</li>
 <li>program counter</li>
 <li>register set</li>
 <li>stack</li>
@@ -927,10 +937,10 @@
 <h3 id="412-benefits">4.1.2 Benefits<a class="headerlink" href="#412-benefits" title="Permanent link">&para;</a></h3>
 <p>The benefits of multithreaded:</p>
 <ol>
-<li><strong>Responsiveness</strong>.</li>
-<li><strong>Resource sharing</strong>.</li>
-<li><strong>Economy</strong>.</li>
-<li><strong>Scalability</strong>.</li>
+<li><strong>Responsiveness</strong></li>
+<li><strong>Resource sharing</strong></li>
+<li><strong>Economy</strong></li>
+<li><strong>Scalability/Utilization</strong></li>
 </ol>
 <h2 id="42-multicore-programming">4.2 Multicore Programming<a class="headerlink" href="#42-multicore-programming" title="Permanent link">&para;</a></h2>
 <p>A more recent, similar trend in system design is to place multiple computing cores on a single chip.</p>
@@ -959,7 +969,7 @@
 <tbody>
 <tr>
 <td align="center">Perform more than one task simultaneously.</td>
-<td align="center">Allow all the tasks to make prograss.</td>
+<td align="center">Allow all the tasks to make progress.</td>
 </tr>
 </tbody>
 </table>
@@ -970,11 +980,11 @@
 </div>
 <h3 id="421-programming-challenges">4.2.1 Programming Challenges<a class="headerlink" href="#421-programming-challenges" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Identifying tasks.</li>
-<li>Balance. (Equal value)</li>
-<li>Data splitting.</li>
-<li>Data dependency.</li>
-<li>Testing and debugging.</li>
+<li>Identifying tasks: Dividing Activities</li>
+<li>Balance (Equal value)</li>
+<li>Data splitting</li>
+<li>Data dependency</li>
+<li>Testing and debugging</li>
 </ol>
 <h3 id="422-types-of-parallelism">4.2.2 Types of Parallelism<a class="headerlink" href="#422-types-of-parallelism" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
@@ -991,11 +1001,48 @@
 </div>
 <h2 id="43-multithreading-models">4.3 Multithreading Models<a class="headerlink" href="#43-multithreading-models" title="Permanent link">&para;</a></h2>
 <h3 id="431-many-to-one-model">4.3.1 Many-to-One Model<a class="headerlink" href="#431-many-to-one-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>pros:</p>
+<ul>
+<li>Efficiency</li>
+</ul>
+</li>
+<li>
+<p>cons:</p>
+<ul>
+<li>One blocking syscall blocks all.</li>
+<li>No parallelism for multiple processors.</li>
+</ul>
+</li>
+</ul>
 <p>eg. Green threads (Solaris)</p>
 <p><img alt="small" src="../assets/images/4.5.png" /></p>
 <h3 id="432-one-to-one-model">4.3.2 One-to-One Model<a class="headerlink" href="#432-one-to-one-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>pros:</p>
+<ul>
+<li>One syscall blocks one thread.</li>
+</ul>
+</li>
+<li>
+<p>cons:</p>
+<ul>
+<li>Overheads in creating a kernel thread.</li>
+</ul>
+</li>
+</ul>
+<p>eg. Windows NT/2000/XP, Linux, OS/2, Solaris 9</p>
 <p><img alt="small" src="../assets/images/4.6.png" /></p>
 <h3 id="433-many-to-many-model">4.3.3 Many-to-Many Model<a class="headerlink" href="#433-many-to-many-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>pros:<ul>
+<li>A combination of parallelism and efficiency.</li>
+</ul>
+</li>
+</ul>
+<p>eg. Solaris 2 &amp; 9, IRIX, HP-UX, Tru64 UNIX</p>
 <p><img alt="small" src="../assets/images/4.7.png" />
 <img alt="small" src="../assets/images/4.8.png" /></p>
 <h2 id="44-thread-libraries">4.4 Thread Libraries<a class="headerlink" href="#44-thread-libraries" title="Permanent link">&para;</a></h2>
@@ -1005,14 +1052,14 @@
 </ul>
 <p>Three main thread libraries:</p>
 <ul>
-<li>POSIX Pthreads</li>
-<li>Windows</li>
-<li>Java</li>
+<li>POSIX Pthreads: User or kernel level</li>
+<li>Windows: Kernel level</li>
+<li>Java: Level depending on the thread library on the host system.</li>
 </ul>
 <p>Two general strategie for creating threads:</p>
 <ul>
-<li>asynchronous threading: parent doesn't know children.</li>
-<li>synchronous threading: parent must wait for all of its children. (<strong><em>fork-join</em></strong>)</li>
+<li>Asynchronous threading: parent doesn't know children.</li>
+<li>Synchronous threading: parent must wait for all of its children. (<strong><em>fork-join</em></strong>)</li>
 </ul>
 <p>All of the following examples use synchronous threading.</p>
 <h3 id="441-pthreads">4.4.1 Pthreads<a class="headerlink" href="#441-pthreads" title="Permanent link">&para;</a></h3>
@@ -1042,14 +1089,16 @@
 <p>The benefits of thread pools:</p>
 <ol>
 <li>Speed</li>
-<li>Limited number of threads, which is good for OS.</li>
+<li>Limited # of threads, which is good for OS.</li>
 <li>Seperating the task of creating tasks allows us to use different strategies.</li>
+<li>Dynamic or static thread pools</li>
 </ol>
 <p>eg. <code>QueueUserWorkItem()</code>, <code>java.util.concurrent</code>.</p>
 <h3 id="452-openmp">4.5.2 OpenMP<a class="headerlink" href="#452-openmp" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">OpenMP</p>
 <p>A set of compiler directivese and APIs to support parallel programming in shared memory environment.</p>
+<p>Threads with divided workload are created automatically based on # of cores or a set bound.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Parallel regions</p>
@@ -1088,7 +1137,7 @@
 <h3 id="454-other-approaches">4.5.4 Other Approaches<a class="headerlink" href="#454-other-approaches" title="Permanent link">&para;</a></h3>
 <p>eg. Intel's Threading Building Blocks (TBB), <code>java.util.concurrent</code>.</p>
 <h2 id="46-threading-issues">4.6 Threading Issues<a class="headerlink" href="#46-threading-issues" title="Permanent link">&para;</a></h2>
-<h3 id="the-fork-and-exec-system-calls">The <code>fork()</code> and <code>exec()</code> System Calls<a class="headerlink" href="#the-fork-and-exec-system-calls" title="Permanent link">&para;</a></h3>
+<h3 id="461-the-fork-and-exec-system-calls">4.6.1 The <code>fork()</code> and <code>exec()</code> System Calls<a class="headerlink" href="#461-the-fork-and-exec-system-calls" title="Permanent link">&para;</a></h3>
 <p><code>fork()</code>:</p>
 <ul>
 <li>Duplicate all threads?</li>
@@ -1344,6 +1393,20 @@
             </div>
           </a>
         
+        
+          <a href="../Chap05/" title="Chapter 5 Process Synchronization" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Chapter 5 Process Synchronization
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
