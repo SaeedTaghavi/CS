@@ -464,6 +464,76 @@
             "location": "/Chap05/#54-synchronization-hardware",
             "text": "Atomic  Modern computer allow us either to test and modify the content of a word or to swap the contents of two words  atomically \u2014that is, as one uninterruptible.   Although following algorithms satisfy the mutual-exclusion requirement, they don't satisfy the bounded-waiting requirement.  boolean   test_and_set ( boolean   * target )   { \n     boolean   rv   =   * target ; \n     * target   =   true ; \n\n     return   rv ;  }   do   { \n     while   ( test_and_set ( & lock )) \n         ;   /* do nothing */ \n\n         /* critical section */ \n\n     lock   =   false ; \n\n         /* remainder section */  }   while   ( true );   int   compare_and_swap ( int   * value ,   int   expected ,   int   new_value )   { \n     int   temp   =   * value ; \n\n     if   ( * value   ==   expected ) \n         * value   =   new_value ; \n\n     return   temp ;  }   do   { \n     while   ( compare_and_swap ( & lock ,   0 ,   1 )   !=   0 ) \n         ;   /* do nothing */ \n\n         /* critical section */ \n\n     lock   =   0 ; \n\n         /* remainder section */  }   while   ( true );   Following algorithms satisfies all the critical-section requirements.  boolean   waiting [ n ];  boolean   lock ;   do   { \n     waiting [ i ]   =   true ; \n     key   =   true ; \n     while   ( waiting [ i ]   &&   key ) \n         key   =   test_and_set ( & lock ); \n     waiting [ i ]   =   false ; \n\n         /* critical section */ \n\n     j   =   ( i   +   1 )   %   n ; \n     while   (( j   !=   1 )   &&   ! waiting [ j ]) \n         j   =   ( j   +   1 )   %   n ; \n\n     if   ( j   ==   i ) \n         lock   =   false ; \n     else \n         waiting [ j ]   =   false ; \n\n         /* remainder section */  }   while   ( true );",
             "title": "5.4 Synchronization Hardware"
+        },
+        {
+            "location": "/Chap06/",
+            "text": "Chapter 6 CPU Scheduling\n\u00b6\n\n\n6.1 Basic Concepts\n\u00b6\n\n\nThe objective of multiprogramming is to have some process running at all times, to maximize CPU utilization.\n\n\nA process is executed until it must wait, typically for the completion of some I/O request.\n\n\n6.1.1 CPU\u2013I/O Burst Cycle\n\u00b6\n\n\nProcess execution = cycle of CPU + I/O wait.\n\n\n\n\n6.1.2 CPU Scheduler\n\u00b6\n\n\nShort-term scheduler\n (CPU scheduler): select process in the ready queue.\n\n\n6.1.3 Preemptive Scheduling\n\u00b6\n\n\nCPU-scheduling decisions when a process:\n\n\n\n\n(nonpreemptive) Switches from the running state $\\to$ the waiting state (e.g. I/O request, \nwait()\n for child)\n\n\n(preemptive) Switches from the running state $\\to$ the ready state (e.g. interrupt)\n\n\n(preemptive) Switches from the waiting state $\\to$ the ready state (e.g. completion of I/O)\n\n\n(nonpreemptive) Terminates\n\n\n\n\n6.1.4 Dispatcher\n\u00b6\n\n\n\n\nDispatcher\n\n\nThe module that gives control of the CPU to \nthe process selected by the short-term scheduler\n. It should be fast.\n\n\n\n\n\n\nSwitching context\n\n\nSwitching to user mode\n\n\nJumping to the proper location in the user program to restart that program\n\n\n\n\n\n\nDispatch latency\n\n\nThe time it takes for the dispatcher to stop one process and start another running.\n\n\n\n\n6.2 Scheduling Criteria\n\u00b6\n\n\n\n\nCPU utilization\n.\n\n\nThroughput\n.\n\n\nTurnaround time\n. Completion time - Start time.\n\n\nWaiting time\n. The sum of the periods spent waiting in the ready queue.\n\n\nResponse time\n.\n\n\n\n\n6.3 Scheduling Algorithms\n\u00b6\n\n\n6.3-1 First-Come, First-Served Scheduling\n\u00b6\n\n\n6.3.2 Shortest-Job-First Scheduling\n\u00b6\n\n\n6.3.3 Priority Scheduling\n\u00b6\n\n\n6.3.4 Round-Robin Scheduling\n\u00b6\n\n\n6.3.5 Multilevel Queue Scheduling\n\u00b6\n\n\n\u00b6\n\n\n\u00b6",
+            "title": "Chapter 6 CPU Scheduling"
+        },
+        {
+            "location": "/Chap06/#chapter-6-cpu-scheduling",
+            "text": "",
+            "title": "Chapter 6 CPU Scheduling"
+        },
+        {
+            "location": "/Chap06/#61-basic-concepts",
+            "text": "The objective of multiprogramming is to have some process running at all times, to maximize CPU utilization.  A process is executed until it must wait, typically for the completion of some I/O request.",
+            "title": "6.1 Basic Concepts"
+        },
+        {
+            "location": "/Chap06/#611-cpuio-burst-cycle",
+            "text": "Process execution = cycle of CPU + I/O wait.",
+            "title": "6.1.1 CPU\u2013I/O Burst Cycle"
+        },
+        {
+            "location": "/Chap06/#612-cpu-scheduler",
+            "text": "Short-term scheduler  (CPU scheduler): select process in the ready queue.",
+            "title": "6.1.2 CPU Scheduler"
+        },
+        {
+            "location": "/Chap06/#613-preemptive-scheduling",
+            "text": "CPU-scheduling decisions when a process:   (nonpreemptive) Switches from the running state $\\to$ the waiting state (e.g. I/O request,  wait()  for child)  (preemptive) Switches from the running state $\\to$ the ready state (e.g. interrupt)  (preemptive) Switches from the waiting state $\\to$ the ready state (e.g. completion of I/O)  (nonpreemptive) Terminates",
+            "title": "6.1.3 Preemptive Scheduling"
+        },
+        {
+            "location": "/Chap06/#614-dispatcher",
+            "text": "Dispatcher  The module that gives control of the CPU to  the process selected by the short-term scheduler . It should be fast.    Switching context  Switching to user mode  Jumping to the proper location in the user program to restart that program    Dispatch latency  The time it takes for the dispatcher to stop one process and start another running.",
+            "title": "6.1.4 Dispatcher"
+        },
+        {
+            "location": "/Chap06/#62-scheduling-criteria",
+            "text": "CPU utilization .  Throughput .  Turnaround time . Completion time - Start time.  Waiting time . The sum of the periods spent waiting in the ready queue.  Response time .",
+            "title": "6.2 Scheduling Criteria"
+        },
+        {
+            "location": "/Chap06/#63-scheduling-algorithms",
+            "text": "",
+            "title": "6.3 Scheduling Algorithms"
+        },
+        {
+            "location": "/Chap06/#63-1-first-come-first-served-scheduling",
+            "text": "",
+            "title": "6.3-1 First-Come, First-Served Scheduling"
+        },
+        {
+            "location": "/Chap06/#632-shortest-job-first-scheduling",
+            "text": "",
+            "title": "6.3.2 Shortest-Job-First Scheduling"
+        },
+        {
+            "location": "/Chap06/#633-priority-scheduling",
+            "text": "",
+            "title": "6.3.3 Priority Scheduling"
+        },
+        {
+            "location": "/Chap06/#634-round-robin-scheduling",
+            "text": "",
+            "title": "6.3.4 Round-Robin Scheduling"
+        },
+        {
+            "location": "/Chap06/#635-multilevel-queue-scheduling",
+            "text": "",
+            "title": "6.3.5 Multilevel Queue Scheduling"
         }
     ]
 }
