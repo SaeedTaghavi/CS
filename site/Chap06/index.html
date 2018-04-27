@@ -680,7 +680,151 @@
 </ul>
 <h2 id="63-scheduling-algorithms">6.3 Scheduling Algorithms<a class="headerlink" href="#63-scheduling-algorithms" title="Permanent link">&para;</a></h2>
 <h3 id="63-1-first-come-first-served-scheduling">6.3-1 First-Come, First-Served Scheduling<a class="headerlink" href="#63-1-first-come-first-served-scheduling" title="Permanent link">&para;</a></h3>
+<p>Given processes:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Process</th>
+<th align="center">Busrt Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">$P_1$</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">$P_2$</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">$P_3$</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Consider order $P_1 \to P_2 \to P_3$:</p>
+<ul>
+<li>
+<p>Gantt chart:</p>
+<p><img alt="normal" src="../assets/images/FCFS.png" /></p>
+</li>
+<li>
+<p>Average waiting time = $(0 + 24 + 27) / 3 = 17$ ms.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider order: $P_2 \to P_3 \to P_1$:</p>
+<ul>
+<li>
+<p>Gantt chart:</p>
+<p><img alt="normal" src="../assets/images/FCFS-2.png" /></p>
+</li>
+<li>
+<p>Average waiting time = $(0 + 3 + 6) / 3 = 9$ ms.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Convoy effect</p>
+<p>All the other processes wait for the one big process to get off the CPU.</p>
+</div>
 <h3 id="632-shortest-job-first-scheduling">6.3.2 Shortest-Job-First Scheduling<a class="headerlink" href="#632-shortest-job-first-scheduling" title="Permanent link">&para;</a></h3>
+<p><strong><em>Shortest-next-CPU-burst</em></strong>.</p>
+<p>Given processes:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Process</th>
+<th align="center">Burst Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">$P_1$</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">$P_2$</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">$P_3$</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center">$P_4$</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<p>By SJF scheduling:</p>
+<ul>
+<li>
+<p>Gantt chart:</p>
+<p><img alt="normal" src="../assets/images/SJF.png" /></p>
+</li>
+<li>
+<p>Average waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.</p>
+</li>
+</ul>
+<div class="admonition info">
+<p>SJF is used frequently in long-term (job) scheduling, but it cannot be implemented at the level of short-term CPU scheduling.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exponential average</p>
+<p>Let $t_n$ be time of $n$th CPU burst, and $\tau_{n + 1}$ be the next CPU burst.</p>
+<p>\begin{align}
+\tau_{n + 1} &amp; = \alpha t_n + (1 - \alpha)\tau_n, \quad 0 \le \alpha \le 1. \\
+             &amp; = \alpha t_n + (1 - \alpha)\alpha t_{n - 1} + \cdots + (1 - \alpha)^j \alpha t_{n - j} + \cdots + (1 - \alpha)^{n + 1}\tau_0.
+\end{align}</p>
+</div>
+<p>Given processes:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Process</th>
+<th align="center">Arrival Time</th>
+<th align="center">Burst Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">$P_1$</td>
+<td align="center">0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">$P_2$</td>
+<td align="center">1</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">$P_3$</td>
+<td align="center">2</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td align="center">$P_4$</td>
+<td align="center">3</td>
+<td align="center">5</td>
+</tr>
+</tbody>
+</table>
+<p>By preemptive SJF scheduling:</p>
+<ul>
+<li>
+<p>Gantt chart:</p>
+<p><img alt="normal" src="../assets/images/SJF-2.png" /></p>
+</li>
+<li>
+<p>Average waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.</p>
+</li>
+</ul>
 <h3 id="633-priority-scheduling">6.3.3 Priority Scheduling<a class="headerlink" href="#633-priority-scheduling" title="Permanent link">&para;</a></h3>
 <h3 id="634-round-robin-scheduling">6.3.4 Round-Robin Scheduling<a class="headerlink" href="#634-round-robin-scheduling" title="Permanent link">&para;</a></h3>
 <h3 id="635-multilevel-queue-scheduling">6.3.5 Multilevel Queue Scheduling<a class="headerlink" href="#635-multilevel-queue-scheduling" title="Permanent link">&para;</a></h3>

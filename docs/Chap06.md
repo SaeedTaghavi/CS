@@ -49,7 +49,81 @@ CPU-scheduling decisions when a process:
 
 ### 6.3-1 First-Come, First-Served Scheduling
 
+Given processes:
+
+| Process | Busrt Time |
+| :--: | :--: |
+| $P_1$ | 24 |
+| $P_2$ | 3  |
+| $P_3$ | 3  |
+
+- Consider order $P_1 \to P_2 \to P_3$:
+
+    - Gantt chart:
+
+        ![normal](assets/images/FCFS.png)
+
+    - Average waiting time = $(0 + 24 + 27) / 3 = 17$ ms.
+
+- Consider order: $P_2 \to P_3 \to P_1$:
+
+    - Gantt chart:
+
+        ![normal](assets/images/FCFS-2.png)
+
+    - Average waiting time = $(0 + 3 + 6) / 3 = 9$ ms.
+
+!!! note "Convoy effect"
+    All the other processes wait for the one big process to get off the CPU.
+
 ### 6.3.2 Shortest-Job-First Scheduling
+
+***Shortest-next-CPU-burst***.
+
+Given processes:
+
+| Process | Burst Time |
+| :--: | :--: |
+| $P_1$ | 6 |
+| $P_2$ | 8 |
+| $P_3$ | 7 |
+| $P_4$ | 3 |
+
+By SJF scheduling:
+
+- Gantt chart:
+
+    ![normal](assets/images/SJF.png)
+
+- Average waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.
+
+!!! info ""
+    SJF is used frequently in long-term (job) scheduling, but it cannot be implemented at the level of short-term CPU scheduling.
+
+!!! note "Exponential average"
+    Let $t_n$ be time of $n$th CPU burst, and $\tau_{n + 1}$ be the next CPU burst.
+
+    \begin{align}
+    \tau_{n + 1} & = \alpha t_n + (1 - \alpha)\tau_n, \quad 0 \le \alpha \le 1. \\\\
+                 & = \alpha t_n + (1 - \alpha)\alpha t_{n - 1} + \cdots + (1 - \alpha)^j \alpha t_{n - j} + \cdots + (1 - \alpha)^{n + 1}\tau_0.
+    \end{align}
+
+Given processes:
+
+| Process | Arrival Time | Burst Time |
+| :--: | :--: | :--: |
+| $P_1$ | 0 | 8 |
+| $P_2$ | 1 | 4 |
+| $P_3$ | 2 | 9 |
+| $P_4$ | 3 | 5 |
+
+By preemptive SJF scheduling:
+
+- Gantt chart:
+
+    ![normal](assets/images/SJF-2.png)
+
+- Average waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.
 
 ### 6.3.3 Priority Scheduling
 
