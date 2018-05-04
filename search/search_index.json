@@ -467,7 +467,7 @@
         },
         {
             "location": "/Chap06/",
-            "text": "Chapter 6 CPU Scheduling\n\u00b6\n\n\n6.1 Basic Concepts\n\u00b6\n\n\nThe objective of multiprogramming is to have some process running at all times, to maximize CPU utilization.\n\n\nA process is executed until it must wait, typically for the completion of some I/O request.\n\n\n6.1.1 CPU\u2013I/O Burst Cycle\n\u00b6\n\n\nProcess execution = cycle of CPU + I/O wait.\n\n\n\n\n6.1.2 CPU Scheduler\n\u00b6\n\n\nShort-term scheduler\n (CPU scheduler): select process in the ready queue.\n\n\n6.1.3 Preemptive Scheduling\n\u00b6\n\n\nCPU-scheduling decisions when a process:\n\n\n\n\n(nonpreemptive) Switches from the running state $\\to$ the waiting state (e.g. I/O request, \nwait()\n for child)\n\n\n(preemptive) Switches from the running state $\\to$ the ready state (e.g. interrupt)\n\n\n(preemptive) Switches from the waiting state $\\to$ the ready state (e.g. completion of I/O)\n\n\n(nonpreemptive) Terminates\n\n\n\n\n6.1.4 Dispatcher\n\u00b6\n\n\n\n\nDispatcher\n\n\nThe module that gives control of the CPU to \nthe process selected by the short-term scheduler\n. It should be fast.\n\n\n\n\n\n\nSwitching context\n\n\nSwitching to user mode\n\n\nJumping to the proper location in the user program to restart that program\n\n\n\n\n\n\nDispatch latency\n\n\nThe time it takes for the dispatcher to stop one process and start another running.\n\n\n\n\n6.2 Scheduling Criteria\n\u00b6\n\n\n\n\nCPU utilization\n.\n\n\nThroughput\n.\n\n\nTurnaround time\n. Completion time - Start time.\n\n\nWaiting time\n. The sum of the periods spent waiting in the ready queue.\n\n\nResponse time\n.\n\n\n\n\n6.3 Scheduling Algorithms\n\u00b6\n\n\n6.3-1 First-Come, First-Served Scheduling\n\u00b6\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nBusrt Time\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n24\n\n\n\n\n\n\n$P_2$\n\n\n3\n\n\n\n\n\n\n$P_3$\n\n\n3\n\n\n\n\n\n\n\n\n\n\n\n\nConsider order $P_1 \\to P_2 \\to P_3$:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $(0 + 24 + 27) / 3 = 17$ ms.\n\n\n\n\n\n\n\n\n\n\nConsider order: $P_2 \\to P_3 \\to P_1$:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $(0 + 3 + 6) / 3 = 9$ ms.\n\n\n\n\n\n\n\n\n\n\n\n\nConvoy effect\n\n\nAll the other processes wait for the one big process to get off the CPU.\n\n\n\n\n6.3.2 Shortest-Job-First Scheduling\n\u00b6\n\n\nShortest-next-CPU-burst\n.\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nBurst Time\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n6\n\n\n\n\n\n\n$P_2$\n\n\n8\n\n\n\n\n\n\n$P_3$\n\n\n7\n\n\n\n\n\n\n$P_4$\n\n\n3\n\n\n\n\n\n\n\n\nBy SJF scheduling:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.\n\n\n\n\n\n\n\n\nSJF is used frequently in long-term (job) scheduling, but it cannot be implemented at the level of short-term CPU scheduling.\n\n\n\n\n\n\nExponential average\n\n\nLet $t_n$ be time of $n$th CPU burst, and $\\tau_{n + 1}$ be the next CPU burst.\n\n\n\\begin{align}\n\\tau_{n + 1} & = \\alpha t_n + (1 - \\alpha)\\tau_n, \\quad 0 \\le \\alpha \\le 1. \\\\\n             & = \\alpha t_n + (1 - \\alpha)\\alpha t_{n - 1} + \\cdots + (1 - \\alpha)^j \\alpha t_{n - j} + \\cdots + (1 - \\alpha)^{n + 1}\\tau_0.\n\\end{align}\n\n\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nArrival Time\n\n\nBurst Time\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n0\n\n\n8\n\n\n\n\n\n\n$P_2$\n\n\n1\n\n\n4\n\n\n\n\n\n\n$P_3$\n\n\n2\n\n\n9\n\n\n\n\n\n\n$P_4$\n\n\n3\n\n\n5\n\n\n\n\n\n\n\n\nBy preemptive SJF scheduling:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.\n\n\n\n\n\n\n6.3.3 Priority Scheduling\n\u00b6\n\n\n6.3.4 Round-Robin Scheduling\n\u00b6\n\n\n6.3.5 Multilevel Queue Scheduling\n\u00b6\n\n\n\u00b6\n\n\n\u00b6",
+            "text": "Chapter 6 CPU Scheduling\n\u00b6\n\n\n6.1 Basic Concepts\n\u00b6\n\n\nThe objective of multiprogramming is to have some process running at all times, to maximize CPU utilization.\n\n\nA process is executed until it must wait, typically for the completion of some I/O request.\n\n\n6.1.1 CPU\u2013I/O Burst Cycle\n\u00b6\n\n\nProcess execution = cycle of CPU + I/O wait.\n\n\n\n\n6.1.2 CPU Scheduler\n\u00b6\n\n\nShort-term scheduler\n (CPU scheduler): select process in the ready queue.\n\n\n6.1.3 Preemptive Scheduling\n\u00b6\n\n\nCPU-scheduling decisions when a process:\n\n\n\n\n(nonpreemptive) Switches from the running state $\\to$ the waiting state (e.g. I/O request, \nwait()\n for child)\n\n\n(preemptive) Switches from the running state $\\to$ the ready state (e.g. interrupt)\n\n\n(preemptive) Switches from the waiting state $\\to$ the ready state (e.g. completion of I/O)\n\n\n(nonpreemptive) Terminates\n\n\n\n\n6.1.4 Dispatcher\n\u00b6\n\n\n\n\nDispatcher\n\n\nThe module that gives control of the CPU to \nthe process selected by the short-term scheduler\n. It should be fast.\n\n\n\n\n\n\nSwitching context\n\n\nSwitching to user mode\n\n\nJumping to the proper location in the user program to restart that program\n\n\n\n\n\n\nDispatch latency\n\n\nThe time it takes for the dispatcher to stop one process and start another running.\n\n\n\n\n6.2 Scheduling Criteria\n\u00b6\n\n\n\n\nCPU utilization\n.\n\n\nThroughput\n.\n\n\nTurnaround time\n. Completion time - Start time.\n\n\nWaiting time\n. The sum of the periods spent waiting in the ready queue.\n\n\nResponse time\n.\n\n\n\n\n6.3 Scheduling Algorithms\n\u00b6\n\n\n6.3-1 First-Come, First-Served Scheduling\n\u00b6\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nBusrt Time\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n24\n\n\n\n\n\n\n$P_2$\n\n\n3\n\n\n\n\n\n\n$P_3$\n\n\n3\n\n\n\n\n\n\n\n\n\n\n\n\nConsider order $P_1 \\to P_2 \\to P_3$:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $(0 + 24 + 27) / 3 = 17$ ms.\n\n\n\n\n\n\n\n\n\n\nConsider order: $P_2 \\to P_3 \\to P_1$:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $(0 + 3 + 6) / 3 = 9$ ms.\n\n\n\n\n\n\n\n\n\n\n\n\nConvoy effect\n\n\nAll the other processes wait for the one big process to get off the CPU.\n\n\n\n\n6.3.2 Shortest-Job-First Scheduling\n\u00b6\n\n\nShortest-next-CPU-burst\n.\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nBurst Time\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n6\n\n\n\n\n\n\n$P_2$\n\n\n8\n\n\n\n\n\n\n$P_3$\n\n\n7\n\n\n\n\n\n\n$P_4$\n\n\n3\n\n\n\n\n\n\n\n\nBy SJF scheduling:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.\n\n\n\n\n\n\n\n\nSJF is used frequently in long-term (job) scheduling, but it cannot be implemented at the level of short-term CPU scheduling.\n\n\n\n\n\n\nExponential average\n\n\nLet $t_n$ be time of $n$th CPU burst, and $\\tau_{n + 1}$ be the next CPU burst.\n\n\n\\begin{align}\n\\tau_{n + 1} & = \\alpha t_n + (1 - \\alpha)\\tau_n, \\quad 0 \\le \\alpha \\le 1. \\\\\n             & = \\alpha t_n + (1 - \\alpha)\\alpha t_{n - 1} + \\cdots + (1 - \\alpha)^j \\alpha t_{n - j} + \\cdots + (1 - \\alpha)^{n + 1}\\tau_0.\n\\end{align}\n\n\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nArrival Time\n\n\nBurst Time\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n0\n\n\n8\n\n\n\n\n\n\n$P_2$\n\n\n1\n\n\n4\n\n\n\n\n\n\n$P_3$\n\n\n2\n\n\n9\n\n\n\n\n\n\n$P_4$\n\n\n3\n\n\n5\n\n\n\n\n\n\n\n\nBy preemptive SJF scheduling:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.\n\n\n\n\n\n\n6.3.3 Priority Scheduling\n\u00b6\n\n\nSJF is a spectial case of \npriority-scheduling\n.\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nBurst Time\n\n\nPriority\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n10\n\n\n3\n\n\n\n\n\n\n$P_2$\n\n\n1\n\n\n1\n\n\n\n\n\n\n$P_3$\n\n\n2\n\n\n4\n\n\n\n\n\n\n$P_4$\n\n\n1\n\n\n5\n\n\n\n\n\n\n$P_5$\n\n\n5\n\n\n2\n\n\n\n\n\n\n\n\nBy preemptive SJF scheduling:\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $8.2$ ms. (How?)\n\n\n\n\n\n\n\n\nProblem with priority scheduling\n\n\n\n\nindefinite blocking\n\n\nstarvation\n\n\n\n\n\n\n\n\nAging\n\n\nAging gradually increase the priority of processes that wait in the system for a long time.\n\n\n\n\n6.3.4 Round-Robin Scheduling\n\u00b6\n\n\nGiven processes with quantum = 4ms:\n\n\n\n\n\n\n\n\nProcess\n\n\nBurst Time\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n24\n\n\n\n\n\n\n$P_2$\n\n\n3\n\n\n\n\n\n\n$P_3$\n\n\n3\n\n\n\n\n\n\n\n\n\n\n\n\nGantt chart:\n\n\n\n\n\n\n\n\nAverage waiting time = $[(10 - 4) + 4 + 7] / 3 = 5.66$ ms.\n\n\n\n\n\n\n\n\nAlthough the time quantum should be large compared with the contextswitch time, it should not be too large.\n\n\n\n\n6.3.5 Multilevel Queue Scheduling\n\u00b6\n\n\nEach queue has absolute priority over lower-priority queues.\n\n\nIf an interactive editing process entered the ready queue while a batch process was running, the batch process would be preempted.\n\n\n\n\n6.3.6 Multilevel Feedback Queue Scheduling\n\u00b6\n\n\n\n\nMultilevel feedback queue allows a process to move between queues.\n\n\n\n\nA multilevel feedback queue is defined by:\n\n\n\n\n#queues\n\n\nThe scheduling algorithm for each queue\n\n\n\n\nThe method used to determine when to \n\n\n\n\nupgrade a process to a higher priority queue\n\n\ndemote a process to a lower priority queue\n\n\n\n\n\n\n\n\nThe method used to determine which queue a process will enter when that process needs service\n\n\n\n\n\n\n6.4 Thread Scheduling\n\u00b6\n\n\n6.4.1 Contention Scope\n\u00b6\n\n\n\n\nProcess Contention Scope (PCS)\n\n\nOn systems implementing the \nmany-to-one\n and \nmany-to-many\n models, the thread library schedules user-level threads to run on an available LWP, since competition for the CPU takes place among threads belonging to the same process.\n\n\nIt is important to note that PCS will typically preempt the thread currently running in favor of a higher-priority thread\n\n\n\n\n\n\nSystem Contention Scope (SCS)\n\n\nCompetition for the CPU with SCS scheduling takes place among all threads in the system. Systems using the \none-to-one\n model.\n\n\n\n\n6.4.2 Pthread Scheduling\n\u00b6\n\n\n\n\nPCS: \nPTHREAD_SCOPE_PROCESS\n\n\nSCS: \nPTHREAD_SCOPE_SYSTEM\n\n\n\n\n2 methods:\n\n\n\n\npthread_attr_setscope(pthread attr_t *attr, int scope)\n\n\npthread_attr_getscope(pthread attr_t *attr, int *scope)\n\n\n\n\n6.5 Multiple-Processor Scheduling\n\u00b6\n\n\n6.5.1 Approaches to Multiple-Processor Scheduling\n\u00b6\n\n\n\n\nAsymmetric multiprocessing\n: only \nthe master server\n process accesses the system data structures, reducing the need for data sharing.\n\n\nSymmetric multiprocessing (SMP)\n: each processor is self-scheduling.\n\n\n\n\n6.5.2 Processor Affinity\n\u00b6\n\n\n\n\nProcessor Affinity\n\n\nA process has an affinity for the processor on which it is currently running.\n\n\n\n\n\n\nSoft affinity\n\n\nHard affinity\n (e.g. Linux: \nsched_setaffinity()\n)\n\n\n\n\n\n\nNon-Uniform Memory Access (NUMA)\n\n\nA CPU has faster access to some parts of main memory than to other parts.\n\n\n\n\n\n\n6.5.3 Load Balancing\n\u00b6\n\n\nOn systems with a common run queue, load balancing is often unnecessary, because once a processor becomes idle, it immediately extracts a runnable process from the common run queue.\n\n\n\n\nPush migration\n: pushing processes from overloaded to less-busy processors.\n\n\nPull migration\n: pulling a waiting task from a busy processor.\n\n\n\n\n6.5.4 Multicore Processors\n\u00b6\n\n\nSMP systems that use multicore processors are faster and consume less power than systems in which each processor has its own physical chip.\n\n\nThere are two ways to multithread a processing core:\n\n\n\n\nCoarse-grained\n: a thread executes on a processor until a long-latency event such as a memory stall occurs.\n\n\nFind-grained (interleaved)\n: switches between threads at a much finer level of granularity\n\n\n\n\n6.6 Real-Time CPU Scheduling\n\u00b6\n\n\n\n\nSoft real-time systems\n\n\nHard real-time systems\n\n\n\n\n6.6.1 Minimizing Latency\n\u00b6\n\n\n\n\nEvent latency\n\n\nThe amount of time that elapses from when an event occurs to when it is serviced.\n\n\n\n\nThere are 2 types:\n\n\n\n\nInterrupt latency\n\n\nDispatch latency\n\n\n\n\n\n\nInterrupt latency\n\n\nThe period of time from the arrival of an interrupt at the CPU to the start of the interrupt service routine (ISR) that services the interrupt.\n\n\n\n\n\n\nDispatch latency\n\n\nThe amount of time required for the scheduling dispatcher to stop one process and start another.\n\n\n\n\n6.6.2 Priority-Based Scheduling\n\u00b6\n\n\nThe processes are considered \nperiodic\n. That is, they require the CPU at constant intervals (periods). ($t$: fixed processing time, $d$: deadline, and $p$: period.)\n\n\n$$0 \\le t \\le d \\le p.$$\n\n\n$$rate = 1 / p.$$\n\n\nAdmission-control\n:\n\n\n\n\nAdmits the process.\n\n\nRejects the request.\n\n\n\n\n6.6.3 Rate-Monotonic Scheduling\n\u00b6\n\n\nGiven processes: (the deadline for each process requires that it complete its CPU burst by the start of its next period.)\n\n\n\n\n\n\n\n\nProcess\n\n\nPeriod\n\n\nProcTime\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n$p_1 = 50$\n\n\n$t_1 = 20$\n\n\n\n\n\n\n$P_2$\n\n\n$p_2 = 100$\n\n\n$t_2 = 35$\n\n\n\n\n\n\n\n\n\n\nGiven processes:\n\n\n\n\n\n\n\n\nProcess\n\n\nPeriod\n\n\nProcTime\n\n\n\n\n\n\n\n\n\n\n$P_1$\n\n\n$p_1 = 50$\n\n\n$t_1 = 25$\n\n\n\n\n\n\n$P_2$\n\n\n$p_2 = 80$\n\n\n$t_2 = 35$\n\n\n\n\n\n\n\n\n\n\n6.6.4 Earliest-Deadline-First Scheduling\n\u00b6\n\n\n\n\n6.6.5 Proportional Share Scheduling\n\u00b6\n\n\nProportional share schedulers operate by allocating $T$ shares among all applications. An application can receive $N$ shares of time.\n\n\n6.6.6 POSIX Real-Time Scheduling\n\u00b6",
             "title": "Chapter 6 CPU Scheduling"
         },
         {
@@ -522,18 +522,98 @@
         },
         {
             "location": "/Chap06/#633-priority-scheduling",
-            "text": "",
+            "text": "SJF is a spectial case of  priority-scheduling .  Given processes:     Process  Burst Time  Priority      $P_1$  10  3    $P_2$  1  1    $P_3$  2  4    $P_4$  1  5    $P_5$  5  2     By preemptive SJF scheduling:    Gantt chart:     Average waiting time = $8.2$ ms. (How?)     Problem with priority scheduling   indefinite blocking  starvation     Aging  Aging gradually increase the priority of processes that wait in the system for a long time.",
             "title": "6.3.3 Priority Scheduling"
         },
         {
             "location": "/Chap06/#634-round-robin-scheduling",
-            "text": "",
+            "text": "Given processes with quantum = 4ms:     Process  Burst Time      $P_1$  24    $P_2$  3    $P_3$  3       Gantt chart:     Average waiting time = $[(10 - 4) + 4 + 7] / 3 = 5.66$ ms.     Although the time quantum should be large compared with the contextswitch time, it should not be too large.",
             "title": "6.3.4 Round-Robin Scheduling"
         },
         {
             "location": "/Chap06/#635-multilevel-queue-scheduling",
-            "text": "",
+            "text": "Each queue has absolute priority over lower-priority queues.  If an interactive editing process entered the ready queue while a batch process was running, the batch process would be preempted.",
             "title": "6.3.5 Multilevel Queue Scheduling"
+        },
+        {
+            "location": "/Chap06/#636-multilevel-feedback-queue-scheduling",
+            "text": "Multilevel feedback queue allows a process to move between queues.   A multilevel feedback queue is defined by:   #queues  The scheduling algorithm for each queue   The method used to determine when to    upgrade a process to a higher priority queue  demote a process to a lower priority queue     The method used to determine which queue a process will enter when that process needs service",
+            "title": "6.3.6 Multilevel Feedback Queue Scheduling"
+        },
+        {
+            "location": "/Chap06/#64-thread-scheduling",
+            "text": "",
+            "title": "6.4 Thread Scheduling"
+        },
+        {
+            "location": "/Chap06/#641-contention-scope",
+            "text": "Process Contention Scope (PCS)  On systems implementing the  many-to-one  and  many-to-many  models, the thread library schedules user-level threads to run on an available LWP, since competition for the CPU takes place among threads belonging to the same process.  It is important to note that PCS will typically preempt the thread currently running in favor of a higher-priority thread    System Contention Scope (SCS)  Competition for the CPU with SCS scheduling takes place among all threads in the system. Systems using the  one-to-one  model.",
+            "title": "6.4.1 Contention Scope"
+        },
+        {
+            "location": "/Chap06/#642-pthread-scheduling",
+            "text": "PCS:  PTHREAD_SCOPE_PROCESS  SCS:  PTHREAD_SCOPE_SYSTEM   2 methods:   pthread_attr_setscope(pthread attr_t *attr, int scope)  pthread_attr_getscope(pthread attr_t *attr, int *scope)",
+            "title": "6.4.2 Pthread Scheduling"
+        },
+        {
+            "location": "/Chap06/#65-multiple-processor-scheduling",
+            "text": "",
+            "title": "6.5 Multiple-Processor Scheduling"
+        },
+        {
+            "location": "/Chap06/#651-approaches-to-multiple-processor-scheduling",
+            "text": "Asymmetric multiprocessing : only  the master server  process accesses the system data structures, reducing the need for data sharing.  Symmetric multiprocessing (SMP) : each processor is self-scheduling.",
+            "title": "6.5.1 Approaches to Multiple-Processor Scheduling"
+        },
+        {
+            "location": "/Chap06/#652-processor-affinity",
+            "text": "Processor Affinity  A process has an affinity for the processor on which it is currently running.    Soft affinity  Hard affinity  (e.g. Linux:  sched_setaffinity() )    Non-Uniform Memory Access (NUMA)  A CPU has faster access to some parts of main memory than to other parts.",
+            "title": "6.5.2 Processor Affinity"
+        },
+        {
+            "location": "/Chap06/#653-load-balancing",
+            "text": "On systems with a common run queue, load balancing is often unnecessary, because once a processor becomes idle, it immediately extracts a runnable process from the common run queue.   Push migration : pushing processes from overloaded to less-busy processors.  Pull migration : pulling a waiting task from a busy processor.",
+            "title": "6.5.3 Load Balancing"
+        },
+        {
+            "location": "/Chap06/#654-multicore-processors",
+            "text": "SMP systems that use multicore processors are faster and consume less power than systems in which each processor has its own physical chip.  There are two ways to multithread a processing core:   Coarse-grained : a thread executes on a processor until a long-latency event such as a memory stall occurs.  Find-grained (interleaved) : switches between threads at a much finer level of granularity",
+            "title": "6.5.4 Multicore Processors"
+        },
+        {
+            "location": "/Chap06/#66-real-time-cpu-scheduling",
+            "text": "Soft real-time systems  Hard real-time systems",
+            "title": "6.6 Real-Time CPU Scheduling"
+        },
+        {
+            "location": "/Chap06/#661-minimizing-latency",
+            "text": "Event latency  The amount of time that elapses from when an event occurs to when it is serviced.   There are 2 types:   Interrupt latency  Dispatch latency    Interrupt latency  The period of time from the arrival of an interrupt at the CPU to the start of the interrupt service routine (ISR) that services the interrupt.    Dispatch latency  The amount of time required for the scheduling dispatcher to stop one process and start another.",
+            "title": "6.6.1 Minimizing Latency"
+        },
+        {
+            "location": "/Chap06/#662-priority-based-scheduling",
+            "text": "The processes are considered  periodic . That is, they require the CPU at constant intervals (periods). ($t$: fixed processing time, $d$: deadline, and $p$: period.)  $$0 \\le t \\le d \\le p.$$  $$rate = 1 / p.$$  Admission-control :   Admits the process.  Rejects the request.",
+            "title": "6.6.2 Priority-Based Scheduling"
+        },
+        {
+            "location": "/Chap06/#663-rate-monotonic-scheduling",
+            "text": "Given processes: (the deadline for each process requires that it complete its CPU burst by the start of its next period.)     Process  Period  ProcTime      $P_1$  $p_1 = 50$  $t_1 = 20$    $P_2$  $p_2 = 100$  $t_2 = 35$      Given processes:     Process  Period  ProcTime      $P_1$  $p_1 = 50$  $t_1 = 25$    $P_2$  $p_2 = 80$  $t_2 = 35$",
+            "title": "6.6.3 Rate-Monotonic Scheduling"
+        },
+        {
+            "location": "/Chap06/#664-earliest-deadline-first-scheduling",
+            "text": "",
+            "title": "6.6.4 Earliest-Deadline-First Scheduling"
+        },
+        {
+            "location": "/Chap06/#665-proportional-share-scheduling",
+            "text": "Proportional share schedulers operate by allocating $T$ shares among all applications. An application can receive $N$ shares of time.",
+            "title": "6.6.5 Proportional Share Scheduling"
+        },
+        {
+            "location": "/Chap06/#666-posix-real-time-scheduling",
+            "text": "",
+            "title": "6.6.6 POSIX Real-Time Scheduling"
         }
     ]
 }
