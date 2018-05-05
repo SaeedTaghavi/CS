@@ -929,17 +929,34 @@
 <div class="admonition note">
 <p class="admonition-title">Dispatch latency</p>
 <p>The time it takes for the dispatcher to stop one process and start another running.</p>
+<p>Stop a process $\leftrightarrow$ Start a process</p>
 </div>
 <h2 id="62-scheduling-criteria">6.2 Scheduling Criteria<a class="headerlink" href="#62-scheduling-criteria" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>CPU utilization</strong>.</li>
-<li><strong>Throughput</strong>.</li>
-<li><strong>Turnaround time</strong>. Completion time - Start time.</li>
-<li><strong>Waiting time</strong>. The sum of the periods spent waiting in the ready queue.</li>
-<li><strong>Response time</strong>.</li>
+<li><strong>CPU utilization</strong></li>
+<li><strong>Throughput</strong></li>
+<li><strong>Turnaround time</strong>: $\text{Completion Time} - \text{Start Time}$.</li>
+<li><strong>Waiting time</strong>: The sum of the periods spent waiting in the ready queue.</li>
+<li><strong>Response time</strong></li>
 </ul>
 <h2 id="63-scheduling-algorithms">6.3 Scheduling Algorithms<a class="headerlink" href="#63-scheduling-algorithms" title="Permanent link">&para;</a></h2>
 <h3 id="63-1-first-come-first-served-scheduling">6.3-1 First-Come, First-Served Scheduling<a class="headerlink" href="#63-1-first-come-first-served-scheduling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The process which requests the CPU first is allocated the CPU.</li>
+<li>
+<p>Properties:</p>
+<ul>
+<li>Nonpreemptive FCFS.</li>
+<li>CPU might be hold for an extended period.</li>
+</ul>
+</li>
+<li>
+<p>Critical problem: Convoy effect!</p>
+</li>
+<li>
+<p>Example:</p>
+<ul>
+<li>
 <p>Given processes:</p>
 <table>
 <thead>
@@ -963,9 +980,9 @@
 </tr>
 </tbody>
 </table>
-<ul>
+</li>
 <li>
-<p>Consider order $P_1 \to P_2 \to P_3$:</p>
+<p>Consider order: $P_1 \to P_2 \to P_3$:</p>
 <ul>
 <li>
 <p>Gantt chart:</p>
@@ -989,12 +1006,28 @@
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <div class="admonition note">
-<p class="admonition-title">Convoy effect</p>
-<p>All the other processes wait for the one big process to get off the CPU.</p>
+<p class="admonition-title">Convoy effect<p>All the other processes wait for the one big process to get off the CPU.</p>
+</p>
 </div>
 <h3 id="632-shortest-job-first-scheduling">6.3.2 Shortest-Job-First Scheduling<a class="headerlink" href="#632-shortest-job-first-scheduling" title="Permanent link">&para;</a></h3>
-<p><strong><em>Shortest-next-CPU-burst</em></strong>.</p>
+<ul>
+<li>
+<p>Properties:</p>
+<ul>
+<li>Nonpreemptive SJF</li>
+<li><strong><em>Shortest-next-CPU-burst first</em></strong></li>
+</ul>
+</li>
+<li>
+<p>Problem: Measure the future!</p>
+</li>
+<li>
+<p>Example 1:</p>
+<ul>
+<li>
 <p>Given processes:</p>
 <table>
 <thead>
@@ -1022,6 +1055,8 @@
 </tr>
 </tbody>
 </table>
+</li>
+<li>
 <p>By SJF scheduling:</p>
 <ul>
 <li>
@@ -1030,6 +1065,10 @@
 </li>
 <li>
 <p>Average waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.</p>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <div class="admonition info">
@@ -1043,6 +1082,11 @@
              &amp; = \alpha t_n + (1 - \alpha)\alpha t_{n - 1} + \cdots + (1 - \alpha)^j \alpha t_{n - j} + \cdots + (1 - \alpha)^{n + 1}\tau_0.
 \end{align}</p>
 </div>
+<ul>
+<li>
+<p>Example 2:</p>
+<ul>
+<li>
 <p>Given processes:</p>
 <table>
 <thead>
@@ -1075,6 +1119,8 @@
 </tr>
 </tbody>
 </table>
+</li>
+</ul>
 <p>By preemptive SJF scheduling:</p>
 <ul>
 <li>
@@ -1085,8 +1131,24 @@
 <p>Average waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.</p>
 </li>
 </ul>
+</li>
+</ul>
 <h3 id="633-priority-scheduling">6.3.3 Priority Scheduling<a class="headerlink" href="#633-priority-scheduling" title="Permanent link">&para;</a></h3>
-<p>SJF is a spectial case of <strong>priority-scheduling</strong>.</p>
+<ul>
+<li>
+<p>Properties: </p>
+<ul>
+<li>CPU is assigned to the process with the highest priority — A framework for various scheduling algorithms:<ul>
+<li>FCFS: Equal-priority with tie-breaking</li>
+<li>SJF: Priority = 1 / next CPU burst length</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Example:</p>
+<ul>
+<li>
 <p>Given processes:</p>
 <table>
 <thead>
@@ -1124,6 +1186,8 @@
 </tr>
 </tbody>
 </table>
+</li>
+<li>
 <p>By preemptive SJF scheduling:</p>
 <ul>
 <li>
@@ -1134,10 +1198,14 @@
 <p>Average waiting time = $8.2$ ms. (How?)</p>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
 <div class="admonition info">
 <p class="admonition-title">Problem with priority scheduling</p>
 <ul>
-<li>indefinite blocking</li>
+<li>indefinite blocking: low-priority processes could starve to death!</li>
 <li>starvation</li>
 </ul>
 </div>
@@ -1146,6 +1214,15 @@
 <p>Aging gradually increase the priority of processes that wait in the system for a long time.</p>
 </div>
 <h3 id="634-round-robin-scheduling">6.3.4 Round-Robin Scheduling<a class="headerlink" href="#634-round-robin-scheduling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>RR is similar to FCFS except that preemption is added to switch between processes.</li>
+<li>
+<p>Goal: fairness, time sharing.</p>
+</li>
+<li>
+<p>Example:</p>
+<ul>
+<li>
 <p>Given processes with quantum = 4ms:</p>
 <table>
 <thead>
@@ -1169,7 +1246,7 @@
 </tr>
 </tbody>
 </table>
-<ul>
+</li>
 <li>
 <p>Gantt chart:</p>
 <p><img alt="normal" src="../assets/images/RR.png" /></p>
@@ -1178,10 +1255,33 @@
 <p>Average waiting time = $[(10 - 4) + 4 + 7] / 3 = 5.66$ ms.</p>
 </li>
 </ul>
+</li>
+</ul>
 <div class="admonition info">
-<p>Although the time quantum should be large compared with the contextswitch time, it should not be too large.</p>
+<p>Although the time quantum should be large compared with the context switch time, it should not be too large.</p>
 </div>
 <h3 id="635-multilevel-queue-scheduling">6.3.5 Multilevel Queue Scheduling<a class="headerlink" href="#635-multilevel-queue-scheduling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Intra-queue scheduling</p>
+<ul>
+<li>Independent choice of scheduling algorithms</li>
+</ul>
+</li>
+<li>
+<p>Inter-queue scheduling</p>
+<ul>
+<li>Fixed-priority preemptive scheduling<ul>
+<li>e.g., foreground queues always have absolute priority over the background queues.</li>
+</ul>
+</li>
+<li>Time slice between queues<ul>
+<li>e.g., 80% CPU is given to goreground processes, and 20% CPU is given to background processes.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>Each queue has absolute priority over lower-priority queues.</p>
 <p>If an interactive editing process entered the ready queue while a batch process was running, the batch process would be preempted.</p>
 <p><img alt="normal" src="../assets/images/6.6.png" /></p>
@@ -1291,6 +1391,11 @@
 <li>Rejects the request.</li>
 </ol>
 <h3 id="663-rate-monotonic-scheduling">6.6.3 Rate-Monotonic Scheduling<a class="headerlink" href="#663-rate-monotonic-scheduling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Example 1:</p>
+<ul>
+<li>
 <p>Given processes: (the deadline for each process requires that it complete its CPU burst by the start of its next period.)</p>
 <table>
 <thead>
@@ -1314,6 +1419,13 @@
 </tbody>
 </table>
 <p><img alt="normal" src="../assets/images/6.17.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Example 2:</p>
+<ul>
+<li>
 <p>Given processes:</p>
 <table>
 <thead>
@@ -1337,6 +1449,10 @@
 </tbody>
 </table>
 <p><img alt="normal" src="../assets/images/6.18.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="664-earliest-deadline-first-scheduling">6.6.4 Earliest-Deadline-First Scheduling<a class="headerlink" href="#664-earliest-deadline-first-scheduling" title="Permanent link">&para;</a></h3>
 <p><img alt="normal" src="../assets/images/6.19.png" /></p>
 <h3 id="665-proportional-share-scheduling">6.6.5 Proportional Share Scheduling<a class="headerlink" href="#665-proportional-share-scheduling" title="Permanent link">&para;</a></h3>

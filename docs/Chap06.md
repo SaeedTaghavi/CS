@@ -37,65 +37,82 @@ CPU-scheduling decisions when a process:
 !!! note "Dispatch latency"
     The time it takes for the dispatcher to stop one process and start another running.
 
+    Stop a process $\leftrightarrow$ Start a process
+
 ## 6.2 Scheduling Criteria
 
-- **CPU utilization**.
-- **Throughput**.
-- **Turnaround time**. Completion time - Start time.
-- **Waiting time**. The sum of the periods spent waiting in the ready queue.
-- **Response time**.
+- **CPU utilization**
+- **Throughput**
+- **Turnaround time**: $\text{Completion Time} - \text{Start Time}$.
+- **Waiting time**: The sum of the periods spent waiting in the ready queue.
+- **Response time**
 
 ## 6.3 Scheduling Algorithms
 
 ### 6.3-1 First-Come, First-Served Scheduling
 
-Given processes:
+- The process which requests the CPU first is allocated the CPU.
+- Properties:
+    - Nonpreemptive FCFS.
+    - CPU might be hold for an extended period.
 
-| Process | Busrt Time |
-| :--: | :--: |
-| $P_1$ | 24 |
-| $P_2$ | 3  |
-| $P_3$ | 3  |
+- Critical problem: Convoy effect!
 
-- Consider order $P_1 \to P_2 \to P_3$:
+- Example:
 
-    - Gantt chart:
+    - Given processes:
 
-        ![normal](assets/images/FCFS.png)
+        | Process | Busrt Time |
+        | :--: | :--: |
+        | $P_1$ | 24 |
+        | $P_2$ | 3  |
+        | $P_3$ | 3  |
 
-    - Average waiting time = $(0 + 24 + 27) / 3 = 17$ ms.
+    - Consider order: $P_1 \to P_2 \to P_3$:
 
-- Consider order: $P_2 \to P_3 \to P_1$:
+        - Gantt chart:
 
-    - Gantt chart:
+            ![normal](assets/images/FCFS.png)
 
-        ![normal](assets/images/FCFS-2.png)
+        - Average waiting time = $(0 + 24 + 27) / 3 = 17$ ms.
 
-    - Average waiting time = $(0 + 3 + 6) / 3 = 9$ ms.
+    - Consider order: $P_2 \to P_3 \to P_1$:
+
+        - Gantt chart:
+
+            ![normal](assets/images/FCFS-2.png)
+
+        - Average waiting time = $(0 + 3 + 6) / 3 = 9$ ms.
 
 !!! note "Convoy effect"
-    All the other processes wait for the one big process to get off the CPU.
+        All the other processes wait for the one big process to get off the CPU.
 
 ### 6.3.2 Shortest-Job-First Scheduling
 
-***Shortest-next-CPU-burst***.
+- Properties:
+    -  Nonpreemptive SJF
+    -  ***Shortest-next-CPU-burst first***
 
-Given processes:
+- Problem: Measure the future!
 
-| Process | Burst Time |
-| :--: | :--: |
-| $P_1$ | 6 |
-| $P_2$ | 8 |
-| $P_3$ | 7 |
-| $P_4$ | 3 |
+- Example 1:
 
-By SJF scheduling:
+    - Given processes:
 
-- Gantt chart:
+        | Process | Burst Time |
+        | :--: | :--: |
+        | $P_1$ | 6 |
+        | $P_2$ | 8 |
+        | $P_3$ | 7 |
+        | $P_4$ | 3 |
 
-    ![normal](assets/images/SJF.png)
+    - By SJF scheduling:
 
-- Average waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.
+        - Gantt chart:
+
+            ![normal](assets/images/SJF.png)
+
+        - Average waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.
 
 !!! info ""
     SJF is used frequently in long-term (job) scheduling, but it cannot be implemented at the level of short-term CPU scheduling.
@@ -108,47 +125,54 @@ By SJF scheduling:
                  & = \alpha t_n + (1 - \alpha)\alpha t_{n - 1} + \cdots + (1 - \alpha)^j \alpha t_{n - j} + \cdots + (1 - \alpha)^{n + 1}\tau_0.
     \end{align}
 
-Given processes:
+- Example 2:
 
-| Process | Arrival Time | Burst Time |
-| :--: | :--: | :--: |
-| $P_1$ | 0 | 8 |
-| $P_2$ | 1 | 4 |
-| $P_3$ | 2 | 9 |
-| $P_4$ | 3 | 5 |
+    - Given processes:
 
-By preemptive SJF scheduling:
+        | Process | Arrival Time | Burst Time |
+        | :--: | :--: | :--: |
+        | $P_1$ | 0 | 8 |
+        | $P_2$ | 1 | 4 |
+        | $P_3$ | 2 | 9 |
+        | $P_4$ | 3 | 5 |
 
-- Gantt chart:
+    By preemptive SJF scheduling:
 
-    ![normal](assets/images/SJF-2.png)
+    - Gantt chart:
 
-- Average waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.
+        ![normal](assets/images/SJF-2.png)
+
+    - Average waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.
 
 ### 6.3.3 Priority Scheduling
 
-SJF is a spectial case of **priority-scheduling**.
+- Properties: 
+    - CPU is assigned to the process with the highest priority — A framework for various scheduling algorithms:
+        - FCFS: Equal-priority with tie-breaking
+        - SJF: Priority = 1 / next CPU burst length
 
-Given processes:
+- Example:
 
-| Process | Burst Time | Priority |
-| :--: | :--: | :--: |
-| $P_1$ | 10 | 3 |
-| $P_2$ |  1 | 1 |
-| $P_3$ |  2 | 4 |
-| $P_4$ |  1 | 5 |
-| $P_5$ |  5 | 2 |
+    - Given processes:
 
-By preemptive SJF scheduling:
+        | Process | Burst Time | Priority |
+        | :--: | :--: | :--: |
+        | $P_1$ | 10 | 3 |
+        | $P_2$ |  1 | 1 |
+        | $P_3$ |  2 | 4 |
+        | $P_4$ |  1 | 5 |
+        | $P_5$ |  5 | 2 |
 
-- Gantt chart:
+    - By preemptive SJF scheduling:
 
-    ![normal](assets/images/priority.png)
+        - Gantt chart:
 
-- Average waiting time = $8.2$ ms. (How?)
+            ![normal](assets/images/priority.png)
+
+        - Average waiting time = $8.2$ ms. (How?)
 
 !!! info "Problem with priority scheduling"
-    - indefinite blocking
+    - indefinite blocking: low-priority processes could starve to death!
     - starvation
 
 !!! note "Aging"
@@ -156,24 +180,38 @@ By preemptive SJF scheduling:
 
 ### 6.3.4 Round-Robin Scheduling
 
-Given processes with quantum = 4ms:
+- RR is similar to FCFS except that preemption is added to switch between processes.
+- Goal: fairness, time sharing.
 
-| Process | Burst Time |
-| :--: | :--: |
-| $P_1$ | 24 |
-| $P_2$ |  3 |
-| $P_3$ |  3 |
+- Example:
 
-- Gantt chart:
+    - Given processes with quantum = 4ms:
 
-    ![normal](assets/images/RR.png)
+        | Process | Burst Time |
+        | :--: | :--: |
+        | $P_1$ | 24 |
+        | $P_2$ |  3 |
+        | $P_3$ |  3 |
 
-- Average waiting time = $[(10 - 4) + 4 + 7] / 3 = 5.66$ ms.
+    - Gantt chart:
+
+        ![normal](assets/images/RR.png)
+
+    - Average waiting time = $[(10 - 4) + 4 + 7] / 3 = 5.66$ ms.
 
 !!! info ""
-    Although the time quantum should be large compared with the contextswitch time, it should not be too large.
+    Although the time quantum should be large compared with the context switch time, it should not be too large.
 
 ### 6.3.5 Multilevel Queue Scheduling
+
+- Intra-queue scheduling
+    - Independent choice of scheduling algorithms
+
+- Inter-queue scheduling
+    - Fixed-priority preemptive scheduling
+        - e.g., foreground queues always have absolute priority over the background queues.
+    - Time slice between queues
+        - e.g., 80% CPU is given to goreground processes, and 20% CPU is given to background processes.
 
 Each queue has absolute priority over lower-priority queues.
 
@@ -290,23 +328,27 @@ $$rate = 1 / p.$$
 
 ### 6.6.3 Rate-Monotonic Scheduling
 
-Given processes: (the deadline for each process requires that it complete its CPU burst by the start of its next period.)
+- Example 1:
 
-| Process | Period | ProcTime |
-| :--: | :--: | :--: |
-| $P_1$ | $p_1 = 50$ | $t_1 = 20$ |
-| $P_2$ | $p_2 = 100$ | $t_2 = 35$ |
+    - Given processes: (the deadline for each process requires that it complete its CPU burst by the start of its next period.)
 
-![normal](assets/images/6.17.png)
+        | Process | Period | ProcTime |
+        | :--: | :--: | :--: |
+        | $P_1$ | $p_1 = 50$ | $t_1 = 20$ |
+        | $P_2$ | $p_2 = 100$ | $t_2 = 35$ |
 
-Given processes:
+        ![normal](assets/images/6.17.png)
 
-| Process | Period | ProcTime |
-| :--: | :--: | :--: |
-| $P_1$ | $p_1 = 50$ | $t_1 = 25$ |
-| $P_2$ | $p_2 = 80$ | $t_2 = 35$ |
+- Example 2:
 
-![normal](assets/images/6.18.png)
+    - Given processes:
+
+        | Process | Period | ProcTime |
+        | :--: | :--: | :--: |
+        | $P_1$ | $p_1 = 50$ | $t_1 = 25$ |
+        | $P_2$ | $p_2 = 80$ | $t_2 = 35$ |
+
+        ![normal](assets/images/6.18.png)
 
 ### 6.6.4 Earliest-Deadline-First Scheduling
 
