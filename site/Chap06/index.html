@@ -618,6 +618,81 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#67-operating-system-examples" title="6.7 Operating-System Examples" class="md-nav__link">
+    6.7 Operating-System Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#671-example-linux-scheduling" title="6.7.1 Example: Linux Scheduling" class="md-nav__link">
+    6.7.1 Example: Linux Scheduling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#672-example-windows-scheduling" title="6.7.2 Example: Windows Scheduling" class="md-nav__link">
+    6.7.2 Example: Windows Scheduling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#673-example-solaris-scheduling" title="6.7.3 Example: Solaris Scheduling" class="md-nav__link">
+    6.7.3 Example: Solaris Scheduling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-algorithm-evaluation" title="6.8 Algorithm Evaluation" class="md-nav__link">
+    6.8 Algorithm Evaluation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#681-deterministic-modeling" title="6.8.1 Deterministic Modeling" class="md-nav__link">
+    6.8.1 Deterministic Modeling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#682-queueing-models" title="6.8.2 Queueing Models" class="md-nav__link">
+    6.8.2 Queueing Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#683-simulations" title="6.8.3 Simulations" class="md-nav__link">
+    6.8.3 Simulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#684-implementation" title="6.8.4 Implementation" class="md-nav__link">
+    6.8.4 Implementation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -871,6 +946,81 @@
           <li class="md-nav__item">
   <a href="#666-posix-real-time-scheduling" title="6.6.6 POSIX Real-Time Scheduling" class="md-nav__link">
     6.6.6 POSIX Real-Time Scheduling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-operating-system-examples" title="6.7 Operating-System Examples" class="md-nav__link">
+    6.7 Operating-System Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#671-example-linux-scheduling" title="6.7.1 Example: Linux Scheduling" class="md-nav__link">
+    6.7.1 Example: Linux Scheduling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#672-example-windows-scheduling" title="6.7.2 Example: Windows Scheduling" class="md-nav__link">
+    6.7.2 Example: Windows Scheduling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#673-example-solaris-scheduling" title="6.7.3 Example: Solaris Scheduling" class="md-nav__link">
+    6.7.3 Example: Solaris Scheduling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-algorithm-evaluation" title="6.8 Algorithm Evaluation" class="md-nav__link">
+    6.8 Algorithm Evaluation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#681-deterministic-modeling" title="6.8.1 Deterministic Modeling" class="md-nav__link">
+    6.8.1 Deterministic Modeling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#682-queueing-models" title="6.8.2 Queueing Models" class="md-nav__link">
+    6.8.2 Queueing Models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#683-simulations" title="6.8.3 Simulations" class="md-nav__link">
+    6.8.3 Simulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#684-implementation" title="6.8.4 Implementation" class="md-nav__link">
+    6.8.4 Implementation
   </a>
   
 </li>
@@ -1458,6 +1608,51 @@
 <h3 id="665-proportional-share-scheduling">6.6.5 Proportional Share Scheduling<a class="headerlink" href="#665-proportional-share-scheduling" title="Permanent link">&para;</a></h3>
 <p>Proportional share schedulers operate by allocating $T$ shares among all applications. An application can receive $N$ shares of time.</p>
 <h3 id="666-posix-real-time-scheduling">6.6.6 POSIX Real-Time Scheduling<a class="headerlink" href="#666-posix-real-time-scheduling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>POSIX.1b — Extensions for real-time computing</p>
+<ul>
+<li><code>SCHED_FIFO</code></li>
+<li><code>SCHED_RR</code></li>
+<li><code>SCHED_OTHER</code></li>
+</ul>
+</li>
+<li>
+<p>API</p>
+<ul>
+<li><code>pthread_attr_getsched_policy(pthread_attr_t *attr, int *policy)</code></li>
+<li><code>pthread_attr_setsched_policy(pthread_attr_t *attr, int *policy)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="67-operating-system-examples">6.7 Operating-System Examples<a class="headerlink" href="#67-operating-system-examples" title="Permanent link">&para;</a></h2>
+<h3 id="671-example-linux-scheduling">6.7.1 Example: Linux Scheduling<a class="headerlink" href="#671-example-linux-scheduling" title="Permanent link">&para;</a></h3>
+<h3 id="672-example-windows-scheduling">6.7.2 Example: Windows Scheduling<a class="headerlink" href="#672-example-windows-scheduling" title="Permanent link">&para;</a></h3>
+<h3 id="673-example-solaris-scheduling">6.7.3 Example: Solaris Scheduling<a class="headerlink" href="#673-example-solaris-scheduling" title="Permanent link">&para;</a></h3>
+<h2 id="68-algorithm-evaluation">6.8 Algorithm Evaluation<a class="headerlink" href="#68-algorithm-evaluation" title="Permanent link">&para;</a></h2>
+<h3 id="681-deterministic-modeling">6.8.1 Deterministic Modeling<a class="headerlink" href="#681-deterministic-modeling" title="Permanent link">&para;</a></h3>
+<h3 id="682-queueing-models">6.8.2 Queueing Models<a class="headerlink" href="#682-queueing-models" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Little's formula ($n$: # of processes in the queue, $\lambda$: arrival rate, $W$: average waiting time in the queue.)</li>
+</ul>
+<p>$$n = \lambda \times W.$$</p>
+<h3 id="683-simulations">6.8.3 Simulations<a class="headerlink" href="#683-simulations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Properties:</p>
+<ul>
+<li>Accurate but expensive</li>
+</ul>
+</li>
+<li>
+<p>Procedures:</p>
+<ul>
+<li>Program a model of the computer system</li>
+<li>Drive the simulation with various data sets</li>
+</ul>
+</li>
+</ul>
+<h3 id="684-implementation">6.8.4 Implementation<a class="headerlink" href="#684-implementation" title="Permanent link">&para;</a></h3>
                 
                   
                 

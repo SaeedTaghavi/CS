@@ -359,3 +359,41 @@ $$rate = 1 / p.$$
 Proportional share schedulers operate by allocating $T$ shares among all applications. An application can receive $N$ shares of time.
 
 ### 6.6.6 POSIX Real-Time Scheduling
+
+- POSIX.1b — Extensions for real-time computing
+    - `SCHED_FIFO`
+    - `SCHED_RR`
+    - `SCHED_OTHER`
+
+- API
+    - `pthread_attr_getsched_policy(pthread_attr_t *attr, int *policy)`
+    - `pthread_attr_setsched_policy(pthread_attr_t *attr, int *policy)`
+
+## 6.7 Operating-System Examples
+
+### 6.7.1 Example: Linux Scheduling
+
+### 6.7.2 Example: Windows Scheduling
+
+### 6.7.3 Example: Solaris Scheduling
+
+## 6.8 Algorithm Evaluation
+
+### 6.8.1 Deterministic Modeling
+
+### 6.8.2 Queueing Models
+
+- Little's formula ($n$: # of processes in the queue, $\lambda$: arrival rate, $W$: average waiting time in the queue.)
+ 
+$$n = \lambda \times W.$$
+
+### 6.8.3 Simulations
+
+- Properties:
+    - Accurate but expensive
+
+- Procedures:
+    - Program a model of the computer system
+    - Drive the simulation with various data sets
+
+### 6.8.4 Implementation
