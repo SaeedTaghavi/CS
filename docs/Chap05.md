@@ -126,7 +126,7 @@ do {
     choosing[i] = true;         // A process want to enter its critical section
     number[i] = max(number[0], ..., number[n - 1]) + 1;
     choosing[j] = false;        // A process has got its number
-    for (j = 0; j < n; j++) {
+    for (int j = 0; j < n; j++) {
         while (choosing[j]) ;
         while (number[j] != 0 && (number[j], j) < (number[i], i)) ;     // If two processes got the same number, then we should compare their indices
     }
@@ -583,3 +583,153 @@ struct buffer {
 ## 5.8 Monitors
 
 ### 5.8.1 Monitor Usage
+
+An abstract data type—or ADT—encapsulates data with a set of functions to operate on that data that are independent of any specific implementation of the ADT.
+
+### 5.8.2 Dining-Philosophers Solution Using Monitors
+
+```c
+enum {THINKING, HUNGRY, EATING} state[5];
+condition self[5];
+```
+
+```c
+monitor DiningPhilosophers {
+    enum {THINKING, HUNGRY, EATING} state[5];
+    condition self[5];
+
+    void pickup(int i) {
+        state[i] = HUNGRY;
+        test(i);
+        if (state[i] != EATING)
+            self[i].wait();
+    }
+
+    void putdown(int i) {
+        state[i] = THINKING;
+        test((i + 4) % 5);      // help your right-hand side to run test
+        test((i + 1) % 5);      // help your left-hand side to run test
+    }
+
+    void test(int i ) {
+        if ((state[(i + 4) % 5] != EATING) &&       // right-hand side
+            (state[i] == HUNGRY) &&
+            (state[(i + 1) % 5] != EATING)) {       // left-hand side
+            state[i] = EATING;
+            self[i].signal();
+        }
+    }
+
+    initialization_code() {
+        for (int i = 0; i < 5; i++)
+            state[i] = THINKING;
+    }
+}
+```
+
+```c
+DiningPhilosophers.pickup(i);
+
+/* eat */
+
+DiningPhilosophers.putdown(i);
+```
+
+### 5.8.3 Implementing a Monitor Using Semaphores
+
+- Semaphores
+    - `mutex`: to protect the monitor
+    - `next`: being initialized to zero, on which processes may suspend themselves
+        - `next_count`
+
+Each external function `F` is replaced by
+
+```c
+wait(mutex);
+
+/* body of F */
+
+if (next_count > 0)
+    signal(next);
+else
+    signal(mutex);
+```
+
+For each condition `x`, we introduce a semaphore `x_sem` and an integer variable `x_count`, both initialized to $0$.
+
+- `x.wait()`
+    
+    ```c
+    x_count++;
+    if (next_count > 0)
+        signal(next);
+    else
+        signal(mutex);
+    wait(x_sem);
+    x_count--;
+    ```
+
+- `x.signal()`
+
+    ```c
+    if (x_count > 0) {
+        next_count++;
+        signal(x_sem);
+        wait(next);
+        next_count--;
+    }
+    ```
+
+### 5.8.4 Resuming Processes within a Monitor
+
+```c
+x.wait(c);
+```
+
+```c
+R.acquire(t);
+
+/* access the resource */
+
+R.release();
+```
+
+```c
+monitor ResourceAllocator {
+    boolean busy;
+    condition x;
+
+    void acquire(int time) {
+        if (busy)
+            x.wait(time);
+        busy = true;
+    }
+
+    void release() {
+        busy = false;
+        x.signal();
+    }
+
+    initialization_code() {
+        busy = false;
+    }
+}
+```
+
+## 5.9 Synchronization Examples
+
+### 5.9.1 Synchronization in Windows
+
+### 5.9.2 Synchronization in Linux
+
+### 5.9.3 Synchronization in Solaris
+
+### 5.9.4 Pthreads Synchronization
+
+## 5.10 Alternative Approaches
+
+### 5.10.1 Transactional Memory
+
+### 5.10.2 OpenMP
+
+### 5.10.3 Functional Programming Languages
