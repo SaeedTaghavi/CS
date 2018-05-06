@@ -74,7 +74,7 @@ CPU-scheduling decisions when a process:
 
             ![normal](assets/images/FCFS.png)
 
-        - Average waiting time = $(0 + 24 + 27) / 3 = 17$ ms.
+        - Average waiting time = (0 + 24 + 27) / 3 = 17 ms.
 
     - Consider order: $P_2 \to P_3 \to P_1$:
 
@@ -82,7 +82,7 @@ CPU-scheduling decisions when a process:
 
             ![normal](assets/images/FCFS-2.png)
 
-        - Average waiting time = $(0 + 3 + 6) / 3 = 9$ ms.
+        - Average waiting time = (0 + 3 + 6) / 3 = 9 ms.
 
 !!! note "Convoy effect"
         All the other processes wait for the one big process to get off the CPU.
@@ -112,7 +112,7 @@ CPU-scheduling decisions when a process:
 
             ![normal](assets/images/SJF.png)
 
-        - Average waiting time = $(3 + 16 + 9 + 0) / 4 = 7$ ms.
+        - Average waiting time = (3 + 16 + 9 + 0) / 4 = 7 ms.
 
 !!! info ""
     SJF is used frequently in long-term (job) scheduling, but it cannot be implemented at the level of short-term CPU scheduling.
@@ -142,7 +142,7 @@ CPU-scheduling decisions when a process:
 
         ![normal](assets/images/SJF-2.png)
 
-    - Average waiting time = $[(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5$ ms.
+    - Average waiting time = [(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5 ms.
 
 ### 6.3.3 Priority Scheduling
 
@@ -169,7 +169,7 @@ CPU-scheduling decisions when a process:
 
             ![normal](assets/images/priority.png)
 
-        - Average waiting time = $8.2$ ms. (How?)
+        - Average waiting time = 8.2 ms. (How?)
 
 !!! info "Problem with priority scheduling"
     - indefinite blocking: low-priority processes could starve to death!
@@ -197,7 +197,7 @@ CPU-scheduling decisions when a process:
 
         ![normal](assets/images/RR.png)
 
-    - Average waiting time = $[(10 - 4) + 4 + 7] / 3 = 5.66$ ms.
+    - Average waiting time = [(10 - 4) + 4 + 7] / 3 = 5.66 ms.
 
 !!! info ""
     Although the time quantum should be large compared with the context switch time, it should not be too large.

@@ -8,8 +8,7 @@ Recall [producer–consumer problem](../Chap03/#producerconsumer-problem). We mo
 while (true) {
     /* produce an item in next_produced */
 
-    while (counter == BUFFER_SIZE)
-        ; /* do nothing */
+    while (counter == BUFFER_SIZE) ;    // do nothing
 
     buffer[in] = next_produced;
     in = (in + 1) % BUFFER_SIZE;
@@ -19,14 +18,13 @@ while (true) {
 
 ```c
 while (true) {
-    while (counter == 0)
-        ; /* do nothing */
+    while (counter == 0) ;      // do nothing
         
-        next_consumed = buffer[out];
-        out = (out + 1) % BUFFER_SIZE;
-        counter--;
+    next_consumed = buffer[out];
+    out = (out + 1) % BUFFER_SIZE;
+    counter--;
 
-        /* consume the item in next_consumed */
+    /* consume the item in next_consumed */
 }
 ```
 
@@ -54,9 +52,9 @@ We need to ensure that only one process at a time can be manipulating the variab
 ```c
 do {
     /* entry section */
-        // critical section
+        /* critical section */
     /* exit section */
-        // remainder section
+        /* remainder section */
 } while (true);
 ```
 
@@ -91,11 +89,11 @@ boolean flag[2];
 do {
     flag[i] = true;
     turn = j;
-    while (flag[j] && turn == j);
-        /* critical section */
+    while (flag[j] && turn == j) ;
+    /* critical section */
 
     flag[i] = false;
-        /* remainder section */
+    /* remainder section */
 } while (true);
 ```
 
@@ -108,7 +106,51 @@ do {
 2. The progress requirement is satisfied.
 3. The bounded-waiting requirement is met.
 
+    Suppose $P_i$ execute $turn = j$ first, then $P_j$ execute $turn = i$. In this assumption, $P_i$ will enter its critical section first and $P_j$ will be stocked in the `while(flag[i] && turn == i` (remember that here `i` should be thinked as `j` in the code!). After $P_i$ entering exit section, there are two possibilities:
+
+    1. $P_i$ sets `flag[i] = false`, then $P_j$ enters its critical section.
+    2. After $P_i$ setting `flag[i] = false`, it immediately sets `flag[i] = true` again, consequently, it'll set `turn = j`, thus $P_j$ still can enter its critical section.
+
+## Bakery Algorithm
+
+- Originally designed for distrubuted systems
+- Processes which are ready to enter their critical section must take a number and wait till the number becomes the lowest.
+
+```c
+int number[i];          // Pi's number if it is nonzeros
+boolean choosing[i];    // Pi is taking a number
+```
+
+```c
+do {
+    choosing[i] = true;         // A process want to enter its critical section
+    number[i] = max(number[0], ..., number[n - 1]) + 1;
+    choosing[j] = false;        // A process has got its number
+    for (j = 0; j < n; j++) {
+        while (choosing[j]) ;
+        while (number[j] != 0 && (number[j], j) < (number[i], i)) ;     // If two processes got the same number, then we should compare their indices
+    }
+    /* critical section */
+
+    number[i] = 0;
+    /* remainder section */
+} white (true);
+```
+
+- An observation: If $P_i$ is in its critical section, and $P_k (k != i)$ , then $(number[i], i) < (number[k], k)$.
+
+*Proof*
+
+1. Mutual exclusion: Only the process holds the lowest number can enter the critical section. For each process, when that process doens't get its number, the original process will be stocked in the first while-loop. After that process getting its number, we still need to compare their $numbers$ and $indices$.
+2. Progress requirement: The processes won't be forever postponed.
+3. Bounded-waiting: Assume that a process holds the biggest number, it should wait other processes in the second while-loop. But after all other process entering their exit section and again entering their entry section, they'll get a bigger number, thus the process won't wait forever.
+
 ## 5.4 Synchronization Hardware
+
+Disaple interrupt $\to$ No preemption:
+
+- Infeasible in multiprocessor environment.
+- Potential impacts on interrupt-driven system clocks.
 
 !!! info "Atomic"
     Modern computer allow us either to test and modify the content of a word or to swap the contents of two words **atomically**—that is, as one uninterruptible.
@@ -126,16 +168,48 @@ boolean test_and_set(boolean *target) {
 
 ```c
 do {
-    while (test_and_set(&lock))
-        ; /* do nothing */
-
-        /* critical section */
+    while (test_and_set(&lock)) ;
+    /* critical section */
     
     lock = false;
-
-        /* remainder section */
+    /* remainder section */
 } while (true);
 ```
+
+The first process executing `while (test_and_set(&lock))` will set the address value of `lock` to `true` and get the return value `rv = false`, thus it won't be stocked in the while-loop and it can enter its critical section.
+
+1. Mutual exclusion: OK
+2. Progress requirement: OK
+3. Bounded-waiting: FAIL
+
+    Assume there is only one CPU, after $P_i$ entering its critical section, $P_j$ will be stocked in the while-loop. After $P_i$ exiting its critical section, there are two possibilities:
+
+    1. $P_i$ sets `lock = false`, the CPU context switch to $P_j$, thus $P_j$ can enters its critical section.
+    2. After $P_i$ setting `lock = false`, the CPU still executes the code of $P_i$, thus $P_i$ enters its critical section again, so $P_j$ may wait forever.
+
+```c
+void swap(boolean *a, boolean *b) {
+    boolean temp = *a;
+    *a = *b;
+    *b = temp;
+}
+```
+
+```c
+do {
+    key = true;
+    while (key == true)
+        swap(&lock, &key);
+    /* critical section */
+
+    lock = false;
+    /* remainder section */
+} while (true);
+```
+
+1. Mutual exclusion: OK
+2. Progress requirement: OK
+3. Bounded-waiting: FAIL (the reason is like above)
 
 ```c
 int compare_and_swap(int *value, int expected, int new_value) {
@@ -150,14 +224,11 @@ int compare_and_swap(int *value, int expected, int new_value) {
 
 ```c
 do {
-    while (compare_and_swap(&lock, 0, 1) != 0)
-        ; /* do nothing */
-    
-        /* critical section */
+    while (compare_and_swap(&lock, 0, 1) != 0) ;
+    /* critical section */
 
     lock = 0;
-
-        /* remainder section */
+    /* remainder section */
 } while (true);
 ```
 
@@ -175,18 +246,202 @@ do {
     while (waiting[i] && key)
         key = test_and_set(&lock);
     waiting[i] = false;
+    /* critical section */
 
-        /* critical section */
-
-    j = (i + 1) % n;
-    while ((j != 1) && !waiting[j])
+    j = (i + 1) % n;                    // Assign its next process
+    while ((j != i) && !waiting[j])     // Find a following process who is waiting
         j = (j + 1) % n;
     
-    if (j == i)
+    if (j == i)                         // If no process is waiting
         lock = false;
     else
-        waiting[j] = false;
+        waiting[j] = false;             // Thus line 4 will be false and Pj won't be stocked anymore
+    /* remainder section */
+} while (true);
+```
 
+Assume `lock` is initialized to `false`.
+
+1. Mutual exclusion: If many processes set their `waiting[i] = true`, after the first process execute `key = test_and_set(&lock)`, `key` will be set to `false` and `lock` will be set to `true`. Therefore, other processes will be stocked in `while (waiting[i] && key)` since their `key` will be set to `true` after `test_and_set(&lock)` (`lock` is now `true`).
+2. Progress requirement: Only the process first run `test_and_set` can enter its critical section.
+3. Bounded-waiting: Wait at most $n - 1$ times.
+
+## Mutex Locks
+
+A high-level software solution to provide protect critical sections with mutual exclusion.
+
+- Acomic execution of `acquire()` and `release()`.
+- Spinlock:
+    - pros: No context switch for multiprocessor systems.
+    - cons: Busy waiting.
+
+```c
+acquire() {
+    while (!available) ;        // busy wait
+    available = false;
+}
+```
+
+```c
+release() {
+    available = true;
+}
+```
+
+```c
+do {
+    // acquire lock
+        /* critical section */
+    // release lock
         /* remainder section */
 } while (true);
 ```
+
+!!! note "Spinlock" 
+    The process "spins" while waiting for the lock to become available.
+
+## 5.6 Semaphores
+
+A high-level solution for more complex problems.
+
+- A variable `S` only accessible by two atomic operations.
+- Spinlock.
+
+```c
+wait(S) {               /* P */
+    while (S <= 0) ;    // busy wait
+    S--;
+}
+```
+
+```c
+signal(S) {             /* V */
+    S++;
+}
+```
+
+### 5.6.1 Semaphore Usage
+
+- Critical sections:
+
+    ```c
+    do {
+        wait(mutex);
+        /* critical section */
+        signal(mutex);
+        /* remainder section */
+    } while (true);
+    ```
+
+- Precedence enforcement:
+    - $P_1$:
+    
+        ```c
+        S1;
+        signal(synch);
+        ```
+
+    - $P_2$:
+
+        ```c
+        wait(synch);
+        S2;
+        ```
+
+### 5.6.2 Semaphore Implementation
+
+It's not good for single CPU.
+Even if it's implemented in a multi-CPU environment, the locks should be held for a short time.
+
+We can implement the Semaphores with block waiting:
+
+```c
+typedef struct {
+    int value;
+    struct process *list;
+} semaphore;
+```
+
+```c
+wait(semaphore *S) {
+    S->value--;
+    if (S->value < 0) {
+        add this process to S->list;
+        block();
+    }
+}
+```
+
+```c
+signal(semaphore *S) {
+    S->value++;
+    if (S->value <= 0) {
+        remove a process P from S->list;
+        wakeup(P);
+    }
+}
+```
+
+!!! info ""
+    $|S.value|$ = # of waiting processes if $S.value < 0$.
+
+Bounded-waiting can be satisfied by FIFO queue but may be unsatisfied by priority queue.
+
+### 5.6.3 Deadlocks and Starvation
+
+!!! note "Deadlock"
+    A set of processes is in a deadlock state when every process in the set is waiting for an event that can be caused only by another process in the set.
+
+\begin{array}{cc}
+P_0 & P_1 \\\\
+wait(S); & wait(Q); \\\\
+wait(Q); & wait(S); \\\\
+\vdots & \vdots \\\\
+signal(S); & signal(Q); \\\\
+signal(Q); & signal(S); \\\\
+\end{array}
+
+!!! note "Starvation (Indefinite blocking)"
+    A situation in which processes wait indefinitely within the semaphore.
+
+    e.g. priority queue, stack (LIFO).
+
+### 5.6.4 Priority Inversion
+
+!!! note "Priority Inversion"
+    A higher-priority task is blocked by a lower-priority task due to some resource access conflict.
+
+### Binary Semaphore
+
+We can implement counting semaphores by binary semaphores. ($S_1 = 1$, $S_2 = 0$ and $S_3 = 1$)
+
+```c
+WAIT(S) {
+    wait(S3);   // protect the whole program
+    wait(S1);   // protect C
+    C--;
+    if (C < 0) {
+        signal(S1);
+        wait(S2);
+    } else signal(S1);
+    signal(S3);
+}
+```
+
+```c
+SIGNAL(S) {
+    wait(S1);
+    C++;
+    if (C <= 0)
+        signal(S2);     // wake up
+    signal(S1);
+}
+```
+
+- Is `wait(S3)` necessary?
+- Can we change the order of `signal(S1)` and `wait(S2)`?
+- There are lots of implementation details.
+
+## 5.7 Classic Problems of Synchronization
+
+### 5.7.1 The Bounded-Buffer Problem
