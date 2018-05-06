@@ -445,3 +445,141 @@ SIGNAL(S) {
 ## 5.7 Classic Problems of Synchronization
 
 ### 5.7.1 The Bounded-Buffer Problem
+
+```c
+int n;
+semaphore mutex = 1;
+semaphore empty = n;
+semaphore full = 0;
+```
+
+```c
+do {
+    /* produce an item in next_produced */
+
+    wait(empty);
+    wait(mutex);
+
+    /* add next_produced to the buffer */
+
+    signal(mutex);
+    signal(full);
+} while (true);
+```
+
+```c
+do {
+    wait(full);
+    wait(mutex);
+
+    /* remove an item from buffer to next_consumed */
+
+    signal(mutex);
+    signal(empty);
+
+    /* consume the item in next_consumed */
+} while (true);
+```
+
+### 5.7.2 The Readers–Writers Problem
+
+- The basic assumption:
+    - Readers: shared locks
+    - Writers: exclusive locks
+
+- The first reader-writers problem
+    - No readers will be kept waiting unless a writer has already obtained permission to use the shared object $\to$ potential hazard to writers!
+
+- The second reader-writers problem
+    - One a writer is ready, it performs its write asap $\to$ potential hazard to readers.
+
+```c
+semaphore rw_mutex = 1;
+semaphore mutex = 1;
+int read_count = 0;
+```
+
+```c
+do {
+    wait(rw_mutex);
+
+    /* writing is performed */
+
+    signal(rw_mutex);
+} while (true);
+```
+
+```c
+do {
+    wait(mutex);        // protect read_count
+    read_count++;
+    if (read_count == 1)
+        wait(rw_mutex);
+    signal(mutex);
+
+    /* reading is performed */
+
+    wait(mutex);        // protect read_count
+    read_count--;
+    if (read_count == 0)
+        signal(rw_mutex);
+    signal(mutex);
+} while (true);
+```
+
+### 5.7.3 The Dining-Philosophers Problem
+
+- Each philosopher must pick up one chopstick beside him/her at a time.
+- When two chopsticks are picked up, the philosopher can eat.
+
+```c
+semaphore chopstick[5];
+```
+
+```c
+do {
+    wait(chopstick[i]);
+    wait(chopstick[(i + 1) % 5]);
+
+    /* eat for awhile */
+
+    signal(chopstick[i]);
+    signal(chopstick[(i + 1) % 5]);
+
+    /* think for awhile */
+} while (true);
+```
+
+## Critical Regions
+
+- Region $v$ when $C$ (condition) do $S$ (statements)
+    - Variable $v$ — shared among processes and only accessible in the region.
+
+```c
+struct buffer {
+    item pool[n];
+    int count, in, out;
+};
+```
+
+```c
+    region buffer when
+    (count < n) {
+        pool[in] = next_produced;
+        in = (in + 1) % n;
+        count++;
+    }
+```
+
+```c
+    region buffer when
+    (count > 0) {
+        next_consumed = pool[out];
+        out = (out + 1) % n;
+        count--;
+    }
+```
+
+## 5.8 Monitors
+
+### 5.8.1 Monitor Usage

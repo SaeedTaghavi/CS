@@ -485,6 +485,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#572-the-readerswriters-problem" title="5.7.2 The Readers–Writers Problem" class="md-nav__link">
+    5.7.2 The Readers–Writers Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#573-the-dining-philosophers-problem" title="5.7.3 The Dining-Philosophers Problem" class="md-nav__link">
+    5.7.3 The Dining-Philosophers Problem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-regions" title="Critical Regions" class="md-nav__link">
+    Critical Regions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-monitors" title="5.8 Monitors" class="md-nav__link">
+    5.8 Monitors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#581-monitor-usage" title="5.8.1 Monitor Usage" class="md-nav__link">
+    5.8.1 Monitor Usage
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -639,6 +680,47 @@
           <li class="md-nav__item">
   <a href="#571-the-bounded-buffer-problem" title="5.7.1 The Bounded-Buffer Problem" class="md-nav__link">
     5.7.1 The Bounded-Buffer Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572-the-readerswriters-problem" title="5.7.2 The Readers–Writers Problem" class="md-nav__link">
+    5.7.2 The Readers–Writers Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#573-the-dining-philosophers-problem" title="5.7.3 The Dining-Philosophers Problem" class="md-nav__link">
+    5.7.3 The Dining-Philosophers Problem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-regions" title="Critical Regions" class="md-nav__link">
+    Critical Regions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-monitors" title="5.8 Monitors" class="md-nav__link">
+    5.8 Monitors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#581-monitor-usage" title="5.8.1 Monitor Usage" class="md-nav__link">
+    5.8.1 Monitor Usage
   </a>
   
 </li>
@@ -1084,6 +1166,143 @@ signal(Q); &amp; signal(S); \\
 </ul>
 <h2 id="57-classic-problems-of-synchronization">5.7 Classic Problems of Synchronization<a class="headerlink" href="#57-classic-problems-of-synchronization" title="Permanent link">&para;</a></h2>
 <h3 id="571-the-bounded-buffer-problem">5.7.1 The Bounded-Buffer Problem<a class="headerlink" href="#571-the-bounded-buffer-problem" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">semaphore</span> <span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">semaphore</span> <span class="n">empty</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">semaphore</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="cm">/* produce an item in next_produced */</span>
+
+    <span class="n">wait</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+
+    <span class="cm">/* add next_produced to the buffer */</span>
+
+    <span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+
+    <span class="cm">/* remove an item from buffer to next_consumed */</span>
+
+    <span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>
+
+    <span class="cm">/* consume the item in next_consumed */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<h3 id="572-the-readerswriters-problem">5.7.2 The Readers–Writers Problem<a class="headerlink" href="#572-the-readerswriters-problem" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>The basic assumption:</p>
+<ul>
+<li>Readers: shared locks</li>
+<li>Writers: exclusive locks</li>
+</ul>
+</li>
+<li>
+<p>The first reader-writers problem</p>
+<ul>
+<li>No readers will be kept waiting unless a writer has already obtained permission to use the shared object $\to$ potential hazard to writers!</li>
+</ul>
+</li>
+<li>
+<p>The second reader-writers problem</p>
+<ul>
+<li>One a writer is ready, it performs its write asap $\to$ potential hazard to readers.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">semaphore</span> <span class="n">rw_mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">semaphore</span> <span class="n">mutex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">read_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">rw_mutex</span><span class="p">);</span>
+
+    <span class="cm">/* writing is performed */</span>
+
+    <span class="n">signal</span><span class="p">(</span><span class="n">rw_mutex</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>        <span class="c1">// protect read_count</span>
+    <span class="n">read_count</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">read_count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">wait</span><span class="p">(</span><span class="n">rw_mutex</span><span class="p">);</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+
+    <span class="cm">/* reading is performed */</span>
+
+    <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>        <span class="c1">// protect read_count</span>
+    <span class="n">read_count</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">read_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">signal</span><span class="p">(</span><span class="n">rw_mutex</span><span class="p">);</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<h3 id="573-the-dining-philosophers-problem">5.7.3 The Dining-Philosophers Problem<a class="headerlink" href="#573-the-dining-philosophers-problem" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Each philosopher must pick up one chopstick beside him/her at a time.</li>
+<li>When two chopsticks are picked up, the philosopher can eat.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">semaphore</span> <span class="n">chopstick</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]);</span>
+
+    <span class="cm">/* eat for awhile */</span>
+
+    <span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">chopstick</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">]);</span>
+
+    <span class="cm">/* think for awhile */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<h2 id="critical-regions">Critical Regions<a class="headerlink" href="#critical-regions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Region $v$ when $C$ (condition) do $S$ (statements)<ul>
+<li>Variable $v$ — shared among processes and only accessible in the region.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">buffer</span> <span class="p">{</span>
+    <span class="n">item</span> <span class="n">pool</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span>    <span class="n">region</span> <span class="n">buffer</span> <span class="nf">when</span>
+    <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pool</span><span class="p">[</span><span class="n">in</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_produced</span><span class="p">;</span>
+        <span class="n">in</span> <span class="o">=</span> <span class="p">(</span><span class="n">in</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
+        <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span>    <span class="n">region</span> <span class="n">buffer</span> <span class="nf">when</span>
+    <span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">next_consumed</span> <span class="o">=</span> <span class="n">pool</span><span class="p">[</span><span class="n">out</span><span class="p">];</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
+        <span class="n">count</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+
+<h2 id="58-monitors">5.8 Monitors<a class="headerlink" href="#58-monitors" title="Permanent link">&para;</a></h2>
+<h3 id="581-monitor-usage">5.8.1 Monitor Usage<a class="headerlink" href="#581-monitor-usage" title="Permanent link">&para;</a></h3>
                 
                   
                 
