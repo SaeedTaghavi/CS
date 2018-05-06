@@ -402,9 +402,91 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bakery-algorithm" title="Bakery Algorithm" class="md-nav__link">
+    Bakery Algorithm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#54-synchronization-hardware" title="5.4 Synchronization Hardware" class="md-nav__link">
     5.4 Synchronization Hardware
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-locks" title="Mutex Locks" class="md-nav__link">
+    Mutex Locks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-semaphores" title="5.6 Semaphores" class="md-nav__link">
+    5.6 Semaphores
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-semaphore-usage" title="5.6.1 Semaphore Usage" class="md-nav__link">
+    5.6.1 Semaphore Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-semaphore-implementation" title="5.6.2 Semaphore Implementation" class="md-nav__link">
+    5.6.2 Semaphore Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#563-deadlocks-and-starvation" title="5.6.3 Deadlocks and Starvation" class="md-nav__link">
+    5.6.3 Deadlocks and Starvation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#564-priority-inversion" title="5.6.4 Priority Inversion" class="md-nav__link">
+    5.6.4 Priority Inversion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-semaphore" title="Binary Semaphore" class="md-nav__link">
+    Binary Semaphore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-classic-problems-of-synchronization" title="5.7 Classic Problems of Synchronization" class="md-nav__link">
+    5.7 Classic Problems of Synchronization
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571-the-bounded-buffer-problem" title="5.7.1 The Bounded-Buffer Problem" class="md-nav__link">
+    5.7.1 The Bounded-Buffer Problem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -478,9 +560,91 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bakery-algorithm" title="Bakery Algorithm" class="md-nav__link">
+    Bakery Algorithm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#54-synchronization-hardware" title="5.4 Synchronization Hardware" class="md-nav__link">
     5.4 Synchronization Hardware
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutex-locks" title="Mutex Locks" class="md-nav__link">
+    Mutex Locks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-semaphores" title="5.6 Semaphores" class="md-nav__link">
+    5.6 Semaphores
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-semaphore-usage" title="5.6.1 Semaphore Usage" class="md-nav__link">
+    5.6.1 Semaphore Usage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-semaphore-implementation" title="5.6.2 Semaphore Implementation" class="md-nav__link">
+    5.6.2 Semaphore Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#563-deadlocks-and-starvation" title="5.6.3 Deadlocks and Starvation" class="md-nav__link">
+    5.6.3 Deadlocks and Starvation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#564-priority-inversion" title="5.6.4 Priority Inversion" class="md-nav__link">
+    5.6.4 Priority Inversion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-semaphore" title="Binary Semaphore" class="md-nav__link">
+    Binary Semaphore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-classic-problems-of-synchronization" title="5.7 Classic Problems of Synchronization" class="md-nav__link">
+    5.7 Classic Problems of Synchronization
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571-the-bounded-buffer-problem" title="5.7.1 The Bounded-Buffer Problem" class="md-nav__link">
+    5.7.1 The Bounded-Buffer Problem
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -509,8 +673,7 @@
 <div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="cm">/* produce an item in next_produced */</span>
 
-    <span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">BUFFER_SIZE</span><span class="p">)</span>
-        <span class="p">;</span> <span class="cm">/* do nothing */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">BUFFER_SIZE</span><span class="p">)</span> <span class="p">;</span>    <span class="c1">// do nothing</span>
 
     <span class="n">buffer</span><span class="p">[</span><span class="n">in</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_produced</span><span class="p">;</span>
     <span class="n">in</span> <span class="o">=</span> <span class="p">(</span><span class="n">in</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">BUFFER_SIZE</span><span class="p">;</span>
@@ -519,14 +682,13 @@
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">;</span> <span class="cm">/* do nothing */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">;</span>      <span class="c1">// do nothing</span>
 
-        <span class="n">next_consumed</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[</span><span class="n">out</span><span class="p">];</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">BUFFER_SIZE</span><span class="p">;</span>
-        <span class="n">counter</span><span class="o">--</span><span class="p">;</span>
+    <span class="n">next_consumed</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[</span><span class="n">out</span><span class="p">];</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">BUFFER_SIZE</span><span class="p">;</span>
+    <span class="n">counter</span><span class="o">--</span><span class="p">;</span>
 
-        <span class="cm">/* consume the item in next_consumed */</span>
+    <span class="cm">/* consume the item in next_consumed */</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -551,9 +713,9 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 </div>
 <div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
     <span class="cm">/* entry section */</span>
-        <span class="c1">// critical section</span>
+        <span class="cm">/* critical section */</span>
     <span class="cm">/* exit section */</span>
-        <span class="c1">// remainder section</span>
+        <span class="cm">/* remainder section */</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
@@ -583,11 +745,11 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
     <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
     <span class="n">turn</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span> <span class="o">==</span> <span class="n">j</span><span class="p">);</span>
-        <span class="cm">/* critical section */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">flag</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">turn</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="p">;</span>
+    <span class="cm">/* critical section */</span>
 
     <span class="n">flag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-        <span class="cm">/* remainder section */</span>
+    <span class="cm">/* remainder section */</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
@@ -598,9 +760,54 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <ol>
 <li>Mutual exclusion is preserved.</li>
 <li>The progress requirement is satisfied.</li>
-<li>The bounded-waiting requirement is met.</li>
+<li>
+<p>The bounded-waiting requirement is met.</p>
+<p>Suppose $P_i$ execute $turn = j$ first, then $P_j$ execute $turn = i$. In this assumption, $P_i$ will enter its critical section first and $P_j$ will be stocked in the <code>while(flag[i] &amp;&amp; turn == i</code> (remember that here <code>i</code> should be thinked as <code>j</code> in the code!). After $P_i$ entering exit section, there are two possibilities:</p>
+<ol>
+<li>$P_i$ sets <code>flag[i] = false</code>, then $P_j$ enters its critical section.</li>
+<li>After $P_i$ setting <code>flag[i] = false</code>, it immediately sets <code>flag[i] = true</code> again, consequently, it'll set <code>turn = j</code>, thus $P_j$ still can enter its critical section.</li>
+</ol>
+</li>
+</ol>
+<h2 id="bakery-algorithm">Bakery Algorithm<a class="headerlink" href="#bakery-algorithm" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Originally designed for distrubuted systems</li>
+<li>Processes which are ready to enter their critical section must take a number and wait till the number becomes the lowest.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>          <span class="c1">// Pi&#39;s number if it is nonzeros</span>
+<span class="n">boolean</span> <span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>    <span class="c1">// Pi is taking a number</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>         <span class="c1">// A process want to enter its critical section</span>
+    <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">...,</span> <span class="n">number</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">choosing</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>        <span class="c1">// A process has got its number</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">choosing</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">j</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span> <span class="p">;</span>     <span class="c1">// If two processes got the same number, then we should compare their indices</span>
+    <span class="p">}</span>
+    <span class="cm">/* critical section */</span>
+
+    <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="n">white</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<ul>
+<li>An observation: If $P_i$ is in its critical section, and $P_k (k != i)$ , then $(number[i], i) &lt; (number[k], k)$.</li>
+</ul>
+<p><em>Proof</em></p>
+<ol>
+<li>Mutual exclusion: Only the process holds the lowest number can enter the critical section. For each process, when that process doens't get its number, the original process will be stocked in the first while-loop. After that process getting its number, we still need to compare their $numbers$ and $indices$.</li>
+<li>Progress requirement: The processes won't be forever postponed.</li>
+<li>Bounded-waiting: Assume that a process holds the biggest number, it should wait other processes in the second while-loop. But after all other process entering their exit section and again entering their entry section, they'll get a bigger number, thus the process won't wait forever.</li>
 </ol>
 <h2 id="54-synchronization-hardware">5.4 Synchronization Hardware<a class="headerlink" href="#54-synchronization-hardware" title="Permanent link">&para;</a></h2>
+<p>Disaple interrupt $\to$ No preemption:</p>
+<ul>
+<li>Infeasible in multiprocessor environment.</li>
+<li>Potential impacts on interrupt-driven system clocks.</li>
+</ul>
 <div class="admonition info">
 <p class="admonition-title">Atomic</p>
 <p>Modern computer allow us either to test and modify the content of a word or to swap the contents of two words <strong>atomically</strong>—that is, as one uninterruptible.</p>
@@ -615,17 +822,50 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">))</span>
-        <span class="p">;</span> <span class="cm">/* do nothing */</span>
-
-        <span class="cm">/* critical section */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">))</span> <span class="p">;</span>
+    <span class="cm">/* critical section */</span>
 
     <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-
-        <span class="cm">/* remainder section */</span>
+    <span class="cm">/* remainder section */</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
+<p>The first process executing <code>while (test_and_set(&amp;lock))</code> will set the address value of <code>lock</code> to <code>true</code> and get the return value <code>rv = false</code>, thus it won't be stocked in the while-loop and it can enter its critical section.</p>
+<ol>
+<li>Mutual exclusion: OK</li>
+<li>Progress requirement: OK</li>
+<li>
+<p>Bounded-waiting: FAIL</p>
+<p>Assume there is only one CPU, after $P_i$ entering its critical section, $P_j$ will be stocked in the while-loop. After $P_i$ exiting its critical section, there are two possibilities:</p>
+<ol>
+<li>$P_i$ sets <code>lock = false</code>, the CPU context switch to $P_j$, thus $P_j$ can enters its critical section.</li>
+<li>After $P_i$ setting <code>lock = false</code>, the CPU still executes the code of $P_i$, thus $P_i$ enters its critical section again, so $P_j$ may wait forever.</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">boolean</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">boolean</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">boolean</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="nb">true</span><span class="p">)</span>
+        <span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">);</span>
+    <span class="cm">/* critical section */</span>
+
+    <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+<ol>
+<li>Mutual exclusion: OK</li>
+<li>Progress requirement: OK</li>
+<li>Bounded-waiting: FAIL (the reason is like above)</li>
+</ol>
 <div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">compare_and_swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">value</span><span class="p">,</span> <span class="kt">int</span> <span class="n">expected</span><span class="p">,</span> <span class="kt">int</span> <span class="n">new_value</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">value</span><span class="p">;</span>
 
@@ -637,14 +877,11 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">compare_and_swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">;</span> <span class="cm">/* do nothing */</span>
-
-        <span class="cm">/* critical section */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">compare_and_swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">;</span>
+    <span class="cm">/* critical section */</span>
 
     <span class="n">lock</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-        <span class="cm">/* remainder section */</span>
+    <span class="cm">/* remainder section */</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
@@ -659,21 +896,194 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
     <span class="k">while</span> <span class="p">(</span><span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">key</span><span class="p">)</span>
         <span class="n">key</span> <span class="o">=</span> <span class="n">test_and_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
     <span class="n">waiting</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="cm">/* critical section */</span>
 
-        <span class="cm">/* critical section */</span>
-
-    <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">((</span><span class="n">j</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>                    <span class="c1">// Assign its next process</span>
+    <span class="k">while</span> <span class="p">((</span><span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>     <span class="c1">// Find a following process who is waiting</span>
         <span class="n">j</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>                         <span class="c1">// If no process is waiting</span>
         <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
     <span class="k">else</span>
-        <span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>             <span class="c1">// Thus line 4 will be false and Pj won&#39;t be stocked anymore</span>
+    <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
 
+<p>Assume <code>lock</code> is initialized to <code>false</code>.</p>
+<ol>
+<li>Mutual exclusion: If many processes set their <code>waiting[i] = true</code>, after the first process execute <code>key = test_and_set(&amp;lock)</code>, <code>key</code> will be set to <code>false</code> and <code>lock</code> will be set to <code>true</code>. Therefore, other processes will be stocked in <code>while (waiting[i] &amp;&amp; key)</code> since their <code>key</code> will be set to <code>true</code> after <code>test_and_set(&amp;lock)</code> (<code>lock</code> is now <code>true</code>).</li>
+<li>Progress requirement: Only the process first run <code>test_and_set</code> can enter its critical section.</li>
+<li>Bounded-waiting: Wait at most $n - 1$ times.</li>
+</ol>
+<h2 id="mutex-locks">Mutex Locks<a class="headerlink" href="#mutex-locks" title="Permanent link">&para;</a></h2>
+<p>A high-level software solution to provide protect critical sections with mutual exclusion.</p>
+<ul>
+<li>Acomic execution of <code>acquire()</code> and <code>release()</code>.</li>
+<li>Spinlock:<ul>
+<li>pros: No context switch for multiprocessor systems.</li>
+<li>cons: Busy waiting.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">acquire</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">available</span><span class="p">)</span> <span class="p">;</span>        <span class="c1">// busy wait</span>
+    <span class="n">available</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">release</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">available</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="c1">// acquire lock</span>
+        <span class="cm">/* critical section */</span>
+    <span class="c1">// release lock</span>
         <span class="cm">/* remainder section */</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Spinlock</p>
+<p>The process "spins" while waiting for the lock to become available.</p>
+</div>
+<h2 id="56-semaphores">5.6 Semaphores<a class="headerlink" href="#56-semaphores" title="Permanent link">&para;</a></h2>
+<p>A high-level solution for more complex problems.</p>
+<ul>
+<li>A variable <code>S</code> only accessible by two atomic operations.</li>
+<li>Spinlock.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>               <span class="cm">/* P */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">S</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">;</span>    <span class="c1">// busy wait</span>
+    <span class="n">S</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>             <span class="cm">/* V */</span>
+    <span class="n">S</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="561-semaphore-usage">5.6.1 Semaphore Usage<a class="headerlink" href="#561-semaphore-usage" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Critical sections:</p>
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+    <span class="cm">/* critical section */</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+    <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
+</li>
+<li>
+<p>Precedence enforcement:</p>
+<ul>
+<li>
+<p>$P_1$:</p>
+<div class="highlight"><pre><span></span><span class="n">S1</span><span class="p">;</span>
+<span class="n">signal</span><span class="p">(</span><span class="n">synch</span><span class="p">);</span>
+</pre></div>
+
+</li>
+<li>
+<p>$P_2$:</p>
+<div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">synch</span><span class="p">);</span>
+<span class="n">S2</span><span class="p">;</span>
+</pre></div>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="562-semaphore-implementation">5.6.2 Semaphore Implementation<a class="headerlink" href="#562-semaphore-implementation" title="Permanent link">&para;</a></h3>
+<p>It's not good for single CPU.
+Even if it's implemented in a multi-CPU environment, the locks should be held for a short time.</p>
+<p>We can implement the Semaphores with block waiting:</p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">process</span> <span class="o">*</span><span class="n">list</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">semaphore</span><span class="p">;</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">add</span> <span class="n">this</span> <span class="n">process</span> <span class="n">to</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+        <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="admonition info">
+<p>$|S.value|$ = # of waiting processes if $S.value &lt; 0$.</p>
+</div>
+<p>Bounded-waiting can be satisfied by FIFO queue but may be unsatisfied by priority queue.</p>
+<h3 id="563-deadlocks-and-starvation">5.6.3 Deadlocks and Starvation<a class="headerlink" href="#563-deadlocks-and-starvation" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Deadlock</p>
+<p>A set of processes is in a deadlock state when every process in the set is waiting for an event that can be caused only by another process in the set.</p>
+</div>
+<p>\begin{array}{cc}
+P_0 &amp; P_1 \\
+wait(S); &amp; wait(Q); \\
+wait(Q); &amp; wait(S); \\
+\vdots &amp; \vdots \\
+signal(S); &amp; signal(Q); \\
+signal(Q); &amp; signal(S); \\
+\end{array}</p>
+<div class="admonition note">
+<p class="admonition-title">Starvation (Indefinite blocking)</p>
+<p>A situation in which processes wait indefinitely within the semaphore.</p>
+<p>e.g. priority queue, stack (LIFO).</p>
+</div>
+<h3 id="564-priority-inversion">5.6.4 Priority Inversion<a class="headerlink" href="#564-priority-inversion" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Priority Inversion</p>
+<p>A higher-priority task is blocked by a lower-priority task due to some resource access conflict.</p>
+</div>
+<h3 id="binary-semaphore">Binary Semaphore<a class="headerlink" href="#binary-semaphore" title="Permanent link">&para;</a></h3>
+<p>We can implement counting semaphores by binary semaphores. ($S_1 = 1$, $S_2 = 0$ and $S_3 = 1$)</p>
+<div class="highlight"><pre><span></span><span class="n">WAIT</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">S3</span><span class="p">);</span>   <span class="c1">// protect the whole program</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">S1</span><span class="p">);</span>   <span class="c1">// protect C</span>
+    <span class="n">C</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">C</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">signal</span><span class="p">(</span><span class="n">S1</span><span class="p">);</span>
+        <span class="n">wait</span><span class="p">(</span><span class="n">S2</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="n">signal</span><span class="p">(</span><span class="n">S1</span><span class="p">);</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">S3</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">SIGNAL</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">wait</span><span class="p">(</span><span class="n">S1</span><span class="p">);</span>
+    <span class="n">C</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">C</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">signal</span><span class="p">(</span><span class="n">S2</span><span class="p">);</span>     <span class="c1">// wake up</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">S1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Is <code>wait(S3)</code> necessary?</li>
+<li>Can we change the order of <code>signal(S1)</code> and <code>wait(S2)</code>?</li>
+<li>There are lots of implementation details.</li>
+</ul>
+<h2 id="57-classic-problems-of-synchronization">5.7 Classic Problems of Synchronization<a class="headerlink" href="#57-classic-problems-of-synchronization" title="Permanent link">&para;</a></h2>
+<h3 id="571-the-bounded-buffer-problem">5.7.1 The Bounded-Buffer Problem<a class="headerlink" href="#571-the-bounded-buffer-problem" title="Permanent link">&para;</a></h3>
                 
                   
                 
