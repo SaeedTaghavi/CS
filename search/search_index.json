@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Operating System | notes\n\u00b6\n\n\nGetting Started\n\u00b6\n\n\nIn this website, I'll work on my notes when I have class of \nOperating System, Spring 2018\n by Professor \nTei-Wei Kuo\n\n\nThe materials are mainly from the \nOperating System Concepts, 9th Edition\n.\n\n\nPlease don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.\n\n\nHow I generate this website\n\u00b6\n\n\nI use the static site generator \nMkDocs\n and the beautiful theme \nMaterial for MkDocs\n to build this website!\n\n\nSince there are some LaTeX equations \nKaTeX\n doesn't support, here I use \nMathJax\n to render the math equations in my website.\n\n\nI also add \noverflow-x: auto\n to prevent the overflow issue on mobile devices, so you can scroll horizontally in the math display equations.\n\n\nMore Informations\n\u00b6\n\n\nFor more informations please visit \nmy github site\n.\n\n\nMy blog: \nJay's Blog\n\n\nMail to: \nwalkccray@gmail.com\n\n\nBy Jay Chen on April 13, 2018.",
+            "text": "Operating System | notes\n\u00b6\n\n\nGetting Started\n\u00b6\n\n\nIn this website, I'll work on my notes when I have class of \nOperating System, Spring 2018\n by Professor \nTei-Wei Kuo\n. Professor Kuo has also upload the course videos to \nYouTube\n.\n\n\nThe materials are mainly from the \nOperating System Concepts, 9th Edition\n.\n\n\nPlease don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.\n\n\nHow I generate this website\n\u00b6\n\n\nI use the static site generator \nMkDocs\n and the beautiful theme \nMaterial for MkDocs\n to build this website!\n\n\nSince there are some LaTeX equations \nKaTeX\n doesn't support, here I use \nMathJax\n to render the math equations in my website.\n\n\nI also add \noverflow-x: auto\n to prevent the overflow issue on mobile devices, so you can scroll horizontally in the math display equations.\n\n\nMore Informations\n\u00b6\n\n\nFor more informations please visit \nmy github site\n.\n\n\nMy blog: \nJay's Blog\n\n\nMail to: \nwalkccray@gmail.com\n\n\nBy Jay Chen on April 13, 2018.",
             "title": "Preface"
         },
         {
@@ -12,7 +12,7 @@
         },
         {
             "location": "/#getting-started",
-            "text": "In this website, I'll work on my notes when I have class of  Operating System, Spring 2018  by Professor  Tei-Wei Kuo  The materials are mainly from the  Operating System Concepts, 9th Edition .  Please don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.",
+            "text": "In this website, I'll work on my notes when I have class of  Operating System, Spring 2018  by Professor  Tei-Wei Kuo . Professor Kuo has also upload the course videos to  YouTube .  The materials are mainly from the  Operating System Concepts, 9th Edition .  Please don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.",
             "title": "Getting Started"
         },
         {
