@@ -17,7 +17,7 @@ theme:
   language: 'en'
   favicon: 'assets/favicon.png'
   palette:
-    primary: 'Red'
+    primary: 'Indigo'
     accent: 'Blue'
   font:
     text: 'Roboto'
@@ -65,7 +65,7 @@ pages:
       - 021-030: LeetCode/001-100/021-030.md
       - 031-040: LeetCode/001-100/031-040.md
       - 041-050: LeetCode/001-100/041-050.md
-  - Operating System | notes:
+  - Operating System:
     - Preface: OS/index.md
     - PART ONE | OVERVIEW:
       - Chapter 1 Introduction: OS/Chap01.md
@@ -75,3 +75,6 @@ pages:
       - Chapter 4 Threads: OS/Chap04.md
       - Chapter 5 Process Synchronization: OS/Chap05.md
       - Chapter 6 CPU Scheduling: OS/Chap06.md
+  - Machine Learning:
+    - Preface: ML/index.md
+    - Regression: ML/regression.md
