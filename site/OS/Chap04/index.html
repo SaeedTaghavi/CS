@@ -10,10 +10,10 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="Notes of Operating System">
+        <meta name="description" content="Computer Science Notes Operating System LeetCode Python Machine Learning">
       
       
-        <link rel="canonical" href="https://walkccc.github.io/OSnotes/Chap04/">
+        <link rel="canonical" href="https://walkccc.github.io/CS/OS/Chap04/">
       
       
         <meta name="author" content="Jay Chen">
@@ -37,22 +37,22 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../assets/favicon.png">
+      <link rel="shortcut icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
     
     
       
-        <title>Chapter 4 Threads - Operating System | notes</title>
+        <title>Chapter 4 Threads - Computer Science Notes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.8d40d89b.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
       
     
     
-      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -63,14 +63,14 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
-      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../../css/style.css">
     
     
   </head>
   
     
     
-    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="blue">
+    <body dir="ltr" data-md-color-primary="red" data-md-color-accent="blue">
   
     <svg class="md-svg">
       <defs>
@@ -115,7 +115,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://walkccc.github.io/OSnotes" title="Operating System | notes" class="md-header-nav__button md-logo">
+        <a href="https://walkccc.github.io/CS" title="Computer Science Notes" class="md-header-nav__button md-logo">
           
             <i class="md-icon">important_devices</i>
           
@@ -129,7 +129,7 @@
           
             
               <span class="md-header-nav__topic">
-                Operating System | notes
+                Computer Science Notes
               </span>
               <span class="md-header-nav__topic">
                 Chapter 4 Threads
@@ -177,7 +177,7 @@
   
 
 
-  <a href="https://github.com/walkccc/OSnotes/" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/walkccc/CS/" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -186,7 +186,7 @@
       </div>
     
     <div class="md-source__repository">
-      walkccc/OSnotes
+      walkccc/CS
     </div>
   </a>
 
@@ -202,6 +202,54 @@
         
       
       
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Preface" class="md-tabs__link">
+        Preface
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../LeetCode/" title="LeetCode in Python" class="md-tabs__link">
+          LeetCode in Python
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../" title="Operating System | notes" class="md-tabs__link md-tabs__link--active">
+          Operating System | notes
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -216,7 +264,7 @@
         <i class="md-icon">important_devices</i>
       
     </span>
-    Operating System | notes
+    Computer Science Notes
   </label>
   
     <div class="md-nav__source">
@@ -226,7 +274,7 @@
   
 
 
-  <a href="https://github.com/walkccc/OSnotes/" title="Go to repository" class="md-source" data-md-source="github">
+  <a href="https://github.com/walkccc/CS/" title="Go to repository" class="md-source" data-md-source="github">
     
       <div class="md-source__icon">
         <svg viewBox="0 0 24 24" width="24" height="24">
@@ -235,7 +283,7 @@
       </div>
     
     <div class="md-source__repository">
-      walkccc/OSnotes
+      walkccc/CS
     </div>
   </a>
 
@@ -249,7 +297,7 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Preface" class="md-nav__link">
+    <a href="../.." title="Preface" class="md-nav__link">
       Preface
     </a>
   </li>
@@ -265,10 +313,163 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
-      PART ONE | OVERVIEW
+      LeetCode in Python
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        LeetCode in Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../LeetCode/" title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      001-100
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        001-100
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../LeetCode/001-100/001-010/" title="001-010" class="md-nav__link">
+      001-010
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../LeetCode/001-100/011-020/" title="011-020" class="md-nav__link">
+      011-020
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../LeetCode/001-100/021-030/" title="021-030" class="md-nav__link">
+      021-030
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../LeetCode/001-100/031-040/" title="031-040" class="md-nav__link">
+      031-040
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../LeetCode/001-100/041-050/" title="041-050" class="md-nav__link">
+      041-050
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Operating System | notes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Operating System | notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      PART ONE | OVERVIEW
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
         PART ONE | OVERVIEW
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -302,23 +503,23 @@
     </nav>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" checked>
     
-    <label class="md-nav__link" for="nav-3">
+    <label class="md-nav__link" for="nav-3-3">
       PART TWO | PROCESS MANAGEMENT
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
         PART TWO | PROCESS MANAGEMENT
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -645,6 +846,11 @@
     </nav>
   </li>
 
+        
+      </ul>
+    </nav>
+  </li>
+
     
   </ul>
 </nav>
@@ -920,7 +1126,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/walkccc/OSnotes/edit/master/docs/Chap04.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/walkccc/CS/edit/master/docs/OS/Chap04.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
                 <h1 id="chapter-4-threads">Chapter 4 Threads<a class="headerlink" href="#chapter-4-threads" title="Permanent link">&para;</a></h1>
@@ -1467,13 +1673,11 @@ sOS/iOS combination of extensions to the C.</p>
       
     </div>
     
-      <script src="../assets/javascripts/application.b438e6c5.js"></script>
+      <script src="../../assets/javascripts/application.b438e6c5.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
-        <script src="../js/touch.js"></script>
-      
-        <script src="../js/mathjax.js"></script>
+        <script src="../../js/mathjax.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

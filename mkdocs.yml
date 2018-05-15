@@ -1,12 +1,12 @@
 # Project information
-site_name: 'Operating System | notes'
-site_description: 'Notes of Operating System'
+site_name: 'Computer Science Notes'
+site_description: 'Computer Science Notes Operating System LeetCode Python Machine Learning'
 site_author: 'Jay Chen'
-site_url: 'https://walkccc.github.io/OSnotes'
+site_url: 'https://walkccc.github.io/CS'
 
 # Repository
-repo_name: 'walkccc/OSnotes'
-repo_url: 'https://github.com/walkccc/OSnotes'
+repo_name: 'walkccc/CS'
+repo_url: 'https://github.com/walkccc/CS'
 
 # Copyright
 copyright: 'Built by <a href="http://github.com/walkccc">Jay Chen</a> &copy; 2017 - 2018'
@@ -17,13 +17,15 @@ theme:
   language: 'en'
   favicon: 'assets/favicon.png'
   palette:
-    primary: 'Light Blue'
+    primary: 'Red'
     accent: 'Blue'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
   logo:
     icon: 'important_devices'
+  feature:
+    tabs: true
 
 # Customization
 extra:
@@ -43,7 +45,6 @@ extra_css:
   - 'css/style.css'
 
 extra_javascript:
-  - 'js/touch.js'
   - 'js/mathjax.js'
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML'
 
@@ -56,11 +57,21 @@ markdown_extensions:
 
 pages:
   - Preface: index.md
-  - PART ONE | OVERVIEW:
-    - Chapter 1 Introduction: Chap01.md
-    - Chapter 2 Operating-System Structures: Chap02.md
-  - PART TWO | PROCESS MANAGEMENT:
-    - Chapter 3 Processes: Chap03.md
-    - Chapter 4 Threads: Chap04.md
-    - Chapter 5 Process Synchronization: Chap05.md
-    - Chapter 6 CPU Scheduling: Chap06.md
+  - LeetCode in Python: 
+    - Preface: LeetCode/index.md
+    - 001-100:
+      - 001-010: LeetCode/001-100/001-010.md
+      - 011-020: LeetCode/001-100/011-020.md
+      - 021-030: LeetCode/001-100/021-030.md
+      - 031-040: LeetCode/001-100/031-040.md
+      - 041-050: LeetCode/001-100/041-050.md
+  - Operating System | notes:
+    - Preface: OS/index.md
+    - PART ONE | OVERVIEW:
+      - Chapter 1 Introduction: OS/Chap01.md
+      - Chapter 2 Operating-System Structures: OS/Chap02.md
+    - PART TWO | PROCESS MANAGEMENT:
+      - Chapter 3 Processes: OS/Chap03.md
+      - Chapter 4 Threads: OS/Chap04.md
+      - Chapter 5 Process Synchronization: OS/Chap05.md
+      - Chapter 6 CPU Scheduling: OS/Chap06.md
