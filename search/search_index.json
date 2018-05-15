@@ -272,18 +272,13 @@
         },
         {
             "location": "/OS/",
-            "text": "Operating System | notes\n\u00b6\n\n\nGetting Started\n\u00b6\n\n\nIn this page, I'll work on my notes when I have class of \nOperating System, Spring 2018\n by Professor \nTei-Wei Kuo\n. Professor Kuo has also upload the course videos to \nYouTube\n.\n\n\nThe materials are mainly from the \nOperating System Concepts, 9th Edition\n.\n\n\nPlease don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.",
+            "text": "Operating System | notes\n\u00b6\n\n\nIn this page, I'll work on my notes when I have class of \nOperating System, Spring 2018\n by Professor \nTei-Wei Kuo\n. Professor Kuo has also upload the course videos to \nYouTube\n.\n\n\nThe materials are mainly from the \nOperating System Concepts, 9th Edition\n.",
             "title": "Preface"
         },
         {
             "location": "/OS/#operating-system-notes",
-            "text": "",
+            "text": "In this page, I'll work on my notes when I have class of  Operating System, Spring 2018  by Professor  Tei-Wei Kuo . Professor Kuo has also upload the course videos to  YouTube .  The materials are mainly from the  Operating System Concepts, 9th Edition .",
             "title": "Operating System | notes"
-        },
-        {
-            "location": "/OS/#getting-started",
-            "text": "In this page, I'll work on my notes when I have class of  Operating System, Spring 2018  by Professor  Tei-Wei Kuo . Professor Kuo has also upload the course videos to  YouTube .  The materials are mainly from the  Operating System Concepts, 9th Edition .  Please don't hesitate to give me your feedback if any adjustment is needed with the notes. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.",
-            "title": "Getting Started"
         },
         {
             "location": "/OS/Chap01/",
@@ -1054,6 +1049,21 @@
             "location": "/OS/Chap06/#684-implementation",
             "text": "",
             "title": "6.8.4 Implementation"
+        },
+        {
+            "location": "/ML/",
+            "text": "Machine Learning | notes\n\u00b6\n\n\nIn this page, I'll work on my notes when I watch the \nMachine Learning course video\n provided by Professor \nHung-yi Lee\n.",
+            "title": "Preface"
+        },
+        {
+            "location": "/ML/#machine-learning-notes",
+            "text": "In this page, I'll work on my notes when I watch the  Machine Learning course video  provided by Professor  Hung-yi Lee .",
+            "title": "Machine Learning | notes"
+        },
+        {
+            "location": "/ML/regression/",
+            "text": "",
+            "title": "Regression"
         }
     ]
 }
