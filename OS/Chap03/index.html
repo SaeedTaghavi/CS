@@ -1236,7 +1236,7 @@
 <li>return addresses</li>
 <li>
 <p>local variables</p>
-<p><img alt="small" src="../assets/images/3.1.png" /></p>
+<p><img alt="small" src="../../assets/os/3.1.png" /></p>
 </li>
 </ul>
 </li>
@@ -1283,7 +1283,7 @@
 <li><strong>Ready</strong>. Wait to be assigned to a processor</li>
 <li><strong>Terminated</strong>.</li>
 </ul>
-<p><img alt="normal" src="../assets/images/3.2.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.2.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Process and Processor</p>
 <p>Only <strong>1</strong> process runs on any processor. (Many processes may be <strong>ready</strong> and <strong>waiting</strong>.)</p>
@@ -1298,7 +1298,7 @@
 <li><strong>Accounting information</strong>. The amount of CPU and real time used, time limits, account numbers, job or process numbers.</li>
 <li><strong>I/O status information</strong>. The list of I/O devices allocated to the process, a list of open files.</li>
 </ul>
-<p><img alt="normal" src="../assets/images/3.4.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.4.png" /></p>
 <h2 id="32-process-scheduling">3.2 Process Scheduling<a class="headerlink" href="#32-process-scheduling" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Multiprogramming</strong>. To have some process running at all times $\to$ maximize CPU utilization.</li>
@@ -1309,8 +1309,8 @@
 <p>As processes enter the system, they are put into a <strong>job queue</strong>.</p>
 <p><strong>Job queue</strong>. Consists of all processes in the system.</p>
 <p><strong>Ready queue</strong>. Keep <em>ready</em> and <em>waiting</em> processes.</p>
-<p><img alt="normal" src="../assets/images/3.5.png" /></p>
-<p><img alt="normal" src="../assets/images/3.6.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.5.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.6.png" /></p>
 <p>When a process exit, it is removed from all queues and has its PCB and resources deallocated.</p>
 <h3 id="322-schedulers">3.2.2 Schedulers<a class="headerlink" href="#322-schedulers" title="Permanent link">&para;</a></h3>
 <p>Processes are first spooled to a mass-storage device (eg. disk). Then </p>
@@ -1341,7 +1341,7 @@
 <p class="admonition-title">Medium-term scheduler</p>
 <p>Swapping.</p>
 </div>
-<p><img alt="normal" src="../assets/images/3.7.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.7.png" /></p>
 <h3 id="323-context-switch">3.2.3 Context Switch<a class="headerlink" href="#323-context-switch" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">When a context switch occurs</p>
@@ -1357,7 +1357,7 @@
 <p class="admonition-title">init process</p>
 <p>A process has pid = 1, and serves as the root parent process for all user processes.</p>
 </div>
-<p><img alt="normal" src="../assets/images/3.8.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.8.png" /></p>
 <p>When a process creates a child process, that child process may obtain the resources from</p>
 <ul>
 <li>OS</li>
@@ -1405,7 +1405,7 @@
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-<img alt="normal" src="../assets/images/3.10.png" /></p>
+<img alt="normal" src="../../assets/os/3.10.png" /></p>
 <h3 id="332-process-termination">3.3.2 Process Termination<a class="headerlink" href="#332-process-termination" title="Permanent link">&para;</a></h3>
 <p>A process terminates when it finishes executing its final statement and asks the operating system to delete it by using the <code>exit()</code> system call.</p>
 <div class="admonition info">
@@ -1452,7 +1452,7 @@
 <li>Shared memory: slower (syscalls are required.)</li>
 <li>Message passing: faster (syscalls are required only to establish shared memory regions.)</li>
 </ul>
-<p><img alt="normal" src="../assets/images/3.12.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.12.png" /></p>
 <h3 id="341-shared-memory-systems">3.4.1 Shared-Memory Systems<a class="headerlink" href="#341-shared-memory-systems" title="Permanent link">&para;</a></h3>
 <h4 id="producerconsumer-problem">Producer–consumer problem<a class="headerlink" href="#producerconsumer-problem" title="Permanent link">&para;</a></h4>
 <p>A <strong>producer</strong> process produces information that is consumed by a <strong>consumer</strong> process.</p>
@@ -1659,7 +1659,7 @@
 <li>Larger messages: passed through a <strong>section object</strong> (a region of shared memory.)</li>
 <li>Very large messages: calling API to read/write directly into the address space.</li>
 </ol>
-<p><img alt="normal" src="../assets/images/3.19.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.19.png" /></p>
 <h2 id="36-communication-in-clientserver-systems">3.6 Communication in Client–Server Systems<a class="headerlink" href="#36-communication-in-clientserver-systems" title="Permanent link">&para;</a></h2>
 <h3 id="361-sockets">3.6.1 Sockets<a class="headerlink" href="#361-sockets" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
@@ -1677,7 +1677,7 @@
 <li>21: FTP</li>
 <li>80: HTTP</li>
 </ul>
-<p><img alt="normal" src="../assets/images/3.20.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.20.png" /></p>
 <p>Java provides:</p>
 <ul>
 <li>Connection-oriented (TCP) sockets: <code>Socket</code>.</li>
@@ -1738,7 +1738,7 @@
 </ul>
 </li>
 </ul>
-<p><img alt="normal" src="../assets/images/3.23.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.23.png" /></p>
 <h3 id="363-pipes">3.6.3 Pipes<a class="headerlink" href="#363-pipes" title="Permanent link">&para;</a></h3>
 <p>In implementing a pipe, four issues:</p>
 <ol>
@@ -1751,7 +1751,7 @@
 <div class="highlight"><pre><span></span>    <span class="n">pipe</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">[])</span>
 </pre></div>
 
-<p><img alt="normal" src="../assets/images/3.24.png" /></p>
+<p><img alt="normal" src="../../assets/os/3.24.png" /></p>
 <p>Ordinarya pipes on on Windows: <strong>anonymous pipes</strong> (similar to UNIX.)</p>
 <h4 id="3632-named-pipes">3.6.3.2 Named Pipes<a class="headerlink" href="#3632-named-pipes" title="Permanent link">&para;</a></h4>
 <table>

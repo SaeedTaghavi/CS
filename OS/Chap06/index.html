@@ -1322,7 +1322,7 @@
 <p>A process is executed until it must wait, typically for the completion of some I/O request.</p>
 <h3 id="611-cpuio-burst-cycle">6.1.1 CPU–I/O Burst Cycle<a class="headerlink" href="#611-cpuio-burst-cycle" title="Permanent link">&para;</a></h3>
 <p>Process execution = cycle of CPU + I/O wait.</p>
-<p><img alt="small" src="../assets/images/6.1.png" /></p>
+<p><img alt="small" src="../../assets/os/6.1.png" /></p>
 <h3 id="612-cpu-scheduler">6.1.2 CPU Scheduler<a class="headerlink" href="#612-cpu-scheduler" title="Permanent link">&para;</a></h3>
 <p><strong>Short-term scheduler</strong> (CPU scheduler): select process in the ready queue.</p>
 <h3 id="613-preemptive-scheduling">6.1.3 Preemptive Scheduling<a class="headerlink" href="#613-preemptive-scheduling" title="Permanent link">&para;</a></h3>
@@ -1403,7 +1403,7 @@
 <ul>
 <li>
 <p>Gantt chart:</p>
-<p><img alt="normal" src="../assets/images/FCFS.png" /></p>
+<p><img alt="normal" src="../../assets/os/FCFS.png" /></p>
 </li>
 <li>
 <p>Average waiting time = (0 + 24 + 27) / 3 = 17 ms.</p>
@@ -1415,7 +1415,7 @@
 <ul>
 <li>
 <p>Gantt chart:</p>
-<p><img alt="normal" src="../assets/images/FCFS-2.png" /></p>
+<p><img alt="normal" src="../../assets/os/FCFS-2.png" /></p>
 </li>
 <li>
 <p>Average waiting time = (0 + 3 + 6) / 3 = 9 ms.</p>
@@ -1478,7 +1478,7 @@
 <ul>
 <li>
 <p>Gantt chart:</p>
-<p><img alt="normal" src="../assets/images/SJF.png" /></p>
+<p><img alt="normal" src="../../assets/os/SJF.png" /></p>
 </li>
 <li>
 <p>Average waiting time = (3 + 16 + 9 + 0) / 4 = 7 ms.</p>
@@ -1542,7 +1542,7 @@
 <ul>
 <li>
 <p>Gantt chart:</p>
-<p><img alt="normal" src="../assets/images/SJF-2.png" /></p>
+<p><img alt="normal" src="../../assets/os/SJF-2.png" /></p>
 </li>
 <li>
 <p>Average waiting time = [(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5 ms.</p>
@@ -1609,7 +1609,7 @@
 <ul>
 <li>
 <p>Gantt chart:</p>
-<p><img alt="normal" src="../assets/images/priority.png" /></p>
+<p><img alt="normal" src="../../assets/os/priority.png" /></p>
 </li>
 <li>
 <p>Average waiting time = 8.2 ms. (How?)</p>
@@ -1666,7 +1666,7 @@
 </li>
 <li>
 <p>Gantt chart:</p>
-<p><img alt="normal" src="../assets/images/RR.png" /></p>
+<p><img alt="normal" src="../../assets/os/RR.png" /></p>
 </li>
 <li>
 <p>Average waiting time = [(10 - 4) + 4 + 7] / 3 = 5.66 ms.</p>
@@ -1701,7 +1701,7 @@
 </ul>
 <p>Each queue has absolute priority over lower-priority queues.</p>
 <p>If an interactive editing process entered the ready queue while a batch process was running, the batch process would be preempted.</p>
-<p><img alt="normal" src="../assets/images/6.6.png" /></p>
+<p><img alt="normal" src="../../assets/os/6.6.png" /></p>
 <h3 id="636-multilevel-feedback-queue-scheduling">6.3.6 Multilevel Feedback Queue Scheduling<a class="headerlink" href="#636-multilevel-feedback-queue-scheduling" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p>Multilevel feedback queue allows a process to move between queues.</p>
@@ -1761,7 +1761,7 @@
 <p class="admonition-title">Non-Uniform Memory Access (NUMA)</p>
 <p>A CPU has faster access to some parts of main memory than to other parts.</p>
 </div>
-<p><img alt="small" src="../assets/images/6.9.png" /></p>
+<p><img alt="small" src="../../assets/os/6.9.png" /></p>
 <h3 id="653-load-balancing">6.5.3 Load Balancing<a class="headerlink" href="#653-load-balancing" title="Permanent link">&para;</a></h3>
 <p>On systems with a common run queue, load balancing is often unnecessary, because once a processor becomes idle, it immediately extracts a runnable process from the common run queue.</p>
 <ul>
@@ -1835,7 +1835,7 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="normal" src="../assets/images/6.17.png" /></p>
+<p><img alt="normal" src="../../assets/os/6.17.png" /></p>
 </li>
 </ul>
 </li>
@@ -1865,13 +1865,13 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="normal" src="../assets/images/6.18.png" /></p>
+<p><img alt="normal" src="../../assets/os/6.18.png" /></p>
 </li>
 </ul>
 </li>
 </ul>
 <h3 id="664-earliest-deadline-first-scheduling">6.6.4 Earliest-Deadline-First Scheduling<a class="headerlink" href="#664-earliest-deadline-first-scheduling" title="Permanent link">&para;</a></h3>
-<p><img alt="normal" src="../assets/images/6.19.png" /></p>
+<p><img alt="normal" src="../../assets/os/6.19.png" /></p>
 <h3 id="665-proportional-share-scheduling">6.6.5 Proportional Share Scheduling<a class="headerlink" href="#665-proportional-share-scheduling" title="Permanent link">&para;</a></h3>
 <p>Proportional share schedulers operate by allocating $T$ shares among all applications. An application can receive $N$ shares of time.</p>
 <h3 id="666-posix-real-time-scheduling">6.6.6 POSIX Real-Time Scheduling<a class="headerlink" href="#666-posix-real-time-scheduling" title="Permanent link">&para;</a></h3>
