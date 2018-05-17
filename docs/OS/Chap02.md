@@ -10,7 +10,7 @@ Objectives:
 
 ## 2.1 Operating-System Services
 
-![normal](assets/images/2.1.png)
+![normal](../assets/os/2.1.png)
 
 - User interface (UI)
     - command-line interface (CLI)
@@ -69,7 +69,7 @@ On systems with multiple command interpreters to choose from, the interpreters a
 
 ## 2.3 Systems Calls
 
-![Example of how system calls are used](assets/images/2.5.png)
+![Example of how system calls are used](../assets/os/2.5.png)
 
 System calls provide an interface to the services made available by an operating system.
 
@@ -96,7 +96,7 @@ Why prefer API rather than invoking actual system calls?
 
 The relationship between an **API**, the **system-call interface**, and the **OS**
 
-![normal](assets/images/2.6.png)
+![normal](../assets/os/2.6.png)
 
 The caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.
 
@@ -112,7 +112,7 @@ Three general methods are used to pass parameters to the operating system.
 
 - placed or pushed onto the stack -> popped off the stack by the OS
 
-![normal](assets/images/2.7.png)
+![normal](../assets/os/2.7.png)
 
 ## 2.4 Types of System Calls
 
@@ -129,7 +129,7 @@ More severe errors can be indicated by a higher-level error parameter.
 
 eg. Standard C Library
 
-![normal](assets/images/libc.png)
+![normal](../assets/os/libc.png)
 
 ### 2.4.2 File Management
 

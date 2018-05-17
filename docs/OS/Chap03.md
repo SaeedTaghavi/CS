@@ -21,7 +21,7 @@ Process consists
     - return addresses
     - local variables
 
-        ![small](assets/images/3.1.png)
+        ![small](../assets/os/3.1.png)
 
 
 | Program | Process |
@@ -58,7 +58,7 @@ eg.
 - **Ready**. Wait to be assigned to a processor
 - **Terminated**.
 
-![normal](assets/images/3.2.png)
+![normal](../assets/os/3.2.png)
 
 !!! info "Process and Processor"
     Only **1** process runs on any processor. (Many processes may be **ready** and **waiting**.)
@@ -73,7 +73,7 @@ eg.
 - **Accounting information**. The amount of CPU and real time used, time limits, account numbers, job or process numbers.
 - **I/O status information**. The list of I/O devices allocated to the process, a list of open files.
 
-![normal](assets/images/3.4.png)
+![normal](../assets/os/3.4.png)
 
 ## 3.2 Process Scheduling
 
@@ -89,9 +89,9 @@ As processes enter the system, they are put into a **job queue**.
 
 **Ready queue**. Keep *ready* and *waiting* processes.
 
-![normal](assets/images/3.5.png)
+![normal](../assets/os/3.5.png)
 
-![normal](assets/images/3.6.png)
+![normal](../assets/os/3.6.png)
 
 When a process exit, it is removed from all queues and has its PCB and resources deallocated.
 
@@ -116,7 +116,7 @@ Processes are first spooled to a mass-storage device (eg. disk). Then
 !!! info "Medium-term scheduler"
     Swapping.
 
-![normal](assets/images/3.7.png)
+![normal](../assets/os/3.7.png)
 
 ### 3.2.3 Context Switch
 
@@ -133,7 +133,7 @@ Processes are first spooled to a mass-storage device (eg. disk). Then
 !!! note "init process"
     A process has pid = 1, and serves as the root parent process for all user processes.
 
-![normal](assets/images/3.8.png)
+![normal](../assets/os/3.8.png)
 
 When a process creates a child process, that child process may obtain the resources from
 
@@ -182,7 +182,7 @@ int main() {
     return 0;
 }
 ```
-![normal](assets/images/3.10.png)
+![normal](../assets/os/3.10.png)
 
 ### 3.3.2 Process Termination
 
@@ -230,7 +230,7 @@ Interprocess communication (IPC)
 - Shared memory: slower (syscalls are required.)
 - Message passing: faster (syscalls are required only to establish shared memory regions.)
 
-![normal](assets/images/3.12.png)
+![normal](../assets/os/3.12.png)
 
 ### 3.4.1 Shared-Memory Systems
 
@@ -439,7 +439,7 @@ When an ALPC channel is created, 1 of 3 message-passing techniques is chosen:
 2. Larger messages: passed through a **section object** (a region of shared memory.)
 3. Very large messages: calling API to read/write directly into the address space.
 
-![normal](assets/images/3.19.png)
+![normal](../assets/os/3.19.png)
 
 ## 3.6 Communication in Client–Server Systems
 
@@ -459,7 +459,7 @@ Well-known ports: (all ports below 1024 are considered well known)
 - 21: FTP
 - 80: HTTP
 
-![normal](assets/images/3.20.png)
+![normal](../assets/os/3.20.png)
 
 Java provides:
 
@@ -509,7 +509,7 @@ Issues for RPC:
 - Binding of the client and server port
     - Matchmaker (a rendezvous mechanism)
 
-![normal](assets/images/3.23.png)
+![normal](../assets/os/3.23.png)
 
 ### 3.6.3 Pipes
 
@@ -526,7 +526,7 @@ In implementing a pipe, four issues:
     pipe(int fd[])
 ```
 
-![normal](assets/images/3.24.png)
+![normal](../assets/os/3.24.png)
 
 Ordinarya pipes on on Windows: **anonymous pipes** (similar to UNIX.)
 

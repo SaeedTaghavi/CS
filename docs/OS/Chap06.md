@@ -10,7 +10,7 @@ A process is executed until it must wait, typically for the completion of some I
 
 Process execution = cycle of CPU + I/O wait.
 
-![small](assets/images/6.1.png)
+![small](../assets/os/6.1.png)
 
 ### 6.1.2 CPU Scheduler
 
@@ -72,7 +72,7 @@ CPU-scheduling decisions when a process:
 
         - Gantt chart:
 
-            ![normal](assets/images/FCFS.png)
+            ![normal](../assets/os/FCFS.png)
 
         - Average waiting time = (0 + 24 + 27) / 3 = 17 ms.
 
@@ -80,7 +80,7 @@ CPU-scheduling decisions when a process:
 
         - Gantt chart:
 
-            ![normal](assets/images/FCFS-2.png)
+            ![normal](../assets/os/FCFS-2.png)
 
         - Average waiting time = (0 + 3 + 6) / 3 = 9 ms.
 
@@ -110,7 +110,7 @@ CPU-scheduling decisions when a process:
 
         - Gantt chart:
 
-            ![normal](assets/images/SJF.png)
+            ![normal](../assets/os/SJF.png)
 
         - Average waiting time = (3 + 16 + 9 + 0) / 4 = 7 ms.
 
@@ -140,7 +140,7 @@ CPU-scheduling decisions when a process:
 
     - Gantt chart:
 
-        ![normal](assets/images/SJF-2.png)
+        ![normal](../assets/os/SJF-2.png)
 
     - Average waiting time = [(10 - 1) + (1 - 1) + (17 - 2) + (5 - 3)] / 4 = 26 / 4 = 6.5 ms.
 
@@ -167,7 +167,7 @@ CPU-scheduling decisions when a process:
 
         - Gantt chart:
 
-            ![normal](assets/images/priority.png)
+            ![normal](../assets/os/priority.png)
 
         - Average waiting time = 8.2 ms. (How?)
 
@@ -195,7 +195,7 @@ CPU-scheduling decisions when a process:
 
     - Gantt chart:
 
-        ![normal](assets/images/RR.png)
+        ![normal](../assets/os/RR.png)
 
     - Average waiting time = [(10 - 4) + 4 + 7] / 3 = 5.66 ms.
 
@@ -217,7 +217,7 @@ Each queue has absolute priority over lower-priority queues.
 
 If an interactive editing process entered the ready queue while a batch process was running, the batch process would be preempted.
 
-![normal](assets/images/6.6.png)
+![normal](../assets/os/6.6.png)
 
 ### 6.3.6 Multilevel Feedback Queue Scheduling
 
@@ -274,7 +274,7 @@ A multilevel feedback queue is defined by:
 !!! note "Non-Uniform Memory Access (NUMA)"
     A CPU has faster access to some parts of main memory than to other parts.
 
-![small](assets/images/6.9.png)
+![small](../assets/os/6.9.png)
 
 ### 6.5.3 Load Balancing
 
@@ -337,7 +337,7 @@ $$rate = 1 / p.$$
         | $P_1$ | $p_1 = 50$ | $t_1 = 20$ |
         | $P_2$ | $p_2 = 100$ | $t_2 = 35$ |
 
-        ![normal](assets/images/6.17.png)
+        ![normal](../assets/os/6.17.png)
 
 - Example 2:
 
@@ -348,11 +348,11 @@ $$rate = 1 / p.$$
         | $P_1$ | $p_1 = 50$ | $t_1 = 25$ |
         | $P_2$ | $p_2 = 80$ | $t_2 = 35$ |
 
-        ![normal](assets/images/6.18.png)
+        ![normal](../assets/os/6.18.png)
 
 ### 6.6.4 Earliest-Deadline-First Scheduling
 
-![normal](assets/images/6.19.png)
+![normal](../assets/os/6.19.png)
 
 ### 6.6.5 Proportional Share Scheduling
 

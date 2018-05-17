@@ -18,13 +18,13 @@ A thread have its own
 - register set
 - stack
 
-![normal](assets/images/4.1.png)
+![normal](../assets/os/4.1.png)
 
 ### 4.1.1 Motivation
 
 It is generally more efficient to use one process that contains multiple threads since process creation is time consuming and resource intensive.
 
-![normal](assets/images/4.2.png)
+![normal](../assets/os/4.2.png)
 
 ### 4.1.2 Benefits
 
@@ -46,11 +46,11 @@ Consider an application with 4 threads.
 
 - With a single core
 
-    ![small](assets/images/4.3.png)
+    ![small](../assets/os/4.3.png)
 
 - With multiple cores
 
-    ![small](assets/images/4.4.png)
+    ![small](../assets/os/4.4.png)
 
 | Parallelism | Concurrency |
 | :--: | :--: |
@@ -98,7 +98,7 @@ $$\sum_{i = 0}^{N - 1} arr[i] = \sum_{i = 0}^{N / 2 - 1} arr[i] (\text{thread } 
 
 eg. Green threads (Solaris)
 
-![small](assets/images/4.5.png)
+![small](../assets/os/4.5.png)
 
 ### 4.3.2 One-to-One Model
 
@@ -110,7 +110,7 @@ eg. Green threads (Solaris)
 
 eg. Windows NT/2000/XP, Linux, OS/2, Solaris 9
 
-![small](assets/images/4.6.png)
+![small](../assets/os/4.6.png)
 
 ### 4.3.3 Many-to-Many Model
 
@@ -119,8 +119,8 @@ eg. Windows NT/2000/XP, Linux, OS/2, Solaris 9
 
 eg. Solaris 2 & 9, IRIX, HP-UX, Tru64 UNIX
 
-![small](assets/images/4.7.png)
-![small](assets/images/4.8.png)
+![small](../assets/os/4.7.png)
+![small](../assets/os/4.8.png)
 
 ## 4.4 Thread Libraries
 
@@ -355,7 +355,7 @@ TLS is similar to `static` data.
 !!! note "Lightweight process (LWP)"
     A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)
 
-![small](assets/images/4.13.png)
+![small](../assets/os/4.13.png)
 
 !!! note "Scheduler activation"
     The kernel provides an application with a set of virtual processors (LWPs), and the application can schedule user threads onto an available virtual processor.
@@ -394,7 +394,7 @@ The general components of a thread include:
         - a user-mode stack
         - an array for TLS
 
-![small](assets/images/4.14.png)
+![small](../assets/os/4.14.png)
 
 ### 4.7.2 Linux Threads
 
