@@ -169,7 +169,7 @@ CPU-scheduling decisions when a process:
 
             ![normal](../assets/os/priority.png)
 
-        - Average waiting time = 8.2 ms. (How?)
+        - Average waiting time = (6 + 0 + 16 + 18 + 1) / 5 = 8.2 ms.
 
 !!! info "Problem with priority scheduling"
     - indefinite blocking: low-priority processes could starve to death!
@@ -211,7 +211,7 @@ CPU-scheduling decisions when a process:
     - Fixed-priority preemptive scheduling
         - e.g., foreground queues always have absolute priority over the background queues.
     - Time slice between queues
-        - e.g., 80% CPU is given to goreground processes, and 20% CPU is given to background processes.
+        - e.g., 80% CPU is given to foreground processes, and 20% CPU is given to background processes.
 
 Each queue has absolute priority over lower-priority queues.
 
