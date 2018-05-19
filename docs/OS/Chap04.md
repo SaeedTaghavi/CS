@@ -93,8 +93,8 @@ $$\sum_{i = 0}^{N - 1} arr[i] = \sum_{i = 0}^{N / 2 - 1} arr[i] (\text{thread } 
     - Efficiency
 
 - cons:
-    - One blocking syscall blocks all.
-    - No parallelism for multiple processors.
+    - One blocking syscall blocks all
+    - No parallelism for multiple processors
 
 eg. Green threads (Solaris)
 
@@ -103,10 +103,10 @@ eg. Green threads (Solaris)
 ### 4.3.2 One-to-One Model
 
 - pros:
-    - One syscall blocks one thread.
+    - One syscall blocks one thread
 
 - cons:
-    - Overheads in creating a kernel thread.
+    - Overheads in creating a kernel thread
 
 eg. Windows NT/2000/XP, Linux, OS/2, Solaris 9
 
@@ -115,7 +115,7 @@ eg. Windows NT/2000/XP, Linux, OS/2, Solaris 9
 ### 4.3.3 Many-to-Many Model
 
 - pros:
-    - A combination of parallelism and efficiency.
+    - A combination of parallelism and efficiency
 
 eg. Solaris 2 & 9, IRIX, HP-UX, Tru64 UNIX
 
@@ -153,7 +153,7 @@ Creating a `Thread` object does not specifically create the new thread. $\to$ `s
 
 1. It allocates memory and initializes a new thread in the JVM.
 2. It calls the `run()` method, making the thread eligible to be run by the JVM.
-(Note again that we never call the `run()` method directly. Rather, we call the `start()` method, and it calls the `run()` method on our behalf.)
+(Note again that we never call the `run()` method directly. Rather, we call the `start()` method, and it calls the `run()` method on our behalf)
 
 ## 4.5 Implicit Threading
 

@@ -61,7 +61,7 @@ do {
 A solution to the critical-section problem must satisfy:
 
 1. **Mutual exclusion**
-2. **Progree**. Cannot be postponed indefinitely.
+2. **Progress**. Cannot be postponed indefinitely.
 3. **Bounded waiting**
 
 Two general approches are used to handle critical sections:
@@ -106,7 +106,7 @@ do {
 2. The progress requirement is satisfied.
 3. The bounded-waiting requirement is met.
 
-    Suppose $P_i$ execute $turn = j$ first, then $P_j$ execute $turn = i$. In this assumption, $P_i$ will enter its critical section first and $P_j$ will be stocked in the `while(flag[i] && turn == i` (remember that here `i` should be thinked as `j` in the code!). After $P_i$ entering exit section, there are two possibilities:
+    Suppose $P_i$ execute $turn = j$ first, then $P_j$ execute $turn = i$. In this assumption, $P_i$ will enter its critical section first and $P_j$ will be stucked in the `while(flag[i] && turn == i` (remember that here `i` should be thinked as `j` in the code!). After $P_i$ entering exit section, there are two possibilities:
 
     1. $P_i$ sets `flag[i] = false`, then $P_j$ enters its critical section.
     2. After $P_i$ setting `flag[i] = false`, it immediately sets `flag[i] = true` again, consequently, it'll set `turn = j`, thus $P_j$ still can enter its critical section.
@@ -141,7 +141,7 @@ do {
 
 *Proof*
 
-1. Mutual exclusion: Only the process holds the lowest number can enter the critical section. For each process, when that process doens't get its number, the original process will be stocked in the first while-loop. After that process getting its number, we still need to compare their $numbers$ and $indices$.
+1. Mutual exclusion: Only the process holds the lowest number can enter the critical section. For each process, when that process doens't get its number, the original process will be stucked in the first while-loop. After that process getting its number, we still need to compare their $numbers$ and $indices$.
 2. Progress requirement: The processes won't be forever postponed.
 3. Bounded-waiting: Assume that a process holds the biggest number, it should wait other processes in the second while-loop. But after all other process entering their exit section and again entering their entry section, they'll get a bigger number, thus the process won't wait forever.
 
@@ -176,13 +176,13 @@ do {
 } while (true);
 ```
 
-The first process executing `while (test_and_set(&lock))` will set the address value of `lock` to `true` and get the return value `rv = false`, thus it won't be stocked in the while-loop and it can enter its critical section.
+The first process executing `while (test_and_set(&lock))` will set the address value of `lock` to `true` and get the return value `rv = false`, thus it won't be stucked in the while-loop and it can enter its critical section.
 
 1. Mutual exclusion: OK
 2. Progress requirement: OK
 3. Bounded-waiting: FAIL
 
-    Assume there is only one CPU, after $P_i$ entering its critical section, $P_j$ will be stocked in the while-loop. After $P_i$ exiting its critical section, there are two possibilities:
+    Assume there is only one CPU, after $P_i$ entering its critical section, $P_j$ will be stucked in the while-loop. After $P_i$ exiting its critical section, there are two possibilities:
 
     1. $P_i$ sets `lock = false`, the CPU context switch to $P_j$, thus $P_j$ can enters its critical section.
     2. After $P_i$ setting `lock = false`, the CPU still executes the code of $P_i$, thus $P_i$ enters its critical section again, so $P_j$ may wait forever.
@@ -255,14 +255,14 @@ do {
     if (j == i)                         // If no process is waiting
         lock = false;
     else
-        waiting[j] = false;             // Thus line 4 will be false and Pj won't be stocked anymore
+        waiting[j] = false;             // Thus line 4 will be false and Pj won't be stucked anymore
     /* remainder section */
 } while (true);
 ```
 
 Assume `lock` is initialized to `false`.
 
-1. Mutual exclusion: If many processes set their `waiting[i] = true`, after the first process execute `key = test_and_set(&lock)`, `key` will be set to `false` and `lock` will be set to `true`. Therefore, other processes will be stocked in `while (waiting[i] && key)` since their `key` will be set to `true` after `test_and_set(&lock)` (`lock` is now `true`).
+1. Mutual exclusion: If many processes set their `waiting[i] = true`, after the first process execute `key = test_and_set(&lock)`, `key` will be set to `false` and `lock` will be set to `true`. Therefore, other processes will be stucked in `while (waiting[i] && key)` since their `key` will be set to `true` after `test_and_set(&lock)` (`lock` is now `true`).
 2. Progress requirement: Only the process first run `test_and_set` can enter its critical section.
 3. Bounded-waiting: Wait at most $n - 1$ times.
 
@@ -364,9 +364,9 @@ typedef struct {
 
 ```c
 wait(semaphore *S) {
-    S->value--;
-    if (S->value < 0) {
-        add this process to S->list;
+    S$\to$value--;
+    if (S$\to$value < 0) {
+        add this process to S$\to$list;
         block();
     }
 }
@@ -374,9 +374,9 @@ wait(semaphore *S) {
 
 ```c
 signal(semaphore *S) {
-    S->value++;
-    if (S->value <= 0) {
-        remove a process P from S->list;
+    S$\to$value++;
+    if (S$\to$value <= 0) {
+        remove a process P from S$\to$list;
         wakeup(P);
     }
 }

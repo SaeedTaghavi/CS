@@ -13,10 +13,10 @@
 Process consists
 
 - **text** section: program code
-- **data** section: contains *global variables*
+- **data** section: *global variables*
 - **heap**: memory
 - current activity (*program counter* + *registers*)
-- **stack**: contains *temporary data*:
+- **stack**: *temporary data*:
     - function parameters
     - return addresses
     - local variables
@@ -52,42 +52,41 @@ eg.
 
 ### 3.1.2 Process State
 
-- **New**.
-- **Running**. Execute instructions
-- **Waiting**. Wait some event (I/O, signal)
-- **Ready**. Wait to be assigned to a processor
-- **Terminated**.
+- **New**
+- **Running**: execute instructions
+- **Waiting**: wait some event (I/O, signal)
+- **Ready**: wait to be assigned to a processor
+- **Terminated**
 
 ![normal](../assets/os/3.2.png)
 
 !!! info "Process and Processor"
-    Only **1** process runs on any processor. (Many processes may be **ready** and **waiting**.)
+    Only **1** process runs on any processor. (Many processes may be **ready** and **waiting**)
 
 ### 3.1.3 Process Control Block
 
-- **Process state**.
-- **Program counter**. Address of the next instruction.
-- **CPU registers**. Accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.
-- **CPU-scheduling information**.
-- **Memory-management information**.
-- **Accounting information**. The amount of CPU and real time used, time limits, account numbers, job or process numbers.
-- **I/O status information**. The list of I/O devices allocated to the process, a list of open files.
+- **Process state**
+- **Program counter**: address of the next instruction
+- **CPU registers**: accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information
+- **CPU-scheduling information**
+- **Memory-management information**
+- **Accounting information**: the amount of CPU and real time used, time limits, account numbers, job or process numbers
+- **I/O status information**: the list of I/O devices allocated to the process, a list of open files
 
 ![normal](../assets/os/3.4.png)
 
 ## 3.2 Process Scheduling
 
-- **Multiprogramming**. To have some process running at all times $\to$ maximize CPU utilization.
-- **Time sharing**. Switch the CPU among processes.
-- **Process scheduler**. Selects an available process.
+- **Multiprogramming**: to have some process running at all times $\to$ maximize CPU utilization
+- **Time sharing**: switch the CPU among processes
+- **Process scheduler**: selects an available process
 
 ### 3.2.1 Scheduling Queues
 
 As processes enter the system, they are put into a **job queue**.
 
-**Job queue**. Consists of all processes in the system.
-
-**Ready queue**. Keep *ready* and *waiting* processes.
+- **Job queue**: consists of all processes in the system.
+- **Ready queue**: keep *ready* and *waiting* processes.
 
 ![normal](../assets/os/3.5.png)
 
@@ -101,20 +100,20 @@ Processes are first spooled to a mass-storage device (eg. disk). Then
 
 - **Long-term scheduler** (job)
 
-    1. selects processes from this pool.
-    2. loads theme into memory *for* execution.
+    1. selects processes from this pool
+    2. loads theme into memory *for* execution
 
 - **Short-term scheduler** (CPU)
 
     1. selects from among the processes that are ready to execute
-    2. allocates CPU to one of them.
+    2. allocates CPU to one of them
 
 !!! info "Long-term scheduler"
-    - Controls the **degree of multiprogramming** (# processes).
-    - Selects a good **process mix** of I/O-bound and CPU-bound.
+    - Controls the **degree of multiprogramming** (# processes)
+    - Selects a good **process mix** of I/O-bound and CPU-bound
 
 !!! info "Medium-term scheduler"
-    Swapping.
+    Swapping
 
 ![normal](../assets/os/3.7.png)
 
@@ -153,10 +152,10 @@ There are also two address-space possibilities for the new process
 !!! note "`fork()`"
     The new process created by `fork()` consists of a copy of the address of parent process.
 
-Return code
+- Return code
 
-- Child process: 0.
-- Parent process: pid of the child.
+    - Child process: 0
+    - Parent process: pid of the child
 
 !!! info "After `fork()` syscall"
     One of the two processes uses the `exec()` syscall to replace the process's memory space with a new program.
@@ -193,7 +192,7 @@ A process terminates when it finishes executing its final statement and asks the
 
 A parent can terminate its children by
 
-- The child use too much resources. (The parent have a mechanism to inspect the state of its children.)
+- The child use too much resources. (The parent have a mechanism to inspect the state of its children)
 - The task assigned to the child is no longer required.
 - The parent is exiting.
 
@@ -227,8 +226,8 @@ Processes have two classifications:
 
 Interprocess communication (IPC)
 
-- Shared memory: slower (syscalls are required.)
-- Message passing: faster (syscalls are required only to establish shared memory regions.)
+- Shared memory: slower (syscalls are required)
+- Message passing: faster (syscalls are required only to establish shared memory regions)
 
 ![normal](../assets/os/3.12.png)
 
@@ -295,6 +294,7 @@ Message passing provides a mechanism to allow processes to communicate and to sy
     If processes $P$ and $Q$ want to communicate, they must send messages to and receive messages from each other.
 
 Several implentation of `send()`/`receive()` operations:
+
 - Direct of indirect communication
 - Synchronous or asynchronous communication
 - Automatic or explicit buffering
@@ -305,7 +305,7 @@ Several implentation of `send()`/`receive()` operations:
 
     The messages are sent to and received from processes.
 
-    - Symmetry ()
+    - Symmetry
 
         - `send(P, message)`
         - `receive(Q, message)`
@@ -317,10 +317,10 @@ Several implentation of `send()`/`receive()` operations:
 
 - **Indirect communication**
 
-    The messages are sent to and received from __*mailboxes*__, or __*ports*__.
+    The messages are sent to and received from ***mailboxes***, or ***ports***.
 
-    - `send(A, message)` — Send a message to mailbox A.
-    - `receive(A, message)` — Receive a message from mailbox A.
+    - `send(A, message)` — send a message to mailbox A
+    - `receive(A, message)` — receive a message from mailbox A
 
 The process that creates a new mailbox is that mailbox's owner by default.
 
@@ -333,13 +333,13 @@ Message passing may be either
 
 - Blocking (synchronous)
     
-    - Blocking send. (blocked until the message is received)
-    - Blocking receive.
+    - Blocking send (blocked until the message is received)
+    - Blocking receive
 
 - Nonblocking (asynchronous)
 
-    - Nonblocking send.
-    - Nonblocking receive. (valid message or a null)
+    - Nonblocking send
+    - Nonblocking receive (valid message or a null)
 
 !!! note "Rendezvous"
     When both `send()` and `receive()` are blocking.
@@ -348,9 +348,9 @@ Message passing may be either
 
 Messages reside in a temporary queue:
 
-- Zero capacity. (no buffering)
-- Bounded capacity.
-- Unbounded capacity.
+- Zero capacity (no buffering)
+- Bounded capacity
+- Unbounded capacity
 
 ## 3.5 Examples of IPC Systems
 
@@ -393,10 +393,10 @@ There are three syscalls needed:
 
     If the mailbox is full:
 
-    1. Wait indefinitely until there is room in the mailbox.
-    2. Wait at most $n$ milliseconds.
-    3. Do not wait at all but rather return immediately.
-    4. Temporarily cache a message. (server tasks)
+    1. Wait indefinitely until there is room in the mailbox
+    2. Wait at most $n$ milliseconds
+    3. Do not wait at all but rather return immediately
+    4. Temporarily cache a message (server tasks)
 
 - `msg_receive()`
 - `msg_rpc()`: sends a message and waits for exactly one return message from the sender.
@@ -407,7 +407,7 @@ There are three syscalls needed:
 !!! note "`port_allocate()`"
     Creates a new mailbox and allocates space for its queue of messages.
 
-Mach guarantees that multiple messages from the same sender are queued in first-in, first-out (FIFO) order but does not guarantee an absolute ordering.
+Mach guarantees that multiple messages from the same sender are queued in first-in, first-out (FIFO) order but does not guarantee an absolute ordering
 
 !!! info ""
     One task can either own or receive from a mailbox
@@ -436,7 +436,7 @@ Windows uses two types of ports
 When an ALPC channel is created, 1 of 3 message-passing techniques is chosen:
 
 1. Small messages: using the port's message queue.
-2. Larger messages: passed through a **section object** (a region of shared memory.)
+2. Larger messages: passed through a **section object** (a region of shared memory)
 3. Very large messages: calling API to read/write directly into the address space.
 
 ![normal](../assets/os/3.19.png)
@@ -463,8 +463,8 @@ Well-known ports: (all ports below 1024 are considered well known)
 
 Java provides:
 
-- Connection-oriented (TCP) sockets: `Socket`.
-- Connectionless (UDP) sockets: `DatagramSocket`.
+- Connection-oriented (TCP) sockets: `Socket`
+- Connectionless (UDP) sockets: `DatagramSocket`
 - `MulticastSocket`: a subclass of `DatagramSocket`. It allows data to be sent to multiple recipients.
 
 !!! note "Loopback"
@@ -489,14 +489,14 @@ Procedure of RPCs:
 
 1. The client invokes a RPC
 2. RPC system
-    - calls the appropriate stub (client side).
-    - passes the stub the parameters to the RPC.
-3. Marshals parameter: packaging the parameters into a form that can be transmitted over a network.
+    - calls the appropriate stub (client side)
+    - passes the stub the parameters to the RPC
+3. Marshals parameter: packaging the parameters into a form that can be transmitted over a network
 4. The stub transmits a message to the server using message passing.
 5. A stub (server side) 
     - receives this message
-    - invokes the procedure on the server.
-6. (optional) Return values using the same technique.
+    - invokes the procedure on the server
+6. (optional) Return values using the same technique
 
 Issues for RPC:
 
@@ -528,7 +528,7 @@ In implementing a pipe, four issues:
 
 ![normal](../assets/os/3.24.png)
 
-Ordinarya pipes on on Windows: **anonymous pipes** (similar to UNIX.)
+Ordinarya pipes on on Windows: **anonymous pipes** (similar to UNIX)
 
 #### 3.6.3.2 Named Pipes
 
