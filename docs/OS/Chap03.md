@@ -164,7 +164,7 @@ Creating a separate process using the UNIX `fork()` system call.
 
 ```c
 int main() { 
-    pid t pid;
+    pid_t pid;
     
     /* fork a child process */
     pid = fork();

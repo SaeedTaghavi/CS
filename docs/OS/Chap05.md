@@ -137,7 +137,7 @@ do {
 } white (true);
 ```
 
-- An observation: If $P_i$ is in its critical section, and $P_k (k != i)$ , then $(number[i], i) < (number[k], k)$.
+- An observation: If $P_i$ is in its critical section, and $P_k (k \ne i)$ , then $(number[i], i) < (number[k], k)$.
 
 *Proof*
 
@@ -260,6 +260,15 @@ do {
 } while (true);
 ```
 
+```c
+boolean test_and_set(boolean *target) {
+    boolean rv = *target;
+    *target = true;
+
+    return rv;
+}
+```
+
 Assume `lock` is initialized to `false`.
 
 1. Mutual exclusion: If many processes set their `waiting[i] = true`, after the first process execute `key = test_and_set(&lock)`, `key` will be set to `false` and `lock` will be set to `true`. Therefore, other processes will be stucked in `while (waiting[i] && key)` since their `key` will be set to `true` after `test_and_set(&lock)` (`lock` is now `true`).
@@ -270,7 +279,7 @@ Assume `lock` is initialized to `false`.
 
 A high-level software solution to provide protect critical sections with mutual exclusion.
 
-- Acomic execution of `acquire()` and `release()`.
+- Atomic execution of `acquire()` and `release()`.
 - Spinlock:
     - pros: No context switch for multiprocessor systems.
     - cons: Busy waiting.
@@ -304,8 +313,8 @@ do {
 
 A high-level solution for more complex problems.
 
-- A variable `S` only accessible by two atomic operations.
-- Spinlock.
+- A variable `S` only accessible by two atomic operations
+- Spinlock
 
 ```c
 wait(S) {               /* P */
@@ -364,9 +373,9 @@ typedef struct {
 
 ```c
 wait(semaphore *S) {
-    S$\to$value--;
-    if (S$\to$value < 0) {
-        add this process to S$\to$list;
+    S->value--;
+    if (S->value < 0) {
+        add this process to S->list;
         block();
     }
 }
@@ -374,9 +383,9 @@ wait(semaphore *S) {
 
 ```c
 signal(semaphore *S) {
-    S$\to$value++;
-    if (S$\to$value <= 0) {
-        remove a process P from S$\to$list;
+    S->value++;
+    if (S->value <= 0) {
+        remove a process P from S->list;
         wakeup(P);
     }
 }
@@ -400,6 +409,13 @@ wait(Q); & wait(S); \\\\
 signal(S); & signal(Q); \\\\
 signal(Q); & signal(S); \\\\
 \end{array}
+
+Deadlock may happen (assume $S = 1$ and $Q = 1$: 
+
+1. $P_0$ calls $wait(S)$
+2. $P_1$ calls $wait(Q)$
+3. $P_1$ calls $wait(S)$
+4. $P_0$ calls $wait(Q)$
 
 !!! note "Starvation (Indefinite blocking)"
     A situation in which processes wait indefinitely within the semaphore.
@@ -453,33 +469,37 @@ semaphore empty = n;
 semaphore full = 0;
 ```
 
-```c
-do {
-    /* produce an item in next_produced */
+- Producer:
 
-    wait(empty);
-    wait(mutex);
+    ```c
+    do {
+        /* produce an item in next_produced */
 
-    /* add next_produced to the buffer */
+        wait(empty);
+        wait(mutex);
 
-    signal(mutex);
-    signal(full);
-} while (true);
-```
+        /* add next_produced to the buffer */
 
-```c
-do {
-    wait(full);
-    wait(mutex);
+        signal(mutex);
+        signal(full);
+    } while (true);
+    ```
 
-    /* remove an item from buffer to next_consumed */
+- Consumer:
 
-    signal(mutex);
-    signal(empty);
+    ```c
+    do {
+        wait(full);
+        wait(mutex);
 
-    /* consume the item in next_consumed */
-} while (true);
-```
+        /* remove an item from buffer to next_consumed */
+
+        signal(mutex);
+        signal(empty);
+
+        /* consume the item in next_consumed */
+    } while (true);
+    ```
 
 ### 5.7.2 The Readers–Writers Problem
 
@@ -562,23 +582,27 @@ struct buffer {
 };
 ```
 
-```c
+- Producer:
+
+    ```c
     region buffer when
     (count < n) {
         pool[in] = next_produced;
         in = (in + 1) % n;
         count++;
     }
-```
+    ```
 
-```c
+- Consumer:
+
+    ```c
     region buffer when
     (count > 0) {
         next_consumed = pool[out];
         out = (out + 1) % n;
         count--;
     }
-```
+    ```
 
 ## 5.8 Monitors
 
@@ -627,13 +651,17 @@ monitor DiningPhilosophers {
 }
 ```
 
-```c
-DiningPhilosophers.pickup(i);
+- $P_i$:
 
-/* eat */
+    ```c
+    DiningPhilosophers.pickup(i);
 
-DiningPhilosophers.putdown(i);
-```
+    /* eat */
+
+    DiningPhilosophers.putdown(i);
+    ```
+
+No deadlock, but starvation could occur!
 
 ### 5.8.3 Implementing a Monitor Using Semaphores
 
@@ -672,7 +700,7 @@ For each condition `x`, we introduce a semaphore `x_sem` and an integer variable
 - `x.signal()`
 
     ```c
-    if (x_count > 0) {
+    if (x_count > 0) {      /* If there's somebody being waiting */
         next_count++;
         signal(x_sem);
         wait(next);
@@ -720,16 +748,94 @@ monitor ResourceAllocator {
 
 ### 5.9.1 Synchronization in Windows
 
+- General Mechanism
+    - Spin-locking for short code segments in a multiprocessor platform.
+    - Interrupt disabling when the kernel accesses global variables in a uniprocessor platform.
+
+- Dispatcher Object
+    - State: signaled or non-signaled
+    - Mutex: select one process from its waiting queue to the ready queue.
+        - Critical-section object — user-mode mutex
+    - Events: like condition variables
+    - Timers: select all waiting processes
+
 ### 5.9.2 Synchronization in Linux
+
+Preemptive kernel after version 2.6.
+
+- Atomic integer
+
+    ```c
+    atomic_t counter;
+    ...
+    atomic_set(&counter, 5);
+    atomic_add(10, &counter);
+    ```
+
+- Semaphores for long code segments. Mutex locks for the kernel code.
+- Sping-locking for short code segments in a multiprocessor platform.
+- Preeption disabling and enabling in a uniprocessor platform.
+    - `preempt_disable()` and `preempt_enable()`
+    - `preempt_count` for each task in the system
 
 ### 5.9.3 Synchronization in Solaris
 
+- Semaphores and conditional variables
+- Adaptive mutex
+    - spin-locking if the lock-holding thread is running; otherwise, blocking is used
+- Readers-writers locks
+    - expensive in implementations
+- Turnstile
+    - A queue structure containing threads blocked on a lock
+    - Priotity inversion $\to$ priority inheritance protocol for kernel threads
+
 ### 5.9.4 Pthreads Synchronization
+
+- General Mechanism
+    - Mutex locks: mutual exclusion
+    - Conditional variables: monitor
+    - Read-write locks
 
 ## 5.10 Alternative Approaches
 
 ### 5.10.1 Transactional Memory
 
+!!! note "Memory transaction"
+    A sequence of memory read-write operations that are atomic.
+
+Committed or being roleld back:
+
+```c
+void update() {
+    atomic {
+        /* modify shared data */
+    }
+}
+```
+
+- Advantages:
+    - No deadlock
+    - Identification of potentially concurrently executing statements in atomic blocks
+- Implementations:
+    - Software transaction memory
+        - Code is inserted by the *compiler*.
+    - Hardware transactional memory
+        - *Hardware* cache hierarchies and cache coherency protocols are used.
+
 ### 5.10.2 OpenMP
+
+- A set of compiler directives and an API
+    - The critical-section compiler directive behaves like a binary semaphore or mutex.
+
+```c
+void update() {
+    #pragma omp critical {
+        counter += value;
+    }
+}
+```
+
+- pros: easy to use
+- cons: identification of protected code and potentials of deadlocks
 
 ### 5.10.3 Functional Programming Languages
