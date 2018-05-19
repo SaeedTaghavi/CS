@@ -1228,10 +1228,10 @@
 <p>Process consists</p>
 <ul>
 <li><strong>text</strong> section: program code</li>
-<li><strong>data</strong> section: contains <em>global variables</em></li>
+<li><strong>data</strong> section: <em>global variables</em></li>
 <li><strong>heap</strong>: memory</li>
 <li>current activity (<em>program counter</em> + <em>registers</em>)</li>
-<li><strong>stack</strong>: contains <em>temporary data</em>:<ul>
+<li><strong>stack</strong>: <em>temporary data</em>:<ul>
 <li>function parameters</li>
 <li>return addresses</li>
 <li>
@@ -1277,38 +1277,40 @@
 </div>
 <h3 id="312-process-state">3.1.2 Process State<a class="headerlink" href="#312-process-state" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>New</strong>.</li>
-<li><strong>Running</strong>. Execute instructions</li>
-<li><strong>Waiting</strong>. Wait some event (I/O, signal)</li>
-<li><strong>Ready</strong>. Wait to be assigned to a processor</li>
-<li><strong>Terminated</strong>.</li>
+<li><strong>New</strong></li>
+<li><strong>Running</strong>: execute instructions</li>
+<li><strong>Waiting</strong>: wait some event (I/O, signal)</li>
+<li><strong>Ready</strong>: wait to be assigned to a processor</li>
+<li><strong>Terminated</strong></li>
 </ul>
 <p><img alt="normal" src="../../assets/os/3.2.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Process and Processor</p>
-<p>Only <strong>1</strong> process runs on any processor. (Many processes may be <strong>ready</strong> and <strong>waiting</strong>.)</p>
+<p>Only <strong>1</strong> process runs on any processor. (Many processes may be <strong>ready</strong> and <strong>waiting</strong>)</p>
 </div>
 <h3 id="313-process-control-block">3.1.3 Process Control Block<a class="headerlink" href="#313-process-control-block" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Process state</strong>.</li>
-<li><strong>Program counter</strong>. Address of the next instruction.</li>
-<li><strong>CPU registers</strong>. Accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information.</li>
-<li><strong>CPU-scheduling information</strong>.</li>
-<li><strong>Memory-management information</strong>.</li>
-<li><strong>Accounting information</strong>. The amount of CPU and real time used, time limits, account numbers, job or process numbers.</li>
-<li><strong>I/O status information</strong>. The list of I/O devices allocated to the process, a list of open files.</li>
+<li><strong>Process state</strong></li>
+<li><strong>Program counter</strong>: address of the next instruction</li>
+<li><strong>CPU registers</strong>: accumulators, index registers, stack pointers, general-purpose registers, and any condition-code information</li>
+<li><strong>CPU-scheduling information</strong></li>
+<li><strong>Memory-management information</strong></li>
+<li><strong>Accounting information</strong>: the amount of CPU and real time used, time limits, account numbers, job or process numbers</li>
+<li><strong>I/O status information</strong>: the list of I/O devices allocated to the process, a list of open files</li>
 </ul>
 <p><img alt="normal" src="../../assets/os/3.4.png" /></p>
 <h2 id="32-process-scheduling">3.2 Process Scheduling<a class="headerlink" href="#32-process-scheduling" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Multiprogramming</strong>. To have some process running at all times $\to$ maximize CPU utilization.</li>
-<li><strong>Time sharing</strong>. Switch the CPU among processes.</li>
-<li><strong>Process scheduler</strong>. Selects an available process.</li>
+<li><strong>Multiprogramming</strong>: to have some process running at all times $\to$ maximize CPU utilization</li>
+<li><strong>Time sharing</strong>: switch the CPU among processes</li>
+<li><strong>Process scheduler</strong>: selects an available process</li>
 </ul>
 <h3 id="321-scheduling-queues">3.2.1 Scheduling Queues<a class="headerlink" href="#321-scheduling-queues" title="Permanent link">&para;</a></h3>
 <p>As processes enter the system, they are put into a <strong>job queue</strong>.</p>
-<p><strong>Job queue</strong>. Consists of all processes in the system.</p>
-<p><strong>Ready queue</strong>. Keep <em>ready</em> and <em>waiting</em> processes.</p>
+<ul>
+<li><strong>Job queue</strong>: consists of all processes in the system.</li>
+<li><strong>Ready queue</strong>: keep <em>ready</em> and <em>waiting</em> processes.</li>
+</ul>
 <p><img alt="normal" src="../../assets/os/3.5.png" /></p>
 <p><img alt="normal" src="../../assets/os/3.6.png" /></p>
 <p>When a process exit, it is removed from all queues and has its PCB and resources deallocated.</p>
@@ -1318,28 +1320,28 @@
 <li>
 <p><strong>Long-term scheduler</strong> (job)</p>
 <ol>
-<li>selects processes from this pool.</li>
-<li>loads theme into memory <em>for</em> execution.</li>
+<li>selects processes from this pool</li>
+<li>loads theme into memory <em>for</em> execution</li>
 </ol>
 </li>
 <li>
 <p><strong>Short-term scheduler</strong> (CPU)</p>
 <ol>
 <li>selects from among the processes that are ready to execute</li>
-<li>allocates CPU to one of them.</li>
+<li>allocates CPU to one of them</li>
 </ol>
 </li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Long-term scheduler</p>
 <ul>
-<li>Controls the <strong>degree of multiprogramming</strong> (# processes).</li>
-<li>Selects a good <strong>process mix</strong> of I/O-bound and CPU-bound.</li>
+<li>Controls the <strong>degree of multiprogramming</strong> (# processes)</li>
+<li>Selects a good <strong>process mix</strong> of I/O-bound and CPU-bound</li>
 </ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Medium-term scheduler</p>
-<p>Swapping.</p>
+<p>Swapping</p>
 </div>
 <p><img alt="normal" src="../../assets/os/3.7.png" /></p>
 <h3 id="323-context-switch">3.2.3 Context Switch<a class="headerlink" href="#323-context-switch" title="Permanent link">&para;</a></h3>
@@ -1377,10 +1379,14 @@
 <p class="admonition-title"><code>fork()</code></p>
 <p>The new process created by <code>fork()</code> consists of a copy of the address of parent process.</p>
 </div>
+<ul>
+<li>
 <p>Return code</p>
 <ul>
-<li>Child process: 0.</li>
-<li>Parent process: pid of the child.</li>
+<li>Child process: 0</li>
+<li>Parent process: pid of the child</li>
+</ul>
+</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">After <code>fork()</code> syscall</p>
@@ -1414,7 +1420,7 @@
 </div>
 <p>A parent can terminate its children by</p>
 <ul>
-<li>The child use too much resources. (The parent have a mechanism to inspect the state of its children.)</li>
+<li>The child use too much resources. (The parent have a mechanism to inspect the state of its children)</li>
 <li>The task assigned to the child is no longer required.</li>
 <li>The parent is exiting.</li>
 </ul>
@@ -1449,8 +1455,8 @@
 </ul>
 <p>Interprocess communication (IPC)</p>
 <ul>
-<li>Shared memory: slower (syscalls are required.)</li>
-<li>Message passing: faster (syscalls are required only to establish shared memory regions.)</li>
+<li>Shared memory: slower (syscalls are required)</li>
+<li>Message passing: faster (syscalls are required only to establish shared memory regions)</li>
 </ul>
 <p><img alt="normal" src="../../assets/os/3.12.png" /></p>
 <h3 id="341-shared-memory-systems">3.4.1 Shared-Memory Systems<a class="headerlink" href="#341-shared-memory-systems" title="Permanent link">&para;</a></h3>
@@ -1507,10 +1513,12 @@
 <p class="admonition-title">Communication link</p>
 <p>If processes $P$ and $Q$ want to communicate, they must send messages to and receive messages from each other.</p>
 </div>
-<p>Several implentation of <code>send()</code>/<code>receive()</code> operations:
-- Direct of indirect communication
-- Synchronous or asynchronous communication
-- Automatic or explicit buffering</p>
+<p>Several implentation of <code>send()</code>/<code>receive()</code> operations:</p>
+<ul>
+<li>Direct of indirect communication</li>
+<li>Synchronous or asynchronous communication</li>
+<li>Automatic or explicit buffering</li>
+</ul>
 <h4 id="3421-naming">3.4.2.1 Naming<a class="headerlink" href="#3421-naming" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
@@ -1518,7 +1526,7 @@
 <p>The messages are sent to and received from processes.</p>
 <ul>
 <li>
-<p>Symmetry ()</p>
+<p>Symmetry</p>
 <ul>
 <li><code>send(P, message)</code></li>
 <li><code>receive(Q, message)</code></li>
@@ -1537,8 +1545,8 @@
 <p><strong>Indirect communication</strong></p>
 <p>The messages are sent to and received from <strong><em>mailboxes</em></strong>, or <strong><em>ports</em></strong>.</p>
 <ul>
-<li><code>send(A, message)</code> — Send a message to mailbox A.</li>
-<li><code>receive(A, message)</code> — Receive a message from mailbox A.</li>
+<li><code>send(A, message)</code> — send a message to mailbox A</li>
+<li><code>receive(A, message)</code> — receive a message from mailbox A</li>
 </ul>
 </li>
 </ul>
@@ -1552,15 +1560,15 @@
 <li>
 <p>Blocking (synchronous)</p>
 <ul>
-<li>Blocking send. (blocked until the message is received)</li>
-<li>Blocking receive.</li>
+<li>Blocking send (blocked until the message is received)</li>
+<li>Blocking receive</li>
 </ul>
 </li>
 <li>
 <p>Nonblocking (asynchronous)</p>
 <ul>
-<li>Nonblocking send.</li>
-<li>Nonblocking receive. (valid message or a null)</li>
+<li>Nonblocking send</li>
+<li>Nonblocking receive (valid message or a null)</li>
 </ul>
 </li>
 </ul>
@@ -1571,9 +1579,9 @@
 <h4 id="3423-buffering">3.4.2.3 Buffering<a class="headerlink" href="#3423-buffering" title="Permanent link">&para;</a></h4>
 <p>Messages reside in a temporary queue:</p>
 <ul>
-<li>Zero capacity. (no buffering)</li>
-<li>Bounded capacity.</li>
-<li>Unbounded capacity.</li>
+<li>Zero capacity (no buffering)</li>
+<li>Bounded capacity</li>
+<li>Unbounded capacity</li>
 </ul>
 <h2 id="35-examples-of-ipc-systems">3.5 Examples of IPC Systems<a class="headerlink" href="#35-examples-of-ipc-systems" title="Permanent link">&para;</a></h2>
 <h3 id="351-an-example-posix-shared-memory">3.5.1 An Example: POSIX Shared Memory<a class="headerlink" href="#351-an-example-posix-shared-memory" title="Permanent link">&para;</a></h3>
@@ -1607,10 +1615,10 @@
 <p><code>msg_send()</code></p>
 <p>If the mailbox is full:</p>
 <ol>
-<li>Wait indefinitely until there is room in the mailbox.</li>
-<li>Wait at most $n$ milliseconds.</li>
-<li>Do not wait at all but rather return immediately.</li>
-<li>Temporarily cache a message. (server tasks)</li>
+<li>Wait indefinitely until there is room in the mailbox</li>
+<li>Wait at most $n$ milliseconds</li>
+<li>Do not wait at all but rather return immediately</li>
+<li>Temporarily cache a message (server tasks)</li>
 </ol>
 </li>
 <li>
@@ -1626,7 +1634,7 @@
 <p class="admonition-title"><code>port_allocate()</code></p>
 <p>Creates a new mailbox and allocates space for its queue of messages.</p>
 </div>
-<p>Mach guarantees that multiple messages from the same sender are queued in first-in, first-out (FIFO) order but does not guarantee an absolute ordering.</p>
+<p>Mach guarantees that multiple messages from the same sender are queued in first-in, first-out (FIFO) order but does not guarantee an absolute ordering</p>
 <div class="admonition info">
 <p>One task can either own or receive from a mailbox</p>
 </div>
@@ -1656,7 +1664,7 @@
 <p>When an ALPC channel is created, 1 of 3 message-passing techniques is chosen:</p>
 <ol>
 <li>Small messages: using the port's message queue.</li>
-<li>Larger messages: passed through a <strong>section object</strong> (a region of shared memory.)</li>
+<li>Larger messages: passed through a <strong>section object</strong> (a region of shared memory)</li>
 <li>Very large messages: calling API to read/write directly into the address space.</li>
 </ol>
 <p><img alt="normal" src="../../assets/os/3.19.png" /></p>
@@ -1680,8 +1688,8 @@
 <p><img alt="normal" src="../../assets/os/3.20.png" /></p>
 <p>Java provides:</p>
 <ul>
-<li>Connection-oriented (TCP) sockets: <code>Socket</code>.</li>
-<li>Connectionless (UDP) sockets: <code>DatagramSocket</code>.</li>
+<li>Connection-oriented (TCP) sockets: <code>Socket</code></li>
+<li>Connectionless (UDP) sockets: <code>DatagramSocket</code></li>
 <li><code>MulticastSocket</code>: a subclass of <code>DatagramSocket</code>. It allows data to be sent to multiple recipients.</li>
 </ul>
 <div class="admonition note">
@@ -1706,18 +1714,18 @@
 <ol>
 <li>The client invokes a RPC</li>
 <li>RPC system<ul>
-<li>calls the appropriate stub (client side).</li>
-<li>passes the stub the parameters to the RPC.</li>
+<li>calls the appropriate stub (client side)</li>
+<li>passes the stub the parameters to the RPC</li>
 </ul>
 </li>
-<li>Marshals parameter: packaging the parameters into a form that can be transmitted over a network.</li>
+<li>Marshals parameter: packaging the parameters into a form that can be transmitted over a network</li>
 <li>The stub transmits a message to the server using message passing.</li>
 <li>A stub (server side) <ul>
 <li>receives this message</li>
-<li>invokes the procedure on the server.</li>
+<li>invokes the procedure on the server</li>
 </ul>
 </li>
-<li>(optional) Return values using the same technique.</li>
+<li>(optional) Return values using the same technique</li>
 </ol>
 <p>Issues for RPC:</p>
 <ul>
@@ -1752,7 +1760,7 @@
 </pre></div>
 
 <p><img alt="normal" src="../../assets/os/3.24.png" /></p>
-<p>Ordinarya pipes on on Windows: <strong>anonymous pipes</strong> (similar to UNIX.)</p>
+<p>Ordinarya pipes on on Windows: <strong>anonymous pipes</strong> (similar to UNIX)</p>
 <h4 id="3632-named-pipes">3.6.3.2 Named Pipes<a class="headerlink" href="#3632-named-pipes" title="Permanent link">&para;</a></h4>
 <table>
 <thead>

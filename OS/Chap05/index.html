@@ -1263,7 +1263,7 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <p>A solution to the critical-section problem must satisfy:</p>
 <ol>
 <li><strong>Mutual exclusion</strong></li>
-<li><strong>Progree</strong>. Cannot be postponed indefinitely.</li>
+<li><strong>Progress</strong>. Cannot be postponed indefinitely.</li>
 <li><strong>Bounded waiting</strong></li>
 </ol>
 <p>Two general approches are used to handle critical sections:</p>
@@ -1303,7 +1303,7 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <li>The progress requirement is satisfied.</li>
 <li>
 <p>The bounded-waiting requirement is met.</p>
-<p>Suppose $P_i$ execute $turn = j$ first, then $P_j$ execute $turn = i$. In this assumption, $P_i$ will enter its critical section first and $P_j$ will be stocked in the <code>while(flag[i] &amp;&amp; turn == i</code> (remember that here <code>i</code> should be thinked as <code>j</code> in the code!). After $P_i$ entering exit section, there are two possibilities:</p>
+<p>Suppose $P_i$ execute $turn = j$ first, then $P_j$ execute $turn = i$. In this assumption, $P_i$ will enter its critical section first and $P_j$ will be stucked in the <code>while(flag[i] &amp;&amp; turn == i</code> (remember that here <code>i</code> should be thinked as <code>j</code> in the code!). After $P_i$ entering exit section, there are two possibilities:</p>
 <ol>
 <li>$P_i$ sets <code>flag[i] = false</code>, then $P_j$ enters its critical section.</li>
 <li>After $P_i$ setting <code>flag[i] = false</code>, it immediately sets <code>flag[i] = true</code> again, consequently, it'll set <code>turn = j</code>, thus $P_j$ still can enter its critical section.</li>
@@ -1339,7 +1339,7 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 </ul>
 <p><em>Proof</em></p>
 <ol>
-<li>Mutual exclusion: Only the process holds the lowest number can enter the critical section. For each process, when that process doens't get its number, the original process will be stocked in the first while-loop. After that process getting its number, we still need to compare their $numbers$ and $indices$.</li>
+<li>Mutual exclusion: Only the process holds the lowest number can enter the critical section. For each process, when that process doens't get its number, the original process will be stucked in the first while-loop. After that process getting its number, we still need to compare their $numbers$ and $indices$.</li>
 <li>Progress requirement: The processes won't be forever postponed.</li>
 <li>Bounded-waiting: Assume that a process holds the biggest number, it should wait other processes in the second while-loop. But after all other process entering their exit section and again entering their entry section, they'll get a bigger number, thus the process won't wait forever.</li>
 </ol>
@@ -1371,13 +1371,13 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
-<p>The first process executing <code>while (test_and_set(&amp;lock))</code> will set the address value of <code>lock</code> to <code>true</code> and get the return value <code>rv = false</code>, thus it won't be stocked in the while-loop and it can enter its critical section.</p>
+<p>The first process executing <code>while (test_and_set(&amp;lock))</code> will set the address value of <code>lock</code> to <code>true</code> and get the return value <code>rv = false</code>, thus it won't be stucked in the while-loop and it can enter its critical section.</p>
 <ol>
 <li>Mutual exclusion: OK</li>
 <li>Progress requirement: OK</li>
 <li>
 <p>Bounded-waiting: FAIL</p>
-<p>Assume there is only one CPU, after $P_i$ entering its critical section, $P_j$ will be stocked in the while-loop. After $P_i$ exiting its critical section, there are two possibilities:</p>
+<p>Assume there is only one CPU, after $P_i$ entering its critical section, $P_j$ will be stucked in the while-loop. After $P_i$ exiting its critical section, there are two possibilities:</p>
 <ol>
 <li>$P_i$ sets <code>lock = false</code>, the CPU context switch to $P_j$, thus $P_j$ can enters its critical section.</li>
 <li>After $P_i$ setting <code>lock = false</code>, the CPU still executes the code of $P_i$, thus $P_i$ enters its critical section again, so $P_j$ may wait forever.</li>
@@ -1446,14 +1446,14 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
     <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span>                         <span class="c1">// If no process is waiting</span>
         <span class="n">lock</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
     <span class="k">else</span>
-        <span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>             <span class="c1">// Thus line 4 will be false and Pj won&#39;t be stocked anymore</span>
+        <span class="n">waiting</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>             <span class="c1">// Thus line 4 will be false and Pj won&#39;t be stucked anymore</span>
     <span class="cm">/* remainder section */</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
 <p>Assume <code>lock</code> is initialized to <code>false</code>.</p>
 <ol>
-<li>Mutual exclusion: If many processes set their <code>waiting[i] = true</code>, after the first process execute <code>key = test_and_set(&amp;lock)</code>, <code>key</code> will be set to <code>false</code> and <code>lock</code> will be set to <code>true</code>. Therefore, other processes will be stocked in <code>while (waiting[i] &amp;&amp; key)</code> since their <code>key</code> will be set to <code>true</code> after <code>test_and_set(&amp;lock)</code> (<code>lock</code> is now <code>true</code>).</li>
+<li>Mutual exclusion: If many processes set their <code>waiting[i] = true</code>, after the first process execute <code>key = test_and_set(&amp;lock)</code>, <code>key</code> will be set to <code>false</code> and <code>lock</code> will be set to <code>true</code>. Therefore, other processes will be stucked in <code>while (waiting[i] &amp;&amp; key)</code> since their <code>key</code> will be set to <code>true</code> after <code>test_and_set(&amp;lock)</code> (<code>lock</code> is now <code>true</code>).</li>
 <li>Progress requirement: Only the process first run <code>test_and_set</code> can enter its critical section.</li>
 <li>Bounded-waiting: Wait at most $n - 1$ times.</li>
 </ol>
@@ -1551,18 +1551,18 @@ Even if it's implemented in a multi-CPU environment, the locks should be held fo
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">add</span> <span class="n">this</span> <span class="n">process</span> <span class="n">to</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+    <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">add</span> <span class="n">this</span> <span class="n">process</span> <span class="n">to</span> <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">list</span><span class="p">;</span>
         <span class="n">block</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+    <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">list</span><span class="p">;</span>
         <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
