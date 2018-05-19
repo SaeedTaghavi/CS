@@ -1335,7 +1335,7 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 </pre></div>
 
 <ul>
-<li>An observation: If $P_i$ is in its critical section, and $P_k (k != i)$ , then $(number[i], i) &lt; (number[k], k)$.</li>
+<li>An observation: If $P_i$ is in its critical section, and $P_k (k \ne i)$ , then $(number[i], i) &lt; (number[k], k)$.</li>
 </ul>
 <p><em>Proof</em></p>
 <ol>
@@ -1451,6 +1451,14 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
+<div class="highlight"><pre><span></span><span class="n">boolean</span> <span class="nf">test_and_set</span><span class="p">(</span><span class="n">boolean</span> <span class="o">*</span><span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">boolean</span> <span class="n">rv</span> <span class="o">=</span> <span class="o">*</span><span class="n">target</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">target</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">rv</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
 <p>Assume <code>lock</code> is initialized to <code>false</code>.</p>
 <ol>
 <li>Mutual exclusion: If many processes set their <code>waiting[i] = true</code>, after the first process execute <code>key = test_and_set(&amp;lock)</code>, <code>key</code> will be set to <code>false</code> and <code>lock</code> will be set to <code>true</code>. Therefore, other processes will be stucked in <code>while (waiting[i] &amp;&amp; key)</code> since their <code>key</code> will be set to <code>true</code> after <code>test_and_set(&amp;lock)</code> (<code>lock</code> is now <code>true</code>).</li>
@@ -1460,7 +1468,7 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <h2 id="mutex-locks">Mutex Locks<a class="headerlink" href="#mutex-locks" title="Permanent link">&para;</a></h2>
 <p>A high-level software solution to provide protect critical sections with mutual exclusion.</p>
 <ul>
-<li>Acomic execution of <code>acquire()</code> and <code>release()</code>.</li>
+<li>Atomic execution of <code>acquire()</code> and <code>release()</code>.</li>
 <li>Spinlock:<ul>
 <li>pros: No context switch for multiprocessor systems.</li>
 <li>cons: Busy waiting.</li>
@@ -1493,8 +1501,8 @@ T_5: consumer &amp; \text{execute} &amp; \text{counter} = register_2 &amp; \{cou
 <h2 id="56-semaphores">5.6 Semaphores<a class="headerlink" href="#56-semaphores" title="Permanent link">&para;</a></h2>
 <p>A high-level solution for more complex problems.</p>
 <ul>
-<li>A variable <code>S</code> only accessible by two atomic operations.</li>
-<li>Spinlock.</li>
+<li>A variable <code>S</code> only accessible by two atomic operations</li>
+<li>Spinlock</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>               <span class="cm">/* P */</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">S</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">;</span>    <span class="c1">// busy wait</span>
@@ -1551,18 +1559,18 @@ Even if it's implemented in a multi-CPU environment, the locks should be held fo
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">add</span> <span class="n">this</span> <span class="n">process</span> <span class="n">to</span> <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">list</span><span class="p">;</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">add</span> <span class="n">this</span> <span class="n">process</span> <span class="n">to</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
         <span class="n">block</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 <div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="err">$\</span><span class="n">to</span><span class="err">$</span><span class="n">list</span><span class="p">;</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
         <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -1585,6 +1593,13 @@ wait(Q); &amp; wait(S); \\
 signal(S); &amp; signal(Q); \\
 signal(Q); &amp; signal(S); \\
 \end{array}</p>
+<p>Deadlock may happen (assume $S = 1$ and $Q = 1$: </p>
+<ol>
+<li>$P_0$ calls $wait(S)$</li>
+<li>$P_1$ calls $wait(Q)$</li>
+<li>$P_1$ calls $wait(S)$</li>
+<li>$P_0$ calls $wait(Q)$</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Starvation (Indefinite blocking)</p>
 <p>A situation in which processes wait indefinitely within the semaphore.</p>
@@ -1631,6 +1646,9 @@ signal(Q); &amp; signal(S); \\
 <span class="n">semaphore</span> <span class="n">full</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 
+<ul>
+<li>
+<p>Producer:</p>
 <div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
     <span class="cm">/* produce an item in next_produced */</span>
 
@@ -1644,6 +1662,9 @@ signal(Q); &amp; signal(S); \\
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
+</li>
+<li>
+<p>Consumer:</p>
 <div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
     <span class="n">wait</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>
     <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
@@ -1657,6 +1678,8 @@ signal(Q); &amp; signal(S); \\
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
 </pre></div>
 
+</li>
+</ul>
 <h3 id="572-the-readerswriters-problem">5.7.2 The Readers–Writers Problem<a class="headerlink" href="#572-the-readerswriters-problem" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
@@ -1744,22 +1767,30 @@ signal(Q); &amp; signal(S); \\
 <span class="p">};</span>
 </pre></div>
 
-<div class="highlight"><pre><span></span>    <span class="n">region</span> <span class="n">buffer</span> <span class="nf">when</span>
-    <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">pool</span><span class="p">[</span><span class="n">in</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_produced</span><span class="p">;</span>
-        <span class="n">in</span> <span class="o">=</span> <span class="p">(</span><span class="n">in</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
-        <span class="n">count</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span>
+<ul>
+<li>
+<p>Producer:</p>
+<div class="highlight"><pre><span></span><span class="n">region</span> <span class="n">buffer</span> <span class="nf">when</span>
+<span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pool</span><span class="p">[</span><span class="n">in</span><span class="p">]</span> <span class="o">=</span> <span class="n">next_produced</span><span class="p">;</span>
+    <span class="n">in</span> <span class="o">=</span> <span class="p">(</span><span class="n">in</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
-<div class="highlight"><pre><span></span>    <span class="n">region</span> <span class="n">buffer</span> <span class="nf">when</span>
-    <span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">next_consumed</span> <span class="o">=</span> <span class="n">pool</span><span class="p">[</span><span class="n">out</span><span class="p">];</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
-        <span class="n">count</span><span class="o">--</span><span class="p">;</span>
-    <span class="p">}</span>
+</li>
+<li>
+<p>Consumer:</p>
+<div class="highlight"><pre><span></span><span class="n">region</span> <span class="n">buffer</span> <span class="nf">when</span>
+<span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">next_consumed</span> <span class="o">=</span> <span class="n">pool</span><span class="p">[</span><span class="n">out</span><span class="p">];</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">out</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">count</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
+</li>
+</ul>
 <h2 id="58-monitors">5.8 Monitors<a class="headerlink" href="#58-monitors" title="Permanent link">&para;</a></h2>
 <h3 id="581-monitor-usage">5.8.1 Monitor Usage<a class="headerlink" href="#581-monitor-usage" title="Permanent link">&para;</a></h3>
 <p>An abstract data type—or ADT—encapsulates data with a set of functions to operate on that data that are independent of any specific implementation of the ADT.</p>
@@ -1801,6 +1832,9 @@ signal(Q); &amp; signal(S); \\
 <span class="p">}</span>
 </pre></div>
 
+<ul>
+<li>
+<p>$P_i$:</p>
 <div class="highlight"><pre><span></span><span class="n">DiningPhilosophers</span><span class="p">.</span><span class="n">pickup</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 
 <span class="cm">/* eat */</span>
@@ -1808,6 +1842,9 @@ signal(Q); &amp; signal(S); \\
 <span class="n">DiningPhilosophers</span><span class="p">.</span><span class="n">putdown</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 </pre></div>
 
+</li>
+</ul>
+<p>No deadlock, but starvation could occur!</p>
 <h3 id="583-implementing-a-monitor-using-semaphores">5.8.3 Implementing a Monitor Using Semaphores<a class="headerlink" href="#583-implementing-a-monitor-using-semaphores" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Semaphores<ul>
@@ -1846,7 +1883,7 @@ signal(Q); &amp; signal(S); \\
 </li>
 <li>
 <p><code>x.signal()</code></p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">x_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">x_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>      <span class="cm">/* If there&#39;s somebody being waiting */</span>
     <span class="n">next_count</span><span class="o">++</span><span class="p">;</span>
     <span class="n">signal</span><span class="p">(</span><span class="n">x_sem</span><span class="p">);</span>
     <span class="n">wait</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
@@ -1890,12 +1927,125 @@ signal(Q); &amp; signal(S); \\
 
 <h2 id="59-synchronization-examples">5.9 Synchronization Examples<a class="headerlink" href="#59-synchronization-examples" title="Permanent link">&para;</a></h2>
 <h3 id="591-synchronization-in-windows">5.9.1 Synchronization in Windows<a class="headerlink" href="#591-synchronization-in-windows" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>General Mechanism</p>
+<ul>
+<li>Spin-locking for short code segments in a multiprocessor platform.</li>
+<li>Interrupt disabling when the kernel accesses global variables in a uniprocessor platform.</li>
+</ul>
+</li>
+<li>
+<p>Dispatcher Object</p>
+<ul>
+<li>State: signaled or non-signaled</li>
+<li>Mutex: select one process from its waiting queue to the ready queue.<ul>
+<li>Critical-section object — user-mode mutex</li>
+</ul>
+</li>
+<li>Events: like condition variables</li>
+<li>Timers: select all waiting processes</li>
+</ul>
+</li>
+</ul>
 <h3 id="592-synchronization-in-linux">5.9.2 Synchronization in Linux<a class="headerlink" href="#592-synchronization-in-linux" title="Permanent link">&para;</a></h3>
+<p>Preemptive kernel after version 2.6.</p>
+<ul>
+<li>
+<p>Atomic integer</p>
+<div class="highlight"><pre><span></span><span class="n">atomic_t</span> <span class="n">counter</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="n">atomic_set</span><span class="p">(</span><span class="o">&amp;</span><span class="n">counter</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="n">atomic_add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">counter</span><span class="p">);</span>
+</pre></div>
+
+</li>
+<li>
+<p>Semaphores for long code segments. Mutex locks for the kernel code.</p>
+</li>
+<li>Sping-locking for short code segments in a multiprocessor platform.</li>
+<li>Preeption disabling and enabling in a uniprocessor platform.<ul>
+<li><code>preempt_disable()</code> and <code>preempt_enable()</code></li>
+<li><code>preempt_count</code> for each task in the system</li>
+</ul>
+</li>
+</ul>
 <h3 id="593-synchronization-in-solaris">5.9.3 Synchronization in Solaris<a class="headerlink" href="#593-synchronization-in-solaris" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Semaphores and conditional variables</li>
+<li>Adaptive mutex<ul>
+<li>spin-locking if the lock-holding thread is running; otherwise, blocking is used</li>
+</ul>
+</li>
+<li>Readers-writers locks<ul>
+<li>expensive in implementations</li>
+</ul>
+</li>
+<li>Turnstile<ul>
+<li>A queue structure containing threads blocked on a lock</li>
+<li>Priotity inversion $\to$ priority inheritance protocol for kernel threads</li>
+</ul>
+</li>
+</ul>
 <h3 id="594-pthreads-synchronization">5.9.4 Pthreads Synchronization<a class="headerlink" href="#594-pthreads-synchronization" title="Permanent link">&para;</a></h3>
+<ul>
+<li>General Mechanism<ul>
+<li>Mutex locks: mutual exclusion</li>
+<li>Conditional variables: monitor</li>
+<li>Read-write locks</li>
+</ul>
+</li>
+</ul>
 <h2 id="510-alternative-approaches">5.10 Alternative Approaches<a class="headerlink" href="#510-alternative-approaches" title="Permanent link">&para;</a></h2>
 <h3 id="5101-transactional-memory">5.10.1 Transactional Memory<a class="headerlink" href="#5101-transactional-memory" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Memory transaction</p>
+<p>A sequence of memory read-write operations that are atomic.</p>
+</div>
+<p>Committed or being roleld back:</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">update</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">atomic</span> <span class="p">{</span>
+        <span class="cm">/* modify shared data */</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Advantages:<ul>
+<li>No deadlock</li>
+<li>Identification of potentially concurrently executing statements in atomic blocks</li>
+</ul>
+</li>
+<li>Implementations:<ul>
+<li>Software transaction memory<ul>
+<li>Code is inserted by the <em>compiler</em>.</li>
+</ul>
+</li>
+<li>Hardware transactional memory<ul>
+<li><em>Hardware</em> cache hierarchies and cache coherency protocols are used.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="5102-openmp">5.10.2 OpenMP<a class="headerlink" href="#5102-openmp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A set of compiler directives and an API<ul>
+<li>The critical-section compiler directive behaves like a binary semaphore or mutex.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">update</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cp">#pragma omp critical {</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="n">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>pros: easy to use</li>
+<li>cons: identification of protected code and potentials of deadlocks</li>
+</ul>
 <h3 id="5103-functional-programming-languages">5.10.3 Functional Programming Languages<a class="headerlink" href="#5103-functional-programming-languages" title="Permanent link">&para;</a></h3>
                 
                   
