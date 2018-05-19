@@ -1005,15 +1005,9 @@
                 <h1 id="chapter-2-operating-system-structures">Chapter 2 Operating-System Structures<a class="headerlink" href="#chapter-2-operating-system-structures" title="Permanent link">&para;</a></h1>
 <p>Objectives:</p>
 <ul>
-<li>
-<p>To describe the services an operating system provides to users, processes, and other systems.</p>
-</li>
-<li>
-<p>To discuss the various ways of structuring an operating system.</p>
-</li>
-<li>
-<p>To explain how operating systems are installed and customized and how they boot.</p>
-</li>
+<li>To describe the services an operating system provides to users, processes, and other systems.</li>
+<li>To discuss the various ways of structuring an operating system.</li>
+<li>To explain how operating systems are installed and customized and how they boot.</li>
 </ul>
 <h2 id="21-operating-system-services">2.1 Operating-System Services<a class="headerlink" href="#21-operating-system-services" title="Permanent link">&para;</a></h2>
 <p><img alt="normal" src="../../assets/os/2.1.png" /></p>
@@ -1027,7 +1021,7 @@
 </ul>
 </li>
 <li>
-<p>Program execution. OS load a program into memory -&gt; run that program -&gt; end execution</p>
+<p>Program execution. OS load a program into memory $\to$ run that program $\to$ end execution</p>
 <ul>
 <li>normally</li>
 <li>abnormally (error)</li>
@@ -1059,30 +1053,28 @@
 <li>
 <p>Error detection</p>
 </li>
-<li>
-<p>Resource allocation</p>
-</li>
-<li>
-<p>Accounting. users can be billed</p>
-</li>
-<li>
-<p>Protection and security</p>
-</li>
+<li>Resource allocation</li>
+<li>Accounting. users can be billed</li>
+<li>Protection and security</li>
 </ul>
 <h2 id="22-user-and-operating-system-interface">2.2 User and Operating-System Interface<a class="headerlink" href="#22-user-and-operating-system-interface" title="Permanent link">&para;</a></h2>
 <h3 id="221-command-interpreters">2.2.1 Command Interpreters<a class="headerlink" href="#221-command-interpreters" title="Permanent link">&para;</a></h3>
 <p>On systems with multiple command interpreters to choose from, the interpreters are known as <strong>shells</strong>.</p>
-<ul>
-<li>
-<p>the command interpreter itself contains the code to execute the command.</p>
+<p>Two approaches:</p>
+<ol>
+<li>the command interpreter itself contains the code to execute the command.<ul>
+<li>fast but the interpreter tends to be big! $\to$ painful in revision!</li>
+<li>eg. <code>cd</code>, <code>ls</code>, <code>del</code></li>
+</ul>
 </li>
-<li>
-<p>the command interpreter merely uses the command to identify a file to be loaded into memory and executed.</p>
-<ul>
+<li>the command interpreter merely uses the command to identify a file to be loaded into memory and executed $\to$ search exec files<ul>
+<li>parameter passing</li>
+<li>being slow</li>
+<li>inconsistent interpretation of parameters</li>
 <li>eg. <code>rm</code></li>
 </ul>
 </li>
-</ul>
+</ol>
 <h3 id="222-graphical-user-interfaces">2.2.2 Graphical User Interfaces<a class="headerlink" href="#222-graphical-user-interfaces" title="Permanent link">&para;</a></h3>
 <ul>
 <li>desktop</li>
@@ -1099,7 +1091,7 @@
 </li>
 </ul>
 <h2 id="23-systems-calls">2.3 Systems Calls<a class="headerlink" href="#23-systems-calls" title="Permanent link">&para;</a></h2>
-<p><img alt="Example of how system calls are used" src="../../assets/os/2.5.png" /></p>
+<p><img alt="small" src="../../assets/os/2.5.png" /></p>
 <p>System calls provide an interface to the services made available by an operating system.</p>
 <p>eg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!</p>
 <ul>
@@ -1128,7 +1120,7 @@
 <p>The relationship between an <strong>API</strong>, the <strong>system-call interface</strong>, and the <strong>OS</strong></p>
 <p><img alt="normal" src="../../assets/os/2.6.png" /></p>
 <p>The caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.</p>
-<p><em>Make explicit to implicit</em></p>
+<p><em>Make explicit to implicit</em>.</p>
 <p>Three general methods are used to pass parameters to the operating system.</p>
 <ul>
 <li>
@@ -1141,7 +1133,7 @@
 </ul>
 </li>
 <li>
-<p>placed or pushed onto the stack -&gt; popped off the stack by the OS</p>
+<p>placed or pushed onto the stack $\to$ popped off the stack by the OS</p>
 </li>
 </ul>
 <p><img alt="normal" src="../../assets/os/2.7.png" /></p>
@@ -1152,7 +1144,7 @@
 <li>normally: <code>end()</code></li>
 <li>abnormally: <code>abort()</code></li>
 </ul>
-<p>error -&gt; dump (written to disk, may be examined by a debugger)</p>
+<p>error $\to$ dump (written to disk, may be examined by a debugger)</p>
 <p>More severe errors can be indicated by a higher-level error parameter.</p>
 <p>eg. Standard C Library</p>
 <p><img alt="normal" src="../../assets/os/libc.png" /></p>

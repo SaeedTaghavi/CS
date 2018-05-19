@@ -3,9 +3,7 @@
 Objectives:
 
 - To describe the services an operating system provides to users, processes, and other systems.
-
 - To discuss the various ways of structuring an operating system.
-
 - To explain how operating systems are installed and customized and how they boot.
 
 ## 2.1 Operating-System Services
@@ -17,7 +15,7 @@ Objectives:
     - batch interface
     - graphical user interface 
 
-- Program execution. OS load a program into memory -> run that program -> end execution
+- Program execution. OS load a program into memory $\to$ run that program $\to$ end execution
     - normally
     - abnormally (error)
 
@@ -36,11 +34,8 @@ Objectives:
     - message passing: packets of information in predefined formats are moved between processes by the operating system
 
 - Error detection
-
 - Resource allocation
-
 - Accounting. users can be billed
-
 - Protection and security
 
 ## 2.2 User and Operating-System Interface
@@ -49,9 +44,15 @@ Objectives:
 
 On systems with multiple command interpreters to choose from, the interpreters are known as **shells**.
 
-- the command interpreter itself contains the code to execute the command.
+Two approaches:
 
-- the command interpreter merely uses the command to identify a file to be loaded into memory and executed.
+1. the command interpreter itself contains the code to execute the command.
+    - fast but the interpreter tends to be big! $\to$ painful in revision!
+    - eg. `cd`, `ls`, `del`
+2. the command interpreter merely uses the command to identify a file to be loaded into memory and executed $\to$ search exec files
+    - parameter passing
+    - being slow
+    - inconsistent interpretation of parameters
     - eg. `rm`
 
 ### 2.2.2 Graphical User Interfaces
@@ -69,7 +70,7 @@ On systems with multiple command interpreters to choose from, the interpreters a
 
 ## 2.3 Systems Calls
 
-![Example of how system calls are used](../assets/os/2.5.png)
+![small](../assets/os/2.5.png)
 
 System calls provide an interface to the services made available by an operating system.
 
@@ -100,7 +101,7 @@ The relationship between an **API**, the **system-call interface**, and the **OS
 
 The caller need know nothing about how the system call is implemented or what it does during execution. Rather, the caller need only obey the API and understand what the operating system will do as a result of the execution of that system call.
 
-_Make explicit to implicit_
+*Make explicit to implicit*.
 
 Three general methods are used to pass parameters to the operating system.
 
@@ -110,7 +111,7 @@ Three general methods are used to pass parameters to the operating system.
     - memory, 
     - and the address of the
 
-- placed or pushed onto the stack -> popped off the stack by the OS
+- placed or pushed onto the stack $\to$ popped off the stack by the OS
 
 ![normal](../assets/os/2.7.png)
 
@@ -123,7 +124,7 @@ A running program halts either
 - normally: `end()`
 - abnormally: `abort()`
 
-error -> dump (written to disk, may be examined by a debugger)
+error $\to$ dump (written to disk, may be examined by a debugger)
 
 More severe errors can be indicated by a higher-level error parameter.
 
