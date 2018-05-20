@@ -75,7 +75,7 @@ pages:
       - Chapter 4 Threads: OS/Chap04.md
       - Chapter 5 Process Synchronization: OS/Chap05.md
       - Chapter 6 CPU Scheduling: OS/Chap06.md
-    - Previous Exam: OS/midterm.md
+    - Previous Exams: OS/midterm.md
   - Machine Learning:
     - Preface: ML/index.md
     - Regression: ML/regression.md
