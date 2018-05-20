@@ -1804,8 +1804,59 @@ signal(Q); &amp; signal(S); \\
 </li>
 </ul>
 <h2 id="58-monitors">5.8 Monitors<a class="headerlink" href="#58-monitors" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">monitor</span> <span class="n">name</span> <span class="p">{</span>
+    <span class="cm">/* shared variable declarations */</span>
+
+    <span class="n">function</span> <span class="n">P1</span> <span class="p">(</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+    <span class="p">}</span>
+
+    <span class="n">function</span> <span class="n">P2</span> <span class="p">(</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+    <span class="p">}</span>
+
+        <span class="p">.</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+    <span class="n">function</span> <span class="n">Pn</span> <span class="p">(</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+    <span class="p">}</span>
+
+    <span class="n">initialization_code</span> <span class="p">(</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 <h3 id="581-monitor-usage">5.8.1 Monitor Usage<a class="headerlink" href="#581-monitor-usage" title="Permanent link">&para;</a></h3>
 <p>An abstract data type—or ADT—encapsulates data with a set of functions to operate on that data that are independent of any specific implementation of the ADT.</p>
+<p>The monitor construct ensures that only one process at a time is active within the monitor.</p>
+<p>A programmer who needs to write a tailor-made synchronization scheme can define one or more variables of type $condition$:</p>
+<div class="highlight"><pre><span></span>    <span class="n">condition</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+</pre></div>
+
+<p>The only operations that can be invoked on a condition variable are <code>wait()</code> and <code>signal()</code>. The operation</p>
+<div class="highlight"><pre><span></span>    <span class="n">x</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>
+</pre></div>
+
+<p>means that the process invoking this operation is suspended until another process invokes</p>
+<div class="highlight"><pre><span></span>    <span class="n">x</span><span class="p">.</span><span class="n">signal</span><span class="p">();</span>
+</pre></div>
+
+<div class="admonition info">
+<p class="admonition-title">Condition variables (of a monitor) vs. signal operation (of binary semaphore)</p>
+<p>The <code>x.signal()</code> operation resumes exactly one suspended process. If no process is suspended, then the <code>signal()</code> operation has no effect; that is, the state of <code>x</code> is the same as if the operation had never been executed. Contrast this operation with the <code>signal()</code> operation associated with semaphores, which always affects the state of the semaphore.</p>
+</div>
+<p>Suppose that, when the <code>x.signal()</code> operation is invoked by a process <code>P</code>, there exists a suspended process <code>Q</code> associated with condition <code>x</code>. Clearly, if the suspended process <code>Q</code> is allowed to resume its execution, the signaling process <code>P</code> must wait. Two possibilities exist:</p>
+<ol>
+<li>
+<p><strong>Signal and wait</strong>: <code>P</code> either waits until <code>Q</code> leaves the monitor or waits for another condition.</p>
+</li>
+<li>
+<p><strong>Signal and continue</strong>: <code>Q</code> either waits until <code>P</code> leaves the monitor or waits for another condition.</p>
+</li>
+</ol>
+<p><img alt="small" src="../../assets/os/5.17.png" /></p>
 <h3 id="582-dining-philosophers-solution-using-monitors">5.8.2 Dining-Philosophers Solution Using Monitors<a class="headerlink" href="#582-dining-philosophers-solution-using-monitors" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><span class="k">enum</span> <span class="p">{</span><span class="n">THINKING</span><span class="p">,</span> <span class="n">HUNGRY</span><span class="p">,</span> <span class="n">EATING</span><span class="p">}</span> <span class="n">state</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
 <span class="n">condition</span> <span class="n">self</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
@@ -1906,16 +1957,16 @@ signal(Q); &amp; signal(S); \\
 </li>
 </ul>
 <h3 id="584-resuming-processes-within-a-monitor">5.8.4 Resuming Processes within a Monitor<a class="headerlink" href="#584-resuming-processes-within-a-monitor" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>conditional-wait</strong>:</p>
 <div class="highlight"><pre><span></span><span class="n">x</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
 </pre></div>
 
-<div class="highlight"><pre><span></span><span class="n">R</span><span class="p">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
-
-<span class="cm">/* access the resource */</span>
-
-<span class="n">R</span><span class="p">.</span><span class="n">release</span><span class="p">();</span>
-</pre></div>
-
+<p>where $c$ is a <strong>priority number</strong>. When <code>x.signal()</code> is executed, the process with the smallest priority number is resumed next.</p>
+</li>
+</ul>
+<p>Consider the <code>ResourceAllocator</code> monitor, which controls the allocation of a single resource among competing processes.</p>
 <div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">ResourceAllocator</span> <span class="p">{</span>
     <span class="n">boolean</span> <span class="n">busy</span><span class="p">;</span>
     <span class="n">condition</span> <span class="n">x</span><span class="p">;</span>
@@ -1937,6 +1988,33 @@ signal(Q); &amp; signal(S); \\
 <span class="p">}</span>
 </pre></div>
 
+<ul>
+<li>
+<p>A process that needs to access the resource in question must observe the following sequence:</p>
+<div class="highlight"><pre><span></span><span class="n">R</span><span class="p">.</span><span class="n">acquire</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+
+<span class="cm">/* access the resource */</span>
+
+<span class="n">R</span><span class="p">.</span><span class="n">release</span><span class="p">();</span>
+</pre></div>
+
+</li>
+</ul>
+<p>The monitor concept cannot guarantee that the preceding access sequence will be observed. In particular, the following problems can occur:</p>
+<ul>
+<li>
+<p>A process might access a resource without first gaining access permission to the resource.</p>
+</li>
+<li>
+<p>A process might never release a resource once it has been granted access to the resource.</p>
+</li>
+<li>
+<p>A process might attempt to release a resource that it never requested.</p>
+</li>
+<li>
+<p>A process might request the same resource twice (without first releasing the resource).</p>
+</li>
+</ul>
 <h2 id="59-synchronization-examples">5.9 Synchronization Examples<a class="headerlink" href="#59-synchronization-examples" title="Permanent link">&para;</a></h2>
 <h3 id="591-synchronization-in-windows">5.9.1 Synchronization in Windows<a class="headerlink" href="#591-synchronization-in-windows" title="Permanent link">&para;</a></h3>
 <ul>

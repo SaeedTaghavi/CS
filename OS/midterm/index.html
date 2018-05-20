@@ -622,6 +622,20 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#spring-2011" title="Spring 2011" class="md-nav__link">
+    Spring 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2011" title="Fall 2011" class="md-nav__link">
+    Fall 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fall-2012" title="Fall 2012" class="md-nav__link">
     Fall 2012
   </a>
@@ -734,6 +748,20 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#spring-2011" title="Spring 2011" class="md-nav__link">
+    Spring 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fall-2011" title="Fall 2011" class="md-nav__link">
+    Fall 2011
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fall-2012" title="Fall 2012" class="md-nav__link">
     Fall 2012
   </a>
@@ -781,6 +809,184 @@
                 
                 
                 <h1 id="midterms-at-ntucsie">Midterms at NTUCSIE<a class="headerlink" href="#midterms-at-ntucsie" title="Permanent link">&para;</a></h1>
+<h2 id="spring-2011"><a href="https://www.ptt.cc/man/NTU-Exam/DE0A/D36A/D55E/D109/M.1326244112.A.7FA.html">Spring 2011</a><a class="headerlink" href="#spring-2011" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>Security</strong></p>
+<p>Defense of a system from external and internal attacks, e.g., viruses, denial of services, etc.</p>
+</li>
+<li>
+<p><strong>A Layered Approach in OS Designs</strong></p>
+<p>The operating system is broken into a number of layers (levels). The bottom layer (layer $0$) is the hardware; the highest (layer $N$) is the user interface.</p>
+</li>
+<li>
+<p><strong>Para-virtualization</strong></p>
+<p>A variation on virtualization that presents a guest/operating system that is similar but not identical to the underlying hardware.</p>
+</li>
+<li>
+<p><strong>Lightweight Process</strong></p>
+<p>A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)</p>
+</li>
+<li>
+<p><strong>NUMA</strong></p>
+<p>Non-Uniform Memory Access: A CPU has faster access to some parts of main memory than to other parts.</p>
+</li>
+<li>
+<p><strong>Deterministic Modeling</strong></p>
+<p>It is one type of analytic evaluation. This method takes a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
+</li>
+<li>
+<p><strong>Race Condition</strong></p>
+<p>Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
+</li>
+<li>
+<p><strong>Write Ahead Logging</strong></p>
+<p>All modifications are written to a log before they are applied. </p>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer following questions regarding the design the design of operation systems. (22pts)</p>
+<p>There are two conflicting goals in OS designs: Convenience and Efficiency.</p>
+<ul>
+<li>Please give me one example feature of OS that shows the conflict in persuing efficiency and convenience (Hint: Live preview of open windows for Windows7 taskbar). (5pts)</li>
+<li>What is the main goal of Unix process init? Is init a user or kernel process? (8pts)</li>
+<li>Please explain how I/O protection is done. (5pts)</li>
+<li>Give me one advantage in OS implementations in some high-level language. (4pts)</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for process managment. (16pts)</p>
+<ul>
+<li>Inside the Process Control Block, we might have a filed "Program Counter". What is the purpose of the field? (4pts)</li>
+<li>There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call malloc() or free(), which segment is involved? (4pts)</li>
+<li>When a parent process calls fork() to create a child process, how does the parent process know the process ID of the created child process? (4pts)</li>
+<li>Which of the following IPC mechanisms does not require two communicating processes to have a parent-child relationship: Named Pipes and sockets. (4pts)</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions for CPU scheduling. (17pts)</p>
+<ul>
+<li>Compared to user-level threads, why the cost of context switching for kernel-level threads in higher? (4pts)</li>
+<li>The delivery of a signal for theads is complicated. Give me an example signal that should be delivered to the threads to which the signal applies. (4pts)</li>
+<li>For preemptive scheduling, there are serveral occasions in triggering scheduling. Please give me three, beside the one in which a running process terminates by itself. (9pts)</li>
+</ul>
+</li>
+<li>
+<p>Consider Shortest-Job-First(SJF) and Round-Robin(RR) scheduling algorithms, and processes under considerations are only of one single CPU burst and are all ready at time 0. Please answer the folowing questions. Explanation is needed to receive any credit: (18pts)</p>
+<ul>
+<li>Is SJF always better than RR, for any time quantum, in terms of the average turnaround time?(6pts)</li>
+<li>When all processes are of the same size, please tell us what the best time quantum is for RR in terms of the average waiting time. (6pts)</li>
+<li>Now suppose that processes might arrive at different times, and SJF and RR are preemptive scheduling algorithms. Is SJF always better than RR, for any time quantum, in terms of the average waiting time. (6pts)</li>
+</ul>
+</li>
+<li>
+<p>Please design a solution for airplanes to land in an airport. Suppose that there is only one runway in the airport. Please make sure that only one airplane can control the runway to land at a time, and there should be no starvation for your solution. (Hint: (1) the Bakery Algorithm; (2) Each process donotes an airplane.) (10pts)</p>
+</li>
+</ol>
+<h2 id="fall-2011"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1335413893.A.32B.html">Fall 2011</a><a class="headerlink" href="#fall-2011" title="Permanent link">&para;</a></h2>
+<p>The exam is 180 minutes long. The total score is 107pts. Please read the questions carefully.</p>
+<ol>
+<li>
+<p>Terminologies. (24pts)</p>
+<ul>
+<li>
+<p><strong>DMA</strong></p>
+<p>Release CPU from handling excessive interrupts!
+Execute the device driver to set up the registers of the DMA controller. DMA moves blocks of data between the memory and its own buffers. Transfer from its buffers to its devices. Interrupt the CPU when the job is done.</p>
+</li>
+<li>
+<p><strong>Multiprogramming</strong></p>
+<p>Increases CPU utilization by organizing jobs so that the CPU always has one to execute.</p>
+</li>
+<li>
+<p><strong>Horizontal Cache Coherency and Consistency</strong></p>
+<p>Among units of the same storage level.</p>
+<p>From <a href="https://www.zhihu.com/question/25252397">知乎</a>:</p>
+<ul>
+<li>Coherence 保證的是同一地址有不同 copy 的時候，保證看到的是在 timing 上離自己最近的。</li>
+<li>
+<p>但是，只保證 Coherence 是不夠的，在 multiprocessor 不同地址的多個 copy 訪問的時候會出現問題，這個就是consistency</p>
+</li>
+<li>
+<p>Coherence is concerned with updates/invalidations to a single shared variable.</p>
+</li>
+<li>Consistency is concerned with the behavior of memory references from multiple concurrent threads.</li>
+</ul>
+</li>
+<li>
+<p><strong>A Module Approach In OS Designs</strong> (Hint: A Layered Approach) [ask]</p>
+<p>Moving all nonessential components from the kernel to the user or system programs!</p>
+</li>
+<li>
+<p><strong>Indirect Communication in Message Passing</strong> ($\leftrightarrow$ Direct)</p>
+<ul>
+<li>The messages are sent to and received from mailboxes, or ports.</li>
+<li>($\leftrightarrow$) The messages are sent to and received from processes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Socket</strong></p>
+<p>An endpoint for communication. (IP + port#)</p>
+</li>
+<li>
+<p><strong>Deferred Cancellation</strong> ($\leftrightarrow$ Asynchronous cancellation)</p>
+<ul>
+<li>The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.</li>
+<li>($\leftrightarrow$) One thread immediately terminates the target thread.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pull Migration</strong> (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push migration)</p>
+<ul>
+<li>Pulling a waiting task from a busy processor.</li>
+<li>($\leftrightarrow$) Pushing processes from overloaded to less-busy processors.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Please answer the following questions regarding the designs of operating systems: (23pts)</p>
+<ul>
+<li>Please give me two resources, beside CPU, that are managed by OS. (6pts)</li>
+<li>When an interrupt arrives, a running task is interrupted, and its context could be saved in different ways, such as "a fixed address for all interrupts", "a fixed space for each interrupt type", and "a stack". What is the advantage in using a stack, compared with the approach in using a fixed space for each interrupt type? (5pts)</li>
+<li>In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (l2pts)</li>
+</ul>
+</li>
+<li>
+<p>OS services are such as those for "program execution", "file-system manipulation", "accounting", and "resource allocation". Which of them are for system efficiency, instead of user convenience? (8pts)</p>
+</li>
+<li>
+<p>Famous Application Programming Interfaces (API) are such as Win 32 API and POSIX API. What are the two major benefits in providing API, compared to
+   the providing of system calls only? What does POSIX API offers to programmers, compared to the offering of ANSI C to programmers? (8pts)</p>
+</li>
+<li>
+<p>In the ordinary virtualization design, the virtualization layer runs in the system mode. For VMware, the virtualization layer runs in the system or user mode? For Java, the Java virtual machine run in the system or user mode? (6pts)</p>
+</li>
+<li>
+<p>Please answer the following questions for process management and scheduling. (20pts)</p>
+<ul>
+<li>Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts)</li>
+<li>Why a long-term scheduler has more time to choose a process for a system than a short-term scheduler does in process scheduling? (5pts)</li>
+<li>Please explain the main difference between a user-level thread and a kernel thread. (5pts)</li>
+<li>Is a Java thread is a user-level thread or a kernel thread? (4pts)</li>
+</ul>
+</li>
+<li>
+<p>The scheduling algorithm of Solaris 9 is based on the Multilevel Feedback Queue Scheduling algorithm. There are six priority classes. Please explain the Fair Sharing class? Please explain how interactive threads in the Time Sharing or Interactive class are favored in scheduling in Solaris 8 or 9? (6pts)</p>
+</li>
+<li>
+<p>Consider the scheduling of processes in which processes might arrive at different times and have different deadlines to complete their execution. Let the processes be scheduled by the preemptive Shortest-Job-First algorithm (PSJF) and a Priority Scheduling algorithm (PS) in which processes with urgent deadlines have higher priorities, and there is only one processor. Can you give a set of processes such that PS can meet the deadlines of the processes, but PSJF can not do it? (5pts)</p>
+</li>
+<li>
+<p>Consider the Round Robin scheduling algorithm (RR) with two different time quantums L and S, where L &gt; S. Let the scheduling criteria be the average
+   waiting time, and L be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum S when all processes are
+   ready at time 0? Please give me your answer with argument. (7pts)</p>
+</li>
+</ol>
 <h2 id="fall-2012"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1418537836.A.BB5.html">Fall 2012</a><a class="headerlink" href="#fall-2012" title="Permanent link">&para;</a></h2>
 <p>The exam is 180 minutes long. The total score is 110pts. Please read the questions carefully.</p>
 <ol>
