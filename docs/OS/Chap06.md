@@ -290,7 +290,7 @@ SMP systems that use multicore processors are faster and consume less power than
 There are two ways to multithread a processing core:
 
 - **Coarse-grained**: a thread executes on a processor until a long-latency event such as a memory stall occurs.
-- **Find-grained (interleaved)**: switches between threads at a much finer level of granularity
+- **Fine-grained (interleaved)**: switches between threads at a much finer level of granularity
 
 ## 6.6 Real-Time CPU Scheduling
 

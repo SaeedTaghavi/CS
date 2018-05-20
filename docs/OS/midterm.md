@@ -26,7 +26,7 @@
 
     - **Deterministic Modeling**
 
-        It is one type of analytic evaluation. This method takes a particular predetermined workload and defines the performance of each algorithm for that workload.
+        Take a particular predetermined workload and defines the performance of each algorithm for that workload.
 
     - **Race Condition**
 
@@ -93,7 +93,7 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
         - Coherence is concerned with updates/invalidations to a single shared variable.
         - Consistency is concerned with the behavior of memory references from multiple concurrent threads.
 
-    - **A Module Approach In OS Designs** (Hint: A Layered Approach) [ask]
+    - **A Module Approach in OS Designs** (Hint: A Layered Approach) [ask]
 
         Moving all nonessential components from the kernel to the user or system programs!
 
@@ -106,12 +106,12 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
         An endpoint for communication. (IP + port#)
 
-    - **Deferred Cancellation** ($\leftrightarrow$ Asynchronous cancellation)
+    - **Deferred Cancellation** ($\leftrightarrow$ Asynchronous Cancellation)
 
         - The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.
         - ($\leftrightarrow$) One thread immediately terminates the target thread.
 
-    - **Pull Migration** (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push migration)
+    - **Pull Migration** (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push Migration)
 
         - Pulling a waiting task from a busy processor.
         - ($\leftrightarrow$) Pushing processes from overloaded to less-busy processors.
@@ -149,14 +149,37 @@ The exam is 180 minutes long. The total score is 110pts. Please read the questio
 
 1. Terminologies. (24pts)
 
-    - Hardware Interrupt
-    - Virtual Machine
-    - Context Switch
-    - A Full Duplex Pipe
-    - Multilevel Queue Scheduling
-    - Memory Stall
-    - Bounded Waiting (A Requirement of a Critical Section Solution)
-    - Adaptive Mutex
+    - **Hardware Interrupt**
+
+        Services requests of I/O devices.
+
+    - **Virtual Machine**
+
+        Provides an interface that is identical to the underlying bare hardware.
+
+    - **Context Switch**
+
+        It saves the state of the currently running process and loads the state of the newly scheduled process.
+
+    - **A Full Duplex Pipe**
+
+        A pipe that suppors two ways of message passing simultaneously.
+
+    - **Multilevel Queue Scheduling**
+
+        Processes can be classified into different groups and permanently assigned to one queue, where there are Inter-queue and intra-queue scheduling policies.
+
+    - **Memory Stall**
+
+        A phenomenon in which a processor waits for a significant amount of time waiting for the data to become available.
+
+    - **Bounded Waiting** (A Requirement of a Critical Section Solution)
+
+        A waiting process only waits for a bounded number of processes to enter their critical sections.
+
+    - **Adaptive Mutex**
+
+        A binary semaphore in which it is a spinlock if the lock-holding thread is running; otherwise, blocking is used.
  
 2. Please answer the following questions regarding the designs of operating systems: (20pts)
 
@@ -190,14 +213,38 @@ The exam is 180 minutes long. The total score is 103pts. Please read the questio
 
 1. Terminologies. (24pts)
 
-    - Booting
-    - Interrupt Vector
-    - Cache Coherency
-    - Platform as a service (PaaS) in Cloud Computing
-    - A Modular Kernel (Hint: OS Structure)
-    - Data Parellelism in Multicore Programming
-    - Rate Monotonic Scheduling
-    - Deterministic Modeling
+    - **Booting**
+
+        Initialize all aspects of the system and then load and run the OS.
+
+    - **Interrupt Vector**
+
+        An array of interrupt-handlers' addresses that are indexed by device numbers (or interrupt numbers).
+
+    - **Cache Coherency** [Fall 2011 1.(c)]
+
+        Cache coherency problems can arise when more than one processors refer to the same data. Coherency defines what value is returned on a read.
+
+    - **Platform as a service (PaaS) in Cloud Computing**
+
+        Pass provides a computing platform and a solution stack as a service, such as a database server. One example is Microsoft Azure.
+
+    - **A Modular Kernel** (Hint: OS Structure) [Fall 2011 1.(d)]
+
+        A moduler kernel consists of a set of components, where there are core/primary modules, and it is of modules without a layer structure.
+
+    - **Data Parellelism in Multicore Programming**
+
+        Distribute data over cores to execute the same operation.
+
+
+    - **Rate Monotonic Scheduling**
+
+        A fixed priority real-time process scheduling algorithm in which the priorities of processes are inversely proportional to their periods.
+
+    - **Deterministic Modeling** [Spring 2011 1.(f)]
+
+        Take a particular predetermined workload and defines the performance of each algorithm for that workload.
 
 2. Please answer the following questions regarding the designs of operating systems: (20pts)
 
@@ -231,14 +278,37 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
 
 1. Terminologies. (24pts)
    
-    - Buffering (Hint: It is not caching.)
-    - Virtual Machine
-    - System Generation (SYSGEN)
-    - Context Switch
-    - Remote Procedure Call (Hint: Message Passing)
-    - Implicit Threading
-    - Earliest Deadline First Scheduling
-    - Race Condition
+    - **Buffering** (Hint: It is not caching.)
+
+        It means to keep data in a faster medium temporarily before moving them to a slower layer.
+
+    - **Virtual Machine** [Fall 2012 1.(b)]
+
+        Provides an interface that is identical to the underlying bare hardware.
+
+    - **System Generation** (SYSGEN)
+
+        The process to configure or generate an operating system for a one specific computer.
+
+    - **Context Switch** [Fall 2012 1.(c)]
+
+        Save the state of the old process and load the state of the newly scheduled process.
+
+    - **Remote Procedure Call** (Hint: Message Passing)
+
+        Senders are blocked until the receivers have received msgs and replied by reply msgs. (A way to abstract the procedure-call mechanism for use between systems with network connection.)
+
+    - **Implicit Threading**
+
+        Transfer the creation and management of the threading from the application developers to compilers and run-time libraries.
+
+    - **Earliest Deadline First Scheduling**
+
+        A dynamic-priority real-time process scheduling algorithm in which the priorities of processes are higher if their deadlines are closer.
+
+    - **Race Condition** [Spring 2011 1.(g)]
+
+        Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
 
 2. Please answer the following questions regarding the designs of operating systems: (22pts)
     - An operating system could be considered as a resource allocator. Please list 3 resources managed by an operating systems. (6pts)
@@ -277,14 +347,48 @@ The Exam is 180 minutes long. The total score is 105pts. Please read the questio
 
 1. Terminologies.(24pts)
 
-    - Software Interrupts 
-    - Performance Tuning
-    - Mid-Term Scheduler
-    - FIFOS of UNIX
-    - Asynchronous Signal
-    - Push Migration (Hint:Load Balancing) 
-    - Coarse-Grained Multithreading of Hardware Threads
-    - Analytic Evaluation
+    - **Software Interrupts**
+
+        Caused by software execution, e.g. signals, invalid memory access, division by zero, system calls.
+
+    - **Performance Tuning**
+
+        A procedure that seeks to improve performance by removing bottlenecks.
+
+    - **Mid-Term Scheduler** ($\leftrightarrow$ Long-Term Scheduler $\leftrightarrow$ Short-Term Scheduler)
+
+        - Swap processes in and out to control the degree of multiprogramming.
+        - ($\leftrightarrow$) Long-Term Scheduler:
+            - Selects processes from this pool
+            - Loads theme into memory for execution
+            - Controls the degree of multiprogramming (# processes). 
+            - Selects a good process mix of I/O-bound and CPU-bound.
+        - ($\leftrightarrow$) Short-Term Scheduler:
+            - Selects from among the processes that are ready to execute
+            - Allocates CPU to one of them
+
+    - **FIFOS of UNIX**
+
+        Named pipes.
+
+    - **Asynchronous Signal** ($\leftrightarrow$ Synchronous Signal)
+
+        - An asynchronous signal usually reports some asynchronous event outside the program, e.g., ^C or time expiration.
+        - ($\leftrightarrow$) Delivered to the same process that performed the operation causing the signal. e.g., illegal memory access, division by 0.
+
+    - **Push Migration** (Hint: Load Balancing) [Fall 2011 1.(h)] ($\leftrightarrow$ Pull Migration)
+
+        - Pushing processes from overloaded to less-busy processors.
+        - ($\leftrightarrow$) Pulling a waiting task from a busy processor.
+
+    - **Coarse-Grained Multithreading of Hardware Threads** ($\leftrightarrow$ Fine-Grained (interleved))
+
+        - A thread executes on a processor until a long-latency event such as a memory stall occurs.
+        - ($\leftrightarrow$) Switches between threads at a much finer level of granularity
+
+    - **Analytic Evaluation** [Spring 2011 1.(f), Fall 2013 1.(h)]
+
+        Analytic evaluation uses the given algorithm and the system workload to produce a formula or number to evaluate the performance of the algorithm for that workload.
 
 2. Please answer the following questions regarding operating systems: (20pts)
     - Please compare the difference between interrupt handling by a generic handler and interrupt vector in terms of the mechanism and the response performance. (6pts)
