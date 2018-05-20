@@ -102,7 +102,7 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
     - Please explain what happens to the operating system when an interrupt arrives (until the interrupt is serviced). (4pts)
     - Which one of the following instructions is a privileged instruction:
 
-      Reading of the Timer, setting of the base register of the memory space of a process, increment the value of a CPU register by one. No explanation is needed. (6pts)
+        Reading of the Timer, setting of the base register of the memory space of a process, increment the value of a CPU register by one. No explanation is needed. (6pts)
     
     - Please explain what happens when a command-line user interface of Unix executes a command. (6pts)
 
@@ -119,8 +119,7 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
 7. Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (15pts)
 
     - Given 5 processes P1, P2, P3, P4, and P5 with CPU burst time 6, 5, 2, 10, 5, respectively. Suppose that the P1, P2, P3, P4, and P5 arrive at time 0, 3, 4, 2, and 5, respectively. What is the average waiting time in running the 5 processes under the Preemptive Shortest-Job-First Scheduling. (5pts)
-    - Consider Shortest-Job-First Scheduling and Round-Robin Scheduling. Please prove that the total waiting time in running all processes under Shortest-Job-First Scheduling is always no larger than that of
-      Round-Robin Scheduling with time slice equal to 1 when all processes are ready at time 0? (5pts)
+    - Consider Shortest-Job-First Scheduling and Round-Robin Scheduling. Please prove that the total waiting time in running all processes under Shortest-Job-First Scheduling is always no larger than that of Round-Robin Scheduling with time slice equal to 1 when all processes are ready at time 0? (5pts)
     - Suppose that the variance of the waiting time is the criterion in process scheduling. Shall we have a small time slice for a better variance for Round-Robin Scheduling when all processes of the same CPU burst arrive at time 0? (5pts)
 
 8. Please answer the following questions for process synchronization: (16pts)
