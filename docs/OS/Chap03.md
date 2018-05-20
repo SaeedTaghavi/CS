@@ -41,7 +41,7 @@ Two different processes: the text section are equivalent, the data, heap and sta
 
 Process can be an execution environment for other code. (**simulation**)
 
-eg.
+e.g.
 
 ```java
     java testProgram
@@ -96,7 +96,7 @@ When a process exit, it is removed from all queues and has its PCB and resources
 
 ### 3.2.2 Schedulers
 
-Processes are first spooled to a mass-storage device (eg. disk). Then 
+Processes are first spooled to a mass-storage device (e.g. disk). Then 
 
 - **Long-term scheduler** (job)
 
@@ -237,7 +237,7 @@ Interprocess communication (IPC)
 
 A **producer** process produces information that is consumed by a **consumer** process.
 
-eg.
+e.g.
 
 - A compiler produce assembly code that is consumed by an assembler. The assembler, in turn, may produce object modules that are consumed by the loader.
 - A server as a producer and a client as a consumer.
@@ -416,7 +416,7 @@ Mach guarantees that multiple messages from the same sender are queued in first-
     A collection of mailboxes.
 
 !!! note "port_status()"
-    eg. # of messages in a mailbox.
+    e.g. # of messages in a mailbox.
 
 ### 3.5.3 An Example: Windows
 

@@ -1,5 +1,148 @@
 # Midterms at NTUCSIE
 
+## [Spring 2011](https://www.ptt.cc/man/NTU-Exam/DE0A/D36A/D55E/D109/M.1326244112.A.7FA.html)
+
+1. Terminologies. (24pts)
+
+    - **Security**
+
+        Defense of a system from external and internal attacks, e.g., viruses, denial of services, etc.
+
+    - **A Layered Approach in OS Designs**
+
+        The operating system is broken into a number of layers (levels). The bottom layer (layer $0$) is the hardware; the highest (layer $N$) is the user interface.
+
+    - **Para-virtualization**
+
+        A variation on virtualization that presents a guest/operating system that is similar but not identical to the underlying hardware.
+
+    - **Lightweight Process**
+
+        A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)
+
+    - **NUMA**
+
+        Non-Uniform Memory Access: A CPU has faster access to some parts of main memory than to other parts.
+
+    - **Deterministic Modeling**
+
+        It is one type of analytic evaluation. This method takes a particular predetermined workload and defines the performance of each algorithm for that workload.
+
+    - **Race Condition**
+
+        Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
+
+    - **Write Ahead Logging**
+
+        All modifications are written to a log before they are applied. 
+
+2. Please answer following questions regarding the design the design of operation systems. (22pts)
+
+    There are two conflicting goals in OS designs: Convenience and Efficiency.
+    
+    - Please give me one example feature of OS that shows the conflict in persuing efficiency and convenience (Hint: Live preview of open windows for Windows7 taskbar). (5pts)
+    - What is the main goal of Unix process init? Is init a user or kernel process? (8pts)
+    - Please explain how I/O protection is done. (5pts)
+    - Give me one advantage in OS implementations in some high-level language. (4pts)
+
+3. Please answer the following questions for process managment. (16pts)
+    
+    - Inside the Process Control Block, we might have a filed "Program Counter". What is the purpose of the field? (4pts)
+    - There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call malloc() or free(), which segment is involved? (4pts)
+    - When a parent process calls fork() to create a child process, how does the parent process know the process ID of the created child process? (4pts)
+    - Which of the following IPC mechanisms does not require two communicating processes to have a parent-child relationship: Named Pipes and sockets. (4pts)
+
+4. Please answer the following questions for CPU scheduling. (17pts)
+
+    - Compared to user-level threads, why the cost of context switching for kernel-level threads in higher? (4pts)
+    - The delivery of a signal for theads is complicated. Give me an example signal that should be delivered to the threads to which the signal applies. (4pts)
+    - For preemptive scheduling, there are serveral occasions in triggering scheduling. Please give me three, beside the one in which a running process terminates by itself. (9pts)
+
+5. Consider Shortest-Job-First(SJF) and Round-Robin(RR) scheduling algorithms, and processes under considerations are only of one single CPU burst and are all ready at time 0. Please answer the folowing questions. Explanation is needed to receive any credit: (18pts)
+
+    - Is SJF always better than RR, for any time quantum, in terms of the average turnaround time?(6pts)
+    - When all processes are of the same size, please tell us what the best time quantum is for RR in terms of the average waiting time. (6pts)
+    - Now suppose that processes might arrive at different times, and SJF and RR are preemptive scheduling algorithms. Is SJF always better than RR, for any time quantum, in terms of the average waiting time. (6pts)
+
+6. Please design a solution for airplanes to land in an airport. Suppose that there is only one runway in the airport. Please make sure that only one airplane can control the runway to land at a time, and there should be no starvation for your solution. (Hint: (1) the Bakery Algorithm; (2) Each process donotes an airplane.) (10pts)
+
+## [Fall 2011](https://www.ptt.cc/bbs/NTU-Exam/M.1335413893.A.32B.html)
+
+The exam is 180 minutes long. The total score is 107pts. Please read the questions carefully.
+
+1. Terminologies. (24pts)
+
+    - **DMA**
+
+        Release CPU from handling excessive interrupts!
+        Execute the device driver to set up the registers of the DMA controller. DMA moves blocks of data between the memory and its own buffers. Transfer from its buffers to its devices. Interrupt the CPU when the job is done.
+
+    - **Multiprogramming**
+
+        Increases CPU utilization by organizing jobs so that the CPU always has one to execute.
+
+    - **Horizontal Cache Coherency and Consistency**
+
+        Among units of the same storage level.
+        
+        From [知乎](https://www.zhihu.com/question/25252397):
+
+        - Coherence 保證的是同一地址有不同 copy 的時候，保證看到的是在 timing 上離自己最近的。
+        - 但是，只保證 Coherence 是不夠的，在 multiprocessor 不同地址的多個 copy 訪問的時候會出現問題，這個就是consistency
+
+        - Coherence is concerned with updates/invalidations to a single shared variable.
+        - Consistency is concerned with the behavior of memory references from multiple concurrent threads.
+
+    - **A Module Approach In OS Designs** (Hint: A Layered Approach) [ask]
+
+        Moving all nonessential components from the kernel to the user or system programs!
+
+    - **Indirect Communication in Message Passing** ($\leftrightarrow$ Direct)
+
+        - The messages are sent to and received from mailboxes, or ports.
+        - ($\leftrightarrow$) The messages are sent to and received from processes.
+
+    - **Socket**
+
+        An endpoint for communication. (IP + port#)
+
+    - **Deferred Cancellation** ($\leftrightarrow$ Asynchronous cancellation)
+
+        - The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.
+        - ($\leftrightarrow$) One thread immediately terminates the target thread.
+
+    - **Pull Migration** (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push migration)
+
+        - Pulling a waiting task from a busy processor.
+        - ($\leftrightarrow$) Pushing processes from overloaded to less-busy processors.
+
+2. Please answer the following questions regarding the designs of operating systems: (23pts)
+    - Please give me two resources, beside CPU, that are managed by OS. (6pts)
+    - When an interrupt arrives, a running task is interrupted, and its context could be saved in different ways, such as "a fixed address for all interrupts", "a fixed space for each interrupt type", and "a stack". What is the advantage in using a stack, compared with the approach in using a fixed space for each interrupt type? (5pts)
+    - In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (l2pts)
+
+3. OS services are such as those for "program execution", "file-system manipulation", "accounting", and "resource allocation". Which of them are for system efficiency, instead of user convenience? (8pts)
+
+4. Famous Application Programming Interfaces (API) are such as Win 32 API and POSIX API. What are the two major benefits in providing API, compared to
+   the providing of system calls only? What does POSIX API offers to programmers, compared to the offering of ANSI C to programmers? (8pts)
+
+5. In the ordinary virtualization design, the virtualization layer runs in the system mode. For VMware, the virtualization layer runs in the system or user mode? For Java, the Java virtual machine run in the system or user mode? (6pts)
+
+6. Please answer the following questions for process management and scheduling. (20pts)
+
+    - Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts)
+    - Why a long-term scheduler has more time to choose a process for a system than a short-term scheduler does in process scheduling? (5pts)
+    - Please explain the main difference between a user-level thread and a kernel thread. (5pts)
+    - Is a Java thread is a user-level thread or a kernel thread? (4pts)
+
+7. The scheduling algorithm of Solaris 9 is based on the Multilevel Feedback Queue Scheduling algorithm. There are six priority classes. Please explain the Fair Sharing class? Please explain how interactive threads in the Time Sharing or Interactive class are favored in scheduling in Solaris 8 or 9? (6pts)
+
+8. Consider the scheduling of processes in which processes might arrive at different times and have different deadlines to complete their execution. Let the processes be scheduled by the preemptive Shortest-Job-First algorithm (PSJF) and a Priority Scheduling algorithm (PS) in which processes with urgent deadlines have higher priorities, and there is only one processor. Can you give a set of processes such that PS can meet the deadlines of the processes, but PSJF can not do it? (5pts)
+
+9. Consider the Round Robin scheduling algorithm (RR) with two different time quantums L and S, where L > S. Let the scheduling criteria be the average
+   waiting time, and L be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum S when all processes are
+   ready at time 0? Please give me your answer with argument. (7pts)
+
 ## [Fall 2012](https://www.ptt.cc/bbs/NTU-Exam/M.1418537836.A.BB5.html)
 
 The exam is 180 minutes long. The total score is 110pts. Please read the questions carefully.

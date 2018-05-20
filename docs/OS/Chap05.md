@@ -606,9 +606,65 @@ struct buffer {
 
 ## 5.8 Monitors
 
+```c
+monitor monitor name {
+    /* shared variable declarations */
+
+    function P1 ( . . . ) {
+        . . .
+    }
+
+    function P2 ( . . . ) {
+        . . .
+    }
+
+        .
+        .
+        .
+    function Pn ( . . . ) {
+        . . .
+    }
+
+    initialization_code ( . . . ) {
+        . . .
+    }
+}
+```
+
 ### 5.8.1 Monitor Usage
 
 An abstract data type—or ADT—encapsulates data with a set of functions to operate on that data that are independent of any specific implementation of the ADT.
+
+The monitor construct ensures that only one process at a time is active within the monitor.
+
+A programmer who needs to write a tailor-made synchronization scheme can define one or more variables of type $condition$:
+
+```c
+    condition x, y;
+```
+
+The only operations that can be invoked on a condition variable are `wait()` and `signal()`. The operation
+
+```c
+    x.wait();
+```
+
+means that the process invoking this operation is suspended until another process invokes
+
+```c
+    x.signal();
+```
+
+!!! info "Condition variables (of a monitor) vs. signal operation (of binary semaphore)"
+    The `x.signal()` operation resumes exactly one suspended process. If no process is suspended, then the `signal()` operation has no effect; that is, the state of `x` is the same as if the operation had never been executed. Contrast this operation with the `signal()` operation associated with semaphores, which always affects the state of the semaphore.
+
+Suppose that, when the `x.signal()` operation is invoked by a process `P`, there exists a suspended process `Q` associated with condition `x`. Clearly, if the suspended process `Q` is allowed to resume its execution, the signaling process `P` must wait. Two possibilities exist:
+
+1. **Signal and wait**: `P` either waits until `Q` leaves the monitor or waits for another condition.
+
+1. **Signal and continue**: `Q` either waits until `P` leaves the monitor or waits for another condition.
+
+![small](../assets/os/5.17.png)
 
 ### 5.8.2 Dining-Philosophers Solution Using Monitors
 
@@ -710,17 +766,16 @@ For each condition `x`, we introduce a semaphore `x_sem` and an integer variable
 
 ### 5.8.4 Resuming Processes within a Monitor
 
-```c
-x.wait(c);
-```
+- **conditional-wait**:
 
-```c
-R.acquire(t);
+    ```c
+    x.wait(c);
+    ```
 
-/* access the resource */
+    where $c$ is a **priority number**. When `x.signal()` is executed, the process with the smallest priority number is resumed next.
 
-R.release();
-```
+
+Consider the `ResourceAllocator` monitor, which controls the allocation of a single resource among competing processes.
 
 ```c
 monitor ResourceAllocator {
@@ -743,6 +798,26 @@ monitor ResourceAllocator {
     }
 }
 ```
+
+- A process that needs to access the resource in question must observe the following sequence:
+
+    ```c
+    R.acquire(t);
+
+    /* access the resource */
+
+    R.release();
+    ```
+
+The monitor concept cannot guarantee that the preceding access sequence will be observed. In particular, the following problems can occur:
+
+- A process might access a resource without first gaining access permission to the resource.
+
+- A process might never release a resource once it has been granted access to the resource.
+
+- A process might attempt to release a resource that it never requested.
+
+- A process might request the same resource twice (without first releasing the resource).
 
 ## 5.9 Synchronization Examples
 

@@ -48,12 +48,12 @@ Two approaches:
 
 1. the command interpreter itself contains the code to execute the command.
     - fast but the interpreter tends to be big! $\to$ painful in revision!
-    - eg. `cd`, `ls`, `del`
+    - e.g. `cd`, `ls`, `del`
 2. the command interpreter merely uses the command to identify a file to be loaded into memory and executed $\to$ search exec files
     - parameter passing
     - being slow
     - inconsistent interpretation of parameters
-    - eg. `rm`
+    - e.g. `rm`
 
 ### 2.2.2 Graphical User Interfaces
 
@@ -66,7 +66,7 @@ Two approaches:
 ### 2.2.3 Choice of Interface
 
 - shell scripts
-    - eg. `UNIX` and `Linux`.
+    - e.g. `UNIX` and `Linux`.
 
 ## 2.3 Systems Calls
 
@@ -74,7 +74,7 @@ Two approaches:
 
 System calls provide an interface to the services made available by an operating system.
 
-eg. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!
+e.g. writing a simple program to read data from one file and copy them to another file causes a lot of system calls!
 
 - C/C++
 
@@ -128,7 +128,7 @@ error $\to$ dump (written to disk, may be examined by a debugger)
 
 More severe errors can be indicated by a higher-level error parameter.
 
-eg. Standard C Library
+e.g. Standard C Library
 
 ![normal](../assets/os/libc.png)
 

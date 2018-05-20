@@ -381,6 +381,9 @@ Proportional share schedulers operate by allocating $T$ shares among all applica
 
 ### 6.8.1 Deterministic Modeling
 
+!!! note "Deterministic modeling"
+    It is one type of analytic evaluation. This method takes a particular predetermined workload and defines the performance of each algorithm for that workload.
+
 ### 6.8.2 Queueing Models
 
 - Little's formula ($n$: # of processes in the queue, $\lambda$: arrival rate, $W$: average waiting time in the queue.)
