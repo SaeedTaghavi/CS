@@ -1,6 +1,6 @@
-# MIDTERMS AT NTUCSIE
+# Midterms at NTUCSIE
 
-## Fall 2012
+## [Fall 2012](https://www.ptt.cc/bbs/NTU-Exam/M.1418537836.A.BB5.html)
 
 The exam is 180 minutes long. The total score is 110pts. Please read the questions carefully.
 
@@ -41,7 +41,7 @@ The exam is 180 minutes long. The total score is 110pts. Please read the questio
 
 9. Consider the time-stamp protocol of Chapter 6, in which each process $T_i$ is given a time stamp $T_S(T_i)$, and each read/write operation must check it up with the read and write timestamp of the accessed data object $Q$. Is it possible to have any deadlock? You must provide your explanation. (5pts)
 
-## Fall 2013
+## [Fall 2013](https://www.ptt.cc/bbs/NTU-Exam/M.1402216802.A.99D.html)
 
 The exam is 180 minutes long. The total score is 103pts. Please read the questions carefully.
 
@@ -82,7 +82,7 @@ The exam is 180 minutes long. The total score is 103pts. Please read the questio
 
 8. Please explain why the Completely Fair Scheduling (CFS) of Linux V2.6 favors I/O tasks. (5pts)
        
-## Fall 2014
+## [Fall 2014](https://www.ptt.cc/bbs/NTU-Exam/M.1434421485.A.9E4.html)
 
 The exam is 180 minutes long. The total score is 108pts. Please read the questions carefully.
 
@@ -129,7 +129,7 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
     - Please use Monitor to implement Consumer and Producer with a bounded buffer. (10pts)
     - Please prove that your above solution satisfy the Progress requirement of the Critical Section Problem. (3pts)
 
-## Fall 2015
+## [Fall 2015](https://www.ptt.cc/bbs/NTU-Exam/M.1466605487.A.7AD.html)
 
 The Exam is 180 minutes long. The total score is 105pts. Please read the questions carefully.
 
@@ -169,13 +169,4 @@ The Exam is 180 minutes long. The total score is 105pts. Please read the questio
     - Please prove that your above solution satisfy the three requirements of the Critical Section Problem. (6pts)
     - Could you revise your solution so that an ambulance can always go first? (5pts)
 
-
-        $$
-        ┌───┐   ┌───┐ \\\\
-        │   │ ↓ │   │ \\\\
-        └───┘   └───┘ \\\\
-          →       ←   \\\\
-        ┌───┐   ┌───┐ \\\\
-        │   │ ↑ │   │ \\\\
-        └───┘   └───┘
-        $$
+        ![small](../assets/os/2015midterm.png)
