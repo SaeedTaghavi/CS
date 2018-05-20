@@ -836,7 +836,7 @@
 </li>
 <li>
 <p><strong>Deterministic Modeling</strong></p>
-<p>It is one type of analytic evaluation. This method takes a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
+<p>Take a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
 </li>
 <li>
 <p><strong>Race Condition</strong></p>
@@ -918,7 +918,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </ul>
 </li>
 <li>
-<p><strong>A Module Approach In OS Designs</strong> (Hint: A Layered Approach) [ask]</p>
+<p><strong>A Module Approach in OS Designs</strong> (Hint: A Layered Approach) [ask]</p>
 <p>Moving all nonessential components from the kernel to the user or system programs!</p>
 </li>
 <li>
@@ -933,14 +933,14 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p>An endpoint for communication. (IP + port#)</p>
 </li>
 <li>
-<p><strong>Deferred Cancellation</strong> ($\leftrightarrow$ Asynchronous cancellation)</p>
+<p><strong>Deferred Cancellation</strong> ($\leftrightarrow$ Asynchronous Cancellation)</p>
 <ul>
 <li>The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.</li>
 <li>($\leftrightarrow$) One thread immediately terminates the target thread.</li>
 </ul>
 </li>
 <li>
-<p><strong>Pull Migration</strong> (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push migration)</p>
+<p><strong>Pull Migration</strong> (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push Migration)</p>
 <ul>
 <li>Pulling a waiting task from a busy processor.</li>
 <li>($\leftrightarrow$) Pushing processes from overloaded to less-busy processors.</li>
@@ -993,14 +993,38 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <li>
 <p>Terminologies. (24pts)</p>
 <ul>
-<li>Hardware Interrupt</li>
-<li>Virtual Machine</li>
-<li>Context Switch</li>
-<li>A Full Duplex Pipe</li>
-<li>Multilevel Queue Scheduling</li>
-<li>Memory Stall</li>
-<li>Bounded Waiting (A Requirement of a Critical Section Solution)</li>
-<li>Adaptive Mutex</li>
+<li>
+<p><strong>Hardware Interrupt</strong></p>
+<p>Services requests of I/O devices.</p>
+</li>
+<li>
+<p><strong>Virtual Machine</strong></p>
+<p>Provides an interface that is identical to the underlying bare hardware.</p>
+</li>
+<li>
+<p><strong>Context Switch</strong></p>
+<p>It saves the state of the currently running process and loads the state of the newly scheduled process.</p>
+</li>
+<li>
+<p><strong>A Full Duplex Pipe</strong></p>
+<p>A pipe that suppors two ways of message passing simultaneously.</p>
+</li>
+<li>
+<p><strong>Multilevel Queue Scheduling</strong></p>
+<p>Processes can be classified into different groups and permanently assigned to one queue, where there are Inter-queue and intra-queue scheduling policies.</p>
+</li>
+<li>
+<p><strong>Memory Stall</strong></p>
+<p>A phenomenon in which a processor waits for a significant amount of time waiting for the data to become available.</p>
+</li>
+<li>
+<p><strong>Bounded Waiting</strong> (A Requirement of a Critical Section Solution)</p>
+<p>A waiting process only waits for a bounded number of processes to enter their critical sections.</p>
+</li>
+<li>
+<p><strong>Adaptive Mutex</strong></p>
+<p>A binary semaphore in which it is a spinlock if the lock-holding thread is running; otherwise, blocking is used.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -1046,14 +1070,38 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <li>
 <p>Terminologies. (24pts)</p>
 <ul>
-<li>Booting</li>
-<li>Interrupt Vector</li>
-<li>Cache Coherency</li>
-<li>Platform as a service (PaaS) in Cloud Computing</li>
-<li>A Modular Kernel (Hint: OS Structure)</li>
-<li>Data Parellelism in Multicore Programming</li>
-<li>Rate Monotonic Scheduling</li>
-<li>Deterministic Modeling</li>
+<li>
+<p><strong>Booting</strong></p>
+<p>Initialize all aspects of the system and then load and run the OS.</p>
+</li>
+<li>
+<p><strong>Interrupt Vector</strong></p>
+<p>An array of interrupt-handlers' addresses that are indexed by device numbers (or interrupt numbers).</p>
+</li>
+<li>
+<p><strong>Cache Coherency</strong> [Fall 2011 1.(c)]</p>
+<p>Cache coherency problems can arise when more than one processors refer to the same data. Coherency defines what value is returned on a read.</p>
+</li>
+<li>
+<p><strong>Platform as a service (PaaS) in Cloud Computing</strong></p>
+<p>Pass provides a computing platform and a solution stack as a service, such as a database server. One example is Microsoft Azure.</p>
+</li>
+<li>
+<p><strong>A Modular Kernel</strong> (Hint: OS Structure) [Fall 2011 1.(d)]</p>
+<p>A moduler kernel consists of a set of components, where there are core/primary modules, and it is of modules without a layer structure.</p>
+</li>
+<li>
+<p><strong>Data Parellelism in Multicore Programming</strong></p>
+<p>Distribute data over cores to execute the same operation.</p>
+</li>
+<li>
+<p><strong>Rate Monotonic Scheduling</strong></p>
+<p>A fixed priority real-time process scheduling algorithm in which the priorities of processes are inversely proportional to their periods.</p>
+</li>
+<li>
+<p><strong>Deterministic Modeling</strong> [Spring 2011 1.(f)]</p>
+<p>Take a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -1099,14 +1147,38 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <li>
 <p>Terminologies. (24pts)</p>
 <ul>
-<li>Buffering (Hint: It is not caching.)</li>
-<li>Virtual Machine</li>
-<li>System Generation (SYSGEN)</li>
-<li>Context Switch</li>
-<li>Remote Procedure Call (Hint: Message Passing)</li>
-<li>Implicit Threading</li>
-<li>Earliest Deadline First Scheduling</li>
-<li>Race Condition</li>
+<li>
+<p><strong>Buffering</strong> (Hint: It is not caching.)</p>
+<p>It means to keep data in a faster medium temporarily before moving them to a slower layer.</p>
+</li>
+<li>
+<p><strong>Virtual Machine</strong> [Fall 2012 1.(b)]</p>
+<p>Provides an interface that is identical to the underlying bare hardware.</p>
+</li>
+<li>
+<p><strong>System Generation</strong> (SYSGEN)</p>
+<p>The process to configure or generate an operating system for a one specific computer.</p>
+</li>
+<li>
+<p><strong>Context Switch</strong> [Fall 2012 1.(c)]</p>
+<p>Save the state of the old process and load the state of the newly scheduled process.</p>
+</li>
+<li>
+<p><strong>Remote Procedure Call</strong> (Hint: Message Passing)</p>
+<p>Senders are blocked until the receivers have received msgs and replied by reply msgs. (A way to abstract the procedure-call mechanism for use between systems with network connection.)</p>
+</li>
+<li>
+<p><strong>Implicit Threading</strong></p>
+<p>Transfer the creation and management of the threading from the application developers to compilers and run-time libraries.</p>
+</li>
+<li>
+<p><strong>Earliest Deadline First Scheduling</strong></p>
+<p>A dynamic-priority real-time process scheduling algorithm in which the priorities of processes are higher if their deadlines are closer.</p>
+</li>
+<li>
+<p><strong>Race Condition</strong> [Spring 2011 1.(g)]</p>
+<p>Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -1162,14 +1234,61 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <li>
 <p>Terminologies.(24pts)</p>
 <ul>
-<li>Software Interrupts </li>
-<li>Performance Tuning</li>
-<li>Mid-Term Scheduler</li>
-<li>FIFOS of UNIX</li>
-<li>Asynchronous Signal</li>
-<li>Push Migration (Hint:Load Balancing) </li>
-<li>Coarse-Grained Multithreading of Hardware Threads</li>
-<li>Analytic Evaluation</li>
+<li>
+<p><strong>Software Interrupts</strong></p>
+<p>Caused by software execution, e.g. signals, invalid memory access, division by zero, system calls.</p>
+</li>
+<li>
+<p><strong>Performance Tuning</strong></p>
+<p>A procedure that seeks to improve performance by removing bottlenecks.</p>
+</li>
+<li>
+<p><strong>Mid-Term Scheduler</strong> ($\leftrightarrow$ Long-Term Scheduler $\leftrightarrow$ Short-Term Scheduler)</p>
+<ul>
+<li>Swap processes in and out to control the degree of multiprogramming.</li>
+<li>($\leftrightarrow$) Long-Term Scheduler:<ul>
+<li>Selects processes from this pool</li>
+<li>Loads theme into memory for execution</li>
+<li>Controls the degree of multiprogramming (# processes). </li>
+<li>Selects a good process mix of I/O-bound and CPU-bound.</li>
+</ul>
+</li>
+<li>($\leftrightarrow$) Short-Term Scheduler:<ul>
+<li>Selects from among the processes that are ready to execute</li>
+<li>Allocates CPU to one of them</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>FIFOS of UNIX</strong></p>
+<p>Named pipes.</p>
+</li>
+<li>
+<p><strong>Asynchronous Signal</strong> ($\leftrightarrow$ Synchronous Signal)</p>
+<ul>
+<li>An asynchronous signal usually reports some asynchronous event outside the program, e.g., ^C or time expiration.</li>
+<li>($\leftrightarrow$) Delivered to the same process that performed the operation causing the signal. e.g., illegal memory access, division by 0.</li>
+</ul>
+</li>
+<li>
+<p><strong>Push Migration</strong> (Hint: Load Balancing) [Fall 2011 1.(h)] ($\leftrightarrow$ Pull Migration)</p>
+<ul>
+<li>Pushing processes from overloaded to less-busy processors.</li>
+<li>($\leftrightarrow$) Pulling a waiting task from a busy processor.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coarse-Grained Multithreading of Hardware Threads</strong> ($\leftrightarrow$ Fine-Grained (interleved))</p>
+<ul>
+<li>A thread executes on a processor until a long-latency event such as a memory stall occurs.</li>
+<li>($\leftrightarrow$) Switches between threads at a much finer level of granularity</li>
+</ul>
+</li>
+<li>
+<p><strong>Analytic Evaluation</strong> [Spring 2011 1.(f), Fall 2013 1.(h)]</p>
+<p>Analytic evaluation uses the given algorithm and the system workload to produce a formula or number to evaluate the performance of the algorithm for that workload.</p>
+</li>
 </ul>
 </li>
 <li>
