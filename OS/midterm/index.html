@@ -816,35 +816,35 @@
 <ul>
 <li>
 <p><strong>Security</strong></p>
-<p>Defense of a system from external and internal attacks, e.g., viruses, denial of services, etc.</p>
+<p><span style="color:red">Defense of a system from external and internal attacks, e.g., viruses, denial of services, etc.</p>
 </li>
 <li>
 <p><strong>A Layered Approach in OS Designs</strong></p>
-<p>The operating system is broken into a number of layers (levels). The bottom layer (layer $0$) is the hardware; the highest (layer $N$) is the user interface.</p>
+<p><span style="color:red">The operating system is broken into a number of layers (levels). The bottom layer (layer $0$) is the hardware; the highest (layer $N$) is the user interface.</p>
 </li>
 <li>
 <p><strong>Para-virtualization</strong></p>
-<p>A variation on virtualization that presents a guest/operating system that is similar but not identical to the underlying hardware.</p>
+<p><span style="color:red">A variation on virtualization that presents a guest/operating system that is similar but not identical to the underlying hardware.</p>
 </li>
 <li>
 <p><strong>Lightweight Process</strong></p>
-<p>A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)</p>
+<p><span style="color:red">A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)</p>
 </li>
 <li>
 <p><strong>NUMA</strong></p>
-<p>Non-Uniform Memory Access: A CPU has faster access to some parts of main memory than to other parts.</p>
+<p><span style="color:red">Non-Uniform Memory Access: A CPU has faster access to some parts of main memory than to other parts.</p>
 </li>
 <li>
 <p><strong>Deterministic Modeling</strong></p>
-<p>Take a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
+<p><span style="color:red">Take a particular predetermined workload and defines the performance of each algorithm for that workload.</p>
 </li>
 <li>
 <p><strong>Race Condition</strong></p>
-<p>Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
+<p><span style="color:red">Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
 </li>
 <li>
 <p><strong>Write Ahead Logging</strong></p>
-<p>All modifications are written to a log before they are applied. </p>
+<p><span style="color:red">All modifications are written to a log before they are applied.</p>
 </li>
 </ul>
 </li>
@@ -895,54 +895,54 @@
 <ul>
 <li>
 <p><strong>DMA</strong></p>
-<p>Release CPU from handling excessive interrupts!
+<p><span style="color:red">Release CPU from handling excessive interrupts!
 Execute the device driver to set up the registers of the DMA controller. DMA moves blocks of data between the memory and its own buffers. Transfer from its buffers to its devices. Interrupt the CPU when the job is done.</p>
 </li>
 <li>
 <p><strong>Multiprogramming</strong></p>
-<p>Increases CPU utilization by organizing jobs so that the CPU always has one to execute.</p>
+<p><span style="color:red">Increases CPU utilization by organizing jobs so that the CPU always has one to execute.</p>
 </li>
 <li>
 <p><strong>Horizontal Cache Coherency and Consistency</strong></p>
-<p>Among units of the same storage level.</p>
-<p>From <a href="https://www.zhihu.com/question/25252397">知乎</a>:</p>
+<p><span style="color:red">Among units of the same storage level.</p>
+<p><span style="color:red">From <a href="https://www.zhihu.com/question/25252397">知乎</a>:</p>
 <ul>
-<li>Coherence 保證的是同一地址有不同 copy 的時候，保證看到的是在 timing 上離自己最近的。</li>
+<li><span style="color:red">Coherence 保證的是同一地址有不同 copy 的時候，保證看到的是在 timing 上離自己最近的。</li>
 <li>
-<p>但是，只保證 Coherence 是不夠的，在 multiprocessor 不同地址的多個 copy 訪問的時候會出現問題，這個就是consistency</p>
+<p><span style="color:red">但是，只保證 Coherence 是不夠的，在 multiprocessor 不同地址的多個 copy 訪問的時候會出現問題，這個就是consistency</p>
 </li>
 <li>
-<p>Coherence is concerned with updates/invalidations to a single shared variable.</p>
+<p><span style="color:red">Coherence is concerned with updates/invalidations to a single shared variable.</p>
 </li>
-<li>Consistency is concerned with the behavior of memory references from multiple concurrent threads.</li>
+<li><span style="color:red">Consistency is concerned with the behavior of memory references from multiple concurrent threads.</li>
 </ul>
 </li>
 <li>
 <p><strong>A Module Approach in OS Designs</strong> (Hint: A Layered Approach) [ask]</p>
-<p>Moving all nonessential components from the kernel to the user or system programs!</p>
+<p><span style="color:red">Moving all nonessential components from the kernel to the user or system programs!</p>
 </li>
 <li>
 <p><strong>Indirect Communication in Message Passing</strong> ($\leftrightarrow$ Direct)</p>
 <ul>
-<li>The messages are sent to and received from mailboxes, or ports.</li>
+<li><span style="color:red">The messages are sent to and received from mailboxes, or ports.</li>
 <li>($\leftrightarrow$) The messages are sent to and received from processes.</li>
 </ul>
 </li>
 <li>
 <p><strong>Socket</strong></p>
-<p>An endpoint for communication. (IP + port#)</p>
+<p><span style="color:red">An endpoint for communication. (IP + port#)</p>
 </li>
 <li>
 <p><strong>Deferred Cancellation</strong> ($\leftrightarrow$ Asynchronous Cancellation)</p>
 <ul>
-<li>The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.</li>
+<li><span style="color:red">The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.</li>
 <li>($\leftrightarrow$) One thread immediately terminates the target thread.</li>
 </ul>
 </li>
 <li>
 <p><strong>Pull Migration</strong> (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push Migration)</p>
 <ul>
-<li>Pulling a waiting task from a busy processor.</li>
+<li><span style="color:red">Pulling a waiting task from a busy processor.</li>
 <li>($\leftrightarrow$) Pushing processes from overloaded to less-busy processors.</li>
 </ul>
 </li>
@@ -995,73 +995,163 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <ul>
 <li>
 <p><strong>Hardware Interrupt</strong></p>
-<p>Services requests of I/O devices.</p>
+<p><span style="color:red">Services requests of I/O devices.</p>
 </li>
 <li>
 <p><strong>Virtual Machine</strong></p>
-<p>Provides an interface that is identical to the underlying bare hardware.</p>
+<p><span style="color:red">Provides an interface that is identical to the underlying bare hardware.</p>
 </li>
 <li>
 <p><strong>Context Switch</strong></p>
-<p>It saves the state of the currently running process and loads the state of the newly scheduled process.</p>
+<p><span style="color:red">It saves the state of the currently running process and loads the state of the newly scheduled process.</p>
 </li>
 <li>
 <p><strong>A Full Duplex Pipe</strong></p>
-<p>A pipe that suppors two ways of message passing simultaneously.</p>
+<p><span style="color:red">A pipe that suppors two ways of message passing simultaneously.</p>
 </li>
 <li>
 <p><strong>Multilevel Queue Scheduling</strong></p>
-<p>Processes can be classified into different groups and permanently assigned to one queue, where there are Inter-queue and intra-queue scheduling policies.</p>
+<p><span style="color:red">Processes can be classified into different groups and permanently assigned to one queue, where there are Inter-queue and intra-queue scheduling policies.</p>
 </li>
 <li>
 <p><strong>Memory Stall</strong></p>
-<p>A phenomenon in which a processor waits for a significant amount of time waiting for the data to become available.</p>
+<p><span style="color:red">A phenomenon in which a processor waits for a significant amount of time waiting for the data to become available.</p>
 </li>
 <li>
 <p><strong>Bounded Waiting</strong> (A Requirement of a Critical Section Solution)</p>
-<p>A waiting process only waits for a bounded number of processes to enter their critical sections.</p>
+<p><span style="color:red">A waiting process only waits for a bounded number of processes to enter their critical sections.</p>
 </li>
 <li>
 <p><strong>Adaptive Mutex</strong></p>
-<p>A binary semaphore in which it is a spinlock if the lock-holding thread is running; otherwise, blocking is used.</p>
+<p><span style="color:red">A binary semaphore in which it is a spinlock if the lock-holding thread is running; otherwise, blocking is used.</p>
 </li>
 </ul>
 </li>
 <li>
 <p>Please answer the following questions regarding the designs of operating systems: (20pts)</p>
 <ul>
-<li>What is the difference between multiprogramming and time sharing? (6pts)</li>
-<li>Which one of the following memory unit is managed by the operating systems: Registers, Cache, Main Memory, Disks (8pts)</li>
-<li>Operating systems services include user interfaces. UNIX shells, including the Boume shell and C shell, provide command interpreters. Consider UNIX shells, please give me one command that is implemented as some code inside the command interpreter and two commands that are implemented by system programs? (6pts)</li>
+<li>
+<p>What is the difference between <strong>multiprogramming</strong> and <strong>time sharing</strong>? (6pts)</p>
+<p><span style="color:red">Time sharing (or multitasking) is a logical extension of multiprogramming, where CPU services each of ready tasks in a way that every task receives CPU time in an interactive fashion.</p>
+</li>
+<li>
+<p>Which one of the following memory unit is managed by the operating systems: Registers, Cache, Main Memory, Disks (8pts)</p>
+<p><span style="color:red">Main Memory and Disks.</p>
+</li>
+<li>
+<p>Operating systems services include user interfaces. UNIX shells, including the Bourne shell and C shell, provide command interpreters. Consider UNIX shells, please give me one command that is implemented as some code inside the command interpreter and two commands that are implemented by system programs? (6pts)</p>
+<ul>
+<li>
+<p>Inside the command interpreter:</p>
+<ul>
+<li>C shell: <span style="color:red">umask, cd and limit</li>
+<li>Bourne shell: <span style="color:red">ulimit -H and -S</li>
+</ul>
+</li>
+<li>
+<p>By system programs: <span style="color:red">rm and ls</p>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
 <p>Message passing is a way for interprocess communication. Consider the capacity of a link between two processes has zero capacity. Is the message passing (between the two processes) synchronous or asynchronous? You must provide explanation to receive any credits. (5pts)</p>
+<p><span style="color:red">It is synchronous because we can only have blocking sends and blocking receives.</p>
 </li>
 <li>
-<p>Please give me one occasion when a mid-term scheduler should run. Can a short-term scheduler schedule the executions of user-level threads? Can a short-term scheduler schedule the executions of a Java thread? (9pts)</p>
+<ul>
+<li>
+<p>Please give me one occasion when a mid-term scheduler should run.</p>
+<p><span style="color:red">The remaining main memory is low or the CPU utilization is too high.</p>
 </li>
 <li>
-<p>Consider signal handling for threads. Is a Division-By-Zero signal synchronous or asynchronous? Should a Division-By-Zero signal be delivered to every thread of its belonging process? (6pts)</p>
+<p>Can a short-term scheduler schedule the executions of user-level threads?</p>
+<p><span style="color:red">No.</p>
+</li>
+<li>
+<p>Can a short-term scheduler schedule the executions of a Java thread? (9pts)</p>
+<p><span style="color:red">It depends on the thread library on the host system.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Consider signal handling for threads. </p>
+<ul>
+<li>
+<p>Is a Division-By-Zero signal synchronous or asynchronous?</p>
+<p><span style="color:red">Synchronous.</p>
+</li>
+<li>
+<p>Should a Division-By-Zero signal be delivered to every thread of its belonging process? (6pts)</p>
+<p><span style="color:red">No. It should be only sent to the thread that causes the signal.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (24pts)</p>
 <ul>
-<li>For the Round-Robin Scheduling, what would be the preferred time slice in general? (4pts)</li>
-<li>For the Round-Robin Scheduling, shall we have a small time slice for a better average turn around time? (4pts)</li>
-<li>For the Priority Scheduling, how to avoid the starvation problem (in which a low priority process can never be scheduled)? (4pts)</li>
-<li>Please explain how a guest operating-system scheduling algorithm that assumes a certain amount of progress in a given amount of time might be negatively impacted by virtualization. (6pts)</li>
-<li>For the evaluation of a scheduling algorithm, please give me two difficulties in using the implementation method. (6pts)</li>
+<li>
+<p>For the Round-Robin Scheduling, what would be the preferred time slice in general? (4pts)</p>
+<p><span style="color:red">The time slice $\ge 80\%$ CPU burst.</p>
+</li>
+<li>
+<p>For the Round-Robin Scheduling, shall we have a small time slice for a better average turn around time? (4pts)</p>
+<p><span style="color:red">No, a small time slice will increase the average turnaround time.</p>
+</li>
+<li>
+<p>For the Priority Scheduling, how to avoid the starvation problem (in which a low priority process can never be scheduled)? (4pts)</p>
+<p><span style="color:red">An <strong>aging</strong> solution by increasing the priority of a process that waits for a long time.</p>
+</li>
+<li>
+<p>Please explain how a guest operating-system scheduling algorithm that assumes a certain amount of progress in a given amount of time might be negatively impacted by virtualization. (6pts)</p>
+<p><span style="color:red">It is because the virtualization software needs to schedule the use of the physical CPUs among the virtual CPUs. A given amount of the time slice might take much more than the time of the virtual CPU time.</p>
+</li>
+<li>
+<p>For the evaluation of a scheduling algorithm, please give me two difficulties in using the implementation method. (6pts)</p>
+<ul>
+<li><span style="color:red">Cost in modifying the OS</li>
+<li><span style="color:red">User reaction to OS changes</li>
+<li><span style="color:red">Changing of the environment in which the algorithm is used</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
 <p>Please explain the difference between the signal operation of a binary semaphore and that of a condition variable (of a monitor). (5pts)</p>
+<p><span style="color:red">The signal operation of a condition variable resumes one suspended process. If there is none, no effect is imposed.</p>
 </li>
 <li>
 <p>Consider a barber shop in which there are two barbers. Each barber can service exactly one customer at a time. Please use binary semaphores to implement the request for the hair-cut service. (12pts)</p>
+<p><span style="color:red">Use an integer $S$ with initial value = $2$ to indicate the number of available barbers.</p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">process</span> <span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">semaphore</span><span class="p">;</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">add</span> <span class="n">this</span> <span class="n">customer</span> <span class="n">to</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
+        <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 </li>
 <li>
-<p>Consider the time-stamp protocol of Chapter 6, in which each process $T_i$ is given a time stamp $T_S(T_i)$, and each read/write operation must check it up with the read and write timestamp of the accessed data object $Q$. Is it possible to have any deadlock? You must provide your explanation. (5pts)</p>
+<p>Consider the time-stamp protocol of Chapter 6, in which each process $T_i$ is given a time stamp $T_S(T_i)$, and each read/write operation must check it up with the read and write timestamp of the accessed data object $Q$. Is it possible to have any deadlock? You must provide your explanation. (5pts) [ask]</p>
+<p><span style="color:red">No deadlock because there is no hold-and-wait among processes.</p>
 </li>
 </ol>
 <h2 id="fall-2013"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1402216802.A.99D.html">Fall 2013</a><a class="headerlink" href="#fall-2013" title="Permanent link">&para;</a></h2>
