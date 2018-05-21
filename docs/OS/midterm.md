@@ -6,35 +6,35 @@
 
     - **Security**
 
-        Defense of a system from external and internal attacks, e.g., viruses, denial of services, etc.
+        <span style="color:red">Defense of a system from external and internal attacks, e.g., viruses, denial of services, etc.
 
     - **A Layered Approach in OS Designs**
 
-        The operating system is broken into a number of layers (levels). The bottom layer (layer $0$) is the hardware; the highest (layer $N$) is the user interface.
+        <span style="color:red">The operating system is broken into a number of layers (levels). The bottom layer (layer $0$) is the hardware; the highest (layer $N$) is the user interface.
 
     - **Para-virtualization**
 
-        A variation on virtualization that presents a guest/operating system that is similar but not identical to the underlying hardware.
+        <span style="color:red">A variation on virtualization that presents a guest/operating system that is similar but not identical to the underlying hardware.
 
     - **Lightweight Process**
 
-        A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)
+        <span style="color:red">A virtual processor (kernel threads) on which the application can schedule a user thread to run. (many-to-many or two-level)
 
     - **NUMA**
 
-        Non-Uniform Memory Access: A CPU has faster access to some parts of main memory than to other parts.
+        <span style="color:red">Non-Uniform Memory Access: A CPU has faster access to some parts of main memory than to other parts.
 
     - **Deterministic Modeling**
 
-        Take a particular predetermined workload and defines the performance of each algorithm for that workload.
+        <span style="color:red">Take a particular predetermined workload and defines the performance of each algorithm for that workload.
 
     - **Race Condition**
 
-        Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
+        <span style="color:red">Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
 
     - **Write Ahead Logging**
 
-        All modifications are written to a log before they are applied. 
+        <span style="color:red">All modifications are written to a log before they are applied.
 
 2. Please answer following questions regarding the design the design of operation systems. (22pts)
 
@@ -74,46 +74,46 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
     - **DMA**
 
-        Release CPU from handling excessive interrupts!
+        <span style="color:red">Release CPU from handling excessive interrupts!
         Execute the device driver to set up the registers of the DMA controller. DMA moves blocks of data between the memory and its own buffers. Transfer from its buffers to its devices. Interrupt the CPU when the job is done.
 
     - **Multiprogramming**
 
-        Increases CPU utilization by organizing jobs so that the CPU always has one to execute.
+        <span style="color:red">Increases CPU utilization by organizing jobs so that the CPU always has one to execute.
 
     - **Horizontal Cache Coherency and Consistency**
 
-        Among units of the same storage level.
+        <span style="color:red">Among units of the same storage level.
         
-        From [知乎](https://www.zhihu.com/question/25252397):
+        <span style="color:red">From [知乎](https://www.zhihu.com/question/25252397):
 
-        - Coherence 保證的是同一地址有不同 copy 的時候，保證看到的是在 timing 上離自己最近的。
-        - 但是，只保證 Coherence 是不夠的，在 multiprocessor 不同地址的多個 copy 訪問的時候會出現問題，這個就是consistency
+        - <span style="color:red">Coherence 保證的是同一地址有不同 copy 的時候，保證看到的是在 timing 上離自己最近的。
+        - <span style="color:red">但是，只保證 Coherence 是不夠的，在 multiprocessor 不同地址的多個 copy 訪問的時候會出現問題，這個就是consistency
 
-        - Coherence is concerned with updates/invalidations to a single shared variable.
-        - Consistency is concerned with the behavior of memory references from multiple concurrent threads.
+        - <span style="color:red">Coherence is concerned with updates/invalidations to a single shared variable.
+        - <span style="color:red">Consistency is concerned with the behavior of memory references from multiple concurrent threads.
 
     - **A Module Approach in OS Designs** (Hint: A Layered Approach) [ask]
 
-        Moving all nonessential components from the kernel to the user or system programs!
+        <span style="color:red">Moving all nonessential components from the kernel to the user or system programs!
 
     - **Indirect Communication in Message Passing** ($\leftrightarrow$ Direct)
 
-        - The messages are sent to and received from mailboxes, or ports.
+        - <span style="color:red">The messages are sent to and received from mailboxes, or ports.
         - ($\leftrightarrow$) The messages are sent to and received from processes.
 
     - **Socket**
 
-        An endpoint for communication. (IP + port#)
+        <span style="color:red">An endpoint for communication. (IP + port#)
 
     - **Deferred Cancellation** ($\leftrightarrow$ Asynchronous Cancellation)
 
-        - The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.
+        - <span style="color:red">The target thread periodically checks whether it should terminate, allowing it an opportunity to terminate itself in an orderly fashion.
         - ($\leftrightarrow$) One thread immediately terminates the target thread.
 
     - **Pull Migration** (Hint: Multipocessor Scheduling) ($\leftrightarrow$ Push Migration)
 
-        - Pulling a waiting task from a busy processor.
+        - <span style="color:red">Pulling a waiting task from a busy processor.
         - ($\leftrightarrow$) Pushing processes from overloaded to less-busy processors.
 
 2. Please answer the following questions regarding the designs of operating systems: (23pts)
@@ -151,61 +151,143 @@ The exam is 180 minutes long. The total score is 110pts. Please read the questio
 
     - **Hardware Interrupt**
 
-        Services requests of I/O devices.
+        <span style="color:red">Services requests of I/O devices.
 
     - **Virtual Machine**
 
-        Provides an interface that is identical to the underlying bare hardware.
+        <span style="color:red">Provides an interface that is identical to the underlying bare hardware.
 
     - **Context Switch**
 
-        It saves the state of the currently running process and loads the state of the newly scheduled process.
+        <span style="color:red">It saves the state of the currently running process and loads the state of the newly scheduled process.
 
     - **A Full Duplex Pipe**
 
-        A pipe that suppors two ways of message passing simultaneously.
+        <span style="color:red">A pipe that suppors two ways of message passing simultaneously.
 
     - **Multilevel Queue Scheduling**
 
-        Processes can be classified into different groups and permanently assigned to one queue, where there are Inter-queue and intra-queue scheduling policies.
+        <span style="color:red">Processes can be classified into different groups and permanently assigned to one queue, where there are Inter-queue and intra-queue scheduling policies.
 
     - **Memory Stall**
 
-        A phenomenon in which a processor waits for a significant amount of time waiting for the data to become available.
+        <span style="color:red">A phenomenon in which a processor waits for a significant amount of time waiting for the data to become available.
 
     - **Bounded Waiting** (A Requirement of a Critical Section Solution)
 
-        A waiting process only waits for a bounded number of processes to enter their critical sections.
+        <span style="color:red">A waiting process only waits for a bounded number of processes to enter their critical sections.
 
     - **Adaptive Mutex**
 
-        A binary semaphore in which it is a spinlock if the lock-holding thread is running; otherwise, blocking is used.
+        <span style="color:red">A binary semaphore in which it is a spinlock if the lock-holding thread is running; otherwise, blocking is used.
  
 2. Please answer the following questions regarding the designs of operating systems: (20pts)
 
-    - What is the difference between multiprogramming and time sharing? (6pts)
+    - What is the difference between **multiprogramming** and **time sharing**? (6pts)
+
+        <span style="color:red">Time sharing (or multitasking) is a logical extension of multiprogramming, where CPU services each of ready tasks in a way that every task receives CPU time in an interactive fashion.
+
     - Which one of the following memory unit is managed by the operating systems: Registers, Cache, Main Memory, Disks (8pts)
-    - Operating systems services include user interfaces. UNIX shells, including the Boume shell and C shell, provide command interpreters. Consider UNIX shells, please give me one command that is implemented as some code inside the command interpreter and two commands that are implemented by system programs? (6pts)
+
+        <span style="color:red">Main Memory and Disks.
+
+    - Operating systems services include user interfaces. UNIX shells, including the Bourne shell and C shell, provide command interpreters. Consider UNIX shells, please give me one command that is implemented as some code inside the command interpreter and two commands that are implemented by system programs? (6pts)
+
+        - Inside the command interpreter:
+            - C shell: <span style="color:red">umask, cd and limit
+            - Bourne shell: <span style="color:red">ulimit -H and -S
+
+        - By system programs: <span style="color:red">rm and ls
 
 3. Message passing is a way for interprocess communication. Consider the capacity of a link between two processes has zero capacity. Is the message passing (between the two processes) synchronous or asynchronous? You must provide explanation to receive any credits. (5pts)
 
-4. Please give me one occasion when a mid-term scheduler should run. Can a short-term scheduler schedule the executions of user-level threads? Can a short-term scheduler schedule the executions of a Java thread? (9pts)
+    <span style="color:red">It is synchronous because we can only have blocking sends and blocking receives.
 
-5. Consider signal handling for threads. Is a Division-By-Zero signal synchronous or asynchronous? Should a Division-By-Zero signal be delivered to every thread of its belonging process? (6pts)
+4. 
+    - Please give me one occasion when a mid-term scheduler should run.
+
+        <span style="color:red">The remaining main memory is low or the CPU utilization is too high.
+
+    - Can a short-term scheduler schedule the executions of user-level threads?
+
+        <span style="color:red">No.
+
+    - Can a short-term scheduler schedule the executions of a Java thread? (9pts)
+
+        <span style="color:red">It depends on the thread library on the host system.
+
+5. Consider signal handling for threads. 
+
+    - Is a Division-By-Zero signal synchronous or asynchronous?
+
+        <span style="color:red">Synchronous.
+
+    - Should a Division-By-Zero signal be delivered to every thread of its belonging process? (6pts)
+
+        <span style="color:red">No. It should be only sent to the thread that causes the signal.
 
 6. Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (24pts)
 
     - For the Round-Robin Scheduling, what would be the preferred time slice in general? (4pts)
+
+        <span style="color:red">The time slice $\ge 80\%$ CPU burst.
+
     - For the Round-Robin Scheduling, shall we have a small time slice for a better average turn around time? (4pts)
+
+        <span style="color:red">No, a small time slice will increase the average turnaround time.
+
     - For the Priority Scheduling, how to avoid the starvation problem (in which a low priority process can never be scheduled)? (4pts)
+
+        <span style="color:red">An **aging** solution by increasing the priority of a process that waits for a long time.
+
     - Please explain how a guest operating-system scheduling algorithm that assumes a certain amount of progress in a given amount of time might be negatively impacted by virtualization. (6pts)
+
+        <span style="color:red">It is because the virtualization software needs to schedule the use of the physical CPUs among the virtual CPUs. A given amount of the time slice might take much more than the time of the virtual CPU time.
+
     - For the evaluation of a scheduling algorithm, please give me two difficulties in using the implementation method. (6pts)
+
+        - <span style="color:red">Cost in modifying the OS
+        - <span style="color:red">User reaction to OS changes
+        - <span style="color:red">Changing of the environment in which the algorithm is used
 
 7. Please explain the difference between the signal operation of a binary semaphore and that of a condition variable (of a monitor). (5pts)
 
+    <span style="color:red">The signal operation of a condition variable resumes one suspended process. If there is none, no effect is imposed.
+
 8. Consider a barber shop in which there are two barbers. Each barber can service exactly one customer at a time. Please use binary semaphores to implement the request for the hair-cut service. (12pts)
 
-9. Consider the time-stamp protocol of Chapter 6, in which each process $T_i$ is given a time stamp $T_S(T_i)$, and each read/write operation must check it up with the read and write timestamp of the accessed data object $Q$. Is it possible to have any deadlock? You must provide your explanation. (5pts)
+    <span style="color:red">Use an integer $S$ with initial value = $2$ to indicate the number of available barbers.
+
+    ```c
+    typedef struct {
+        int value;
+        struct process *waiting_list;
+    } semaphore;
+    ```
+
+    ```c
+    wait(semaphore *S) {
+        S->value--;
+        if (S->value < 0) {
+            add this customer to S->waiting_list;
+            block();
+        }
+    }
+    ```
+
+    ```c
+    signal(semaphore *S) {
+        S->value++;
+        if (S->value <= 0) {
+            remove a process P from S->waiting_list;
+            wakeup(P);
+        }
+    }
+    ```
+
+9. Consider the time-stamp protocol of Chapter 6, in which each process $T_i$ is given a time stamp $T_S(T_i)$, and each read/write operation must check it up with the read and write timestamp of the accessed data object $Q$. Is it possible to have any deadlock? You must provide your explanation. (5pts) [ask]
+
+    <span style="color:red">No deadlock because there is no hold-and-wait among processes.
 
 ## [Fall 2013](https://www.ptt.cc/bbs/NTU-Exam/M.1402216802.A.99D.html)
 
