@@ -849,7 +849,7 @@
 </ul>
 </li>
 <li>
-<p>Please answer following questions regarding the design the design of operation systems. (22pts)</p>
+<p>Please answer following questions regarding the design of operation systems. (22pts)</p>
 <p>There are two conflicting goals in OS designs: Convenience and Efficiency.</p>
 <ul>
 <li>
@@ -1044,7 +1044,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red"></p>
 </li>
 <li>
-<p>In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (l2pts)</p>
+<p>In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (12pts)</p>
 <ul>
 <li><span style="color:red">Operating system: registers, cache, memory</li>
 <li><span style="color:red">Hardware: disk</li>
@@ -1118,13 +1118,36 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </li>
 <li>
 <p>Consider the scheduling of processes in which processes might arrive at different times and have different deadlines to complete their execution. Let the processes be scheduled by the preemptive Shortest-Job-First algorithm (PSJF) and a Priority Scheduling algorithm (PS) in which processes with urgent deadlines have higher priorities, and there is only one processor. Can you give a set of processes such that PS can meet the deadlines of the processes, but PSJF can not do it? (5pts)</p>
-<p><span style="color:red">Given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $1$, $1$ and $2$ and deadline $1$, $4$ and $3$.</p>
+<p><span style="color:red">Given processes:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Process</th>
+<th align="center">Period</th>
+<th align="center">ProcTime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">$P_1$</td>
+<td align="center">$p_1 = 50$</td>
+<td align="center">$t_1 = 25$</td>
+</tr>
+<tr>
+<td align="center">$P_2$</td>
+<td align="center">$p_2 = 80$</td>
+<td align="center">$t_2 = 35$</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="normal" src="../../assets/os/6.18.png" /></p>
+<p><img alt="normal" src="../../assets/os/6.19.png" /></p>
 </li>
 <li>
 <p>Consider the Round Robin scheduling algorithm (RR) with two different time quantums $L$ and $S$, where $L &gt; S$. Let the scheduling criteria be the average waiting time, and $L$ be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum $S$ when all processes are ready at time $0$? Please give me your answer with argument. (7pts)</p>
 <p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$</p>
 <ul>
-<li><span style="color:red">With quantum $= 10$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.</li>
+<li><span style="color:red">With quantum $&gt; 10 (L)$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.</li>
 <li><span style="color:red">With quantum $= 5$, average waiting time = [0 + (15 - 5) + (5 - 0) + (20 - 10) + (10 - 0) + (25 - 15)] = 45 / 3 = 15.</li>
 <li><span style="color:red">With quantum $= 1$, average waiting time = ... = (18 + 19 + 20) / 3 = 19.</li>
 <li><span style="color:red">With quantum $\to 0$, average waiting time $\approx$ (20 + 20 + 20) / 3 = 20.</li>
