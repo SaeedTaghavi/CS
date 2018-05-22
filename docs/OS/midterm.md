@@ -236,11 +236,11 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
     - For VMware, the virtualization layer runs in the system or user mode?
 
-        <span style="color:red">User mode.        
+        <span style="color:red">The user mode.
 
     - For Java, the Java virtual machine run in the system or user mode? (6pts)
 
-        <span style="color:red">
+        <span style="color:red">The user mode.
 
 6. Please answer the following questions for process management and scheduling. (20pts)
 
@@ -259,7 +259,7 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
     - Is a Java thread is a user-level thread or a kernel thread? (4pts)
 
-        <span style="color:red">
+        <span style="color:red">Level Depending on the Thread Library on the Host System.
 
 7. The scheduling algorithm of Solaris 9 is based on the Multilevel Feedback Queue Scheduling algorithm. There are six priority classes. Please explain the Fair Sharing class? Please explain how interactive threads in the Time Sharing or Interactive class are favored in scheduling in Solaris 8 or 9? (6pts)
 
@@ -721,7 +721,7 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
 
 The Exam is 180 minutes long. The total score is 105pts. Please read the questions carefully.
 
-1. Terminologies.(24pts)
+1. Terminologies. (24pts)
 
     - **Software Interrupts**
 
