@@ -297,52 +297,77 @@ The exam is 180 minutes long. The total score is 103pts. Please read the questio
 
     - **Booting**
 
-        Initialize all aspects of the system and then load and run the OS.
+        <span style="color:red">Initialize all aspects of the system and then load and run the OS.
 
     - **Interrupt Vector**
 
-        An array of interrupt-handlers' addresses that are indexed by device numbers (or interrupt numbers).
+        <span style="color:red">An array of interrupt-handlers' addresses that are indexed by device numbers (or interrupt numbers).
 
     - **Cache Coherency** [Fall 2011 1.(c)]
 
-        Cache coherency problems can arise when more than one processors refer to the same data. Coherency defines what value is returned on a read.
+        <span style="color:red">Cache coherency problems can arise when more than one processors refer to the same data. Coherency defines what value is returned on a read.
 
     - **Platform as a service (PaaS) in Cloud Computing**
 
-        Pass provides a computing platform and a solution stack as a service, such as a database server. One example is Microsoft Azure.
+        <span style="color:red">Pass provides a computing platform and a solution stack as a service, such as a database server. One example is Microsoft Azure.
 
     - **A Modular Kernel** (Hint: OS Structure) [Fall 2011 1.(d)]
 
-        A moduler kernel consists of a set of components, where there are core/primary modules, and it is of modules without a layer structure.
+        <span style="color:red">A moduler kernel consists of a set of components, where there are core/primary modules, and it is of modules without a layer structure.
 
     - **Data Parellelism in Multicore Programming**
 
-        Distribute data over cores to execute the same operation.
-
+        <span style="color:red">Distribute data over cores to execute the **same operation**.
 
     - **Rate Monotonic Scheduling**
 
-        A fixed priority real-time process scheduling algorithm in which the priorities of processes are inversely proportional to their periods.
+        <span style="color:red">A fixed priority real-time process scheduling algorithm in which the priorities of processes are **inversely proportional to their periods**.
 
     - **Deterministic Modeling** [Spring 2011 1.(f)]
 
-        Take a particular predetermined workload and defines the performance of each algorithm for that workload.
+        <span style="color:red">Take a particular predetermined workload and defines the performance of each algorithm for that workload.
 
 2. Please answer the following questions regarding the designs of operating systems: (20pts)
 
     - There are two conflicting goals in the designs of operating systems. What is the other one, beside "convenient for the users" ? (3pts)
+
+        <span style="color:red">Efficient operation of the computer system.
+        
     - Which one of the following actions/events is belonging to or might result in software interrupts: System calls, child termination, mouse clicking, invalid memory access. (8pts)
+
+        <span style="color:red">System calls, child temination, and invalid memory access.
+
     - Consider the implementation of virtual machines in which operating systems run on the top of the virtual machine software (or referred to as the hypervisor). Is an operating system running in the user mode or kernel mode? (3pts)
+
+        <span style="color:red">The user mode.
+
     - Please give me 2 advantages of virtual machines, beside system consolidation and easy in system development/deployment. (6pts)
+
+        <span style="color:red">Copmlete isolation and multiple personalities.
         
 3. ANSI C refers to the family of successive standards published by ANSI for the C programming language. Please compare difference (or provide the purpose difference) between POSIX and ANSI C. (5pts)
        
+    - <span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.
+    
+    - <span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of Unix and other operating systems.
+
 4. Please answer the following questions for task scheduling. (14pts)
 
-    - Is the "Swapper" a short-term or mid-term scheduler?
-    - In Unix, the process control block PCB[] of a process consists of proc[] and .u, where the attributes in .u are those needed when the process is running, and the attributes in proc[] are those needed all the time. Please indicate which one should be in .u : file[], task priority, pid, signal disposition, and task state. You must provide explanation to receive any credits. (10pts)
+    - Is the "Swapper" a short-term or mid-term scheduler? [ask]
+
+        <span style="color:red">Short-term scheduler.
+
+    - In Unix, the process control block PCB[] of a process consists of proc[] and .u, where the attributes in .u are those needed when the process is running, and the attributes in proc[] are those needed all the time. Please indicate which one should be in .u : file[], task priority, pid, signal disposition, and task state. You must provide explanation to receive any credits. (10pts) [ask]
+
+        - <span style="color:red">file[]: what files are "being" opened.
+        - <span style="color:red">signal disposition: how to deal with signals.
 
 5. Consider message passing and shared memory for inerprocess communication. Is "Pipe" considered one for message passing or shared memory ? Is "Pipe" direct or indirect communication ? Is it "synchronous" or "asynchronous"? for a reader or a writer of the communication in Unix. You must provide explanation to receive any credits. (12pts)
+
+    - <span style="color:red">Message passing. Since it's communication between processes without sharing the same address space.
+    - <span style="color:red">Indirect communication. [ask]
+    - <span style="color:red">Synchronous for a reader. [ask]
+    - <span style="color:red">Asynchronous for a writer. [ask]
 
 6. Kernel-level threads are superior than uer-level threads do in many ways. What is the main disadvantage of kernel-level threads ? With OpenMP in program development, shall we prefer kernel-level or user-level threads? You must provide explanation to receive any credits. (8pts)
 
