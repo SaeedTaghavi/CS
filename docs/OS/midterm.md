@@ -44,9 +44,9 @@
 
         <span style="color:red">GUI vs Command Line.
 
-    - What is the main goal of Unix process init? Is init a user or kernel process? (8pts)
+    - What is the main goal of UNIX process init? Is init a user or kernel process? (8pts)
 
-        <span style="color:red">init is responsible for bringing up a Unix system after the kernel has been bootstrapped. **User process** with superuser privileges!
+        <span style="color:red">init is responsible for bringing up a UNIX system after the kernel has been bootstrapped. **User process** with superuser privileges!
 
     - Please explain how I/O protection is done. (5pts)
 
@@ -63,11 +63,11 @@
 
         <span style="color:red">It can let us know which line to run, e.g. saved return address $\to$ program counter.
 
-    - There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call malloc() or free(), which segment is involved? (4pts)
+    - There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call `malloc()` or `free()`, which segment is involved? (4pts)
 
         <span style="color:red">heap.
 
-    - When a parent process calls fork() to create a child process, how does the parent process know the process ID of the created child process? (4pts)
+    - When a parent process calls `fork()` to create a child process, how does the parent process know the process ID of the created child process? (4pts)
 
         <span style="color:red">When a parent process invoke fork(), a duplication of the parent process is created for the resulted child process, where the parent process returns from fork() with the process ID of the created child process. The child process returns 0.
 
@@ -79,7 +79,8 @@
 
     - Compared to user-level threads, why the cost of context switching for kernel-level threads in higher? (4pts)
 
-        <span style="color:red">
+        - <span style="color:red">Kernel thread: involves switching registers, stack pointer, and program counter, but is independent of address space switching
+        - <span style="color:red">User-level threads: similar context switching happens often.
 
     - The delivery of a signal for theads is complicated. Give me an example signal that should be delivered to the threads to which the signal applies. (4pts)
 
@@ -87,9 +88,9 @@
 
     - For preemptive scheduling, there are serveral occasions in triggering scheduling. Please give me three, beside the one in which a running process terminates by itself. (9pts)
 
-        - <span style="color:red">
-        - <span style="color:red">
-        - <span style="color:red">
+        - <span style="color:red">A new process with a higher priority than the current process arrives.
+        - <span style="color:red">An interrupt occurs. (fairness)
+        - <span style="color:red">Periodically based on clock interrupt. (e.g. RR)
 
 5. Consider Shortest-Job-First(SJF) and Round-Robin(RR) scheduling algorithms, and processes under considerations are only of one single CPU burst and are all ready at time $0$. Please answer the folowing questions. Explanation is needed to receive any credit: (18pts)
 
@@ -127,7 +128,7 @@
 
     - Now suppose that processes might arrive at different times, and SJF and RR are preemptive scheduling algorithms. Is SJF always better than RR, for any time quantum, in terms of the average waiting time. (6pts)
 
-        <span style="color:red">
+        <span style="color:red">Similar to 5.(a).
 
 6. Please design a solution for airplanes to land in an airport. Suppose that there is only one runway in the airport. Please make sure that only one airplane can control the runway to land at a time, and there should be no starvation for your solution. (Hint: (1) the Bakery Algorithm; (2) Each process denotes an airplane.) (10pts)
 
@@ -209,7 +210,7 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
     - When an interrupt arrives, a running task is interrupted, and its context could be saved in different ways, such as "a fixed address for all interrupts", "a fixed space for each interrupt type", and "a stack". What is the advantage in using a stack, compared with the approach in using a fixed space for each interrupt type? (5pts)
 
-        <span style="color:red">
+        <span style="color:red">If there are 2 interrupts, using fixed space is bad since the address of the first interrupted will be covered by later interrupted process.
 
     - In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (12pts)
 
@@ -230,7 +231,7 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
     - What does POSIX API offers to programmers, compared to the offering of ANSI C to programmers? (8pts)
 
         - <span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.
-        - <span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of Unix and other operating systems.
+        - <span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of UNIX and other operating systems.
 
 5. In the ordinary virtualization design, the virtualization layer runs in the system mode.
 
@@ -244,14 +245,15 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
 6. Please answer the following questions for process management and scheduling. (20pts)
 
-    - Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts)
+    - Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts) [Spring 2011 5.(c)]
 
-        - <span style="color:red">
-        - <span style="color:red">
+        - <span style="color:red">A new process with a higher priority than the current process arrives.
+        - <span style="color:red">An interrupt occurs. (fairness)
+        - <span style="color:red">Periodically based on clock interrupt. (e.g. RR)
 
     - Why a long-term scheduler has more time to choose a process for a system than a short-term scheduler does in process scheduling? (5pts)
 
-        <span style="color:red">
+        <span style="color:red">Because the interval between executions are longer.
 
     - Please explain the main difference between a user-level thread and a kernel thread. (5pts)
 
@@ -309,7 +311,7 @@ The exam is 180 minutes long. The total score is 110pts. Please read the questio
 
     - **A Full Duplex Pipe**
 
-        <span style="color:red">A pipe that suppors two ways of message passing simultaneously.
+        <span style="color:red">A pipe that supports two ways of message passing simultaneously.
 
     - **Multilevel Queue Scheduling**
 
@@ -407,7 +409,7 @@ The exam is 180 minutes long. The total score is 110pts. Please read the questio
     ```c
     typedef struct {
         int value;
-        struct process *waiting_list;
+        struct customer *waiting_list;
     } semaphore;
     ```
 
@@ -425,11 +427,20 @@ The exam is 180 minutes long. The total score is 110pts. Please read the questio
     signal(semaphore *S) {
         S->value++;
         if (S->value <= 0) {
-            remove a process P from S->waiting_list;
+            remove a customer C from S->waiting_list;
             wakeup(P);
         }
     }
     ```
+
+    Customer $C_i$:
+
+    ```c
+    wait(S);
+    /* critical section */
+    signal(S);
+    ```
+
 
 9. Consider the time-stamp protocol of Chapter 6, in which each process $T_i$ is given a time stamp $T_S(T_i)$, and each read/write operation must check it up with the read and write timestamp of the accessed data object $Q$. Is it possible to have any deadlock? You must provide your explanation. (5pts) [ask]
 
@@ -495,7 +506,7 @@ The exam is 180 minutes long. The total score is 103pts. Please read the questio
        
     - <span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.
     
-    - <span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of Unix and other operating systems.
+    - <span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of UNIX and other operating systems.
 
 4. Please answer the following questions for task scheduling. (14pts)
 
@@ -503,12 +514,12 @@ The exam is 180 minutes long. The total score is 103pts. Please read the questio
 
         <span style="color:red">Short-term scheduler.
 
-    - In Unix, the process control block PCB[] of a process consists of proc[] and .u, where the attributes in .u are those needed when the process is running, and the attributes in proc[] are those needed all the time. Please indicate which one should be in .u : file[], task priority, pid, signal disposition, and task state. You must provide explanation to receive any credits. (10pts) [ask]
+    - In UNIX, the process control block PCB[] of a process consists of proc[] and .u, where the attributes in .u are those needed when the process is running, and the attributes in proc[] are those needed all the time. Please indicate which one should be in .u : file[], task priority, pid, signal disposition, and task state. You must provide explanation to receive any credits. (10pts) [ask]
 
         - <span style="color:red">file[]: what files are "being" opened.
         - <span style="color:red">signal disposition: how to deal with signals.
 
-5. Consider message passing and shared memory for inerprocess communication. Is "Pipe" considered one for message passing or shared memory ? Is "Pipe" direct or indirect communication ? Is it "synchronous" or "asynchronous"? for a reader or a writer of the communication in Unix. You must provide explanation to receive any credits. (12pts)
+5. Consider message passing and shared memory for inerprocess communication. Is "Pipe" considered one for message passing or shared memory ? Is "Pipe" direct or indirect communication ? Is it "synchronous" or "asynchronous"? for a reader or a writer of the communication in UNIX. You must provide explanation to receive any credits. (12pts)
 
     - <span style="color:red">Message passing. Since it's communication between processes without sharing the same address space.
     - <span style="color:red">Indirect communication. [ask]
@@ -574,7 +585,7 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
 
     - **Remote Procedure Call** (Hint: Message Passing)
 
-        <span style="color:red">Senders are blocked until the receivers have received messages and replied by reply messaeggs. (A way to abstract the procedure-call mechanism for use between systems with network connection.)
+        <span style="color:red">Senders are blocked until the receivers have received messages and replied by reply messages. (A way to abstract the procedure-call mechanism for use between systems with network connection.)
 
     - **Implicit Threading**
 
@@ -603,7 +614,7 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
 
         <span style="color:red">Setting of the base register of the memory space of a process.
 
-    - Please explain what happens when a command-line user interface of Unix executes a command. (6pts)
+    - Please explain what happens when a command-line user interface of UNIX executes a command. (6pts)
 
         <span style="color:red">Search the exec file which corresponds to the command; fork a process to execute the file.
 
@@ -611,7 +622,7 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
 
     <span style="color:red">The space needed to store all parameters is virtually unlimited.
 
-4. The memory image of a Unix process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. 
+4. The memory image of a UNIX process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. 
 
     - Which one of the above is used when `malloc()` is invoked? [Spring 2011 3.(b)]
 
@@ -724,7 +735,9 @@ The exam is 180 minutes long. The total score is 108pts. Please read the questio
         
     - Please prove that your above solution satisfy the Progress requirement of the Critical Section Problem. (3pts)
 
-        <span style="color:red">Both producer and consumer won't be postponed forever...
+        - <span style="color:red">Mutual exclusioin: monitor ensures that only one process can execute.
+        - <span style="color:red">Progress requirement: by signal(full) to wake wait(full) and signal(empty) to wake wait(empty), the processes won't wait forever.
+        - <span style="color:red">Bounded-waiting: they will both at most wait for 1 process (each other).
 
 ## [Fall 2015](https://www.ptt.cc/bbs/NTU-Exam/M.1466605487.A.7AD.html)
 
@@ -752,7 +765,7 @@ The Exam is 180 minutes long. The total score is 105pts. Please read the questio
             - Selects from among the processes that are ready to execute
             - Allocates CPU to one of them
 
-    - **FIFOS of UNIX**
+    - **FIFOs of UNIX**
 
         <span style="color:red">Named pipes.
 
@@ -784,11 +797,11 @@ The Exam is 180 minutes long. The total score is 105pts. Please read the questio
 
         <span style="color:red">Time sharing (or multitasking) is a logical extension of multiprogramming, where CPU services each of ready tasks in a way that every task receives CPU time in an interactive fashion.
 
-    - One of the most challenging parts in the implementations of a virtual machine is to satisfy the assumption of a certain amount of progress in a given amount of time. Please explain the challenge. (6pts)
+    - One of the most challenging parts in the implementations of a virtual machine is to satisfy the assumption of a certain amount of progress in a given amount of time. Please explain the challenge. (6pts) [Fall 2012 6.(d)]
 
-        <span style="color:red">For example, when two virtual cores share a physical core, in which a task must run for 2ms for every 5ms, but its virtual machine might not receive any service within a 5ms time window.
+        <span style="color:red">It is because the virtualization software needs to schedule the use of the physical CPUs among the virtual CPUs. A given amount of the time slice might take much more than the time of the virtual CPU time.
 
-    - Parameter passing is an important issue in the implementation of command interpreters. Please explain how a command interpreter of Unix passes parameters to the running process of a command issued on the command interpreter. (4pts)
+    - Parameter passing is an important issue in the implementation of command interpreters. Please explain how a command interpreter of UNIX passes parameters to the running process of a command issued on the command interpreter. (4pts)
 
         <span style="color:red">It can be done by using one of the exec() system calls.
 
