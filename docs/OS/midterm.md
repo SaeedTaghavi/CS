@@ -428,7 +428,7 @@ The exam is 180 minutes long. The total score is 110pts. Please read the questio
         S->value++;
         if (S->value <= 0) {
             remove a customer C from S->waiting_list;
-            wakeup(P);
+            wakeup(C);
         }
     }
     ```

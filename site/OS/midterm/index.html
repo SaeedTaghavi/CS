@@ -1315,7 +1315,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
     <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">remove</span> <span class="n">a</span> <span class="n">customer</span> <span class="n">C</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
-        <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+        <span class="n">wakeup</span><span class="p">(</span><span class="n">C</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
