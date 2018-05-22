@@ -1737,12 +1737,12 @@
 <h3 id="641-contention-scope">6.4.1 Contention Scope<a class="headerlink" href="#641-contention-scope" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Process Contention Scope (PCS)</p>
-<p>On systems implementing the <a href="../../Chap04/#431-many-to-one-model">many-to-one</a> and <a href="../../Chap04/#433-many-to-many-model">many-to-many</a> models, the thread library schedules user-level threads to run on an available LWP, since competition for the CPU takes place among threads belonging to the same process.</p>
+<p>On systems implementing the <a href="../Chap04/#431-many-to-one-model">many-to-one</a> and <a href="../Chap04/#433-many-to-many-model">many-to-many</a> models, the thread library schedules user-level threads to run on an available LWP, since competition for the CPU takes place among threads belonging to the same process.</p>
 <p>It is important to note that PCS will typically preempt the thread currently running in favor of a higher-priority thread</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">System Contention Scope (SCS)</p>
-<p>Competition for the CPU with SCS scheduling takes place among all threads in the system. Systems using the <a href="../../Chap04/#432-one-to-one-model">one-to-one</a> model.</p>
+<p>Competition for the CPU with SCS scheduling takes place among all threads in the system. Systems using the <a href="../Chap04/#432-one-to-one-model">one-to-one</a> model.</p>
 </div>
 <h3 id="642-pthread-scheduling">6.4.2 Pthread Scheduling<a class="headerlink" href="#642-pthread-scheduling" title="Permanent link">&para;</a></h3>
 <ul>
