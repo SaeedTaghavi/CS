@@ -857,8 +857,8 @@
 <p><span style="color:red">GUI vs Command Line.</p>
 </li>
 <li>
-<p>What is the main goal of Unix process init? Is init a user or kernel process? (8pts)</p>
-<p><span style="color:red">init is responsible for bringing up a Unix system after the kernel has been bootstrapped. <strong>User process</strong> with superuser privileges!</p>
+<p>What is the main goal of UNIX process init? Is init a user or kernel process? (8pts)</p>
+<p><span style="color:red">init is responsible for bringing up a UNIX system after the kernel has been bootstrapped. <strong>User process</strong> with superuser privileges!</p>
 </li>
 <li>
 <p>Please explain how I/O protection is done. (5pts)</p>
@@ -881,11 +881,11 @@
 <p><span style="color:red">It can let us know which line to run, e.g. saved return address $\to$ program counter.</p>
 </li>
 <li>
-<p>There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call malloc() or free(), which segment is involved? (4pts)</p>
+<p>There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call <code>malloc()</code> or <code>free()</code>, which segment is involved? (4pts)</p>
 <p><span style="color:red">heap.</p>
 </li>
 <li>
-<p>When a parent process calls fork() to create a child process, how does the parent process know the process ID of the created child process? (4pts)</p>
+<p>When a parent process calls <code>fork()</code> to create a child process, how does the parent process know the process ID of the created child process? (4pts)</p>
 <p><span style="color:red">When a parent process invoke fork(), a duplication of the parent process is created for the resulted child process, where the parent process returns from fork() with the process ID of the created child process. The child process returns 0.</p>
 </li>
 <li>
@@ -899,7 +899,10 @@
 <ul>
 <li>
 <p>Compared to user-level threads, why the cost of context switching for kernel-level threads in higher? (4pts)</p>
-<p><span style="color:red"></p>
+<ul>
+<li><span style="color:red">Kernel thread: involves switching registers, stack pointer, and program counter, but is independent of address space switching</li>
+<li><span style="color:red">User-level threads: similar context switching happens often.</li>
+</ul>
 </li>
 <li>
 <p>The delivery of a signal for theads is complicated. Give me an example signal that should be delivered to the threads to which the signal applies. (4pts)</p>
@@ -908,9 +911,9 @@
 <li>
 <p>For preemptive scheduling, there are serveral occasions in triggering scheduling. Please give me three, beside the one in which a running process terminates by itself. (9pts)</p>
 <ul>
-<li><span style="color:red"></li>
-<li><span style="color:red"></li>
-<li><span style="color:red"></li>
+<li><span style="color:red">A new process with a higher priority than the current process arrives.</li>
+<li><span style="color:red">An interrupt occurs. (fairness)</li>
+<li><span style="color:red">Periodically based on clock interrupt. (e.g. RR)</li>
 </ul>
 </li>
 </ul>
@@ -944,7 +947,7 @@ P_n &amp; t_1 + t_2 + \cdots + t_n
 </li>
 <li>
 <p>Now suppose that processes might arrive at different times, and SJF and RR are preemptive scheduling algorithms. Is SJF always better than RR, for any time quantum, in terms of the average waiting time. (6pts)</p>
-<p><span style="color:red"></p>
+<p><span style="color:red">Similar to 5.(a).</p>
 </li>
 </ul>
 </li>
@@ -1041,7 +1044,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </li>
 <li>
 <p>When an interrupt arrives, a running task is interrupted, and its context could be saved in different ways, such as "a fixed address for all interrupts", "a fixed space for each interrupt type", and "a stack". What is the advantage in using a stack, compared with the approach in using a fixed space for each interrupt type? (5pts)</p>
-<p><span style="color:red"></p>
+<p><span style="color:red">If there are 2 interrupts, using fixed space is bad since the address of the first interrupted will be covered by later interrupted process.</p>
 </li>
 <li>
 <p>In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (12pts)</p>
@@ -1070,7 +1073,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p>What does POSIX API offers to programmers, compared to the offering of ANSI C to programmers? (8pts)</p>
 <ul>
 <li><span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.</li>
-<li><span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of Unix and other operating systems.</li>
+<li><span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of UNIX and other operating systems.</li>
 </ul>
 </li>
 </ul>
@@ -1092,15 +1095,16 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p>Please answer the following questions for process management and scheduling. (20pts)</p>
 <ul>
 <li>
-<p>Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts)</p>
+<p>Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts) [Spring 2011 5.(c)]</p>
 <ul>
-<li><span style="color:red"></li>
-<li><span style="color:red"></li>
+<li><span style="color:red">A new process with a higher priority than the current process arrives.</li>
+<li><span style="color:red">An interrupt occurs. (fairness)</li>
+<li><span style="color:red">Periodically based on clock interrupt. (e.g. RR)</li>
 </ul>
 </li>
 <li>
 <p>Why a long-term scheduler has more time to choose a process for a system than a short-term scheduler does in process scheduling? (5pts)</p>
-<p><span style="color:red"></p>
+<p><span style="color:red">Because the interval between executions are longer.</p>
 </li>
 <li>
 <p>Please explain the main difference between a user-level thread and a kernel thread. (5pts)</p>
@@ -1175,7 +1179,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </li>
 <li>
 <p><strong>A Full Duplex Pipe</strong></p>
-<p><span style="color:red">A pipe that suppors two ways of message passing simultaneously.</p>
+<p><span style="color:red">A pipe that supports two ways of message passing simultaneously.</p>
 </li>
 <li>
 <p><strong>Multilevel Queue Scheduling</strong></p>
@@ -1294,7 +1298,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red">Use an integer $S$ with initial value = $2$ to indicate the number of available barbers.</p>
 <div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">process</span> <span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">customer</span> <span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">semaphore</span><span class="p">;</span>
 </pre></div>
 
@@ -1310,10 +1314,16 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
+        <span class="n">remove</span> <span class="n">a</span> <span class="n">customer</span> <span class="n">C</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
         <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+
+<p>Customer $C_i$:</p>
+<div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+<span class="cm">/* critical section */</span>
+<span class="n">signal</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
 </pre></div>
 
 </li>
@@ -1390,7 +1400,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.</p>
 </li>
 <li>
-<p><span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of Unix and other operating systems.</p>
+<p><span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of UNIX and other operating systems.</p>
 </li>
 </ul>
 </li>
@@ -1402,7 +1412,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red">Short-term scheduler.</p>
 </li>
 <li>
-<p>In Unix, the process control block PCB[] of a process consists of proc[] and .u, where the attributes in .u are those needed when the process is running, and the attributes in proc[] are those needed all the time. Please indicate which one should be in .u : file[], task priority, pid, signal disposition, and task state. You must provide explanation to receive any credits. (10pts) [ask]</p>
+<p>In UNIX, the process control block PCB[] of a process consists of proc[] and .u, where the attributes in .u are those needed when the process is running, and the attributes in proc[] are those needed all the time. Please indicate which one should be in .u : file[], task priority, pid, signal disposition, and task state. You must provide explanation to receive any credits. (10pts) [ask]</p>
 <ul>
 <li><span style="color:red">file[]: what files are "being" opened.</li>
 <li><span style="color:red">signal disposition: how to deal with signals.</li>
@@ -1411,7 +1421,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </ul>
 </li>
 <li>
-<p>Consider message passing and shared memory for inerprocess communication. Is "Pipe" considered one for message passing or shared memory ? Is "Pipe" direct or indirect communication ? Is it "synchronous" or "asynchronous"? for a reader or a writer of the communication in Unix. You must provide explanation to receive any credits. (12pts)</p>
+<p>Consider message passing and shared memory for inerprocess communication. Is "Pipe" considered one for message passing or shared memory ? Is "Pipe" direct or indirect communication ? Is it "synchronous" or "asynchronous"? for a reader or a writer of the communication in UNIX. You must provide explanation to receive any credits. (12pts)</p>
 <ul>
 <li><span style="color:red">Message passing. Since it's communication between processes without sharing the same address space.</li>
 <li><span style="color:red">Indirect communication. [ask]</li>
@@ -1485,7 +1495,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </li>
 <li>
 <p><strong>Remote Procedure Call</strong> (Hint: Message Passing)</p>
-<p><span style="color:red">Senders are blocked until the receivers have received messages and replied by reply messaeggs. (A way to abstract the procedure-call mechanism for use between systems with network connection.)</p>
+<p><span style="color:red">Senders are blocked until the receivers have received messages and replied by reply messages. (A way to abstract the procedure-call mechanism for use between systems with network connection.)</p>
 </li>
 <li>
 <p><strong>Implicit Threading</strong></p>
@@ -1518,7 +1528,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red">Setting of the base register of the memory space of a process.</p>
 </li>
 <li>
-<p>Please explain what happens when a command-line user interface of Unix executes a command. (6pts)</p>
+<p>Please explain what happens when a command-line user interface of UNIX executes a command. (6pts)</p>
 <p><span style="color:red">Search the exec file which corresponds to the command; fork a process to execute the file.</p>
 </li>
 </ul>
@@ -1528,7 +1538,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red">The space needed to store all parameters is virtually unlimited.</p>
 </li>
 <li>
-<p>The memory image of a Unix process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. </p>
+<p>The memory image of a UNIX process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. </p>
 <ul>
 <li>
 <p>Which one of the above is used when <code>malloc()</code> is invoked? [Spring 2011 3.(b)]</p>
@@ -1647,7 +1657,11 @@ P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
 </li>
 <li>
 <p>Please prove that your above solution satisfy the Progress requirement of the Critical Section Problem. (3pts)</p>
-<p><span style="color:red">Both producer and consumer won't be postponed forever...</p>
+<ul>
+<li><span style="color:red">Mutual exclusioin: monitor ensures that only one process can execute.</li>
+<li><span style="color:red">Progress requirement: by signal(full) to wake wait(full) and signal(empty) to wake wait(empty), the processes won't wait forever.</li>
+<li><span style="color:red">Bounded-waiting: they will both at most wait for 1 process (each other).</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -1685,7 +1699,7 @@ P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
 </ul>
 </li>
 <li>
-<p><strong>FIFOS of UNIX</strong></p>
+<p><strong>FIFOs of UNIX</strong></p>
 <p><span style="color:red">Named pipes.</p>
 </li>
 <li>
@@ -1727,11 +1741,11 @@ P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
 <p><span style="color:red">Time sharing (or multitasking) is a logical extension of multiprogramming, where CPU services each of ready tasks in a way that every task receives CPU time in an interactive fashion.</p>
 </li>
 <li>
-<p>One of the most challenging parts in the implementations of a virtual machine is to satisfy the assumption of a certain amount of progress in a given amount of time. Please explain the challenge. (6pts)</p>
-<p><span style="color:red">For example, when two virtual cores share a physical core, in which a task must run for 2ms for every 5ms, but its virtual machine might not receive any service within a 5ms time window.</p>
+<p>One of the most challenging parts in the implementations of a virtual machine is to satisfy the assumption of a certain amount of progress in a given amount of time. Please explain the challenge. (6pts) [Fall 2012 6.(d)]</p>
+<p><span style="color:red">It is because the virtualization software needs to schedule the use of the physical CPUs among the virtual CPUs. A given amount of the time slice might take much more than the time of the virtual CPU time.</p>
 </li>
 <li>
-<p>Parameter passing is an important issue in the implementation of command interpreters. Please explain how a command interpreter of Unix passes parameters to the running process of a command issued on the command interpreter. (4pts)</p>
+<p>Parameter passing is an important issue in the implementation of command interpreters. Please explain how a command interpreter of UNIX passes parameters to the running process of a command issued on the command interpreter. (4pts)</p>
 <p><span style="color:red">It can be done by using one of the exec() system calls.</p>
 </li>
 </ul>
