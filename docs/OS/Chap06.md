@@ -239,12 +239,12 @@ A multilevel feedback queue is defined by:
 ### 6.4.1 Contention Scope
 
 !!! note "Process Contention Scope (PCS)"
-    On systems implementing the [many-to-one](../Chap04/#431-many-to-one-model) and [many-to-many](../Chap04/#433-many-to-many-model) models, the thread library schedules user-level threads to run on an available LWP, since competition for the CPU takes place among threads belonging to the same process.
+    On systems implementing the [many-to-one](./Chap04/#431-many-to-one-model) and [many-to-many](./Chap04/#433-many-to-many-model) models, the thread library schedules user-level threads to run on an available LWP, since competition for the CPU takes place among threads belonging to the same process.
 
     It is important to note that PCS will typically preempt the thread currently running in favor of a higher-priority thread
 
 !!! note "System Contention Scope (SCS)"
-    Competition for the CPU with SCS scheduling takes place among all threads in the system. Systems using the [one-to-one](../Chap04/#432-one-to-one-model) model.
+    Competition for the CPU with SCS scheduling takes place among all threads in the system. Systems using the [one-to-one](./Chap04/#432-one-to-one-model) model.
 
 ### 6.4.2 Pthread Scheduling
 

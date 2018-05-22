@@ -1222,7 +1222,7 @@
                 
                 <h1 id="chapter-5-process-synchronization">Chapter 5 Process Synchronization<a class="headerlink" href="#chapter-5-process-synchronization" title="Permanent link">&para;</a></h1>
 <h2 id="51-background">5.1 Background<a class="headerlink" href="#51-background" title="Permanent link">&para;</a></h2>
-<p>Recall <a href="../../Chap03/#producerconsumer-problem">producer–consumer problem</a>. We modify it as follows:</p>
+<p>Recall <a href="../Chap03/#producerconsumer-problem">producer–consumer problem</a>. We modify it as follows:</p>
 <div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="cm">/* produce an item in next_produced */</span>
 
@@ -2062,7 +2062,7 @@ signal(Q); &amp; signal(S); \\
 </ul>
 <h3 id="593-synchronization-in-solaris">5.9.3 Synchronization in Solaris<a class="headerlink" href="#593-synchronization-in-solaris" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Semaphores and conditional variables</li>
+<li>Semaphores and condition variables</li>
 <li>Adaptive mutex<ul>
 <li>spin-locking if the lock-holding thread is running; otherwise, blocking is used</li>
 </ul>
@@ -2081,7 +2081,7 @@ signal(Q); &amp; signal(S); \\
 <ul>
 <li>General Mechanism<ul>
 <li>Mutex locks: mutual exclusion</li>
-<li>Conditional variables: monitor</li>
+<li>condition variables: monitor</li>
 <li>Read-write locks</li>
 </ul>
 </li>

@@ -101,7 +101,7 @@ Processes are first spooled to a mass-storage device (e.g. disk). Then
 - **Long-term scheduler** (job)
 
     1. selects processes from this pool
-    2. loads theme into memory *for* execution
+    2. loads them into memory *for* execution
 
 - **Short-term scheduler** (CPU)
 

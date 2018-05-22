@@ -2,7 +2,7 @@
 
 ## 5.1 Background
 
-Recall [producer–consumer problem](../Chap03/#producerconsumer-problem). We modify it as follows:
+Recall [producer–consumer problem](./Chap03/#producerconsumer-problem). We modify it as follows:
 
 ```c
 while (true) {
@@ -855,7 +855,7 @@ Preemptive kernel after version 2.6.
 
 ### 5.9.3 Synchronization in Solaris
 
-- Semaphores and conditional variables
+- Semaphores and condition variables
 - Adaptive mutex
     - spin-locking if the lock-holding thread is running; otherwise, blocking is used
 - Readers-writers locks
@@ -868,7 +868,7 @@ Preemptive kernel after version 2.6.
 
 - General Mechanism
     - Mutex locks: mutual exclusion
-    - Conditional variables: monitor
+    - condition variables: monitor
     - Read-write locks
 
 ## 5.10 Alternative Approaches

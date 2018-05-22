@@ -876,7 +876,7 @@
 </ul>
 </li>
 <li>
-<p>Consider Shortest-Job-First(SJF) and Round-Robin(RR) scheduling algorithms, and processes under considerations are only of one single CPU burst and are all ready at time 0. Please answer the folowing questions. Explanation is needed to receive any credit: (18pts)</p>
+<p>Consider Shortest-Job-First(SJF) and Round-Robin(RR) scheduling algorithms, and processes under considerations are only of one single CPU burst and are all ready at time $0$. Please answer the folowing questions. Explanation is needed to receive any credit: (18pts)</p>
 <ul>
 <li>Is SJF always better than RR, for any time quantum, in terms of the average turnaround time?(6pts)</li>
 <li>When all processes are of the same size, please tell us what the best time quantum is for RR in terms of the average waiting time. (6pts)</li>
@@ -982,9 +982,9 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p>Consider the scheduling of processes in which processes might arrive at different times and have different deadlines to complete their execution. Let the processes be scheduled by the preemptive Shortest-Job-First algorithm (PSJF) and a Priority Scheduling algorithm (PS) in which processes with urgent deadlines have higher priorities, and there is only one processor. Can you give a set of processes such that PS can meet the deadlines of the processes, but PSJF can not do it? (5pts)</p>
 </li>
 <li>
-<p>Consider the Round Robin scheduling algorithm (RR) with two different time quantums L and S, where L &gt; S. Let the scheduling criteria be the average
-   waiting time, and L be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum S when all processes are
-   ready at time 0? Please give me your answer with argument. (7pts)</p>
+<p>Consider the Round Robin scheduling algorithm (RR) with two different time quantums $L$ and $S$, where $L &gt; S$. Let the scheduling criteria be the average
+   waiting time, and $L$ be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum $S$ when all processes are
+   ready at time $0$? Please give me your answer with argument. (7pts)</p>
 </li>
 </ol>
 <h2 id="fall-2012"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1418537836.A.BB5.html">Fall 2012</a><a class="headerlink" href="#fall-2012" title="Permanent link">&para;</a></h2>
@@ -1252,18 +1252,45 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </ul>
 </li>
 <li>
-<p>Kernel-level threads are superior than uer-level threads do in many ways. What is the main disadvantage of kernel-level threads ? With OpenMP in program development, shall we prefer kernel-level or user-level threads? You must provide explanation to receive any credits. (8pts)</p>
+<p>Kernel-level threads are superior than uer-level threads do in many ways.</p>
+<ul>
+<li>
+<p>What is the main disadvantage of kernel-level threads?</p>
+<p><span style="color:red">It is context switching cost.</p>
+</li>
+<li>
+<p>With OpenMP in program development, shall we prefer kernel-level or user-level threads? You must provide explanation to receive any credits. (8pts)</p>
+<p><span style="color:red">We prefer kernel-level threads because we look for parallelism to better utilize multiple cores of a system.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>Please answer the following questions for process scheduling. Explanation is needed to receive any credits. (15pts)</p>
 <ul>
-<li>Given 3 processes P1, P2, and P3 with CPU burst time 5, 6, 7, respectively. Suppose that the 3 processes arrive at time 0, and P1 and P3 are the first and the last processes in the ready queue, respectively. What is the average waiting time in running the 3 processes under the Round-Robin Scheduling with the time slice equal to 3. (5pts)</li>
-<li>Consider FCFS and Round-Robin Scheduling. If process are only of CPU burst and all arrive at time 0, do FCFS and Round-Robin Scheduling with time slice = 1 always have the same total waiting time in running all processes ? Prove your answer. (5pts)</li>
-<li>Suppose that the variance of the tunaround time is the cirterion in process scheduling. Shall we have a small time slice for a better variance turnaround time when all processes arrive at time 0? (5pts)</li>
+<li>
+<p>Given 3 processes $P_1$, $P_2$, and $P_3$ with CPU burst time $5$, $6$, $7$, respectively. Suppose that the 3 processes arrive at time $0$, and $P_1$ and $P_3$ are the first and the last processes in the ready queue, respectively. What is the average waiting time in running the 3 processes under the Round-Robin Scheduling with the time slice equal to $3$. (5pts)</p>
+<p><span style="color:red"> (6 + (3 + 5) + (6 + 5)) / 3 = 25 / 3.</p>
+</li>
+<li>
+<p>Consider FCFS and Round-Robin Scheduling. If process are only of CPU burst and all arrive at time $0$, do FCFS and Round-Robin Scheduling with time slice = $1$ always have the same total waiting time in running all processes ? Prove your answer. (5pts)</p>
+<p><span style="color:red">No, for example, given processes of CPU burst 7, 1, and 1.</p>
+</li>
+<li>
+<p>Suppose that the variance of the tunaround time is the cirterion in process scheduling. Shall we have a small time slice for a better variance turnaround time when all processes arrive at time $0$? (5pts)</p>
+<p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$.</p>
+<ul>
+<li><span style="color:red">With quantum $= 10$, average turnaround time = (10 + 20 + 30) / 3 = 60 / 3 = 20.</li>
+<li><span style="color:red">With quantum $= 5$, average turnaround time = (20 + 25 + 30) / 3 = 75 / 3 = 25.</li>
+<li><span style="color:red">With quantum $= 1$, average turnaround time = ... = (28 + 29 + 30) / 3 = 87 / 3 = 29.</li>
+<li><span style="color:red">With quantum $\to 0$, average turnaround time $\approx$ 30 + 30 + 30 = 90 / 3 = 30.</li>
+</ul>
+<p><span style="color:red">It is obvious that smaller time slice will lead a longer average turnaround time.</p>
+</li>
 </ul>
 </li>
 <li>
 <p>Please explain why the Completely Fair Scheduling (CFS) of Linux V2.6 favors I/O tasks. (5pts)</p>
+<p><span style="color:red">CFS usually dispatches the CPU to the task with the smallest vruntime (that denotes how long the task runs) such that I/O tasks usually have smaller vruntime.</p>
 </li>
 </ol>
 <h2 id="fall-2014"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1434421485.A.9E4.html">Fall 2014</a><a class="headerlink" href="#fall-2014" title="Permanent link">&para;</a></h2>
@@ -1274,82 +1301,187 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <ul>
 <li>
 <p><strong>Buffering</strong> (Hint: It is not caching.)</p>
-<p>It means to keep data in a faster medium temporarily before moving them to a slower layer.</p>
+<p><span style="color:red">It means to keep data in a faster medium temporarily before moving them to a slower layer.</p>
 </li>
 <li>
 <p><strong>Virtual Machine</strong> [Fall 2012 1.(b)]</p>
-<p>Provides an interface that is identical to the underlying bare hardware.</p>
+<p><span style="color:red">Provides an interface that is identical to the underlying bare hardware.</p>
 </li>
 <li>
 <p><strong>System Generation</strong> (SYSGEN)</p>
-<p>The process to configure or generate an operating system for a one specific computer.</p>
+<p><span style="color:red">The process to configure or generate an operating system for a one specific computer.</p>
 </li>
 <li>
 <p><strong>Context Switch</strong> [Fall 2012 1.(c)]</p>
-<p>Save the state of the old process and load the state of the newly scheduled process.</p>
+<p><span style="color:red">Save the state of the old process and load the state of the newly scheduled process.</p>
 </li>
 <li>
 <p><strong>Remote Procedure Call</strong> (Hint: Message Passing)</p>
-<p>Senders are blocked until the receivers have received msgs and replied by reply msgs. (A way to abstract the procedure-call mechanism for use between systems with network connection.)</p>
+<p><span style="color:red">Senders are blocked until the receivers have received messages and replied by reply messaeggs. (A way to abstract the procedure-call mechanism for use between systems with network connection.)</p>
 </li>
 <li>
 <p><strong>Implicit Threading</strong></p>
-<p>Transfer the creation and management of the threading from the application developers to compilers and run-time libraries.</p>
+<p><span style="color:red">Transfer the creation and management of the threading from the application developers to compilers and run-time libraries.</p>
 </li>
 <li>
 <p><strong>Earliest Deadline First Scheduling</strong></p>
-<p>A dynamic-priority real-time process scheduling algorithm in which the priorities of processes are higher if their deadlines are closer.</p>
+<p><span style="color:red">A dynamic-priority real-time process scheduling algorithm in which the priorities of processes are higher if their deadlines are closer.</p>
 </li>
 <li>
 <p><strong>Race Condition</strong> [Spring 2011 1.(g)]</p>
-<p>Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
+<p><span style="color:red">Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.</p>
 </li>
 </ul>
 </li>
 <li>
 <p>Please answer the following questions regarding the designs of operating systems: (22pts)</p>
 <ul>
-<li>An operating system could be considered as a resource allocator. Please list 3 resources managed by an operating systems. (6pts)</li>
-<li>Please explain what happens to the operating system when an interrupt arrives (until the interrupt is serviced). (4pts)</li>
+<li>
+<p>An operating system could be considered as a resource allocator. Please list 3 resources managed by an operating systems. (6pts)</p>
+<p><span style="color:red">CPU time, Memory Space, File Storage, I/O Devices, Shared Code, Data Structures, and more.</p>
+</li>
+<li>
+<p>Please explain what happens to the operating system when an interrupt arrives (until the interrupt is serviced). (4pts)</p>
+<p><span style="color:red">Saving of the address of the interrupted instruction, determine the interrupt type (by polling or interrupt vector), call the corresponding handlers.</p>
+</li>
 <li>
 <p>Which one of the following instructions is a privileged instruction:</p>
 <p>Reading of the Timer, setting of the base register of the memory space of a process, increment the value of a CPU register by one. No explanation is needed. (6pts)</p>
+<p><span style="color:red">Setting of the base register of the memory space of a process.</p>
 </li>
 <li>
 <p>Please explain what happens when a command-line user interface of Unix executes a command. (6pts)</p>
+<p><span style="color:red">Search the exec file which corresponds to the command; fork a process
+       to execute the file.</p>
 </li>
 </ul>
 </li>
 <li>
 <p>Consider parameter passing to a system call. Give me the major advantage in having a register pointing to a memory block that stores all parameters, compared to having all parameters stored in registers? (5pts)</p>
+<p><span style="color:red">The space needed to store all parameters is virtually unlimited.</p>
 </li>
 <li>
-<p>The memory image of a Unix process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. Which one of the above is used when <code>malloc()</code> is invoked? When the kernel stack is used? (8pts)</p>
+<p>The memory image of a Unix process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. </p>
+<ul>
+<li>
+<p>Which one of the above is used when <code>malloc()</code> is invoked?</p>
+<p><span style="color:red">heap.</p>
 </li>
 <li>
-<p>Please explain how <code>fork()</code> works when a parent process invoke <code>fork()</code>. Please use the answer to the <code>fork()</code> invocation to explain the difference between <code>fork()</code> and <code>vfork()</code>. (10pts)</p>
+<p>When the kernel stack is used? (8pts) [ask]</p>
+<p><span style="color:red">Procedure invocation in the system mode.</p>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<p>Please explain how <code>fork()</code> works when a parent process invoke <code>fork()</code>.</p>
+<p><span style="color:red">When a parent process invoke fork(), a duplication of the parent process is created for the resulted child process, where the parent process returns from fork() with the process ID of the created child process. The child process returns 0.</p>
+</li>
+<li>
+<p>Please use the answer to the <code>fork()</code> invocation to explain the difference between <code>fork()</code> and <code>vfork()</code>. (10pts)</p>
+<p><span style="color:red">When a parent process invoke vfork(), a child process is created by
+       using the process image of the parent process, including its code and data segments. However, the parent process stop temporarily until the child process invokes an execve()-like system call to start a new program or terminates. The child process can modify any contents of the
+       data segment of the parent process.</p>
+</li>
+</ul>
 </li>
 <li>
 <p>In the multi-core age, threading is encouraged. Please answer the following questions: (8pts)</p>
 <ul>
-<li>For multiple cores, do we prefer kernel-level threads or user-level threads? Why? (3pts)</li>
-<li>There are also challenges in programming. Consider merge sorting, in which an unsorted list is divided into $N$ sublists, each containing $1$ element, and then we repeatedly merge sublists to produce new sorted sublists until there is only $1$ sublist remaining. This will be the sorted list. Please use the concept of task parallelism to execute the merge sort over $N$ cores. (5pts)</li>
+<li>
+<p>For multiple cores, do we prefer kernel-level threads or user-level threads? Why? (3pts) [Fall 2013 6.(b)]</p>
+<p><span style="color:red">We prefer kernel-level threads because we look for parallelism to better utilize multiple cores of a system.</p>
+</li>
+<li>
+<p>There are also challenges in programming. Consider merge sorting, in which an unsorted list is divided into $N$ sublists, each containing $1$ element, and then we repeatedly merge sublists to produce new sorted sublists until there is only $1$ sublist remaining. This will be the sorted list. Please use the concept of task parallelism to execute the merge sort over $N$ cores. (5pts)</p>
+<p><span style="color:red">Each core is given a sublist of one element. We then group 2 adjacent cores and let one of the cores merge the sublists of the two cores.</p>
+</li>
 </ul>
 </li>
 <li>
 <p>Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (15pts)</p>
 <ul>
-<li>Given 5 processes P1, P2, P3, P4, and P5 with CPU burst time 6, 5, 2, 10, 5, respectively. Suppose that the P1, P2, P3, P4, and P5 arrive at time 0, 3, 4, 2, and 5, respectively. What is the average waiting time in running the 5 processes under the Preemptive Shortest-Job-First Scheduling. (5pts)</li>
-<li>Consider Shortest-Job-First Scheduling and Round-Robin Scheduling. Please prove that the total waiting time in running all processes under Shortest-Job-First Scheduling is always no larger than that of Round-Robin Scheduling with time slice equal to 1 when all processes are ready at time 0? (5pts)</li>
-<li>Suppose that the variance of the waiting time is the criterion in process scheduling. Shall we have a small time slice for a better variance for Round-Robin Scheduling when all processes of the same CPU burst arrive at time 0? (5pts)</li>
+<li>
+<p>Given 5 processes $P_1$, $P_2$, $P_3$, $P_4$, and $P_5$ with CPU burst time $6$, $5$, $2$, $10$, $5$, respectively. Suppose that the $P_1$, $P_2$, $P_3$, $P_4$, and $P_5$ arrive at time $0$, $3$, $4$, $2$, and $5$, respectively. What is the average waiting time in running the 5 processes under the Preemptive Shortest-Job-First Scheduling. (5pts)</p>
+<p><span style="color:red">(0 + (8 - 3) + (6 - 4) + (18 - 2) + (13 - 5)) / 5 = 31 / 5.</p>
+</li>
+<li>
+<p>Consider Shortest-Job-First Scheduling and Round-Robin Scheduling. Please prove that the total waiting time in running all processes under Shortest-Job-First Scheduling is always no larger than that of Round-Robin Scheduling with time slice equal to $1$ when all processes are ready at time $0$? (5pts)</p>
+<p><span style="color:red">Yes. <strong><em>Proof</em></strong>:</p>
+<p><span style="color:red">WLOG, given processes $P_1$, $P_2$, $\dots$, $P_n$ with CPU burst time $t_1$, $t_2$, $\dots$, $t_n$, where $t_1 &lt; t_2 &lt; \cdots &lt; t_n$.</p>
+<p><span style="color:red">By SJF, their waiting time should be:</p>
+<p><span style="color:red">\begin{array}{c|c}
+P_i &amp; \text{waiting time} \\
+\hline
+P_1 &amp; 0 \\
+P_2 &amp; t_1 \\
+P_3 &amp; t_1 + t_2 \\
+\vdots &amp; \vdots \\
+P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
+\end{array}</p>
+<p><span style="color:red">Total waiting time:</p>
+<p><span style="color:red">$$(n - 1)t_1 + (n - 2)t_2 + \cdots + t_{n - 1}.$$</p>
+<p><span style="color:red">Obviously, this sum is minimized if $t_i$'s that are multiplied more times are smaller ones, i.e., </p>
+<p><span style="color:red">$$t_1 &lt; t_2 &lt; \cdots &lt; t_{n - 1} &lt; t_n.$$</p>
+<p><span style="color:red">Thus, in non-preemptive scheduling, SJF (actually Shortest-next-CPU-burst-first) is optimal for the purpose of minimizing average waiting time.</p>
+</li>
+<li>
+<p>Suppose that the variance of the waiting time is the criterion in process scheduling. Shall we have a small time slice for a better variance for Round-Robin Scheduling when all processes of the same CPU burst arrive at time $0$? (5pts) [Fall 2013, 7.(c)]</p>
+<p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$</p>
+<ul>
+<li><span style="color:red">With quantum $= 10$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.</li>
+<li><span style="color:red">With quantum $= 5$, average waiting time = [0 + (15 - 5) + (5 - 0) + (20 - 10) + (10 - 0) + (25 - 15)] = 45 / 3 = 15.</li>
+<li><span style="color:red">With quantum $= 1$, average waiting time = ... = (18 + 19 + 20) / 3 = 19.</li>
+<li><span style="color:red">With quantum $\to 0$, average waiting time $\approx$ (20 + 20 + 20) / 3 = 20.</li>
+</ul>
+<p><span style="color:red">It is obvious that smaller time slice will lead a longer average waiting time.</p>
+</li>
 </ul>
 </li>
 <li>
 <p>Please answer the following questions for process synchronization: (16pts)</p>
 <ul>
-<li>Please compare the difference between a binary semaphore and a condition variable. (3pts)</li>
-<li>Please use Monitor to implement Consumer and Producer with a bounded buffer. (10pts)</li>
-<li>Please prove that your above solution satisfy the Progress requirement of the Critical Section Problem. (3pts)</li>
+<li>
+<p>Please compare the difference between a binary semaphore and a condition variable. (3pts) [Fall 2012 7.]</p>
+<p><span style="color:red">The signal operation of a condition variable resumes one suspended process. If there is none, no effect is imposed.</p>
+</li>
+<li>
+<p>Please use Monitor to implement Consumer and Producer with a bounded buffer. (10pts)</p>
+<div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">ProducerConsumer</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">condition</span> <span class="n">empty</span><span class="p">;</span>
+    <span class="n">condition</span> <span class="n">full</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="nf">producer</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">wait</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>
+            <span class="cm">/* produce a slot */</span>
+        <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">signal</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">consumer</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">wait</span><span class="p">(</span><span class="n">full</span><span class="p">);</span>
+            <span class="cm">/* consume a slot */</span>
+        <span class="n">counter</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">signal</span><span class="p">(</span><span class="n">empty</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li><span style="color:red">counter: number of filled slots</li>
+<li><span style="color:red">empty: buffer has at least one empty slot</li>
+<li><span style="color:red">full: buffer has at lesat one full slot</li>
+</ul>
+</li>
+<li>
+<p>Please prove that your above solution satisfy the Progress requirement of the Critical Section Problem. (3pts)</p>
+<p><span style="color:red">Both producer and consumer won't be postponed forever...</p>
+</li>
 </ul>
 </li>
 </ol>
@@ -1361,19 +1493,19 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <ul>
 <li>
 <p><strong>Software Interrupts</strong></p>
-<p>Caused by software execution, e.g. signals, invalid memory access, division by zero, system calls.</p>
+<p><span style="color:red">Caused by software execution, e.g. signals, invalid memory access, division by zero, system calls.</p>
 </li>
 <li>
 <p><strong>Performance Tuning</strong></p>
-<p>A procedure that seeks to improve performance by removing bottlenecks.</p>
+<p><span style="color:red">A procedure that seeks to improve performance by removing bottlenecks.</p>
 </li>
 <li>
 <p><strong>Mid-Term Scheduler</strong> ($\leftrightarrow$ Long-Term Scheduler $\leftrightarrow$ Short-Term Scheduler)</p>
 <ul>
-<li>Swap processes in and out to control the degree of multiprogramming.</li>
+<li><span style="color:red">Swap processes in and out to control the degree of multiprogramming.</li>
 <li>($\leftrightarrow$) Long-Term Scheduler:<ul>
 <li>Selects processes from this pool</li>
-<li>Loads theme into memory for execution</li>
+<li>Loads them into memory for execution</li>
 <li>Controls the degree of multiprogramming (# processes). </li>
 <li>Selects a good process mix of I/O-bound and CPU-bound.</li>
 </ul>
@@ -1387,70 +1519,140 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </li>
 <li>
 <p><strong>FIFOS of UNIX</strong></p>
-<p>Named pipes.</p>
+<p><span style="color:red">Named pipes.</p>
 </li>
 <li>
 <p><strong>Asynchronous Signal</strong> ($\leftrightarrow$ Synchronous Signal)</p>
 <ul>
-<li>An asynchronous signal usually reports some asynchronous event outside the program, e.g., ^C or time expiration.</li>
+<li><span style="color:red">An asynchronous signal usually reports some asynchronous event outside the program, e.g., ^C or time expiration.</li>
 <li>($\leftrightarrow$) Delivered to the same process that performed the operation causing the signal. e.g., illegal memory access, division by 0.</li>
 </ul>
 </li>
 <li>
 <p><strong>Push Migration</strong> (Hint: Load Balancing) [Fall 2011 1.(h)] ($\leftrightarrow$ Pull Migration)</p>
 <ul>
-<li>Pushing processes from overloaded to less-busy processors.</li>
+<li><span style="color:red">Pushing processes from overloaded to less-busy processors.</li>
 <li>($\leftrightarrow$) Pulling a waiting task from a busy processor.</li>
 </ul>
 </li>
 <li>
 <p><strong>Coarse-Grained Multithreading of Hardware Threads</strong> ($\leftrightarrow$ Fine-Grained (interleved))</p>
 <ul>
-<li>A thread executes on a processor until a long-latency event such as a memory stall occurs.</li>
+<li><span style="color:red">A thread executes on a processor until a long-latency event such as a memory stall occurs.</li>
 <li>($\leftrightarrow$) Switches between threads at a much finer level of granularity</li>
 </ul>
 </li>
 <li>
 <p><strong>Analytic Evaluation</strong> [Spring 2011 1.(f), Fall 2013 1.(h)]</p>
-<p>Analytic evaluation uses the given algorithm and the system workload to produce a formula or number to evaluate the performance of the algorithm for that workload.</p>
+<p><span style="color:red">Analytic evaluation uses the given algorithm and the system workload to produce a formula or number to evaluate the performance of the algorithm for that workload.</p>
 </li>
 </ul>
 </li>
 <li>
 <p>Please answer the following questions regarding operating systems: (20pts)</p>
 <ul>
-<li>Please compare the difference between interrupt handling by a generic handler and interrupt vector in terms of the mechanism and the response performance. (6pts)</li>
-<li>Please compare the difference between the terms "time sharing" and "multiprogramming". (4pts)</li>
-<li>One of the most challenging parts in the implementations of a virtual machine is to satisfy the assumption of a certain amount of progress in a given amount of time. Please explain the challenge. (6pts)</li>
-<li>Parameter passing is an important issue in the implementation of command interpreters. Please explain how a command interpreter of Unix passes parameters to the running process of a command issued on the command interpreter. (4pts)</li>
+<li>
+<p>Please compare the difference between interrupt handling by a generic handler and interrupt vector in terms of the mechanism and the response performance. (6pts)</p>
+<p><span style="color:red">A generic handler finds out the interupt type and invokes the corresponding procedure but the interrupt vector lets the corresponding procedure directly invoked though checking up of the interrupt vector; performance: interrupt vector is faster.</p>
+</li>
+<li>
+<p>Please compare the difference between the terms "time sharing" and "multiprogramming". (4pts) [Fall 2012 2.(a)]</p>
+<p><span style="color:red">Time sharing (or multitasking) is a logical extension of multiprogramming, where CPU services each of ready tasks in a way that every task receives CPU time in an interactive fashion.</p>
+</li>
+<li>
+<p>One of the most challenging parts in the implementations of a virtual machine is to satisfy the assumption of a certain amount of progress in a given amount of time. Please explain the challenge. (6pts)</p>
+<p><span style="color:red">For example, when two virtual cores share a physical core, in which a task must run for 2ms for every 5ms, but its virtual machine might not receive any service within a 5ms time window.</p>
+</li>
+<li>
+<p>Parameter passing is an important issue in the implementation of command interpreters. Please explain how a command interpreter of Unix passes parameters to the running process of a command issued on the command interpreter. (4pts)</p>
+<p><span style="color:red">It can be done by using one of the exec() system calls.</p>
+</li>
 </ul>
 </li>
 <li>
 <p>Consider process states: New, Ready, Running, Waiting, and Terminated. Please explain how a state makes a transition to another state, where there is only one processor. (12pts)</p>
+<p><img alt="small" src="../../assets/os/3.2.png" /></p>
 </li>
 <li>
-<p>Message passing is one major way for interprocess communication. What is the main difficulty in using symmetric addressing for direct communication? For indirect communication, small messages are sent from a sender to a receiver usually by message copying. How to reduce system overheads in-sending large messages to a receiver? (8pts)</p>
+<p>Message passing is one major way for interprocess communication.</p>
+<ul>
+<li>
+<p>What is the main difficulty in using symmetric addressing for direct communication?</p>
+<p><span style="color:red">Process naming (or modularity).</p>
+</li>
+</ul>
+<p>For indirect communication, small messages are sent from a sender to a receiver usually by message copying.</p>
+<ul>
+<li>
+<p>How to reduce system overheads in-sending large messages to a receiver? (8pts)</p>
+<p><span style="color:red">Remapping of addressing space.</p>
+</li>
+</ul>
 </li>
 <li>
-<p>For multicore programming, there could be data parallelism or task parallelism. Please explain how to use data parallelism to find the largest integer of a given set of integers. (5pts)</p>
+<p>For multicore programming, there could be data parallelism or task parallelism. Please explain how to use data parallelism to find the largest integer of a given set of integers. (5pts) [Fall 2014 6.(b)]</p>
+<p><span style="color:red">First split data over $N$ cores, and let each core find the largest integer of its given integers. Then let one core find the largest integers among the latgest integers found on each core.</p>
 </li>
 <li>
 <p>Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (15pts)</p>
 <ul>
-<li>Is the First-Come, First-Served Scheduling (FIFO) a non-preemptive or preemptive scheduling algorithm? Why? (4pts)</li>
-<li>Given 4 processes P1, P2, P3, and P4 with CPU burst time 5, 2, 4, and 6, respectively. Suppose that the P1, P2, P3, and P4 all arrive at time 0. What is the average waiting time in running the 4 processes under the Round-Robin Scheduling with the time slice equal to 3? (5pts)</li>
-<li>Longest-Job-First Scheduling always schedules the process of the longest CPU burst first. When all processes arrive at time 0, does Longest-Job-First Scheduling have the largest average turnaround
-   time? (6pts)</li>
+<li>
+<p>Is the First-Come, First-Served Scheduling (FIFO) a non-preemptive or preemptive scheduling algorithm? Why? (4pts)</p>
+<p><span style="color:red">It is non-preemptive because the running process will not volunteer to give up its CPU until it stops.</p>
+</li>
+<li>
+<p>Given 4 processes $P_1$, $P_2$, $P_3$, and $P_4$ with CPU burst time $5$, $2$, $4$, and $6$, respectively. Suppose that the $P_1$, $P_2$, $P_3$, and $P_4$ all arrive at time $0$. What is the average waiting time in running the 4 processes under the Round-Robin Scheduling with the time slice equal to $3$? (5pts) [Fall 2013 7.(a)]</p>
+<p><span style="color:red">(8 + 3 + (5 + 5) + (8 + 3)) / 4 = 32 / 4 = 8.</p>
+</li>
+<li>
+<p>Longest-Job-First Scheduling always schedules the process of the longest CPU burst first. When all processes arrive at time $0$, does Longest-Job-First Scheduling have the largest average turnaround time? (6pts) [Fall 2013 7.(c)]</p>
+<p><span style="color:red">Yes.</p>
+</li>
 </ul>
 </li>
 <li>
 <p>Consider the intersection of the following two roads, where cars can go from each of the four directions. There is a stop sign for each direction so that every car must stop at the intersection and wait for any car that arrives earlier at the intersection to leave first.</p>
 <ul>
-<li>Please use semaphores to implement your solution with some pseudo code. (10pts)</li>
-<li>Please prove that your above solution satisfy the three requirements of the Critical Section Problem. (6pts)</li>
+<li>
+<p>Please use semaphores to implement your solution with some pseudo code. (10pts) [Fall 2012 8.]</p>
+<p><span style="color:red">Use an integer $S$ with initial value = $1$ to indicate the number of available car and a FIFO queue waiting list.</p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">process</span> <span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">semaphore</span><span class="p">;</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">add</span> <span class="n">this</span> <span class="n">car</span> <span class="n">to</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
+        <span class="n">block</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
+        <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+</li>
+<li>
+<p>Please prove that your above solution satisfy the three requirements of the Critical Section Problem. (6pts)</p>
+<ul>
+<li><span style="color:red">Mutual exclusioin: only a car can go in the intersection.</li>
+<li><span style="color:red">Progress requirement: by block() and wakeup(), the processes won't wait forever.</li>
+<li><span style="color:red">Bounded-waiting: </li>
+</ul>
+</li>
 <li>
 <p>Could you revise your solution so that an ambulance can always go first? (5pts)</p>
 <p><img alt="small" src="../../assets/os/2015midterm.png" /></p>
+<p><span style="color:red">Let the ambulance has the highest priority in the waiting queue.</p>
 </li>
 </ul>
 </li>
