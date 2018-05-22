@@ -125,7 +125,7 @@ boolean choosing[i];    // Pi is taking a number
 do {
     choosing[i] = true;         // A process want to enter its critical section
     number[i] = max(number[0], ..., number[n - 1]) + 1;
-    choosing[j] = false;        // A process has got its number
+    choosing[i] = false;        // A process has got its number
     for (int j = 0; j < n; j++) {
         while (choosing[j]) ;
         while (number[j] != 0 && (number[j], j) < (number[i], i)) ;     // If two processes got the same number, then we should compare their indices
