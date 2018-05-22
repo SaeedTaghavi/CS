@@ -852,39 +852,123 @@
 <p>Please answer following questions regarding the design the design of operation systems. (22pts)</p>
 <p>There are two conflicting goals in OS designs: Convenience and Efficiency.</p>
 <ul>
-<li>Please give me one example feature of OS that shows the conflict in persuing efficiency and convenience (Hint: Live preview of open windows for Windows7 taskbar). (5pts)</li>
-<li>What is the main goal of Unix process init? Is init a user or kernel process? (8pts)</li>
-<li>Please explain how I/O protection is done. (5pts)</li>
-<li>Give me one advantage in OS implementations in some high-level language. (4pts)</li>
+<li>
+<p>Please give me one example feature of OS that shows the conflict in persuing efficiency and convenience (Hint: Live preview of open windows for Windows7 taskbar). (5pts)</p>
+<p><span style="color:red">GUI vs Command Line.</p>
+</li>
+<li>
+<p>What is the main goal of Unix process init? Is init a user or kernel process? (8pts)</p>
+<p><span style="color:red">init is responsible for bringing up a Unix system after the kernel has been bootstrapped. <strong>User process</strong> with superuser privileges!</p>
+</li>
+<li>
+<p>Please explain how I/O protection is done. (5pts)</p>
+<p><span style="color:red">Dual Mode Operations: a mode bit.</p>
+</li>
+<li>
+<p>Give me one advantage in OS implementations in some high-level language. (4pts)</p>
+<ul>
+<li><span style="color:red">Being easy to understand &amp; debug.</li>
+<li><span style="color:red">Being written fast, more compact, and portable.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
 <p>Please answer the following questions for process managment. (16pts)</p>
 <ul>
-<li>Inside the Process Control Block, we might have a filed "Program Counter". What is the purpose of the field? (4pts)</li>
-<li>There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call malloc() or free(), which segment is involved? (4pts)</li>
-<li>When a parent process calls fork() to create a child process, how does the parent process know the process ID of the created child process? (4pts)</li>
-<li>Which of the following IPC mechanisms does not require two communicating processes to have a parent-child relationship: Named Pipes and sockets. (4pts)</li>
+<li>
+<p>Inside the Process Control Block, we might have a filed "Program Counter". What is the purpose of the field? (4pts)</p>
+<p><span style="color:red">It can let us know which line to run, e.g. saved return address $\to$ program counter.</p>
+</li>
+<li>
+<p>There are a lot of segments for a process image, such as code segment, data segment, heap, and user stack. When we call malloc() or free(), which segment is involved? (4pts)</p>
+<p><span style="color:red">heap.</p>
+</li>
+<li>
+<p>When a parent process calls fork() to create a child process, how does the parent process know the process ID of the created child process? (4pts)</p>
+<p><span style="color:red">When a parent process invoke fork(), a duplication of the parent process is created for the resulted child process, where the parent process returns from fork() with the process ID of the created child process. The child process returns 0.</p>
+</li>
+<li>
+<p>Which of the following IPC mechanisms does not require two communicating processes to have a parent-child relationship: Named Pipes and sockets. (4pts)</p>
+<p><span style="color:red">Sockets.</p>
+</li>
 </ul>
 </li>
 <li>
 <p>Please answer the following questions for CPU scheduling. (17pts)</p>
 <ul>
-<li>Compared to user-level threads, why the cost of context switching for kernel-level threads in higher? (4pts)</li>
-<li>The delivery of a signal for theads is complicated. Give me an example signal that should be delivered to the threads to which the signal applies. (4pts)</li>
-<li>For preemptive scheduling, there are serveral occasions in triggering scheduling. Please give me three, beside the one in which a running process terminates by itself. (9pts)</li>
+<li>
+<p>Compared to user-level threads, why the cost of context switching for kernel-level threads in higher? (4pts)</p>
+<p><span style="color:red"></p>
+</li>
+<li>
+<p>The delivery of a signal for theads is complicated. Give me an example signal that should be delivered to the threads to which the signal applies. (4pts)</p>
+<p><span style="color:red">Division by zero.</p>
+</li>
+<li>
+<p>For preemptive scheduling, there are serveral occasions in triggering scheduling. Please give me three, beside the one in which a running process terminates by itself. (9pts)</p>
+<ul>
+<li><span style="color:red"></li>
+<li><span style="color:red"></li>
+<li><span style="color:red"></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
 <p>Consider Shortest-Job-First(SJF) and Round-Robin(RR) scheduling algorithms, and processes under considerations are only of one single CPU burst and are all ready at time $0$. Please answer the folowing questions. Explanation is needed to receive any credit: (18pts)</p>
 <ul>
-<li>Is SJF always better than RR, for any time quantum, in terms of the average turnaround time?(6pts)</li>
-<li>When all processes are of the same size, please tell us what the best time quantum is for RR in terms of the average waiting time. (6pts)</li>
-<li>Now suppose that processes might arrive at different times, and SJF and RR are preemptive scheduling algorithms. Is SJF always better than RR, for any time quantum, in terms of the average waiting time. (6pts)</li>
+<li>
+<p>Is SJF always better than RR, for any time quantum, in terms of the average turnaround time?(6pts)</p>
+<p><span style="color:red">Yes. <strong><em>Proof</em></strong>:</p>
+<p><span style="color:red">WLOG, given processes $P_1$, $P_2$, $\dots$, $P_n$ with CPU burst time $t_1$, $t_2$, $\dots$, $t_n$, where $t_1 &lt; t_2 &lt; \cdots &lt; t_n$.</p>
+<p><span style="color:red">By SJF, their turnaround time should be:</p>
+<p><span style="color:red">\begin{array}{c|c}
+P_i &amp; \text{waiting time} \\
+\hline
+P_1 &amp; t_1 \\
+P_2 &amp; t_1 + t_2 \\
+P_3 &amp; t_1 + t_2 + t_3 \\
+\vdots &amp; \vdots \\
+P_n &amp; t_1 + t_2 + \cdots + t_n
+\end{array}</p>
+<p><span style="color:red">Total waiting time:</p>
+<p><span style="color:red">$$nt_1 + (n - 1)t_2 + \cdots + t_n.$$</p>
+<p><span style="color:red">Obviously, this sum is minimized if $t_i$'s that are multiplied more times are smaller ones, i.e., </p>
+<p><span style="color:red">$$t_1 &lt; t_2 &lt; \cdots &lt; t_n.$$</p>
+<p><span style="color:red">Thus, in non-preemptive scheduling, SJF (actually Shortest-next-CPU-burst-first) is optimal for the purpose of minimizing turnaround time.</p>
+</li>
+<li>
+<p>When all processes are of the same size, please tell us what the best time quantum is for RR in terms of the average waiting time. (6pts)</p>
+<p><span style="color:red">$80\%$ of the CPU bursts should be shorter than the time quantum.</p>
+</li>
+<li>
+<p>Now suppose that processes might arrive at different times, and SJF and RR are preemptive scheduling algorithms. Is SJF always better than RR, for any time quantum, in terms of the average waiting time. (6pts)</p>
+<p><span style="color:red"></p>
+</li>
 </ul>
 </li>
 <li>
-<p>Please design a solution for airplanes to land in an airport. Suppose that there is only one runway in the airport. Please make sure that only one airplane can control the runway to land at a time, and there should be no starvation for your solution. (Hint: (1) the Bakery Algorithm; (2) Each process donotes an airplane.) (10pts)</p>
+<p>Please design a solution for airplanes to land in an airport. Suppose that there is only one runway in the airport. Please make sure that only one airplane can control the runway to land at a time, and there should be no starvation for your solution. (Hint: (1) the Bakery Algorithm; (2) Each process denotes an airplane.) (10pts)</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>          <span class="c1">// Pi&#39;s number if it is nonzeros</span>
+<span class="n">boolean</span> <span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>    <span class="c1">// Pi is taking a number</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
+    <span class="n">choosing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>         <span class="c1">// A process want to enter its critical section</span>
+    <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">...,</span> <span class="n">number</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">choosing</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>        <span class="c1">// A process has got its number</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">choosing</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">j</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span> <span class="p">;</span>     <span class="c1">// If two processes got the same number, then we should compare their indices</span>
+    <span class="p">}</span>
+    <span class="cm">/* critical section */</span>
+
+    <span class="n">number</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="cm">/* remainder section */</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></div>
+
 </li>
 </ol>
 <h2 id="fall-2011"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1335413893.A.32B.html">Fall 2011</a><a class="headerlink" href="#fall-2011" title="Permanent link">&para;</a></h2>
@@ -951,40 +1035,101 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <li>
 <p>Please answer the following questions regarding the designs of operating systems: (23pts)</p>
 <ul>
-<li>Please give me two resources, beside CPU, that are managed by OS. (6pts)</li>
-<li>When an interrupt arrives, a running task is interrupted, and its context could be saved in different ways, such as "a fixed address for all interrupts", "a fixed space for each interrupt type", and "a stack". What is the advantage in using a stack, compared with the approach in using a fixed space for each interrupt type? (5pts)</li>
-<li>In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (l2pts)</li>
+<li>
+<p>Please give me two resources, beside CPU, that are managed by OS. (6pts)</p>
+<p><span style="color:red">CPU time, Memory Space, File Storage, I/O Devices, Shared Code, Data Structures, and more.</p>
+</li>
+<li>
+<p>When an interrupt arrives, a running task is interrupted, and its context could be saved in different ways, such as "a fixed address for all interrupts", "a fixed space for each interrupt type", and "a stack". What is the advantage in using a stack, compared with the approach in using a fixed space for each interrupt type? (5pts)</p>
+<p><span style="color:red"></p>
+</li>
+<li>
+<p>In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (l2pts)</p>
+<ul>
+<li><span style="color:red">Operating system: registers, cache, memory</li>
+<li><span style="color:red">Hardware: disk</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
-<p>OS services are such as those for "program execution", "file-system manipulation", "accounting", and "resource allocation". Which of them are for system efficiency, instead of user convenience? (8pts)</p>
+<p>OS services are such as those for "program execution", "file-system manipulation", "accounting", and "resource allocation". Which of them are for system efficiency, instead of user convenience? (8pts) [ask]</p>
+<p><span style="color:red">Program execution and resource allocation.</p>
 </li>
 <li>
-<p>Famous Application Programming Interfaces (API) are such as Win 32 API and POSIX API. What are the two major benefits in providing API, compared to
-   the providing of system calls only? What does POSIX API offers to programmers, compared to the offering of ANSI C to programmers? (8pts)</p>
+<p>Famous Application Programming Interfaces (API) are such as Win 32 API and POSIX API.</p>
+<ul>
+<li>
+<p>What are the two major benefits in providing API, compared to the providing of system calls only?</p>
+<ul>
+<li><span style="color:red">protability (expected to run on any system)</li>
+<li><span style="color:red">actual system calls can be more difficult to learn</li>
+</ul>
 </li>
 <li>
-<p>In the ordinary virtualization design, the virtualization layer runs in the system mode. For VMware, the virtualization layer runs in the system or user mode? For Java, the Java virtual machine run in the system or user mode? (6pts)</p>
+<p>What does POSIX API offers to programmers, compared to the offering of ANSI C to programmers? (8pts)</p>
+<ul>
+<li><span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.</li>
+<li><span style="color:red">POSIX is an acronym for "Portable Operating System Interface". POSIX is for software compatibility with variants of Unix and other operating systems.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>In the ordinary virtualization design, the virtualization layer runs in the system mode.</p>
+<ul>
+<li>
+<p>For VMware, the virtualization layer runs in the system or user mode?</p>
+<p><span style="color:red">User mode.        </p>
+</li>
+<li>
+<p>For Java, the Java virtual machine run in the system or user mode? (6pts)</p>
+<p><span style="color:red"></p>
+</li>
+</ul>
 </li>
 <li>
 <p>Please answer the following questions for process management and scheduling. (20pts)</p>
 <ul>
-<li>Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts)</li>
-<li>Why a long-term scheduler has more time to choose a process for a system than a short-term scheduler does in process scheduling? (5pts)</li>
-<li>Please explain the main difference between a user-level thread and a kernel thread. (5pts)</li>
-<li>Is a Java thread is a user-level thread or a kernel thread? (4pts)</li>
+<li>
+<p>Give me two conditions for a running process to relinquish the CPU to go back to the ready queue in preemptive CPU scheduling. (6pts)</p>
+<ul>
+<li><span style="color:red"></li>
+<li><span style="color:red"></li>
+</ul>
+</li>
+<li>
+<p>Why a long-term scheduler has more time to choose a process for a system than a short-term scheduler does in process scheduling? (5pts)</p>
+<p><span style="color:red"></p>
+</li>
+<li>
+<p>Please explain the main difference between a user-level thread and a kernel thread. (5pts)</p>
+<p><span style="color:red"></p>
+</li>
+<li>
+<p>Is a Java thread is a user-level thread or a kernel thread? (4pts)</p>
+<p><span style="color:red"></p>
+</li>
 </ul>
 </li>
 <li>
 <p>The scheduling algorithm of Solaris 9 is based on the Multilevel Feedback Queue Scheduling algorithm. There are six priority classes. Please explain the Fair Sharing class? Please explain how interactive threads in the Time Sharing or Interactive class are favored in scheduling in Solaris 8 or 9? (6pts)</p>
+<p><span style="color:red"></p>
 </li>
 <li>
 <p>Consider the scheduling of processes in which processes might arrive at different times and have different deadlines to complete their execution. Let the processes be scheduled by the preemptive Shortest-Job-First algorithm (PSJF) and a Priority Scheduling algorithm (PS) in which processes with urgent deadlines have higher priorities, and there is only one processor. Can you give a set of processes such that PS can meet the deadlines of the processes, but PSJF can not do it? (5pts)</p>
+<p><span style="color:red">Given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $1$, $1$ and $2$ and deadline $1$, $4$ and $3$.</p>
 </li>
 <li>
-<p>Consider the Round Robin scheduling algorithm (RR) with two different time quantums $L$ and $S$, where $L &gt; S$. Let the scheduling criteria be the average
-   waiting time, and $L$ be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum $S$ when all processes are
-   ready at time $0$? Please give me your answer with argument. (7pts)</p>
+<p>Consider the Round Robin scheduling algorithm (RR) with two different time quantums $L$ and $S$, where $L &gt; S$. Let the scheduling criteria be the average waiting time, and $L$ be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum $S$ when all processes are ready at time $0$? Please give me your answer with argument. (7pts)</p>
+<p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$</p>
+<ul>
+<li><span style="color:red">With quantum $= 10$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.</li>
+<li><span style="color:red">With quantum $= 5$, average waiting time = [0 + (15 - 5) + (5 - 0) + (20 - 10) + (10 - 0) + (25 - 15)] = 45 / 3 = 15.</li>
+<li><span style="color:red">With quantum $= 1$, average waiting time = ... = (18 + 19 + 20) / 3 = 19.</li>
+<li><span style="color:red">With quantum $\to 0$, average waiting time $\approx$ (20 + 20 + 20) / 3 = 20.</li>
+</ul>
+<p><span style="color:red">It is obvious that smaller time slice will lead a longer average waiting time.</p>
 </li>
 </ol>
 <h2 id="fall-2012"><a href="https://www.ptt.cc/bbs/NTU-Exam/M.1418537836.A.BB5.html">Fall 2012</a><a class="headerlink" href="#fall-2012" title="Permanent link">&para;</a></h2>
@@ -1076,14 +1221,14 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </ul>
 </li>
 <li>
-<p>Consider signal handling for threads. </p>
+<p>Consider signal handling for threads.</p>
 <ul>
 <li>
 <p>Is a Division-By-Zero signal synchronous or asynchronous?</p>
 <p><span style="color:red">Synchronous.</p>
 </li>
 <li>
-<p>Should a Division-By-Zero signal be delivered to every thread of its belonging process? (6pts)</p>
+<p>Should a Division-By-Zero signal be delivered to every thread of its belonging process? (6pts) [Spring 2011 4.(b)]</p>
 <p><span style="color:red">No. It should be only sent to the thread that causes the signal.</p>
 </li>
 </ul>
@@ -1092,8 +1237,8 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p>Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (24pts)</p>
 <ul>
 <li>
-<p>For the Round-Robin Scheduling, what would be the preferred time slice in general? (4pts)</p>
-<p><span style="color:red">The time slice $\ge 80\%$ CPU burst.</p>
+<p>For the Round-Robin Scheduling, what would be the preferred time slice in general? (4pts) [Spring 2011 6.(b)]</p>
+<p><span style="color:red">$80\%$ of the CPU bursts should be shorter than the time quantum.</p>
 </li>
 <li>
 <p>For the Round-Robin Scheduling, shall we have a small time slice for a better average turn around time? (4pts)</p>
@@ -1206,7 +1351,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red">System calls, child temination, and invalid memory access.</p>
 </li>
 <li>
-<p>Consider the implementation of virtual machines in which operating systems run on the top of the virtual machine software (or referred to as the hypervisor). Is an operating system running in the user mode or kernel mode? (3pts)</p>
+<p>Consider the implementation of virtual machines in which operating systems run on the top of the virtual machine software (or referred to as the hypervisor). Is an operating system running in the user mode or kernel mode? (3pts) [Fall 2011 5.(a), Fall 2013 2.(c)]</p>
 <p><span style="color:red">The user mode.</p>
 </li>
 <li>
@@ -1216,7 +1361,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </ul>
 </li>
 <li>
-<p>ANSI C refers to the family of successive standards published by ANSI for the C programming language. Please compare difference (or provide the purpose difference) between POSIX and ANSI C. (5pts)</p>
+<p>ANSI C refers to the family of successive standards published by ANSI for the C programming language. Please compare difference (or provide the purpose difference) between POSIX and ANSI C. (5pts) [Fall 2011 4.(b)]</p>
 <ul>
 <li>
 <p><span style="color:red">Any program written only in ANSI C and without any hardware dependent assumptions is virtully guaranteed to compile correctly on any platform with a conforming C implementation.</p>
@@ -1337,7 +1482,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p>Please answer the following questions regarding the designs of operating systems: (22pts)</p>
 <ul>
 <li>
-<p>An operating system could be considered as a resource allocator. Please list 3 resources managed by an operating systems. (6pts)</p>
+<p>An operating system could be considered as a resource allocator. Please list 3 resources managed by an operating systems. (6pts) [Fall 2011 2.(a)]</p>
 <p><span style="color:red">CPU time, Memory Space, File Storage, I/O Devices, Shared Code, Data Structures, and more.</p>
 </li>
 <li>
@@ -1351,8 +1496,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 </li>
 <li>
 <p>Please explain what happens when a command-line user interface of Unix executes a command. (6pts)</p>
-<p><span style="color:red">Search the exec file which corresponds to the command; fork a process
-       to execute the file.</p>
+<p><span style="color:red">Search the exec file which corresponds to the command; fork a process to execute the file.</p>
 </li>
 </ul>
 </li>
@@ -1364,7 +1508,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p>The memory image of a Unix process might consist of a code segment, a data segment, a heap area, a user stack, a kernel stack, an environment variable area, and .u. </p>
 <ul>
 <li>
-<p>Which one of the above is used when <code>malloc()</code> is invoked?</p>
+<p>Which one of the above is used when <code>malloc()</code> is invoked? [Spring 2011 3.(b)]</p>
 <p><span style="color:red">heap.</p>
 </li>
 <li>
@@ -1376,7 +1520,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <li>
 <ul>
 <li>
-<p>Please explain how <code>fork()</code> works when a parent process invoke <code>fork()</code>.</p>
+<p>Please explain how <code>fork()</code> works when a parent process invoke <code>fork()</code>. [Spring 2011 3.(c)]</p>
 <p><span style="color:red">When a parent process invoke fork(), a duplication of the parent process is created for the resulted child process, where the parent process returns from fork() with the process ID of the created child process. The child process returns 0.</p>
 </li>
 <li>
@@ -1408,7 +1552,7 @@ Execute the device driver to set up the registers of the DMA controller. DMA mov
 <p><span style="color:red">(0 + (8 - 3) + (6 - 4) + (18 - 2) + (13 - 5)) / 5 = 31 / 5.</p>
 </li>
 <li>
-<p>Consider Shortest-Job-First Scheduling and Round-Robin Scheduling. Please prove that the total waiting time in running all processes under Shortest-Job-First Scheduling is always no larger than that of Round-Robin Scheduling with time slice equal to $1$ when all processes are ready at time $0$? (5pts)</p>
+<p>Consider Shortest-Job-First Scheduling and Round-Robin Scheduling. Please prove that the total waiting time in running all processes under Shortest-Job-First Scheduling is always no larger than that of Round-Robin Scheduling with time slice equal to $1$ when all processes are ready at time $0$? (5pts) [Spring 2011 5.(a)]</p>
 <p><span style="color:red">Yes. <strong><em>Proof</em></strong>:</p>
 <p><span style="color:red">WLOG, given processes $P_1$, $P_2$, $\dots$, $P_n$ with CPU burst time $t_1$, $t_2$, $\dots$, $t_n$, where $t_1 &lt; t_2 &lt; \cdots &lt; t_n$.</p>
 <p><span style="color:red">By SJF, their waiting time should be:</p>
@@ -1428,7 +1572,7 @@ P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
 <p><span style="color:red">Thus, in non-preemptive scheduling, SJF (actually Shortest-next-CPU-burst-first) is optimal for the purpose of minimizing average waiting time.</p>
 </li>
 <li>
-<p>Suppose that the variance of the waiting time is the criterion in process scheduling. Shall we have a small time slice for a better variance for Round-Robin Scheduling when all processes of the same CPU burst arrive at time $0$? (5pts) [Fall 2013, 7.(c)]</p>
+<p>Suppose that the variance of the waiting time is the criterion in process scheduling. Shall we have a small time slice for a better variance for Round-Robin Scheduling when all processes of the same CPU burst arrive at time $0$? (5pts) [Fall 2011 9., Fall 2013, 7.(c)]</p>
 <p><span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$</p>
 <ul>
 <li><span style="color:red">With quantum $= 10$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.</li>
@@ -1618,7 +1762,7 @@ P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
 <p><span style="color:red">Use an integer $S$ with initial value = $1$ to indicate the number of available car and a FIFO queue waiting list.</p>
 <div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">process</span> <span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">car</span> <span class="o">*</span><span class="n">waiting_list</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">semaphore</span><span class="p">;</span>
 </pre></div>
 
@@ -1634,19 +1778,25 @@ P_n &amp; t_1 + t_2 + \cdots + t_{n - 1}
 <div class="highlight"><pre><span></span><span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
-        <span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span>
+        <span class="n">remove</span> <span class="n">a</span> <span class="n">car</span> <span class="n">C</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">waiting_list</span><span class="p">;</span>
+        <span class="n">wakeup</span><span class="p">(</span><span class="n">C</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+
+<p>Car $C_i$:</p>
+<div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+<span class="cm">/* critical section */</span>
+<span class="n">signal</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
 </pre></div>
 
 </li>
 <li>
 <p>Please prove that your above solution satisfy the three requirements of the Critical Section Problem. (6pts)</p>
 <ul>
-<li><span style="color:red">Mutual exclusioin: only a car can go in the intersection.</li>
+<li><span style="color:red">Mutual exclusioin: only a car can go across the intersection.</li>
 <li><span style="color:red">Progress requirement: by block() and wakeup(), the processes won't wait forever.</li>
-<li><span style="color:red">Bounded-waiting: </li>
+<li><span style="color:red">Bounded-waiting: at most wait for $n - 1$ cars.</li>
 </ul>
 </li>
 <li>
