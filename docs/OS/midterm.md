@@ -36,7 +36,7 @@
 
         <span style="color:red">All modifications are written to a log before they are applied.
 
-2. Please answer following questions regarding the design the design of operation systems. (22pts)
+2. Please answer following questions regarding the design of operation systems. (22pts)
 
     There are two conflicting goals in OS designs: Convenience and Efficiency.
     
@@ -211,7 +211,7 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
         <span style="color:red">
 
-    - In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (l2pts)
+    - In a memory hierarchy, we have registers, cache, memory, and disk. Which of them is managed by operating systems? Which of them is managed by hardware? (12pts)
 
         - <span style="color:red">Operating system: registers, cache, memory
         - <span style="color:red">Hardware: disk
@@ -267,13 +267,22 @@ The exam is 180 minutes long. The total score is 107pts. Please read the questio
 
 8. Consider the scheduling of processes in which processes might arrive at different times and have different deadlines to complete their execution. Let the processes be scheduled by the preemptive Shortest-Job-First algorithm (PSJF) and a Priority Scheduling algorithm (PS) in which processes with urgent deadlines have higher priorities, and there is only one processor. Can you give a set of processes such that PS can meet the deadlines of the processes, but PSJF can not do it? (5pts)
 
-    <span style="color:red">Given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $1$, $1$ and $2$ and deadline $1$, $4$ and $3$.
+    <span style="color:red">Given processes:
+
+    | Process | Period | ProcTime |
+    | :--: | :--: | :--: |
+    | $P_1$ | $p_1 = 50$ | $t_1 = 25$ |
+    | $P_2$ | $p_2 = 80$ | $t_2 = 35$ |
+
+    ![normal](../assets/os/6.18.png)
+
+    ![normal](../assets/os/6.19.png)
 
 9. Consider the Round Robin scheduling algorithm (RR) with two different time quantums $L$ and $S$, where $L > S$. Let the scheduling criteria be the average waiting time, and $L$ be larger than the largest CPU burst of all processes. Does RR, in general, favor a small time quantum $S$ when all processes are ready at time $0$? Please give me your answer with argument. (7pts)
 
     <span style="color:red">No. For example, given processes $P_1$, $P_2$ and $P_3$ with CPU burst time $10$, $10$ and $10$
 
-    - <span style="color:red">With quantum $= 10$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.
+    - <span style="color:red">With quantum $> 10 (L)$, average waiting time = (0 + (10 - 0) + (20 - 0)) / 3 = 30 / 10 = 10.
     - <span style="color:red">With quantum $= 5$, average waiting time = [0 + (15 - 5) + (5 - 0) + (20 - 10) + (10 - 0) + (25 - 15)] = 45 / 3 = 15.
     - <span style="color:red">With quantum $= 1$, average waiting time = ... = (18 + 19 + 20) / 3 = 19.
     - <span style="color:red">With quantum $\to 0$, average waiting time $\approx$ (20 + 20 + 20) / 3 = 20.
