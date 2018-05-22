@@ -134,7 +134,7 @@ do {
 
     number[i] = 0;
     /* remainder section */
-} white (true);
+} while (true);
 ```
 
 - An observation: If $P_i$ is in its critical section, and $P_k (k \ne i)$ , then $(number[i], i) < (number[k], k)$.
