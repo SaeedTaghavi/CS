@@ -500,7 +500,7 @@ The exam is 180 minutes long. The total score is 103pts. Please read the questio
 
     - Please give me 2 advantages of virtual machines, beside system consolidation and easy in system development/deployment. (6pts)
 
-        <span style="color:red">Copmlete isolation and multiple personalities.
+        <span style="color:red">Complete isolation and multiple personalities.
         
 3. ANSI C refers to the family of successive standards published by ANSI for the C programming language. Please compare difference (or provide the purpose difference) between POSIX and ANSI C. (5pts) [Fall 2011 4.(b)]
        
@@ -823,7 +823,7 @@ The Exam is 180 minutes long. The total score is 105pts. Please read the questio
 
 1. For multicore programming, there could be data parallelism or task parallelism. Please explain how to use data parallelism to find the largest integer of a given set of integers. (5pts) [Fall 2014 6.(b)]
 
-    <span style="color:red">First split data over $N$ cores, and let each core find the largest integer of its given integers. Then let one core find the largest integers among the latgest integers found on each core.
+    <span style="color:red">First split data over $N$ cores, and let each core find the largest integer of its given integers. Then let one core find the largest integers among the largest integers found on each core.
 
 6. Please answer the following questions for process scheduling. Explanation is needed to receive any credit. (15pts)
 
