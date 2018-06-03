@@ -5,8 +5,8 @@
 In this website, I'll work on my notes about several topics:
 
 - [LeetCode in Python](./LeetCode)
-- [Operating System | notes](./OS)
-- [Maching Learning | notes](./ML)
+- [Operating System](./OS)
+- [Maching Learning](./ML)
 
 Please don't hesitate to give me your feedback if any adjustment is needed. You can simply press the "Pencil icon" in the upper right corner to edit the contents.
 
@@ -22,8 +22,4 @@ I also add [overflow-x: auto](https://www.w3schools.com/cssref/css3_pr_overflow-
 
 For more informations please visit [**my github site**](https://github.com/walkccc).
 
-My blog: [**Jay's Blog**](https://walkccc.github.io)
-
-Mail to: [**walkccray@gmail.com**](mailto:walkccray@gmail.com)
-
-By Jay Chen on April 13, 2018.
+By Jay Chen on May 14, 2018.

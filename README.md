@@ -22,8 +22,4 @@ I also add [overflow-x: auto](https://www.w3schools.com/cssref/css3_pr_overflow-
 
 For more informations please visit [**my github site**](https://github.com/walkccc).
 
-My blog: [**Jay's Blog**](https://walkccc.github.io)
-
-Mail to: [**walkccray@gmail.com**](mailto:walkccray@gmail.com)
-
 By Jay Chen on May 14, 2018.
