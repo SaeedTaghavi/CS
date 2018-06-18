@@ -175,7 +175,9 @@ Another possible solution to the external-fragmentation problem is to permit the
 
 segments are numbered and are referred to by a segment number, rather than by a segment name. Thus, a logical address consists of a *two tuple*: 
 
-$$segment-number, offset.$$
+<center>
+<*segment-number, offset*>
+</center>
 
 ### 8.4.2 Segmentation Hardware
 
@@ -253,3 +255,106 @@ Some TLBs store **address-space identifiers** (**ASIDs**) in each TLB entry.
 
 !!! note "ASID"
     An ASID uniquely identiﬁes each process and is used to provide address-space protection for that process.
+
+!!! note "Hit ratio"
+    The percentage of times that the page number of interest is found in the TLB.
+
+### 8.5.3 Protection
+
+We can create hardware to provide read-only, read-write, or execute-only protection.
+
+!!! note "Valid–invalid bit"
+    When this bit is set to valid, the associated page is in the process's logical address space and is thus a legal page.
+
+!!! note "Page-table length register (PTLR)"
+    To indicate the size of the page table.
+
+### 8.5.4 Shared Pages
+
+To be sharable, the code must be reentrant. The read-only nature of shared code should not be left to the correctness of the code; the operating system should enforce this property.
+
+## 8.6 Structure of the Page Table
+
+### 8.6.1 Hierarchical Paging
+
+Hierarchical paging is also known as **forward-mapped page table**.
+
+![normal](../assets/os/8.18.png)
+
+![normal](../assets/os/page2.png)
+
+The VAX minicomputer from Digital Equipment Corporation (DEC):
+
+![normal](../assets/os/VAX.png)
+
+### 8.6.2 Hashed Page Tables
+
+!!! note "Clustered page tables"
+    Each entry in the hash table refers to several pages (such as 16) rather than a single page, which are particularly useful for  address spaces.
+
+![normal](../assets/os/8.19.png)
+
+### 8.6.3 Inverted Page Tables
+
+!!! note "Inverted page table"
+    An inverted page table has one entry for each real page (or frame) of memory. Each entry consists of the virtual address of the page stored in that real memory location, with information about the process that owns the page.
+
+![normal](../assets/os/8.20.png)
+
+For the ***IBM RT***, each virtual address in the system consists of a triple:
+
+<center>
+<*process-id, page-number, offset*>
+</center>
+
+!!! info "Shared memory & Inverted page tables"
+    Shared memory cannot be used with inverted page tables; because there is only one virtual page entry for every physical page, one physical page cannot have two (or more) shared virtual addresses.
+
+### 8.6.4 Oracle SPARC Solaris
+
+!!! note "TLB walk"
+    - If a match is found in the TSB, the CPU copies the TSB entry into the TLB, and the memory translation completes.
+    - If no match is found in the TSB, the kernel is interrupted to search the hash table.
+
+## 8.7 Example: Intel 32 and 64-bit Architectures
+
+### 8.7.1 IA-32 Architecture
+
+![normal](../assets/os/8.21.png)
+
+segmentation unit + paging unit = memory-management unit (MMU)
+
+#### 8.7.1.1 IA-32 Segmentation
+
+The logical address is a pair (selector, offset), where the selector is a 16-bit number:
+
+![normal](../assets/os/IA-32.png)
+
+- $s$: the segment number
+- $g$: GDT or LDT
+- $p$: protection.
+
+![normal](../assets/os/8.22.png)
+
+#### 8.7.1.2 IA-32 Paging
+
+![normal](../assets/os/8.23.png)
+
+!!! note "Page address extension (PAE)"
+    It allows 32-bit processors to access a physical address space larger than 4 GB.
+
+![normal](../assets/os/8.24.png)
+
+### 8.7.2 x86-64
+
+## 8.8 Example: ARM Architecture
+
+## 8.9 Summary
+
+- Hardware support
+- Performance
+- Fragmentation
+- Relocation
+- Swapping
+- Sharing
+- Protection
