@@ -79,7 +79,9 @@ pages:
     - PART THREE | MEMORY MANAGEMENT:
       - Chapter 8 Main Memory: OS/Chap08.md
       - Chapter 9 Virtual Memory: OS/Chap09.md
-    - Previous Exams: OS/midterm.md
+    - Previous Exams: 
+      - Midterm: OS/midterm.md
+      - Final: OS/final.md
   - Machine Learning:
     - Preface: ML/index.md
     - Regression: ML/regression.md
