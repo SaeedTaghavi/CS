@@ -1387,13 +1387,18 @@
         },
         {
             "location": "/OS/final/",
-            "text": "Previous Operating System Midterms at NTUCSIE\n\u00b6\n\n\nSpring 2012\n\u00b6\n\n\n\n\n\n\nTerminologies. (24pts)\n\n\n\n\n\n\nDeadlock\n\n\nA set of process is in a deadlock state when every process in the set is waiting for an event that can be caused by only another process in the set.\n\n\n\n\n\n\nSegmentation\n\n\nSegmentation is a memory management scheme that supports the user view of memory.\n\n\n\n\n\n\nWorking Set\n (Hint: Thrashing and Frame Allocation)\n\n\nThe working set is an approximation of a program's locality.\n\n\n\n\n\n\nOptimal Algorithm for Page Replacement (OPT)\n\n\nReplace the page that will not be used for the longest period of time.\n\n\n\n\n\n\nHard Link\n (Hint: Acyclic-Graph Directory)\n\n\nA hard link of a file name let its directory entry point to the i-node that describes the file's contents.\n\n\n\n\n\n\nNetwork-Attached Storage (NAS)\n\n\nClients access NAS via a remote procedure call interface such as NFS (for UNIX) or CIFS (for Windows) where NAS has a file system running on it.\n\n\n\n\n\n\nRaw Disk\n\n\nAns: A partition as a large sequential array of logical blocks.\n\n\n\n\n\n\nPlease provide one advantage and one disadvantage of a deadlock avoidance algorithm (such as the Banker's Algorithm), compared to a deadlock\n   prevention algorithm (such as the one without \"Hold-and-Wait\"). (6pts)\n\n\n\n\nAdvantage: Better resource utilization and/or better system throughput/performance.\n\n\nDsadvantage: Processes must claim maximum usages of each resource.\n\n\n\n\n\n\n\n\n\n\n\n\nSpring 2013\n\u00b6\n\n\nSpring 2014\n\u00b6\n\n\nSpring 2015\n\u00b6",
+            "text": "Previous Operating System Midterms at NTUCSIE\n\u00b6\n\n\nSpring 2011\n\u00b6\n\n\nSpring 2012\n\u00b6\n\n\n\n\n\n\nTerminologies. (24pts)\n\n\n\n\n\n\nDeadlock\n\n\nA set of process is in a deadlock state when every process in the set is waiting for an event that can be caused by only another process in the set.\n\n\n\n\n\n\nSegmentation\n\n\nSegmentation is a memory management scheme that supports the user view of memory.\n\n\n\n\n\n\nWorking Set\n (Hint: Thrashing and Frame Allocation)\n\n\nThe working set is an approximation of a program's locality.\n\n\n\n\n\n\nOptimal Algorithm for Page Replacement (OPT)\n\n\nReplace the page that will not be used for the longest period of time.\n\n\n\n\n\n\nHard Link\n (Hint: Acyclic-Graph Directory)\n\n\nA hard link of a file name let its directory entry point to the i-node that describes the file's contents.\n\n\n\n\n\n\nNetwork-Attached Storage (NAS)\n\n\nClients access NAS via a remote procedure call interface such as NFS (for UNIX) or CIFS (for Windows) where NAS has a file system running on it.\n\n\n\n\n\n\nRaw Disk\n\n\nAns: A partition as a large sequential array of logical blocks.\n\n\n\n\n\n\nPlease provide one advantage and one disadvantage of a deadlock avoidance algorithm (such as the Banker's Algorithm), compared to a deadlock\n   prevention algorithm (such as the one without \"Hold-and-Wait\"). (6pts)\n\n\n\n\nAdvantage: Better resource utilization and/or better system throughput/performance.\n\n\nDsadvantage: Processes must claim maximum usages of each resource.\n\n\n\n\n\n\n\n\n\n\n\n\nSpring 2013\n\u00b6\n\n\nSpring 2014\n\u00b6\n\n\nSpring 2015\n\u00b6",
             "title": "Final"
         },
         {
             "location": "/OS/final/#previous-operating-system-midterms-at-ntucsie",
             "text": "",
             "title": "Previous Operating System Midterms at NTUCSIE"
+        },
+        {
+            "location": "/OS/final/#spring-2011",
+            "text": "",
+            "title": "Spring 2011"
         },
         {
             "location": "/OS/final/#spring-2012",
