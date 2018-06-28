@@ -891,3 +891,116 @@ The Exam is 180 minutes long. The total score is 105pts. Please read the questio
         ![small](../assets/os/2015midterm.png)
 
         <span style="color:red">Let the ambulance has the highest priority in the waiting queue.
+
+## Spring 2018
+
+The exam is 180 minutes long. The total score is 112pts. Please read the questions carefully.
+
+1. Terminologies. (24pts)
+
+    - init (Hint: Booting; a UNIX process)
+
+        <span style="color:red">A user process that initializes system processes, e.g., various daemons, login processes, after the kernel has been bootstrapped.
+
+    - Dual-Mode Operations (Hint: Mode Bit)
+
+        <span style="color:red">Privileged and user-mode instructions, where privileged instructions are machine instructions that may cause harm.
+
+    - Memory Protection (Hint: Hardware Protection)
+
+        <span style="color:red">Prevent a user program from modifying the code or data structures of either the OS or other users!
+
+    - A Modular Kernel
+
+        <span style="color:red">A set of core components with characteristics: layer-like — modules; microkernel-like — the primary module
+
+    - Asymmetric Addressing for Direct Communication
+
+        <span style="color:red">In Direct Communication, sender must specify the receiver ID, but the receiver does not need to specify the sender ID. For example, Send(P, msg), Receive(id, msg)
+
+    - Remote Procedure Call (RPC)
+
+        <span style="color:red">A way to abstract the procedure-call mechanism for use between systems with network connection.
+
+    - FIFOS of UNIX
+
+        <span style="color:red">Named pipes of UNIX. It is a file in the file system and created by mkfifo(). It offers Half Dulex and Byte-Oriented Transmissions.
+
+    - Implicit Threading
+
+        <span style="color:red">Transfer the creation and management of the threading from the application developers to compilers and run-time libraries.
+
+2. For the implementation of the UNIX process control block PCB[]， we have proc[] and .u, which contain different attributes for different purposes (e.g., those must be known regardless of whether the process is running). Which one is in the kemel or user address space? Are they both in the kemel or user address space? Which one of proc[] and .u signal disposition resides? Where thread-specific data/thread local storage will reside (in the kemel or user address space)? (8pts)
+
+    - kernel address space: proc[]; user-address space: .u
+    - .u: signal disposition.
+    - user address space.
+
+3. Please answer the following questions regarding operating systems: (21pts)
+
+    - When timing sharing appears as a feature for operating systems, please tell us two emerging features/subsystems, beside job synchronization. (6pts)
+
+        <span style="color:red">one-line file systems, virtual memory, sophisticated CPU scheduling.
+
+    - Virtual machine software provides an interface that is identical to the underlying bare hardware. I/O over a virtual machine could be slow or fast, depending on the implementations. Please give me a case in which I/O is fast, compared to I/O directly over physical devices. (5pts)
+
+        <span style="color:red">I/O can be fast over a hard disk when the corresponding disk is implemented over DRAM by emulation.
+
+    - There are operating system services, such as program executions, I/O operations, accounting, resource allocation, e汀or detection. Which one is belonging to those for user convenience? Which one is belonging to those for system efficiency? (1Opts)
+
+        <span style="color:red">user convenience: program executions, I/O operations, error detection; system efficiency: accounting, resource allocation.
+
+4. Multithreading is important for multi-core architectures. Please answer the following questions: (12pts)
+
+    - Task parallelism is one typical parallelism type. Please give one example for task parallelism. (5pts)
+
+        <span style="color:red">Run merge sorting over cores by partitioning data.
+
+    - Please provide two challenges in multicore programming. (4pts)
+
+        <span style="color:red">Identifying Tasks — Dividing Activities, Balance, Data Splitting, Data Dependency, Testing and Debugging.
+
+    - Why the context switching cost of kernel-level threads is higher than that of user-level threads. (3pts)
+
+        <span style="color:red">Context switching cost is a little bit higher because the kernel must do the switching.
+
+5. Compare preemptive scheduling and non-preemptive scheduling. Please answer the following questions: (21 pts)
+
+    - In what circumstance, non-preemptive scheduling wiU be be吐er than preemptive scheduling? (4pts)
+
+        <span style="color:red">Non-preemptive scheduling could be better than preemptive scheduling when all jobs are ready together at time 0.
+
+    - The selection of CPU scheduling algorithms should consider the scheduling criteria. If the high Thoughput is the criterion, which one is the best: Shortest job first, FIFO, and round-robin scheduling. You must provide answer to get credits. (6pts)
+
+        <span style="color:red">shortest job first.
+
+    - Priority scheduling is a framework for scheduling. Please design a priority assignment formula that gives a lower priority to a job when it runs more time. (5pts)
+
+        <span style="color:red">priority = 1 / consumed-CPU-time.
+
+    - For Round-Robin Scheduling, if the lower average Tumaround Time is the criterion, sha11 we prefer a lower time slice? Suppose that a11 jobs are ready at time O. You must provide answer to get credits. (6pts)
+
+        <span style="color:red">a lower time slice is bad to the low average turnaround time.
+
+6. Processor Affinity is somehow against push migration. Please explain why. (6pts)
+
+    <span style="color:red">It is because of the cost in cache repopulation.
+
+7. Please explain the progress assumption concerns for virtualization. (6pts)
+
+    <span style="color:red">lt is assumed that a certain amount of progress should be observed for a system in a given amount oftime under virtualization.
+
+
+8. Consider solutions to the Critical Section Problem. Please answer the following questions (14pts)
+
+    - Consider a computing server to service jobs from three FIFO queues in a round robin way whenever there are jobs in any non-empty queues. Please use semaphores to implement your solution with some pseudo code. (6pts)
+
+        <span style="color:red">We let the dispatcher of each job queue to wait a shared semaphore whenever it has a pending job. Let the semaphore have a FIFO queue.
+
+    - What is the difference between a binary, semaphore and a condition variable? (3pts)
+
+        <span style="color:red">A conditino variable has nothing happening to a signal request if no job is waiting for the variable.
+
+    - The Monitor-based implementation of the Dining Philosopher problem in the textbook implements the idea of two-chop-stick-per-time solution. Will it have the starvation problem? You must provide explanation to receive credits. (5pts)
+
+        <span style="color:red">Yes, the starvation problem happens to a philosopher whenever his two neighboring philosophers take turn in eating while he is waiting.
