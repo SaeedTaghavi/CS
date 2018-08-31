@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Computer Science Notes\n\u00b6\n\n\nGetting Started\n\u00b6\n\n\nIn this website, I'll work on my notes about several topics:\n\n\n\n\nLeetCode in Python\n\n\nOperating System\n\n\nMaching Learning\n\n\n\n\nPlease don't hesitate to give me your feedback if any adjustment is needed. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.\n\n\nHow I generate this website\n\u00b6\n\n\nI use the static site generator \nMkDocs\n and the beautiful theme \nMaterial for MkDocs\n to build this website!\n\n\nSince there are some LaTeX equations \nKaTeX\n doesn't support, here I use \nMathJax\n to render the math equations in my website.\n\n\nI also add \noverflow-x: auto\n to prevent the overflow issue on mobile devices, so you can scroll horizontally in the math display equations.\n\n\nMore Informations\n\u00b6\n\n\nFor more informations please visit \nmy github site\n.\n\n\nBy Jay Chen on May 14, 2018.",
+            "text": "Computer Science Notes\n\u00b6\n\n\nGetting Started\n\u00b6\n\n\nIn this website, I'll work on my notes about several topics:\n\n\n\n\nLeetCode in Python\n\n\nOperating System\n\n\nMaching Learning\n\n\n\n\nPlease don't hesitate to give me your feedback if any adjustment is needed. You can simply press the \"Pencil icon\" in the upper right corner to edit the contents.\n\n\nHow I generate this website\n\u00b6\n\n\nI use the static site generator \nMkDocs\n and the beautiful theme \nMaterial for MkDocs\n to build this website!\n\n\nSince there are some LaTeX equations \nKaTeX\n doesn't support, here I use \nMathJax\n to render the math equations in my website.\n\n\nI also add \noverflow-x: auto\n to prevent the overflow issue on mobile devices, so you can scroll horizontally in the math display equations.\n\n\nMore Informations\n\u00b6\n\n\nFor more informations please visit \nmy GitHub site\n.\n\n\nBy Jay Chen on May 14, 2018.",
             "title": "Preface"
         },
         {
@@ -22,7 +22,7 @@
         },
         {
             "location": "/#more-informations",
-            "text": "For more informations please visit  my github site .  By Jay Chen on May 14, 2018.",
+            "text": "For more informations please visit  my GitHub site .  By Jay Chen on May 14, 2018.",
             "title": "More Informations"
         },
         {
