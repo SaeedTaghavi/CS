@@ -4,9 +4,9 @@
 
 In this website, I'll work on my notes about several topics:
 
-- [LeetCode in Python](./LeetCode)
-- [Operating System](./OS)
-- [Maching Learning](./ML)
+- [LeetCode in Python](https://walkccc.github.io/CS/LeetCode/)
+- [Operating System](https://walkccc.github.io/CS/OS/)
+- [Maching Learning](https://walkccc.github.io/CS/ML/)
 
 Please don't hesitate to give me your feedback if any adjustment is needed. You can simply press the "Pencil icon" in the upper right corner to edit the contents.
 
