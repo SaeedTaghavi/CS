@@ -9,7 +9,7 @@ repo_name: 'walkccc/CS'
 repo_url: 'https://github.com/walkccc/CS'
 
 # Copyright
-copyright: 'Built by <a href="http://github.com/walkccc">Jay Chen</a> &copy; 2017 - 2018'
+copyright: 'Built by <a href="http://github.com/walkccc">Jay Chen</a> &copy; 2017 - 2019'
 
 # Configuration
 theme:
@@ -55,7 +55,7 @@ markdown_extensions:
   - toc:
       permalink: true
 
-pages:
+navs:
   - Preface: index.md
   - LeetCode in Python: 
     - Preface: LeetCode/index.md
