@@ -55,7 +55,7 @@ markdown_extensions:
   - toc:
       permalink: true
 
-navs:
+nav:
   - Preface: index.md
   - LeetCode in Python: 
     - Preface: LeetCode/index.md
