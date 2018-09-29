@@ -84,4 +84,4 @@ nav:
       - Final: OS/final.md
   - Machine Learning:
     - Preface: ML/index.md
-    - Regression: ML/regression.md
+    - Regression: ML/1.md

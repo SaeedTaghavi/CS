@@ -1,4 +1,4 @@
-# Regression
+# Lecture 1: Regression - Case Study
 
 Overview:
 
