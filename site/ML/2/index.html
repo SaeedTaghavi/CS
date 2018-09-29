@@ -764,10 +764,78 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Where does the error com from?
+      </label>
+    
     <a href="./" title="Where does the error com from?" class="md-nav__link md-nav__link--active">
       Where does the error com from?
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bias-and-variance-of-estimator" title="Bias and Variance of Estimator" class="md-nav__link">
+    Bias and Variance of Estimator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-selection" title="Model Selection" class="md-nav__link">
+    Model Selection
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-validation" title="Cross Validation" class="md-nav__link">
+    Cross Validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n-fold-cross-validation" title="$N$-fold Cross Validation" class="md-nav__link">
+    $N$-fold Cross Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="Gradient Descent" class="md-nav__link">
+      Gradient Descent
+    </a>
   </li>
 
         
@@ -793,6 +861,49 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bias-and-variance-of-estimator" title="Bias and Variance of Estimator" class="md-nav__link">
+    Bias and Variance of Estimator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-selection" title="Model Selection" class="md-nav__link">
+    Model Selection
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-validation" title="Cross Validation" class="md-nav__link">
+    Cross Validation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n-fold-cross-validation" title="$N$-fold Cross Validation" class="md-nav__link">
+    $N$-fold Cross Validation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -807,6 +918,7 @@
                 
                 
                 <h1 id="lecture-2-where-does-the-error-come-from">Lecture 2: Where does the error come from?<a class="headerlink" href="#lecture-2-where-does-the-error-come-from" title="Permanent link">&para;</a></h1>
+<h2 id="bias-and-variance-of-estimator">Bias and Variance of Estimator<a class="headerlink" href="#bias-and-variance-of-estimator" title="Permanent link">&para;</a></h2>
 <p>Error 有兩種來源：</p>
 <ul>
 <li>bias</li>
@@ -815,7 +927,63 @@
 <p>分析 error 的來源，可以挑選適當的方法改善 model。</p>
 <p>以進化前的寶可夢為輸入，以進化後的真實 CP 值為輸出，真實的函數記為 $\hat f$（上帝視角才知道）</p>
 <p>從訓練數據，我們找到 $f^*$（$\hat f$ 的估計）</p>
-<p><img alt="" src="https://i.imgur.com/Q8eohUL.png" /></p>
+<p><img alt="" src="https://i.imgur.com/Q8eohUL.png?width=30rem" /></p>
+<p>用表格來看</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">簡單模型</th>
+<th align="center">複雜模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">variance</td>
+<td align="center">小</td>
+<td align="center">大</td>
+</tr>
+<tr>
+<td align="center">bias</td>
+<td align="center">大</td>
+<td align="center">小</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>簡單模型更少受 training data 影響。</li>
+<li>複雜模型會盡力去擬合 training data 的變化。</li>
+</ul>
+<p>Bias 即 $d(\bar f, \hat f)$</p>
+<p>簡單模型的 model space 較小，可能根本沒有包含到 target。</p>
+<ul>
+<li>在 underfitting 的情況下，error 大部分來自 bias。</li>
+<li>在 overfitting 的情況下，error 大部分來自 variance。</li>
+</ul>
+<hr />
+<ul>
+<li>如果 model 連 training data 都 fit 不好，那就是 underfitting</li>
+<li>如果 model 可以 fit training data，但 testing error 大，那就是 overfitting</li>
+</ul>
+<hr />
+<ul>
+<li>在 bias 大的情況下，需要重新設計 model，例如增加更多 features，或著讓 model 更複雜</li>
+<li>在 variance 大的情況下，需要更多資料，或者 regularization。More data 很有效，但卻不一定可行，regularization 希望曲線平滑，但可能會損害 bias，造成 model space 無法包含 target $\hat f$。</li>
+</ul>
+<h2 id="model-selection">Model Selection<a class="headerlink" href="#model-selection" title="Permanent link">&para;</a></h2>
+<p>在選擇模型時，要考慮 2 種 error 的折衷，使 total error 最小。</p>
+<p>不應這樣做：</p>
+<p><img alt="" src="https://i.imgur.com/QZZrg8C.png?width=30rem" /></p>
+<p>因為這樣做，在 public testing error 的表現不能完全的反應在 private testing error。</p>
+<h3 id="cross-validation">Cross Validation<a class="headerlink" href="#cross-validation" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://i.imgur.com/NiYfKs9.png?width=30rem" /></p>
+<p>將 training set 分成 training set 和 validation set，在 training set 上訓練 model 1-3，選擇在 validation set 上 error 最小的 model。</p>
+<p>如果嫌 training set 中 data 太少的話，可以在確定 model 後在全部 training set 上再訓練一遍該 model。</p>
+<p>這樣做，在 public testing set 上的 error 才會代表在 private testing set 上的 error。</p>
+<p>不能用 public testing set 去調整 model！</p>
+<h3 id="n-fold-cross-validation">$N$-fold Cross Validation<a class="headerlink" href="#n-fold-cross-validation" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://i.imgur.com/L93md2I.png?width=30rem" /></p>
+<p>將 training set 分成 $N$ 折，每次只有一折作為 validation set，其它折作為 training set，在各 model 中選擇 $N$ 次訓練得到的 $N$ 個 validation error 均值最小的 model。</p>
                 
                   
                 
@@ -850,6 +1018,20 @@
             </div>
           </a>
         
+        
+          <a href="../3/" title="Gradient Descent" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Gradient Descent
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>

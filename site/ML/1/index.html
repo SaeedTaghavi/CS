@@ -752,9 +752,45 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Regression - Case Study
+      </label>
+    
     <a href="./" title="Regression - Case Study" class="md-nav__link md-nav__link--active">
       Regression - Case Study
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regression-steps" title="Regression Steps" class="md-nav__link">
+    Regression Steps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-hidden-factors" title="What are the hidden factors?" class="md-nav__link">
+    What are the hidden factors?
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -767,6 +803,18 @@
   <li class="md-nav__item">
     <a href="../2/" title="Where does the error com from?" class="md-nav__link">
       Where does the error com from?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="Gradient Descent" class="md-nav__link">
+      Gradient Descent
     </a>
   </li>
 
@@ -793,6 +841,29 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#regression-steps" title="Regression Steps" class="md-nav__link">
+    Regression Steps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-hidden-factors" title="What are the hidden factors?" class="md-nav__link">
+    What are the hidden factors?
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -807,6 +878,7 @@
                 
                 
                 <h1 id="lecture-1-regression-case-study">Lecture 1: Regression - Case Study<a class="headerlink" href="#lecture-1-regression-case-study" title="Permanent link">&para;</a></h1>
+<h2 id="regression-steps">Regression Steps<a class="headerlink" href="#regression-steps" title="Permanent link">&para;</a></h2>
 <p>Machine Learning 有三個步驟：</p>
 <ol>
 <li>從一個集合中選出一個 function（即：選擇一個 model）</li>
@@ -837,6 +909,7 @@
 <p>Gradient descent 可能使參數停在損失函數的局部最小值、微分為 $0$ 的點，或者微分為極小值的點。Linear regression 中不必擔心局部最小值的問題，因為 loss function 是 convex 的。</p>
 <p>在得到 best function 之後，我們真正在意的是它在 testing data 上的表現。選擇不同的 model，會得到不同的 best function，它們在testing data 上有不同表現。</p>
 <p>複雜模型的 model space 涵蓋了簡單模型的 model space，因此在 training data 上的錯誤率更小，但並不意味著在 testing data 上錯誤率更小。Model 太複雜會出現 overfitting。</p>
+<h2 id="what-are-the-hidden-factors">What are the hidden factors?<a class="headerlink" href="#what-are-the-hidden-factors" title="Permanent link">&para;</a></h2>
 <p>如果我們收集更多寶可夢進化前後的 CP 值會發現，進化後的CP值不只依賴於進化前的 CP 值，可能還有其它的隱藏因素（例如：寶可夢所屬的物種）。同時考慮進化前 CP 值 $x_{cp}$ 和物種 $x_s$，之前的模型要修改為：</p>
 <p>\begin{align}
 \text{if } &amp; x_s = \text{pidgey}:   &amp; y = b_1 + w_1 \cdot x_{cp} \\
