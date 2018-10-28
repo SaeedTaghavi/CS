@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.5">
     
     
       
@@ -111,7 +111,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#lecture-1-regression-case-study" tabindex="1" class="md-skip">
+      <a href="#lecture-1-regression-case-study" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -910,7 +910,7 @@
 <p>在得到 best function 之後，我們真正在意的是它在 testing data 上的表現。選擇不同的 model，會得到不同的 best function，它們在testing data 上有不同表現。</p>
 <p>複雜模型的 model space 涵蓋了簡單模型的 model space，因此在 training data 上的錯誤率更小，但並不意味著在 testing data 上錯誤率更小。Model 太複雜會出現 overfitting。</p>
 <h2 id="what-are-the-hidden-factors">What are the hidden factors?<a class="headerlink" href="#what-are-the-hidden-factors" title="Permanent link">&para;</a></h2>
-<p>如果我們收集更多寶可夢進化前後的 CP 值會發現，進化後的CP值不只依賴於進化前的 CP 值，可能還有其它的隱藏因素（例如：寶可夢所屬的物種）。同時考慮進化前 CP 值 $x_{cp}$ 和物種 $x_s$，之前的模型要修改為：</p>
+<p>如果我們收集更多寶可夢進化前後的 CP 值會發現，進化後的 CP 值不只依賴於進化前的 CP 值，可能還有其它的隱藏因素（例如：寶可夢所屬的物種）。同時考慮進化前 CP 值 $x_{cp}$ 和物種 $x_s$，之前的模型要修改為：</p>
 <p>\begin{align}
 \text{if } &amp; x_s = \text{pidgey}:   &amp; y = b_1 + w_1 \cdot x_{cp} \\
 \text{if } &amp; x_s = \text{weedle}:   &amp; y = b_2 + w_2 \cdot x_{cp} \\
@@ -1017,7 +1017,7 @@ y = &amp; b_1 \cdot \boldsymbol{\delta(x_s = \text{pidgey})  } &amp; + &amp; w_1
     
       <script src="../../assets/javascripts/application.583bbe55.js"></script>
       
-      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="../../js/mathjax.js"></script>
       
