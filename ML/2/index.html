@@ -839,6 +839,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="Classification" class="md-nav__link">
+      Classification
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -927,7 +939,7 @@
 <p>分析 error 的來源，可以挑選適當的方法改善 model。</p>
 <p>以進化前的寶可夢為輸入，以進化後的真實 CP 值為輸出，真實的函數記為 $\hat f$（上帝視角才知道）</p>
 <p>從訓練數據，我們找到 $f^*$（$\hat f$ 的估計）</p>
-<p><img alt="" src="https://i.imgur.com/Q8eohUL.png?width=30rem" /></p>
+<p><img alt="" src="https://i.imgur.com/Q8eohUL.png" /></p>
 <p>用表格來看</p>
 <table>
 <thead>
@@ -973,16 +985,16 @@
 <h2 id="model-selection">Model Selection<a class="headerlink" href="#model-selection" title="Permanent link">&para;</a></h2>
 <p>在選擇模型時，要考慮 2 種 error 的折衷，使 total error 最小。</p>
 <p>不應這樣做：</p>
-<p><img alt="" src="https://i.imgur.com/QZZrg8C.png?width=30rem" /></p>
+<p><img alt="" src="https://i.imgur.com/QZZrg8C.png" /></p>
 <p>因為這樣做，在 public testing error 的表現不能完全的反應在 private testing error。</p>
 <h3 id="cross-validation">Cross Validation<a class="headerlink" href="#cross-validation" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://i.imgur.com/NiYfKs9.png?width=30rem" /></p>
+<p><img alt="" src="https://i.imgur.com/NiYfKs9.png" /></p>
 <p>將 training set 分成 training set 和 validation set，在 training set 上訓練 model 1-3，選擇在 validation set 上 error 最小的 model。</p>
 <p>如果嫌 training set 中 data 太少的話，可以在確定 model 後在全部 training set 上再訓練一遍該 model。</p>
 <p>這樣做，在 public testing set 上的 error 才會代表在 private testing set 上的 error。</p>
 <p>不能用 public testing set 去調整 model！</p>
 <h3 id="n-fold-cross-validation">$N$-fold Cross Validation<a class="headerlink" href="#n-fold-cross-validation" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://i.imgur.com/L93md2I.png?width=30rem" /></p>
+<p><img alt="" src="https://i.imgur.com/L93md2I.png" /></p>
 <p>將 training set 分成 $N$ 折，每次只有一折作為 validation set，其它折作為 training set，在各 model 中選擇 $N$ 次訓練得到的 $N$ 個 validation error 均值最小的 model。</p>
                 
                   

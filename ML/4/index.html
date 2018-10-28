@@ -13,7 +13,7 @@
         <meta name="description" content="Computer Science Notes Operating System LeetCode Python Machine Learning">
       
       
-        <link rel="canonical" href="https://walkccc.github.io/CS/ML/backup/">
+        <link rel="canonical" href="https://walkccc.github.io/CS/ML/4/">
       
       
         <meta name="author" content="Jay Chen">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Lecture 1: Regression - Case Study - Computer Science Notes</title>
+        <title>Classification - Computer Science Notes</title>
       
     
     
@@ -111,7 +111,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#lecture-1-regression-case-study" tabindex="1" class="md-skip">
+      <a href="#lecture-4-classification-probabilistic-generative-model" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -137,7 +137,7 @@
                 Computer Science Notes
               </span>
               <span class="md-header-nav__topic">
-                Lecture 1: Regression - Case Study
+                Classification
               </span>
             
           
@@ -209,14 +209,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." title="Preface" class="md-tabs__link md-tabs__link--active">
+      <a href="../.." title="Preface" class="md-tabs__link">
         Preface
       </a>
     
@@ -254,7 +256,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../" title="Machine Learning" class="md-tabs__link">
+        <a href="../" title="Machine Learning" class="md-tabs__link md-tabs__link--active">
           Machine Learning
         </a>
       
@@ -707,10 +709,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Machine Learning
@@ -770,6 +774,131 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Classification
+      </label>
+    
+    <a href="./" title="Classification" class="md-nav__link md-nav__link--active">
+      Classification
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-do-classification" title="How to do Classification?" class="md-nav__link">
+    How to do Classification?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification-as-regression" title="Classification as Regression?" class="md-nav__link">
+    Classification as Regression?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ideal-alternatives" title="Ideal Alternatives" class="md-nav__link">
+    Ideal Alternatives
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior" title="Prior" class="md-nav__link">
+    Prior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability-from-class" title="Probability from Class" class="md-nav__link">
+    Probability from Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability-from-class-feature" title="Probability from Class - Feature" class="md-nav__link">
+    Probability from Class - Feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-likelihood" title="Maximum Likelihood" class="md-nav__link">
+    Maximum Likelihood
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-model" title="Modifying Model" class="md-nav__link">
+    Modifying Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-steps" title="Three Steps" class="md-nav__link">
+    Three Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posterior-probability" title="Posterior Probability" class="md-nav__link">
+    Posterior Probability
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -792,6 +921,97 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-do-classification" title="How to do Classification?" class="md-nav__link">
+    How to do Classification?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification-as-regression" title="Classification as Regression?" class="md-nav__link">
+    Classification as Regression?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ideal-alternatives" title="Ideal Alternatives" class="md-nav__link">
+    Ideal Alternatives
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior" title="Prior" class="md-nav__link">
+    Prior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability-from-class" title="Probability from Class" class="md-nav__link">
+    Probability from Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probability-from-class-feature" title="Probability from Class - Feature" class="md-nav__link">
+    Probability from Class - Feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-likelihood" title="Maximum Likelihood" class="md-nav__link">
+    Maximum Likelihood
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-model" title="Modifying Model" class="md-nav__link">
+    Modifying Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-steps" title="Three Steps" class="md-nav__link">
+    Three Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posterior-probability" title="Posterior Probability" class="md-nav__link">
+    Posterior Probability
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -802,64 +1022,100 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/walkccc/CS/edit/master/docs/ML/backup.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/walkccc/CS/edit/master/docs/ML/4.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="lecture-1-regression-case-study">Lecture 1: Regression - Case Study<a class="headerlink" href="#lecture-1-regression-case-study" title="Permanent link">&para;</a></h1>
-<p>Overview:</p>
-<p>A set of function -&gt; Goodness of function $f$ &lt;- Training Data</p>
-<p>Step 1: Model</p>
+                <h1 id="lecture-4-classification-probabilistic-generative-model">Lecture 4: Classification: Probabilistic Generative Model<a class="headerlink" href="#lecture-4-classification-probabilistic-generative-model" title="Permanent link">&para;</a></h1>
+<p>分類問題常被用在各種領域，例如：</p>
 <ul>
-<li>Linear model: </li>
+<li>金融交易成功與否</li>
+<li>醫學診斷分類</li>
+<li>手寫辨識</li>
+<li>人臉辨試</li>
 </ul>
-<p>$$y = b + \sum w_i x_i,$$</p>
-<p>where</p>
+<hr />
+<p>課堂上的例子：根據寶可夢各屬性（features）去預測其類別（class）。
+Training data：寶可夢的各屬性（features）及其類別（class）。</p>
+<h2 id="how-to-do-classification">How to do Classification?<a class="headerlink" href="#how-to-do-classification" title="Permanent link">&para;</a></h2>
+<h3 id="classification-as-regression">Classification as Regression?<a class="headerlink" href="#classification-as-regression" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://i.imgur.com/IoR3woc.png" /></p>
+<p>向上圖右側，即使分類正確了，還是會因為遠大於 $1$，造成 loss 過大，因此不適合使用 regression。</p>
+<p>此外，當類別超過 $2$ 種時，也會產生許多問題，因為這樣表示，各類別之間是有大小遠近關係的，但在分類問題這樣是不合理的。</p>
+<h2 id="ideal-alternatives">Ideal Alternatives<a class="headerlink" href="#ideal-alternatives" title="Permanent link">&para;</a></h2>
 <ul>
-<li>$x_i$: an attribute of input $x$ (feature),</li>
-<li>$w_i$: weight and</li>
-<li>$b$: bias.</li>
-</ul>
-<p>Step 2: Goodness of Function</p>
-<p>Traning Data: $(x^1, \hat y^1)$, $(x^1, \hat y^1)$, $\dots$, $(x^{10}, \hat y^{10})$. This is real data. </p>
-<p>We can get $(x_{cp}^n, \hat y^n)$ based on how many data we have.</p>
-<p>To determine <em>how bad</em> a function is, we have to declare:</p>
-<ul>
-<li>Loss function $L$: </li>
-</ul>
-<p>Input: a function, output: how bad it is</p>
-<p>\begin{align}
-    L(f) &amp; = L(w, b) \\
-         &amp; = \sum_{n = 1}^{10} (\hat y^n - (b + w \cdot x_{cp}^n))^2.
-  \end{align}</p>
-<p>We have to pick the "best" function</p>
-<p>\begin{align}
-f^* &amp; = arg \min_f L(f) \\
-w^*, b^* &amp; = arg \min_{w, b} L(w, b) \\
-         &amp; = arg \min_{w, b} \sum_{n = 1}^{10} (\hat y^n - (b + w \cdot x_{cp}^n))^2.
-\end{align}</p>
-<p>Step 3: Gradient Descent</p>
-<p>Consider loss function $L(w)$ with one parameter $w$:</p>
-<ul>
-<li>(Randomly) Pick an initial value $w^0$</li>
-<li>Compute $\frac{dL}{dw}\Big |_{w = w^0}$<ul>
-<li>if $\frac{dL}{dw}\Big |_{w = w^0} &lt; 0$: increase $w$</li>
-<li>if $\frac{dL}{dw}\Big |_{w = w^0} &gt; 0$: decrease $w$</li>
-</ul>
+<li>
+<p>Function (Model):</p>
+<p>$$
+f(x) =
+\begin{cases}
+g(x) &gt; 0    &amp; \text{output = class 1}, \\
+\text{else} &amp; \text{output = class 2}
+\end{cases}
+$$</p>
+</li>
+<li>
+<p>Loss function:</p>
+<p>$$L(f) = \sum_n \delta(f(x^n) \ne \hat y^n)$$</p>
 </li>
 </ul>
-<p>$$w^1 \leftarrow w^0 - \eta \frac{dL}{dw}\Big |_{w = w^0}$$ </p>
-<p>where $\eta$: learning rate.</p>
+<h3 id="prior">Prior<a class="headerlink" href="#prior" title="Permanent link">&para;</a></h3>
+<p>舉例來說：我們挑選出 79 隻水系（$C_1$）和 61 隻一般系（$C_2$）的寶可夢，那麼</p>
+<p>\begin{align}
+P(C_1) &amp; = 79 / (79 + 61) = 0.56 \\
+P(C_2) &amp; = 61 / (79 + 61) = 0.44
+\end{align}</p>
+<h3 id="probability-from-class">Probability from Class<a class="headerlink" href="#probability-from-class" title="Permanent link">&para;</a></h3>
+<p>現在我們想要知道的事，從水系（$C_1$）挑出一隻「海龜」的機率是多少？</p>
+<h3 id="probability-from-class-feature">Probability from Class - Feature<a class="headerlink" href="#probability-from-class-feature" title="Permanent link">&para;</a></h3>
+<p>因為寶可夢的 features 太多，為了方便，我們只考慮兩項，Defense 和 SP Defense，並假設這 79 隻水系神奇寶貝都是由 Gaussian distribution sample 出來的。</p>
+<h3 id="maximum-likelihood">Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://i.imgur.com/Wf9hd5Z.png" /></p>
+<p>因為每個點 $x$ 是獨立的，所以我們可以透過以下連乘來得出 $L(\mu, \Sigma)$</p>
+<p>Likelihood of Gaussian with mean $\mu$ and covariance matrix $\Sigma$ = the probability of the Gaussian samples $x^1, x^2, x^3, \dots, x^{79}$</p>
+<p>$$L(\mu, \Sigma) = f_{\mu, \Sigma}(x^1) f_{\mu, \Sigma}(x^2) f_{\mu, \Sigma}(x^3) \dots f_{\mu, \Sigma}(x^{79})$$</p>
+<p>所以我們的目的是，找出一個 $(\mu^*, \Sigma^*)$ 能讓上式的 likelihood 最大：</p>
+<p>$$\mu^*, \Sigma^* = arg \max_{\mu, \Sigma} L(\mu, \Sigma)$$</p>
+<p>透過微分可得以下結果：</p>
+<p>\begin{align}
+\mu^*    &amp; = \frac 1 {79} \sum_{n = 1}^{79} x^n \\
+\Sigma^* &amp; = \frac 1 {79} \sum_{n = 1}^{79} (x^n - \mu^*)(x^n - \mu^*)^T
+\end{align}</p>
+<p>所以我們可計算出：</p>
+<p><img alt="" src="https://i.imgur.com/HOWXjFd.png" /></p>
+<p>現在可以開始分類了，</p>
+<p>$$P(C_1 \mid x) = \frac{P(x \mid C_1) P(C_1)}{P(x \mid C_1) P(C_1) + P(x \mid C_2) P(C_2)}$$</p>
+<p>若 $P(C_1 \mid x) &gt; 0.5$，$x$ 就屬於 class 1（水系）</p>
+<p>但結果卻不怎麼樣，因為參數太多了，可能有 overfit 疑慮。</p>
+<h3 id="modifying-model">Modifying Model<a class="headerlink" href="#modifying-model" title="Permanent link">&para;</a></h3>
+<p>原本對兩個分佈（水系、一般系）都有對應的 covariance matrix （$\Sigma_1, \Sigma_2$），但這樣參數量太大，可能會 overfit，所以我們為了降低參數量，只考慮一個 convariance matrix（$\Sigma$），修改 loss function 如下：</p>
+<p>$$L(\mu^1, \mu^2, \Sigma) = f_{\mu^1, \Sigma}(x^1) f_{\mu^2, \Sigma}(x^2) \cdots f_{\mu^1, \Sigma}(x^{79}) \times f_{\mu^1, \Sigma}(x^{80}) f_{\mu^1, \Sigma}(x^{81}) \cdots f_{\mu^1, \Sigma}(x^{140})$$</p>
+<p>$\mu^1$ 和 $\mu^2$ 維持不變，$\Sigma = \frac{79}{140}\Sigma^1 + \frac{61}{140}\Sigma^2$</p>
+<h3 id="three-steps">Three Steps<a class="headerlink" href="#three-steps" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Compute $\frac{dL}{dw}\Big |_{w = w^1}$</li>
+<li>
+<p>Function Set (Model):</p>
+<p>輸入一個 $x$：$P(C_1 \mid x) = \frac{P(x \mid C_1) P(C_1)}{P(x \mid C_1) P(C_1) + P(x \mid C_2) P(C_2)}$</p>
+<p>\begin{cases}
+P(C_1 \mid x) &gt; 0.5 &amp; \text{output: class 1}, \\
+\text{else}         &amp; \text{output: class 2}
+\end{cases}</p>
+</li>
+<li>
+<p>Goodness of a function</p>
+<p>The mean $\mu$ and covariance $\Sigma$ that maximizing the likelihood (the probability of generating data)</p>
+</li>
+<li>
+<p>Find the test function: easy</p>
+</li>
 </ul>
-<p>$$w^2 \leftarrow w^1 - \eta \frac{dL}{dw}\Big |_{w = w^1}$$</p>
-<p>$$\vdots$$</p>
-<p>Consider two parameters $w$, $b$:</p>
-<ul>
-<li>(Randomly) Pick initial value $w^0$, $b^0$</li>
-<li>Compute $\frac{\partial L}{\partial w}\Big |_{w = w^0, b = b^0}$ and $\frac{\partial L}{\partial b}\Big |_{w = w^0, b = b^0}$</li>
-</ul>
-<p>$$w^1 \leftarrow w^0 - \eta \frac{\partial L}{\partial w}\Big |_{w = w^0, b = b^0} \qquad b^1 \leftarrow b^0 - \eta \frac{\partial L}{\partial b}\Big |_{w = w^0, b = b^0}$$</p>
+<h3 id="posterior-probability">Posterior Probability<a class="headerlink" href="#posterior-probability" title="Permanent link">&para;</a></h3>
+<p>\begin{align}
+P(C_1 \mid x)
+    &amp; = \frac{P(x \mid C_1) P(C_1)}{P(x \mid C_1) P(C_1) + P(x \mid C_2) P(C_2)} \\
+    &amp; = \frac 1 {1 + \frac{P(x \mid C_2) P(C_2)}{P(x \mid C_1) P(C_1)}} \\
+    &amp; = \frac 1 {1 + e^{-z}} = \sigma(z)
+\end{align}</p>
+<p>其中，$z = \ln \frac{P(x \mid C_1) P(C_1)}{P(x \mid C_2) P(C_2)}$</p>
                 
                   
                 
@@ -876,6 +1132,27 @@ w^*, b^* &amp; = arg \min_{w, b} L(w, b) \\
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../3/" title="Gradient Descent" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Gradient Descent
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -776,10 +776,98 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Gradient Descent
+      </label>
+    
     <a href="./" title="Gradient Descent" class="md-nav__link md-nav__link--active">
       Gradient Descent
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review-gradient-descent" title="Review: Gradient Descent" class="md-nav__link">
+    Review: Gradient Descent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tip-1-tuning-your-learning-rates" title="Tip 1: Tuning your learning rates" class="md-nav__link">
+    Tip 1: Tuning your learning rates
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-learning-rates" title="Adaptive Learning Rates" class="md-nav__link">
+    Adaptive Learning Rates
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adagrad" title="Adagrad" class="md-nav__link">
+    Adagrad
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tip-2-stochastic-gradient-descent" title="Tip 2: Stochastic Gradient Descent" class="md-nav__link">
+    Tip 2: Stochastic Gradient Descent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tip-3-feature-scaling" title="Tip 3: Feature Scaling" class="md-nav__link">
+    Tip 3: Feature Scaling
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="Classification" class="md-nav__link">
+      Classification
+    </a>
   </li>
 
         
@@ -805,6 +893,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review-gradient-descent" title="Review: Gradient Descent" class="md-nav__link">
+    Review: Gradient Descent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tip-1-tuning-your-learning-rates" title="Tip 1: Tuning your learning rates" class="md-nav__link">
+    Tip 1: Tuning your learning rates
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-learning-rates" title="Adaptive Learning Rates" class="md-nav__link">
+    Adaptive Learning Rates
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adagrad" title="Adagrad" class="md-nav__link">
+    Adagrad
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tip-2-stochastic-gradient-descent" title="Tip 2: Stochastic Gradient Descent" class="md-nav__link">
+    Tip 2: Stochastic Gradient Descent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tip-3-feature-scaling" title="Tip 3: Feature Scaling" class="md-nav__link">
+    Tip 3: Feature Scaling
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -819,6 +970,37 @@
                 
                 
                 <h1 id="lecture-3-gradient-descent">Lecture 3: Gradient Descent<a class="headerlink" href="#lecture-3-gradient-descent" title="Permanent link">&para;</a></h1>
+<h2 id="review-gradient-descent">Review: Gradient Descent<a class="headerlink" href="#review-gradient-descent" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://i.imgur.com/MGrouqh.png" /></p>
+<h2 id="tip-1-tuning-your-learning-rates">Tip 1: Tuning your learning rates<a class="headerlink" href="#tip-1-tuning-your-learning-rates" title="Permanent link">&para;</a></h2>
+<h3 id="adaptive-learning-rates">Adaptive Learning Rates<a class="headerlink" href="#adaptive-learning-rates" title="Permanent link">&para;</a></h3>
+<p>因為一開始 learning rate 更新的很慢，所以我們可以一開始先用較大的 learning rate 來加速，之後再逐漸下降 learning rate 來避免無法達到 loss 的 minimum，例如：$\eta^t = \eta / \sqrt{t + 1}$。</p>
+<h4 id="adagrad">Adagrad<a class="headerlink" href="#adagrad" title="Permanent link">&para;</a></h4>
+<p>Adagrad 是一個常見的適性方法：Divide the learning rate of each parameter by the <strong><em>root mean square of its previous derivatives</em></strong></p>
+<ul>
+<li>
+<p>Vanilla Gradient descent</p>
+<p>$$w^{t + 1} \leftarrow w^t - \eta^t g^t$$</p>
+</li>
+<li>
+<p>Adagrad</p>
+<p>\begin{align}
+w^{t + 1} &amp; \leftarrow w^t - \frac{\eta^t}{\sigma^t} g^t \\
+w^{t + 1} &amp; \leftarrow w^t - \frac{\eta}{\sqrt{\sum_{i = 0}^t (g^i)^2}} g^t
+\end{align}</p>
+</li>
+</ul>
+<p>其中，$\sigma^t$：<strong><em>root mean square</em></strong> of the previous derivatives of parameter $w$</p>
+<p>$g^t$ 代表 first derivative，分母則是利用歷史的 first derivative 去估計 second derivative。</p>
+<h2 id="tip-2-stochastic-gradient-descent">Tip 2: Stochastic Gradient Descent<a class="headerlink" href="#tip-2-stochastic-gradient-descent" title="Permanent link">&para;</a></h2>
+<p>$$L = \sum_n \Bigg(\hat y^n - \Big(b + \sum w_i x_i^n \Big) \Bigg)^2$$</p>
+<p>SGD 能夠加速訓練，一般 GD 是在看到所有樣本（訓練數據）後，才計算出 $L$，再更新參數。而 SGD 是每看到一個樣本就計算一次 $L$，並更新參數。</p>
+<h2 id="tip-3-feature-scaling">Tip 3: Feature Scaling<a class="headerlink" href="#tip-3-feature-scaling" title="Permanent link">&para;</a></h2>
+<p>例如：$y = b + w_1x_1 + w_2x_2$</p>
+<p><img alt="" src="https://i.imgur.com/XDNSGri.png" /></p>
+<p>若不同參數的大小範圍差太多，那 loss function 等高線方向（負梯度、參數更新方向）不會指向 loss minimum。Feature scaling 讓不同參數的取相同區間範圍的值，變成正圓，更容易新參數。</p>
+<p>做法如下，對 $x^1, x^2, x^3, \dots, x^r, \dots, x^R$ 每一個維度 $i$ 做標準化：</p>
+<p><img alt="" src="https://i.imgur.com/gpfr0f5.png" /></p>
                 
                   
                 
@@ -853,6 +1035,20 @@
             </div>
           </a>
         
+        
+          <a href="../4/" title="Classification" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Classification
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>

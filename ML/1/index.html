@@ -819,6 +819,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="Classification" class="md-nav__link">
+      Classification
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -928,7 +940,7 @@ y = &amp; b_1 \cdot \boldsymbol{\delta(x_s = \text{pidgey})  } &amp; + &amp; w_1
 <p>這個模型在 testing data 上有更好的表現，如果同時考慮寶可夢的其它屬性，選一個很複雜的模型，結果可能會導致 overfitting。</p>
 <p>對線性模型來說，我們希望選出的 best function 能平滑一點，也就是權重係數小一些，因為這樣的話，在 testing data 受 noise 影響時，預測值所受的影響會更小。</p>
 <p>所以在 loss function 中加一個正則項 $\lambda\Sigma w_i^2$。</p>
-<p>越大的 $\lambda$，training error 可能會越大，但沒關仰，我們希望函數平滑，但也不能太平滑，於是我們調整 $\lambda$，選擇使 testing error 最小的 $\lambda$。</p>
+<p>越大的 $\lambda$，training error 可能會越大，但沒關係，我們希望函數平滑，但也不能太平滑，於是我們調整 $\lambda$，選擇使 testing error 最小的 $\lambda$。</p>
                 
                   
                 
