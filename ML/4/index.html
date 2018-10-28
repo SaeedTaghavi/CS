@@ -899,6 +899,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1034,12 +1046,12 @@
 <li>人臉辨試</li>
 </ul>
 <hr />
-<p>課堂上的例子：根據寶可夢各屬性（features）去預測其類別（class）。
-Training data：寶可夢的各屬性（features）及其類別（class）。</p>
+<p>課堂上的例子：根據寶可夢各屬性（features）去預測其類別（class）。</p>
+<p>Training data：寶可夢的各屬性（features）及其類別（class）。</p>
 <h2 id="how-to-do-classification">How to do Classification?<a class="headerlink" href="#how-to-do-classification" title="Permanent link">&para;</a></h2>
 <h3 id="classification-as-regression">Classification as Regression?<a class="headerlink" href="#classification-as-regression" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="https://i.imgur.com/IoR3woc.png" /></p>
-<p>向上圖右側，即使分類正確了，還是會因為遠大於 $1$，造成 loss 過大，因此不適合使用 regression。</p>
+<p>像上圖右側，即使分類正確了，還是會因為遠大於 $1$，造成 loss 過大，因此不適合使用 regression。</p>
 <p>此外，當類別超過 $2$ 種時，也會產生許多問題，因為這樣表示，各類別之間是有大小遠近關係的，但在分類問題這樣是不合理的。</p>
 <h2 id="ideal-alternatives">Ideal Alternatives<a class="headerlink" href="#ideal-alternatives" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1048,8 +1060,8 @@ Training data：寶可夢的各屬性（features）及其類別（class）。</p
 <p>$$
 f(x) =
 \begin{cases}
-g(x) &gt; 0    &amp; \text{output = class 1}, \\
-\text{else} &amp; \text{output = class 2}
+g(x) &gt; 0    &amp; \text{output: class 1}, \\
+\text{else} &amp; \text{output: class 2}
 \end{cases}
 $$</p>
 </li>
@@ -1071,7 +1083,7 @@ P(C_2) &amp; = 61 / (79 + 61) = 0.44
 <h3 id="maximum-likelihood">Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="https://i.imgur.com/Wf9hd5Z.png" /></p>
 <p>因為每個點 $x$ 是獨立的，所以我們可以透過以下連乘來得出 $L(\mu, \Sigma)$</p>
-<p>Likelihood of Gaussian with mean $\mu$ and covariance matrix $\Sigma$ = the probability of the Gaussian samples $x^1, x^2, x^3, \dots, x^{79}$</p>
+<p>Likelihood of Gaussian with mean $\mu$ and covariance matrix $\Sigma$ = the probability of the Gaussian samples $x^1, x^2, x^3, \dots, x^{79}$:</p>
 <p>$$L(\mu, \Sigma) = f_{\mu, \Sigma}(x^1) f_{\mu, \Sigma}(x^2) f_{\mu, \Sigma}(x^3) \dots f_{\mu, \Sigma}(x^{79})$$</p>
 <p>所以我們的目的是，找出一個 $(\mu^*, \Sigma^*)$ 能讓上式的 likelihood 最大：</p>
 <p>$$\mu^*, \Sigma^* = arg \max_{\mu, \Sigma} L(\mu, \Sigma)$$</p>
@@ -1084,10 +1096,17 @@ P(C_2) &amp; = 61 / (79 + 61) = 0.44
 <p><img alt="" src="https://i.imgur.com/HOWXjFd.png" /></p>
 <p>現在可以開始分類了，</p>
 <p>$$P(C_1 \mid x) = \frac{P(x \mid C_1) P(C_1)}{P(x \mid C_1) P(C_1) + P(x \mid C_2) P(C_2)}$$</p>
+<p>其中，</p>
+<ul>
+<li>$P(C_1) = 79 / (79 + 61) = 0.56$</li>
+<li>$P(C_2) = 61 / (79 + 61) = 0.44$</li>
+<li>$P(x \mid C_1) = f_{\mu^1, \Sigma^1}(x) = \frac 1 {(2\pi)^{D / 2}} \frac 1 {|\Sigma^1|^{1 / 2}} exp \Big(- \frac 1 2 (x - \mu^1)^T (\Sigma^1)^{-1} (x - \mu^1) \Big)$</li>
+<li>$P(x \mid C_2) = f_{\mu^2, \Sigma^2}(x) = \frac 1 {(2\pi)^{D / 2}} \frac 1 {|\Sigma^2|^{1 / 2}} exp \Big(- \frac 1 2 (x - \mu^2)^T (\Sigma^2)^{-1} (x - \mu^2) \Big)$</li>
+</ul>
 <p>若 $P(C_1 \mid x) &gt; 0.5$，$x$ 就屬於 class 1（水系）</p>
 <p>但結果卻不怎麼樣，因為參數太多了，可能有 overfit 疑慮。</p>
 <h3 id="modifying-model">Modifying Model<a class="headerlink" href="#modifying-model" title="Permanent link">&para;</a></h3>
-<p>原本對兩個分佈（水系、一般系）都有對應的 covariance matrix （$\Sigma_1, \Sigma_2$），但這樣參數量太大，可能會 overfit，所以我們為了降低參數量，只考慮一個 convariance matrix（$\Sigma$），修改 loss function 如下：</p>
+<p>原本對兩個分佈（水系、一般系）都有對應的 covariance matrix （$\Sigma_1, \Sigma_2$），但這樣參數量太大，可能會 overfit，所以我們降低參數量去避免 overfit，只考慮一個 convariance matrix（$\Sigma$），修改 loss function 如下：</p>
 <p>$$L(\mu^1, \mu^2, \Sigma) = f_{\mu^1, \Sigma}(x^1) f_{\mu^2, \Sigma}(x^2) \cdots f_{\mu^1, \Sigma}(x^{79}) \times f_{\mu^1, \Sigma}(x^{80}) f_{\mu^1, \Sigma}(x^{81}) \cdots f_{\mu^1, \Sigma}(x^{140})$$</p>
 <p>$\mu^1$ 和 $\mu^2$ 維持不變，$\Sigma = \frac{79}{140}\Sigma^1 + \frac{61}{140}\Sigma^2$</p>
 <h3 id="three-steps">Three Steps<a class="headerlink" href="#three-steps" title="Permanent link">&para;</a></h3>
@@ -1115,7 +1134,17 @@ P(C_1 \mid x)
     &amp; = \frac 1 {1 + \frac{P(x \mid C_2) P(C_2)}{P(x \mid C_1) P(C_1)}} \\
     &amp; = \frac 1 {1 + e^{-z}} = \sigma(z)
 \end{align}</p>
-<p>其中，$z = \ln \frac{P(x \mid C_1) P(C_1)}{P(x \mid C_2) P(C_2)}$</p>
+<p>其中，$z = \ln \frac{P(x \mid C_1) P(C_1)}{P(x \mid C_2) P(C_2)}$ (sigmoid)</p>
+<p>經過很長一段推導（這裡就不再贅述，可直接看老師<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2016/Lecture/Classification%20(v3).pdf">投影片</a>），可得出：</p>
+<p>\begin{align}
+P(C_1 \mid x) &amp; = \sigma(z) \\
+              &amp; = \sigma(w \cdot x + b)
+\end{align}</p>
+<p>其中，</p>
+<ul>
+<li>$w^T = (\mu^1 - \mu^2)^T \Sigma^{-1}$</li>
+<li>$b = -\frac 1 2 (\mu^1)^T \Sigma^{-1} \mu^1 + \frac 1 2 (\mu^2)^T \Sigma^{-1} \mu^2 + \ln \frac{N_1}{N_2}$</li>
+</ul>
                 
                   
                 
@@ -1150,6 +1179,20 @@ P(C_1 \mid x)
             </div>
           </a>
         
+        
+          <a href="../5/" title="Logistic Regression" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Logistic Regression
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
