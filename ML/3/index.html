@@ -984,7 +984,25 @@
                 <h1 id="lecture-3-gradient-descent">Lecture 3: Gradient Descent<a class="headerlink" href="#lecture-3-gradient-descent" title="Permanent link">&para;</a></h1>
 <h2 id="review-gradient-descent">Review: Gradient Descent<a class="headerlink" href="#review-gradient-descent" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://i.imgur.com/MGrouqh.png" /></p>
+<p>在 Gradient Descent 中，我們想解決的是下列問題：</p>
+<p>$$
+\theta ^ { * } = \arg \min _ { \theta } L ( \theta )
+$$</p>
+<p>其中，</p>
+<ul>
+<li>$L$: loss function</li>
+<li>$\theta$: parameters</li>
+</ul>
+<p>假設 $\theta$ 有兩個參數  ${\theta_1, \theta_2}$，我們隨機選取 $\theta ^ { 0 } = \left[ \begin{array} { l } { \theta _ { 1 } ^ { 0 } } \\ { \theta _ { 2 } ^ { 0 } } \end{array} \right]$，所以 $\nabla L ( \theta ) = \left[ \begin{array} { l } { \partial L \left( \theta _ { 1 } \right) / \partial \theta _ { 1 } } \\ { \partial L \left( \theta _ { 2 } \right) / \partial \theta _ { 2 } } \end{array} \right]$</p>
+<p>\begin{align}
+\left[ \begin{array} { l } { \theta _ { 1 } ^ { 1 } } \\ { \theta _ { 2 } ^ { 1 } } \end{array} \right] = \left[ \begin{array} { c } { \theta _ { 1 } ^ { 0 } } \\ { \theta _ { 2 } ^ { 0 } } \end{array} \right] - \eta \left[ \begin{array} { l } { \partial L \left( \theta _ { 1 } ^ { 0 } \right) / \partial \theta _ { 1 } } \\ { \partial L \left( \theta _ { 2 } ^ { 0 } \right) / \partial \theta _ { 2 } } \end{array} \right] \to \theta ^ { 1 } = \theta ^ { 0 } - \eta \nabla L \left( \theta ^ { 0 } \right) \\
+\left[ \begin{array} { l } { \theta _ { 1 } ^ { 2 } } \\ { \theta _ { 2 } ^ { 2 } } \end{array} \right] = \left[ \begin{array} { c } { \theta _ { 1 } ^ { 1 } } \\ { \theta _ { 2 } ^ { 1 } } \end{array} \right] - \eta \left[ \begin{array} { l } { \partial L \left( \theta _ { 1 } ^ { 1 } \right) / \partial \theta _ { 1 } } \\ { \partial L \left( \theta _ { 2 } ^ { 1 } \right) / \partial \theta _ { 2 } } \end{array} \right] \to \theta ^ { 2 } = \theta ^ { 1 } - \eta \nabla L \left( \theta ^ { 1 } \right)
+\end{align}</p>
 <h2 id="tip-1-tuning-your-learning-rates">Tip 1: Tuning your learning rates<a class="headerlink" href="#tip-1-tuning-your-learning-rates" title="Permanent link">&para;</a></h2>
+<p>我們必需要小心的設我們的 learning rate $\eta$</p>
+<p>$$
+\theta ^ { i } = \theta ^ { i - 1 } - \eta \nabla L \left( \theta ^ { i - 1 } \right)
+$$</p>
 <h3 id="adaptive-learning-rates">Adaptive Learning Rates<a class="headerlink" href="#adaptive-learning-rates" title="Permanent link">&para;</a></h3>
 <p>因為一開始 learning rate 更新的很慢，所以我們可以一開始先用較大的 learning rate 來加速，之後再逐漸下降 learning rate 來避免無法達到 loss 的 minimum，例如：$\eta^t = \eta / \sqrt{t + 1}$。</p>
 <h4 id="adagrad">Adagrad<a class="headerlink" href="#adagrad" title="Permanent link">&para;</a></h4>
@@ -1005,8 +1023,24 @@ w^{t + 1} &amp; \leftarrow w^t - \frac{\eta}{\sqrt{\sum_{i = 0}^t (g^i)^2}} g^t
 <p>其中，$\sigma^t$：<strong><em>root mean square</em></strong> of the previous derivatives of parameter $w$</p>
 <p>$g^t$ 代表 first derivative，分母則是利用歷史的 first derivative 去估計 second derivative。</p>
 <h2 id="tip-2-stochastic-gradient-descent">Tip 2: Stochastic Gradient Descent<a class="headerlink" href="#tip-2-stochastic-gradient-descent" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Gradient Descent</p>
+<p>Loss is the summation over all training examples:</p>
 <p>$$L = \sum_n \Bigg(\hat y^n - \Big(b + \sum w_i x_i^n \Big) \Bigg)^2$$</p>
-<p>SGD 能夠加速訓練，一般 GD 是在看到所有樣本（訓練數據）後，才計算出 $L$，再更新參數。而 SGD 是每看到一個樣本就計算一次 $L$，並更新參數。</p>
+<p>更新參數方式：</p>
+<p>$${ \theta } ^ { i } = { \theta } ^ { i - 1 } - { \eta } \nabla L \left( { \theta } ^ { i - 1 } \right)$$</p>
+</li>
+<li>
+<p>Stochastic Gradient Descent</p>
+<p>Pick an example $x^n$</p>
+<p>Loss for only one example:</p>
+<p>$$L ^ { n } = \left( \hat { y } ^ { n } - \left( b + \sum w _ { i } x _ { i } ^ { n } \right) \right) ^ { 2 }$$</p>
+<p>更新參數方式：</p>
+<p>$$\theta ^ { i } = \theta ^ { i - 1 } - \eta \nabla L ^ { n } \left( \theta ^ { i - 1 } \right)$$</p>
+</li>
+</ul>
+<p>Stochastic Gradient Descent 能夠加速訓練，一般 Gradient Descent 是在看到所有樣本（訓練數據）後，才計算出 $L$，再更新參數。而 Stochastic Gradient Descent 是每看到一個樣本就計算一次 $L$，並更新參數。</p>
 <h2 id="tip-3-feature-scaling">Tip 3: Feature Scaling<a class="headerlink" href="#tip-3-feature-scaling" title="Permanent link">&para;</a></h2>
 <p>例如：$y = b + w_1x_1 + w_2x_2$</p>
 <p><img alt="" src="https://i.imgur.com/XDNSGri.png" /></p>

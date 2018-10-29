@@ -771,8 +771,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#regression-steps" title="Regression Steps" class="md-nav__link">
-    Regression Steps
+  <a href="#regression-output-a-scalar" title="Regression: Output a scalar" class="md-nav__link">
+    Regression: Output a scalar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-application" title="Example Application" class="md-nav__link">
+    Example Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning-steps" title="Machine Learning Steps" class="md-nav__link">
+    Machine Learning Steps
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-model" title="Step 1: Model" class="md-nav__link">
+    Step 1: Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-goodness-of-function" title="Step 2: Goodness of Function" class="md-nav__link">
+    Step 2: Goodness of Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-best-function" title="Step 3: Best Function" class="md-nav__link">
+    Step 3: Best Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradient-descent" title="Gradient Descent" class="md-nav__link">
+    Gradient Descent
   </a>
   
 </li>
@@ -869,8 +917,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#regression-steps" title="Regression Steps" class="md-nav__link">
-    Regression Steps
+  <a href="#regression-output-a-scalar" title="Regression: Output a scalar" class="md-nav__link">
+    Regression: Output a scalar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-application" title="Example Application" class="md-nav__link">
+    Example Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning-steps" title="Machine Learning Steps" class="md-nav__link">
+    Machine Learning Steps
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-model" title="Step 1: Model" class="md-nav__link">
+    Step 1: Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-goodness-of-function" title="Step 2: Goodness of Function" class="md-nav__link">
+    Step 2: Goodness of Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-best-function" title="Step 3: Best Function" class="md-nav__link">
+    Step 3: Best Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradient-descent" title="Gradient Descent" class="md-nav__link">
+    Gradient Descent
   </a>
   
 </li>
@@ -902,39 +998,84 @@
                 
                 
                 <h1 id="lecture-1-regression-case-study">Lecture 1: Regression - Case Study<a class="headerlink" href="#lecture-1-regression-case-study" title="Permanent link">&para;</a></h1>
-<h2 id="regression-steps">Regression Steps<a class="headerlink" href="#regression-steps" title="Permanent link">&para;</a></h2>
-<p>Machine Learning 有三個步驟：</p>
-<ol>
-<li>從一個集合中選出一個 function（即：選擇一個 model）</li>
-<li>評斷這個 function 的好壞</li>
-<li>選出 best function</li>
-</ol>
+<h2 id="regression-output-a-scalar">Regression: Output a scalar<a class="headerlink" href="#regression-output-a-scalar" title="Permanent link">&para;</a></h2>
 <p>Regression 的例子舉例有：</p>
 <ul>
 <li>道瓊斯指數預測</li>
 <li>自動駕駛中的方向盤角度預測</li>
 <li>推薦系統中購買可能性的預測</li>
 </ul>
-<p>而課程中的例子是預測寶可夢進化後的 CP 值。</p>
+<h2 id="example-application">Example Application<a class="headerlink" href="#example-application" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Estimating the Combat Power (CP) of a pokemon after evolution</li>
+</ul>
 <p>一隻寶可夢可由 5 個參數表示：</p>
 <p>$$x = (x_{cp}, x_s, x_{hp}, x_w, x_h).$$</p>
+<p><img alt="" src="https://i.imgur.com/StzhhXI.png" /></p>
+<p>我們希望能計算出，給定寶可夢的一些 features $x$，能過算出他進化後的 CP 值 $y$</p>
+<h2 id="machine-learning-steps">Machine Learning Steps<a class="headerlink" href="#machine-learning-steps" title="Permanent link">&para;</a></h2>
+<p>Machine Learning 主要有三個步驟</p>
+<h3 id="step-1-model">Step 1: Model<a class="headerlink" href="#step-1-model" title="Permanent link">&para;</a></h3>
+<p>我們假設預測 $y$ 值的 function 為 $y = b + w \cdot x_{cp}$，許多不同的 $w$ 和 $w$ 可構成不同的 $f_1, f_2, \dots$，例如：</p>
+<p>\begin{align}
+f_1: y &amp; = 10.0 + 9.0 \cdot x_{cp} \\
+f_2: y &amp; =  9.8 + 9.2 \cdot x_{cp} \\
+f_3: y &amp; = -0.8 - 1.2 \cdot x_{cp} \\
+&amp; \vdots
+\end{align}</p>
+<p>如此一來，我們就有了 linear model:</p>
+<p>$$y = b + \sum w_ix_i$$</p>
+<p>其中，</p>
+<ul>
+<li>$x_i: x_{cp}, x_s, x_{hp}, x_w, x_h$：寶可夢的 features</li>
+<li>$w_i$：不同 features，給它不同的 weight</li>
+<li>$b$: bias</li>
+</ul>
+<h3 id="step-2-goodness-of-function">Step 2: Goodness of Function<a class="headerlink" href="#step-2-goodness-of-function" title="Permanent link">&para;</a></h3>
+<p>有了一堆 functions 後，我們必需要知道，這些 functions 有多好？因此我們需要一個評比的標準，我們可以用 Loss function $L$，它的 input 為 $f$，output 為 how bad it is？</p>
+<p>loss function 可定義如下：</p>
+<p>\begin{align}
+L(f)    &amp; = \sum_{n = 1}^{10} (\hat y^n - f(x_{cp}^n))^2 \\
+L(w, b) &amp; = \sum_{n = 1}^{10} (\hat y^n - (b + w \cdot_{cp}^n))^2
+\end{align}</p>
+<h3 id="step-3-best-function">Step 3: Best Function<a class="headerlink" href="#step-3-best-function" title="Permanent link">&para;</a></h3>
+<p>最後，我們要選出 best function，即是選擇 loss 最小的 function（參數）：</p>
+<p>\begin{align}
+f ^ { * } &amp; = \arg \min _ { f } L ( f )  \\ 
+w ^ { * } , b ^ { * } &amp; = \arg \min _ { w , b } L ( w , b )  \\
+&amp; = \arg \min _ { w , b } \sum _ { n = 1 } ^ { 10 } \left( \hat { y } ^ { n } - \left( b + w \cdot x _ { c p } ^ { n } \right) \right) ^ { 2 }
+\end{align}</p>
+<p>求解最佳參數的方法可以是 Gradient Descent。</p>
 <p>步驟如下：</p>
+<h2 id="gradient-descent">Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://i.imgur.com/mkxAZGT.png" /></p>
+<p>Gradient descent 的步驟如下：</p>
 <ol>
-<li>選擇 linear model。</li>
-<li>評斷此 function 的好壞，它就好比函數的函數：我們輸入一個函數，輸出 how bad it is？這時就需要定義一個 loss function。在所選的 model 中，隨著參數不同，便有無數個 functions（即：model 確定之後，function 是由參數所決定的），每個 function 都有其對應的 loss。</li>
-<li>選擇 best function 即是選擇 loss 最小的 function（參數），求解最佳參數的方法可以是 gradient descent。</li>
+<li>（隨機）選擇參數初始值（e.g. $w^0$），上標表示時間點</li>
+<li>
+<p>計算 loss function $L(w)$ 在 $w = w^0$ 上時的 gradient，即：$\left. \frac { d L } { d w } \right| _ { w = w ^ { 0 } }$</p>
+</li>
+<li>
+<p>向負梯度方向迭代更新</p>
+<ul>
+<li>$\frac{dL}{dw} \Big|_{w = w^0} &lt; 0 \to$ Increase $w$</li>
+<li>$\frac{dL}{dw} \Big|_{w = w^0} &gt; 0 \to$ Decrease $w$</li>
+</ul>
+<p>\begin{align}
+w ^ { 1 } &amp; \leftarrow w ^ { 0 } - \eta \left. \frac { d L } { d w } \right| _ { w = w ^ { 0 } } \\
+w ^ { 2 } &amp; \leftarrow w ^ { 1 } - \eta \left. \frac { d L } { d w } \right| _ { w = w ^ { 1 } }
+\end{align}</p>
+<p>其中，$\eta$ 為 learning rate，用來控制一次走多遠、學習速度</p>
+</li>
 </ol>
-<p>Gradient descent 的步驟是：</p>
-<ol>
-<li>選擇參數的初始值</li>
-<li>向損失函數對參數的負梯度方向迭代更新</li>
-<li>learning rate 控制一次走多遠、學習速度</li>
-</ol>
+<p>重複這 3 個步驟，直到 $w$ 在 local minima 收斂為止。</p>
+<p>順帶一提，只有一個參數 $w$ 時，$\nabla L$ 就是 $\frac{\partial L}{\partial w}$ 為 $L$ 的 gradient，所以才叫 Gradient Descent。</p>
+<p>若有兩個參數 $w, b$ 時，$\nabla L = \left[ \begin{array} { l } { \frac { \partial L } { \partial w } } \ { \frac { \partial L } { \partial b } } \end{array} \right]$，本質上概念還是相同的</p>
 <p>Gradient descent 可能使參數停在損失函數的局部最小值、微分為 $0$ 的點，或者微分為極小值的點。Linear regression 中不必擔心局部最小值的問題，因為 loss function 是 convex 的。</p>
-<p>在得到 best function 之後，我們真正在意的是它在 testing data 上的表現。選擇不同的 model，會得到不同的 best function，它們在testing data 上有不同表現。</p>
-<p>複雜模型的 model space 涵蓋了簡單模型的 model space，因此在 training data 上的錯誤率更小，但並不意味著在 testing data 上錯誤率更小。Model 太複雜會出現 overfitting。</p>
+<p>在得到 best function 之後，我們真正在意的是它<strong>在 testing data 上的表現</strong>。選擇不同的 model，會得到不同的 best function，它們在testing data 上有不同表現。</p>
+<p>複雜模型的 model space 涵蓋了簡單模型的 model space，因此在 training data 上的錯誤率更小，但並不意味著在 testing data 上錯誤率也會小，4Model 太複雜會出現 overfitting。</p>
 <h2 id="what-are-the-hidden-factors">What are the hidden factors?<a class="headerlink" href="#what-are-the-hidden-factors" title="Permanent link">&para;</a></h2>
-<p>如果我們收集更多寶可夢進化前後的 CP 值會發現，進化後的 CP 值不只依賴於進化前的 CP 值，可能還有其它的隱藏因素（例如：寶可夢所屬的物種）。同時考慮進化前 CP 值 $x_{cp}$ 和物種 $x_s$，之前的模型要修改為：</p>
+<p>如果我們收集更多寶可夢進化前後的 CP 值會發現，進化後的 CP 值不只依賴於進化前的 CP 值，可能還有其它的隱藏因素（例如：寶可夢所屬的物種）。同時考慮進化前 CP 值 $x_{cp}$ 和物種 $x_s$，我們可以回到 Step 1: Model 重新選擇新的 model：</p>
 <p>\begin{align}
 \text{if } &amp; x_s = \text{pidgey}:   &amp; y = b_1 + w_1 \cdot x_{cp} \\
 \text{if } &amp; x_s = \text{weedle}:   &amp; y = b_2 + w_2 \cdot x_{cp} \\
@@ -951,7 +1092,8 @@ y = &amp; b_1 \cdot \boldsymbol{\delta(x_s = \text{pidgey})  } &amp; + &amp; w_1
 <p>上式中的粗體項都是 linear model $y = b + \Sigma w_i \cdot x_i$ 中的 feature $x_i$。</p>
 <p>這個模型在 testing data 上有更好的表現，如果同時考慮寶可夢的其它屬性，選一個很複雜的模型，結果可能會導致 overfitting。</p>
 <p>對線性模型來說，我們希望選出的 best function 能平滑一點，也就是權重係數小一些，因為這樣的話，在 testing data 受 noise 影響時，預測值所受的影響會更小。</p>
-<p>所以在 loss function 中加一個正則項 $\lambda\Sigma w_i^2$。</p>
+<p>所以在 Step 2: Goodness of Function 設計 loss function 時，我們可以加一個正則項 $\lambda\Sigma w_i^2$：</p>
+<p>$$L = \sum _ { n } \left( \hat { y } ^ { n } - \left( b + \sum w _ { i } x _ { i } \right) \right) ^ { 2 } + \lambda \sum \left( w _ { i } \right) ^ { 2 }$$</p>
 <p>越大的 $\lambda$，training error 可能會越大，但沒關係，我們希望函數平滑，但也不能太平滑，於是我們調整 $\lambda$，選擇使 testing error 最小的 $\lambda$。</p>
                 
                   
