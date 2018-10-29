@@ -800,9 +800,38 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Logistic Regression
+      </label>
+    
     <a href="./" title="Logistic Regression" class="md-nav__link md-nav__link--active">
       Logistic Regression
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generative-vs-discriminative" title="Generative v.s. Discriminative" class="md-nav__link">
+    Generative v.s. Discriminative
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -829,6 +858,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generative-vs-discriminative" title="Generative v.s. Discriminative" class="md-nav__link">
+    Generative v.s. Discriminative
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -843,7 +888,6 @@
                 
                 
                 <h1 id="lecture-5-logistic-regression">Lecture 5: Logistic Regression<a class="headerlink" href="#lecture-5-logistic-regression" title="Permanent link">&para;</a></h1>
-<p>Step 1: Function Set</p>
 <p>我們想找的是：$P_{w, b} (C_1 \mid x)$</p>
 <p>$$
 \begin{cases}
@@ -863,21 +907,58 @@ P_{w, b} (C_1 \mid x)
 <table>
 <thead>
 <tr>
+<th align="center"></th>
 <th align="center">Logistic Regression</th>
 <th align="center">Linear Regression</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">$f_{w, b}(x) = \sigma (\sum_i w_ix_i + b)$</td>
-<td align="center">$f_{w, b}(x) = \sum_i w_ix_i + b$</td>
+<td align="center">$f_{w, b}(x)$</td>
+<td align="center">$\sigma (\sum_i w_ix_i + b)$</td>
+<td align="center">$\sum_i w_ix_i + b$</td>
 </tr>
 <tr>
-<td align="center">Output: between $0$ and $1$</td>
-<td align="center">Output: any value</td>
+<td align="center">Output</td>
+<td align="center">between $0$ and $1$</td>
+<td align="center">any value</td>
+</tr>
+<tr>
+<td align="center">Training data</td>
+<td align="center">$(x^n, \hat y^n)$</td>
+<td align="center">$(x^n, \hat y^n)$</td>
+</tr>
+<tr>
+<td align="center">$\hat y^n$</td>
+<td align="center">$1$ for class 1, $0$ for class 2</td>
+<td align="center">a real number</td>
+</tr>
+<tr>
+<td align="center">$L(f)$</td>
+<td align="center">$\sum_n C(f(x^n), \hat y^n)$</td>
+<td align="center">$\frac 1 2 \sum_n (f(x^n) - \hat y^n)^2$</td>
+</tr>
+<tr>
+<td align="center">update method</td>
+<td align="center">$w_i \leftarrow w_i - \eta \sum_n - (\hat y^n - f_{w, b}(x^n)) x_i^n$</td>
+<td align="center"></td>
 </tr>
 </tbody>
 </table>
+<p>Cross entropy:</p>
+<p>$$C(f(x^n), \hat y^n) = -[\hat y^n\ln f(x^n) + (1 - \hat y^n) \ln(1 - f(x^n))]$$</p>
+<p>問題是：為什麼在 Logistic Regression 不用 rms 當 loss function 了？</p>
+<p>答：做微分後，某些項次會為 $0$，導致參數更新過慢。</p>
+<h2 id="generative-vs-discriminative">Generative v.s. Discriminative<a class="headerlink" href="#generative-vs-discriminative" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Benefit of generative model<ul>
+<li>With the assumption of probability distribution,
+less training data is needed</li>
+<li>With the assumption of probability distribution, more robust to the noise</li>
+<li>Priors and class-dependent probabilities can be estimated from different sources.</li>
+</ul>
+</li>
+</ul>
                 
                   
                 
