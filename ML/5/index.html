@@ -819,23 +819,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#three-steps" title="Three Steps" class="md-nav__link">
+    Three Steps
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#step-1-function-set" title="Step 1: Function Set" class="md-nav__link">
     Step 1: Function Set
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#step-2-goodness-of-a-function" title="Step 2: Goodness of a Function" class="md-nav__link">
     Step 2: Goodness of a Function
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#step-3-find-the-best-function" title="Step 3: Find the best function" class="md-nav__link">
     Step 3: Find the best function
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -865,18 +878,12 @@
     Multi-class Classification
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#limitation-of-logistic-regression" title="Limitation of Logistic Regression" class="md-nav__link">
     Limitation of Logistic Regression
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -917,23 +924,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#three-steps" title="Three Steps" class="md-nav__link">
+    Three Steps
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#step-1-function-set" title="Step 1: Function Set" class="md-nav__link">
     Step 1: Function Set
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#step-2-goodness-of-a-function" title="Step 2: Goodness of a Function" class="md-nav__link">
     Step 2: Goodness of a Function
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#step-3-find-the-best-function" title="Step 3: Find the best function" class="md-nav__link">
     Step 3: Find the best function
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -963,18 +983,12 @@
     Multi-class Classification
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#limitation-of-logistic-regression" title="Limitation of Logistic Regression" class="md-nav__link">
     Limitation of Logistic Regression
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -998,7 +1012,8 @@
                 
                 
                 <h1 id="lecture-5-logistic-regression">Lecture 5: Logistic Regression<a class="headerlink" href="#lecture-5-logistic-regression" title="Permanent link">&para;</a></h1>
-<h2 id="step-1-function-set">Step 1: Function Set<a class="headerlink" href="#step-1-function-set" title="Permanent link">&para;</a></h2>
+<h2 id="three-steps">Three Steps<a class="headerlink" href="#three-steps" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-function-set">Step 1: Function Set<a class="headerlink" href="#step-1-function-set" title="Permanent link">&para;</a></h3>
 <p>我們想找的是：$P_{w, b} (C_1 \mid x)$</p>
 <p>$$
 f_{w, b} =
@@ -1015,7 +1030,7 @@ P_{w, b} (C_1 \mid x)
 <p>我們會有以下的 Function set（包含各種不同的 $w$ 和 $b$）:</p>
 <p>$$f_{w, b}(x) = P_{w, b} (C_1 \mid x)$$</p>
 <p><img alt="" src="https://i.imgur.com/3vbJcUq.png" /></p>
-<h2 id="step-2-goodness-of-a-function">Step 2: Goodness of a Function<a class="headerlink" href="#step-2-goodness-of-a-function" title="Permanent link">&para;</a></h2>
+<h3 id="step-2-goodness-of-a-function">Step 2: Goodness of a Function<a class="headerlink" href="#step-2-goodness-of-a-function" title="Permanent link">&para;</a></h3>
 <p>若 Training Data 為：</p>
 <p>$$
 \begin{array} { l l l l } 
@@ -1064,7 +1079,7 @@ H ( p , q ) = - \sum _ { x } p ( x ) \ln ( q ( x ) )
 $$</p>
 <p>問題是：為什麼在 Logistic Regression 不用 rms 當 loss function 了？</p>
 <p>答：做微分後，某些項次會為 $0$，導致參數更新過慢。</p>
-<h2 id="step-3-find-the-best-function">Step 3: Find the best function<a class="headerlink" href="#step-3-find-the-best-function" title="Permanent link">&para;</a></h2>
+<h3 id="step-3-find-the-best-function">Step 3: Find the best function<a class="headerlink" href="#step-3-find-the-best-function" title="Permanent link">&para;</a></h3>
 <p>決定完 loss function 後，我們要從一個 set 中，找出 best function，先對 $w_i$ 進行偏微分：</p>
 <p>$$
 \frac { - \ln L ( w , b ) } { \partial w _ { i } } = \sum _ { n } - \left[ \hat { y } ^ { n } \frac { \ln f _ { w , b } \left( x ^ { n } \right) } { \partial w _ { i } } + \left( 1 - \hat { y } ^ { n } \right) \frac { \ln \left( 1 - f _ { w , b } \left( x ^ { n } \right) \right) } { \partial w _ { i } } \right] \tag{*}
@@ -1176,7 +1191,7 @@ less training data is needed</li>
 <h2 id="multi-class-classification">Multi-class Classification<a class="headerlink" href="#multi-class-classification" title="Permanent link">&para;</a></h2>
 <p>我們用 3 個 classes 來做例子：</p>
 <p><img alt="" src="https://i.imgur.com/9892I0H.png" /></p>
-<h3 id="limitation-of-logistic-regression">Limitation of Logistic Regression<a class="headerlink" href="#limitation-of-logistic-regression" title="Permanent link">&para;</a></h3>
+<h2 id="limitation-of-logistic-regression">Limitation of Logistic Regression<a class="headerlink" href="#limitation-of-logistic-regression" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://i.imgur.com/ApJvKMF.png" /></p>
 <p>給定上述的 4 個 features，我們無法有效的分類，因為沒有任何線性的切法是可以完美將紅點和藍點分開，因此我們有以下兩種方法：</p>
 <ul>
