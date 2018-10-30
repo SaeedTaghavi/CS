@@ -32,6 +32,8 @@ extra:
   social:
     - type: 'github'
       link: 'https://github.com/walkccc'
+    - type: 'quote-left'
+      link: 'https://walkccc.github.io/blog'
     - type: 'book'
       link: 'https://walkccc.github.io/CLRS'
     - type: 'gamepad'
@@ -90,3 +92,4 @@ nav:
     - Classification: ML/4.md
     - Logistic Regression: ML/5.md
     - Deep Learning: ML/6.md
+    - Backpropagation: ML/7.md
