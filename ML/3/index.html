@@ -1094,7 +1094,7 @@
 <p><img alt="" src="https://i.imgur.com/MGrouqh.png" /></p>
 <p>在 Gradient Descent 中，我們想解決的是下列問題：</p>
 <p>$$
-\theta ^ { * } = \arg \min _ \thetaL ( \theta )
+\theta ^ { * } = \arg \min _ \theta L ( \theta )
 $$</p>
 <p>其中，</p>
 <ul>
@@ -1192,7 +1192,8 @@ h ( x , y ) = h \left( x _ { 0 } , y _ { 0 } \right) + \frac { \partial h \left(
 $$</p>
 <p>當 $x$ 接近 $x_0$ 和 $y_0$ 時：$h ( x , y ) \approx h \left( x _ { 0 } , y _ { 0 } \right) + \frac { \partial h \left( x _ { 0 } , y _ { 0 } \right) } { \partial x } \left( x - x _ { 0 } \right) + \frac { \partial h \left( x _ { 0 } , y _ { 0 } \right) } { \partial y } \left( y - y _ { 0 } \right)$</p>
 <h3 id="back-to-formal-derivation">Back to Formal Derivation<a class="headerlink" href="#back-to-formal-derivation" title="Permanent link">&para;</a></h3>
-<p>Based on Taylor Series: If the red circle is <strong><em>small enough</em></strong> (i.e., $x$ and $y$ is close to $x_0$ and $y_0$), in the red circle</p>
+<p><img alt="small" src="https://i.imgur.com/tyoqtM7.png" /></p>
+<p>Based on Taylor Series: If the red circle is <strong><em>small enough</em></strong> (i.e., $\theta_1$ and $\theta_2$ is close to $a$ and $b$), in the red circle</p>
 <p>$$
 \begin{align}
 { L } ( \theta ) &amp; \approx { L } ( a , b ) + \frac { \partial { L } ( a , b ) } { \partial \theta _ { 1 } } \left( \theta _ { 1 } - a \right) + \frac { \partial { L } ( a , b ) } { \partial \theta _ { 2 } } \left( \theta _ { 2 } - b \right) \\
@@ -1204,8 +1205,22 @@ $$</p>
 <li>$s = L(a, b)$</li>
 <li>$u = \frac { \partial { L } ( a , b ) } { \partial \theta _ { 1 } } , v = \frac { \partial { L } ( a , b ) } { \partial \theta _ { 2 } }$</li>
 </ul>
-<p>Find $\theta_1$ and $\theta_2$ in the <em>red circle</em> <strong>minimizing</strong> $L(\theta)$:</p>
-<p>$$\left( \theta _ { 1 } - a \right) ^ { 2 } + \left( \theta _ { 2 } - b \right) ^ { 2 } \leq d ^ { 2 }$$</p>
+<p>Goal: Find $\theta_1$ and $\theta_2$ in the <em>red circle</em> <strong>minimizing</strong> $L(\theta)$</p>
+<p>在 red circle 內代表的是一個圓的方程式：</p>
+<p>$$
+\begin{align}
+\left( \theta _ { 1 } - a \right) ^ { 2 } + \left( \theta _ { 2 } - b \right) ^ { 2 } &amp; \le d ^ { 2 } \\
+(\Delta \theta_1)^2 + (\Delta \theta_2)^2 &amp; \le d^2
+\end{align}
+$$</p>
+<p>To minimize $L(\theta)$:</p>
+<p>$$
+\begin{align}
+\left[ \begin{array} { l } { \Delta \theta _ { 1 } } \\ { \Delta \theta _ { 2 } } \end{array} \right] &amp; = - \eta \left[ \begin{array} { l } { u } \\ { v } \end{array} \right] \\
+\Rightarrow \left[ \begin{array} { l } { \theta _ { 1 } } \\ { \theta _ { 2 } } \end{array} \right] &amp; = \left[ \begin{array} { l } { a } \\ { b } \end{array} \right] - \eta \left[ \begin{array} { l } { u } \\ { v } \end{array} \right] \\
+&amp; = \left[ \begin{array} { l } { a } \\ { b } \end{array} \right] - \eta \left[ \begin{array} { c } { \frac { \partial { L } ( a , b ) } { \partial \theta _ { 1 } } } \\ { \frac { \partial { L } ( a , b ) } { \partial \theta _ { 2 } } } \end{array} \right]
+\end{align}
+$$</p>
                 
                   
                 

@@ -835,6 +835,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#bayes-theorem" title="Bayes' Theorem" class="md-nav__link">
+    Bayes' Theorem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#prior" title="Prior" class="md-nav__link">
     Prior
   </a>
@@ -965,6 +972,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#bayes-theorem" title="Bayes' Theorem" class="md-nav__link">
+    Bayes' Theorem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#prior" title="Prior" class="md-nav__link">
     Prior
   </a>
@@ -1069,7 +1083,21 @@ $$</p>
 <p>Loss function:</p>
 <p>$$L(f) = \sum_n \delta(f(x^n) \ne \hat y^n)$$</p>
 </li>
+<li>
+<p>Find the best function</p>
+</li>
 </ul>
+<h3 id="bayes-theorem">Bayes' Theorem<a class="headerlink" href="#bayes-theorem" title="Permanent link">&para;</a></h3>
+<p>假設有兩個類別，我們想要估算來自 training data 的機率。</p>
+<p><img alt="" src="https://i.imgur.com/Jv8rfsI.png" /></p>
+<p>Given an $x$, which class does it belong to:</p>
+<p>$$
+P \left( C _ { 1 } | x \right) = \frac { P ( x | C _ { 1 } ) P \left( C _ { 1 } \right) } { P ( x | C _ { 1 } ) P \left( C _ { 1 } \right) + P ( x | C _ { 2 } ) P \left( C _ { 2 } \right) }
+$$</p>
+<p>Generative Model: </p>
+<p>$$
+P ( x ) = P ( x | C _ { 1 } ) P \left( C _ { 1 } \right) + P ( x | C _ { 2 } ) P \left( C _ { 2 } \right)
+$$</p>
 <h3 id="prior">Prior<a class="headerlink" href="#prior" title="Permanent link">&para;</a></h3>
 <p>舉例來說：我們挑選出 79 隻水系（$C_1$）和 61 隻一般系（$C_2$）的寶可夢，那麼</p>
 <p>\begin{align}
@@ -1079,14 +1107,14 @@ P(C_2) &amp; = 61 / (79 + 61) = 0.44
 <h3 id="probability-from-class">Probability from Class<a class="headerlink" href="#probability-from-class" title="Permanent link">&para;</a></h3>
 <p>現在我們想要知道的事，從水系（$C_1$）挑出一隻「海龜」的機率是多少？</p>
 <h3 id="probability-from-class-feature">Probability from Class - Feature<a class="headerlink" href="#probability-from-class-feature" title="Permanent link">&para;</a></h3>
-<p>因為寶可夢的 features 太多，為了方便，我們只考慮兩項，Defense 和 SP Defense，並假設這 79 隻水系神奇寶貝都是由 Gaussian distribution sample 出來的。</p>
+<p>因為寶可夢的 features 太多，為了方便，我們只考慮兩項，Defense 和 SP Defense，並假設這 79 隻水系寶可夢都是由 Gaussian distribution sample 出來的。</p>
 <h3 id="maximum-likelihood">Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="https://i.imgur.com/Wf9hd5Z.png" /></p>
 <p>因為每個點 $x$ 是獨立的，所以我們可以透過以下連乘來得出 $L(\mu, \Sigma)$</p>
 <p>Likelihood of Gaussian with mean $\mu$ and covariance matrix $\Sigma$ = the probability of the Gaussian samples $x^1, x^2, x^3, \dots, x^{79}$:</p>
 <p>$$L(\mu, \Sigma) = f_{\mu, \Sigma}(x^1) f_{\mu, \Sigma}(x^2) f_{\mu, \Sigma}(x^3) \dots f_{\mu, \Sigma}(x^{79})$$</p>
 <p>所以我們的目的是，找出一個 $(\mu^*, \Sigma^*)$ 能讓上式的 likelihood 最大：</p>
-<p>$$\mu^*, \Sigma^* = arg \max_{\mu, \Sigma} L(\mu, \Sigma)$$</p>
+<p>$$\mu^*, \Sigma^* = \arg \max_{\mu, \Sigma} L(\mu, \Sigma)$$</p>
 <p>透過微分可得以下結果：</p>
 <p>\begin{align}
 \mu^*    &amp; = \frac 1 {79} \sum_{n = 1}^{79} x^n \\
@@ -1100,9 +1128,9 @@ P(C_2) &amp; = 61 / (79 + 61) = 0.44
 <ul>
 <li>$P(C_1) = 79 / (79 + 61) = 0.56$</li>
 <li>$P(C_2) = 61 / (79 + 61) = 0.44$</li>
-<li>$P(x \mid C_1) = f_{\mu^1, \Sigma^1}(x) = \frac 1 {(2\pi)^{D / 2}} \frac 1 {|\Sigma^1|^{1 / 2}} exp \Big(- \frac 1 2 (x - \mu^1)^T (\Sigma^1)^{-1} (x - \mu^1) \Big)$</li>
-<li>$P(x \mid C_2) = f_{\mu^2, \Sigma^2}(x) = \frac 1 {(2\pi)^{D / 2}} \frac 1 {|\Sigma^2|^{1 / 2}} exp \Big(- \frac 1 2 (x - \mu^2)^T (\Sigma^2)^{-1} (x - \mu^2) \Big)$</li>
 </ul>
+<p>$$P(x \mid C_1) = f_{\mu^1, \Sigma^1}(x) = \frac 1 {(2\pi)^{D / 2}} \frac 1 {|\Sigma^1|^{1 / 2}} exp \Big(- \frac 1 2 (x - \mu^1)^T (\Sigma^1)^{-1} (x - \mu^1) \Big)$$</p>
+<p>$$P(x \mid C_2) = f_{\mu^2, \Sigma^2}(x) = \frac 1 {(2\pi)^{D / 2}} \frac 1 {|\Sigma^2|^{1 / 2}} exp \Big(- \frac 1 2 (x - \mu^2)^T (\Sigma^2)^{-1} (x - \mu^2) \Big)$$</p>
 <p>若 $P(C_1 \mid x) &gt; 0.5$，$x$ 就屬於 class 1（水系）</p>
 <p>但結果卻不怎麼樣，因為參數太多了，可能有 overfit 疑慮。</p>
 <h3 id="modifying-model">Modifying Model<a class="headerlink" href="#modifying-model" title="Permanent link">&para;</a></h3>

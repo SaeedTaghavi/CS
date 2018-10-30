@@ -819,9 +819,64 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#step-1-function-set" title="Step 1: Function Set" class="md-nav__link">
+    Step 1: Function Set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-goodness-of-a-function" title="Step 2: Goodness of a Function" class="md-nav__link">
+    Step 2: Goodness of a Function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-find-the-best-function" title="Step 3: Find the best function" class="md-nav__link">
+    Step 3: Find the best function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logistic-vs-linear" title="Logistic v.s. Linear" class="md-nav__link">
+    Logistic v.s. Linear
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-logistic-regression-with-square-error" title="Why not Logistic Regression with Square Error?" class="md-nav__link">
+    Why not Logistic Regression with Square Error?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#generative-vs-discriminative" title="Generative v.s. Discriminative" class="md-nav__link">
     Generative v.s. Discriminative
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-class-classification" title="Multi-class Classification" class="md-nav__link">
+    Multi-class Classification
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation-of-logistic-regression" title="Limitation of Logistic Regression" class="md-nav__link">
+    Limitation of Logistic Regression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -862,9 +917,64 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#step-1-function-set" title="Step 1: Function Set" class="md-nav__link">
+    Step 1: Function Set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-goodness-of-a-function" title="Step 2: Goodness of a Function" class="md-nav__link">
+    Step 2: Goodness of a Function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-find-the-best-function" title="Step 3: Find the best function" class="md-nav__link">
+    Step 3: Find the best function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logistic-vs-linear" title="Logistic v.s. Linear" class="md-nav__link">
+    Logistic v.s. Linear
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-logistic-regression-with-square-error" title="Why not Logistic Regression with Square Error?" class="md-nav__link">
+    Why not Logistic Regression with Square Error?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#generative-vs-discriminative" title="Generative v.s. Discriminative" class="md-nav__link">
     Generative v.s. Discriminative
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-class-classification" title="Multi-class Classification" class="md-nav__link">
+    Multi-class Classification
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limitation-of-logistic-regression" title="Limitation of Logistic Regression" class="md-nav__link">
+    Limitation of Logistic Regression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -888,8 +998,10 @@
                 
                 
                 <h1 id="lecture-5-logistic-regression">Lecture 5: Logistic Regression<a class="headerlink" href="#lecture-5-logistic-regression" title="Permanent link">&para;</a></h1>
+<h2 id="step-1-function-set">Step 1: Function Set<a class="headerlink" href="#step-1-function-set" title="Permanent link">&para;</a></h2>
 <p>我們想找的是：$P_{w, b} (C_1 \mid x)$</p>
 <p>$$
+f_{w, b} =
 \begin{cases}
 P_{w, b} (C_1 \mid x) \ge 0.5 &amp; \text{output: } C_1, \\
 \text{else}                   &amp; \text{output: } C_2
@@ -902,7 +1014,100 @@ P_{w, b} (C_1 \mid x)
 \end{align}</p>
 <p>我們會有以下的 Function set（包含各種不同的 $w$ 和 $b$）:</p>
 <p>$$f_{w, b}(x) = P_{w, b} (C_1 \mid x)$$</p>
-<p><img alt="" src="https://i.imgur.com/QlMME4G.png" /></p>
+<p><img alt="" src="https://i.imgur.com/3vbJcUq.png" /></p>
+<h2 id="step-2-goodness-of-a-function">Step 2: Goodness of a Function<a class="headerlink" href="#step-2-goodness-of-a-function" title="Permanent link">&para;</a></h2>
+<p>若 Training Data 為：</p>
+<p>$$
+\begin{array} { l l l l } 
+{ x ^ { 1 } } &amp; { x ^ { 2 } } &amp; { x ^ { 3 } } &amp; \cdots &amp; { x ^ { N } } \\
+{ C _ { 1 } } &amp; { C _ { 1 } } &amp; { C _ { 2 } } &amp; \cdots &amp; { C _ { 1 } }
+\end{array}
+$$</p>
+<p>接下來一樣要決定一個 function 的好壞，假設 data 是從 $f_{w, b}(x) = P_{w, b} (C_1 \mid x)$ 產生。</p>
+<p>Given a set of $w$ and $b$, what is its probability of generating the data?</p>
+<p>$$
+L ( w , b ) = f _ { w , b } \left( x ^ { 1 } \right) f _ { w , b } \left( x ^ { 2 } \right) \left( 1 - f _ { w , b } \left( x ^ { 3 } \right) \right) \cdots f _ { w , b } \left( x ^ { N } \right)
+$$</p>
+<p>The most likely $w^*$ and $b^*$ is the one with the largest $L(w, b)$:</p>
+<p>$$
+w ^ { * } , b ^ { * } = \arg \max _ { w , b } L ( w , b )
+$$</p>
+<p>求上式等同於求：</p>
+<p>$$
+\begin{align}
+w ^ { * } , b ^ { * } &amp; = \arg \min _ { w , b } - \ln L ( w , b ) \\
+&amp; = \arg \min _ { w , b } - \ln f _ { w , b } \left( x ^ { 1 } \right) - \ln f _ { w , b } \left( x ^ { 2 } \right) - \ln \left( 1 - f _ { w , b } \left( x ^ { 3 } \right) \right) \cdots - \ln f _ { w , b } \left( x ^ { N } \right) \\
+&amp; = \arg \min _ { w , b } \sum _ { n } - \left[ \hat { y } ^ { n } \ln f _ { w , b } \left( x ^ { n } \right) + \left( 1 - \hat { y } ^ { n } \right) \ln \left( 1 - f _ { w , b } \left( x ^ { n } \right) \right) \right]
+\end{align}
+$$</p>
+<p>其中，</p>
+<ul>
+<li>$\hat y^n$：$1$ for $C_1$, $0$ for $C_2$</li>
+</ul>
+<p>$\Sigma_n$ 項等同於求以下兩個分佈 $p$、$q$ 的 cross entropy</p>
+<ul>
+<li>
+<p>Distribution $p$:</p>
+<p>$$
+\begin{array} { l } { p ( x = 1 ) = \hat { y } ^ { n } } \\ { p ( x = 0 ) = 1 - \hat { y } ^ { n } } \end{array}
+$$</p>
+</li>
+<li>
+<p>Distribution $q$:</p>
+<p>$$
+\begin{array} { l } {{ q } ( x = 1 ) = f \left( x ^ { n } \right) } \\ {{ q } ( x = 0 ) = 1 - f \left( x ^ { n } \right) } \end{array}
+$$</p>
+</li>
+</ul>
+<p>$$
+H ( p , q ) = - \sum _ { x } p ( x ) \ln ( q ( x ) )
+$$</p>
+<p>問題是：為什麼在 Logistic Regression 不用 rms 當 loss function 了？</p>
+<p>答：做微分後，某些項次會為 $0$，導致參數更新過慢。</p>
+<h2 id="step-3-find-the-best-function">Step 3: Find the best function<a class="headerlink" href="#step-3-find-the-best-function" title="Permanent link">&para;</a></h2>
+<p>決定完 loss function 後，我們要從一個 set 中，找出 best function，先對 $w_i$ 進行偏微分：</p>
+<p>$$
+\frac { - \ln L ( w , b ) } { \partial w _ { i } } = \sum _ { n } - \left[ \hat { y } ^ { n } \frac { \ln f _ { w , b } \left( x ^ { n } \right) } { \partial w _ { i } } + \left( 1 - \hat { y } ^ { n } \right) \frac { \ln \left( 1 - f _ { w , b } \left( x ^ { n } \right) \right) } { \partial w _ { i } } \right] \tag{*}
+$$</p>
+<p>其中，</p>
+<ul>
+<li>$f _ { w , b } ( x ) = \sigma ( z ) = 1 / (1 + e^{-z})$</li>
+<li>$z = w \cdot x + b = \sum _ { i } w _ { i } x _ { i } + b$</li>
+</ul>
+<p>$$
+\begin{align}
+\frac { \partial \ln f _ { w , b } ( x ) } { \partial w _ { i } } &amp; = \frac { \partial \ln f _ { w , b } ( x ) } { \partial z } \frac { \partial z } { \partial w _ { i } } \\
+&amp; = \frac { \partial \ln \sigma ( z ) } { \partial z } \cdot x_i \\
+&amp; = \frac { 1 } { \sigma ( z ) } \frac { \partial \sigma ( z ) } { \partial z } \cdot x_i \\
+&amp; = \frac{1}{\sigma(z)} \sigma(z) (1 - \sigma(z)) \cdot x_i \\
+&amp; = (1 - \sigma(z)) \cdot x_i \\
+&amp; = \left( 1 - f _ { w , b } \left( x \right) \right) \cdot x_i
+\end{align}
+$$</p>
+<p>$$
+\begin{align}
+\frac { \partial \ln \left( 1 - f _ { w , b } ( x ) \right) } { \partial w _ { i } } &amp; = \frac { \partial \ln \left( 1 - f _ { w , b } ( x ) \right) } { \partial z } \frac { \partial z } { \partial w _ { i } } \\
+&amp; = \frac { \partial \ln ( 1 - \sigma ( z ) ) } { \partial z } \cdot x_i \\
+&amp; = - \frac { 1 } { 1 - \sigma ( z ) } \frac { \partial \sigma ( z ) } { \partial z } \cdot x_i \\
+&amp; = - \frac{1}{1 - \sigma(z)} \sigma(z) (1 - \sigma(z)) \cdot x_i \\
+&amp; = -\sigma(z) \cdot x_i \\
+&amp; = -f _ { w , b } \left( x \right) \cdot x_i
+\end{align}
+$$</p>
+<p>透過上面計算出來的結果，我們可以對 $*$ 式進行代換：</p>
+<p>$$
+\begin{align}
+\frac { - \ln L ( w , b ) } { \partial w _ { i } } &amp; = \sum _ { n } - \left[ \hat { y } ^ { n } \frac { \ln f _ { w , b } \left( x ^ { n } \right) } { \partial w _ { i } } + \left( 1 - \hat { y } ^ { n } \right) \frac { \ln \left( 1 - f _ { w , b } \left( x ^ { n } \right) \right) } { \partial w _ { i } } \right] \\
+&amp; = \sum _ { n } - \left[ \hat { y } ^ { n } \left( 1 - f _ { w , b } \left( x ^ { n } \right) \right) x _ { i } ^ { n } - \left( 1 - \hat { y } ^ { n } \right) f _ { w , b } \left( x ^ { n } \right) x _ { i } ^ { n } \right] \\
+&amp; = \sum _ { n } - \left[ \hat { y } ^ { n } - \hat { y } ^ { n } f _ { w , b } \left( x ^ { n } \right) - f _ { w , b } \left( x ^ { n } \right) + \hat { y } ^ { n } f _ { W , b } \left( x ^ { n } \right) \right] x _ { i } ^ { n } \\
+&amp; = \sum _ { n } - \left( \hat { y } ^ { n } - f _ { w , b } \left( x ^ { n } \right) \right) x _ { i } ^ { n }
+\end{align}
+$$</p>
+<p>參數更新方式如下：</p>
+<p>$$
+w _ { i } \leftarrow w _ { i } - \eta \sum _ { n } - \left( \hat { y } ^ { n } - f _ { w , b } \left( x ^ { n } \right) \right) x _ { i } ^ { n }
+$$</p>
+<h2 id="logistic-vs-linear">Logistic v.s. Linear<a class="headerlink" href="#logistic-vs-linear" title="Permanent link">&para;</a></h2>
 <p>下面對 Logistic Regression 和 Linear Regression 做比較：</p>
 <table>
 <thead>
@@ -935,7 +1140,7 @@ P_{w, b} (C_1 \mid x)
 </tr>
 <tr>
 <td align="center">$L(f)$</td>
-<td align="center">$\sum_n C(f(x^n), \hat y^n)$</td>
+<td align="center">$\sum_n C(f(x^n), \hat y^n) = \sum_n - \left[ \hat { y } ^ { n } \ln f \left( x ^ { n } \right) + \left( 1 - \hat { y } ^ { n } \right) \ln \left( 1 - f \left( x ^ { n } \right) \right) \right]$</td>
 <td align="center">$\frac 1 2 \sum_n (f(x^n) - \hat y^n)^2$</td>
 </tr>
 <tr>
@@ -945,10 +1150,19 @@ P_{w, b} (C_1 \mid x)
 </tr>
 </tbody>
 </table>
-<p>Cross entropy:</p>
-<p>$$C(f(x^n), \hat y^n) = -[\hat y^n\ln f(x^n) + (1 - \hat y^n) \ln(1 - f(x^n))]$$</p>
-<p>問題是：為什麼在 Logistic Regression 不用 rms 當 loss function 了？</p>
-<p>答：做微分後，某些項次會為 $0$，導致參數更新過慢。</p>
+<h2 id="why-not-logistic-regression-with-square-error">Why not Logistic Regression with Square Error?<a class="headerlink" href="#why-not-logistic-regression-with-square-error" title="Permanent link">&para;</a></h2>
+<p>若我們的 loss function 改寫成 square error 版本：</p>
+<p>$$
+L ( f ) = \frac { 1 } { 2 } \sum _ { n } \left( f _ { w , b } \left( x ^ { n } \right) - \hat { y } ^ { n } \right) ^ { 2 }
+$$</p>
+<p>在 Step 3: Find the best function 對 $w_i$ 做微分時：</p>
+<p>$$
+\begin{align}
+\frac { \partial \left( f _ { w , b } ( x ) - \hat { y } \right) ^ { 2 } } { \partial w _ { i } } &amp; = 2 \left( f _ { w , b } ( x ) - \hat { y } \right) \frac { \partial f _ { w , b } ( x ) } { \partial z } \frac { \partial z } { \partial w _ { i } } \\
+&amp; = 2 \left( f _ { w , b } ( x ) - \hat { y } \right) f _ { w , b } ( x ) \left( 1 - f _ { w , b } ( x ) \right) x _ { i }
+\end{align}
+$$</p>
+<p>不論 $\hat y^n = 1$ 或 $\hat y^n = 0$，都可能導致 $\partial L / \partial w _ { i } = 0$，無法有效更新參數。</p>
 <h2 id="generative-vs-discriminative">Generative v.s. Discriminative<a class="headerlink" href="#generative-vs-discriminative" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Benefit of generative model<ul>
@@ -958,6 +1172,16 @@ less training data is needed</li>
 <li>Priors and class-dependent probabilities can be estimated from different sources.</li>
 </ul>
 </li>
+</ul>
+<h2 id="multi-class-classification">Multi-class Classification<a class="headerlink" href="#multi-class-classification" title="Permanent link">&para;</a></h2>
+<p>我們用 3 個 classes 來做例子：</p>
+<p><img alt="" src="https://i.imgur.com/9892I0H.png" /></p>
+<h3 id="limitation-of-logistic-regression">Limitation of Logistic Regression<a class="headerlink" href="#limitation-of-logistic-regression" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://i.imgur.com/ApJvKMF.png" /></p>
+<p>給定上述的 4 個 features，我們無法有效的分類，因為沒有任何線性的切法是可以完美將紅點和藍點分開，因此我們有以下兩種方法：</p>
+<ul>
+<li>Feature Transformation: Not always easy to find a good transformation</li>
+<li>Cascading logistic regression models</li>
 </ul>
                 
                   
