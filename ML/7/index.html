@@ -824,9 +824,92 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Backpropagation
+      </label>
+    
     <a href="./" title="Backpropagation" class="md-nav__link md-nav__link--active">
       Backpropagation
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gradient-descent-review" title="Gradient Descent Review" class="md-nav__link">
+    Gradient Descent Review
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backpropagation_1" title="Backpropagation" class="md-nav__link">
+    Backpropagation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-pass" title="Forward pass" class="md-nav__link">
+    Forward pass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backward-pass" title="Backward pass" class="md-nav__link">
+    Backward pass
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-1-output-layer" title="Case 1. Output Layer" class="md-nav__link">
+    Case 1. Output Layer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-2-not-output-layer" title="Case 2. Not Output Layer" class="md-nav__link">
+    Case 2. Not Output Layer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -853,6 +936,76 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gradient-descent-review" title="Gradient Descent Review" class="md-nav__link">
+    Gradient Descent Review
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backpropagation_1" title="Backpropagation" class="md-nav__link">
+    Backpropagation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-pass" title="Forward pass" class="md-nav__link">
+    Forward pass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backward-pass" title="Backward pass" class="md-nav__link">
+    Backward pass
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-1-output-layer" title="Case 1. Output Layer" class="md-nav__link">
+    Case 1. Output Layer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-2-not-output-layer" title="Case 2. Not Output Layer" class="md-nav__link">
+    Case 2. Not Output Layer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -870,6 +1023,47 @@
 <p>Backpropagation 是一種能有效計算梯度的方法。</p>
 <p>我們的網路：</p>
 <p>$$x^n \to \text{NN}(\theta) \to y^n \leftrightarrow_{C^n} \hat y^n$$</p>
+<h2 id="gradient-descent-review">Gradient Descent Review<a class="headerlink" href="#gradient-descent-review" title="Permanent link">&para;</a></h2>
+<p>假設我們有以下參數：$\theta = \{w_1, w_2, \dots, b_1, b_2, \dots\}$</p>
+<p>我們會逐次更新參數如下：$\theta^0 \to \theta^1 \to \theta^2 \to \cdots$</p>
+<p>但因為有太多參數，所以我們必需「有效地」更新參數。</p>
+<p>給定 loss function：$L ( \theta ) = \sum _ { n = 1 } ^ { N } C ^ { n } ( \theta ) \to \frac { \partial L ( \theta ) } { \partial w } = \sum _ { n = 1 } ^ { N } \frac { \partial C ^ { n } ( \theta ) } { \partial w }$</p>
+<h2 id="backpropagation_1">Backpropagation<a class="headerlink" href="#backpropagation_1" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://imgur.com/CFHtwpb.png" /></p>
+<p>假設只考慮其中一個 neuron，則 $z = x_1w_1 + x_2w_2 + b$，我們所要求的 $\frac { \partial C } { \partial w } = \frac { \partial C } { \partial z } \frac { \partial z } { \partial w }$</p>
+<p>透過 forward pass 和 backward pass 可分別算出：</p>
+<ul>
+<li>Forward pass: Compute $\partial z / \partial w$ for all parameters</li>
+<li>Backward pass: Compute $\partial C / \partial z$ for all activation function inputs $z$</li>
+</ul>
+<h3 id="forward-pass">Forward pass<a class="headerlink" href="#forward-pass" title="Permanent link">&para;</a></h3>
+<ul>
+<li>$\partial z / \partial w_1 = x_1$</li>
+<li>$\partial z / \partial w_2 = x_2$</li>
+</ul>
+<p>其實就是 input value 前面所接的值。</p>
+<p>你要算出這個 neural network 裡面的每一個 weight 對它的 activation function 的 input $z$ 的偏微分，你就把你的 input 丟進去。然後，計算每一個 neuron 的 output 就結束了。</p>
+<h3 id="backward-pass">Backward pass<a class="headerlink" href="#backward-pass" title="Permanent link">&para;</a></h3>
+<p>要計算出 $\frac { \partial C } { \partial z }$ 是非常複雜的，但我們可以透過 chain rule 做些拆解。</p>
+<p><img alt="" src="https://imgur.com/C67xQpB.png" /></p>
+<p>\begin{align}
+\frac { \partial C } { \partial z } &amp; = \frac { \partial a } { \partial z } \frac { \partial C } { \partial a } \\
+&amp; = \sigma ^ { \prime } ( z ) \left[ \frac { \partial z ^ { \prime } } { \partial a } \frac { \partial C } { \partial z ^ { \prime } } + \frac { \partial z ^ { \prime \prime } } { \partial a } \frac { \partial C } { \partial z ^ { \prime \prime } } \right] \\
+&amp; = \sigma ^ { \prime } ( z ) \left[ w _ { 3 } \frac { \partial C } { \partial z ^ { \prime } } + w _ { 4 } \frac { \partial C } { \partial z ^ { \prime \prime } } \right]
+\end{align}</p>
+<p>想像有另一個 network，方向是反過來的，下面這個網路即和上式所代表的意義一樣：</p>
+<p><img alt="" src="https://imgur.com/R5CVdpT.png" /></p>
+<h4 id="case-1-output-layer">Case 1. Output Layer<a class="headerlink" href="#case-1-output-layer" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="https://imgur.com/jPZZPaa.png" /></p>
+<p>\begin{align}
+\frac { \partial C } { \partial z ^ { \prime } } &amp; = \frac { \partial y _ { 1 } } { \partial z ^ { \prime } } \frac { \partial C } { \partial y _ { 1 } } \\
+\frac { \partial C } { \partial z ^ { \prime \prime } } &amp; = \frac { \partial y _ { 2 } } { \partial z ^ { \prime \prime } } \frac { \partial C } { \partial y _ { 2 } }
+\end{align}</p>
+<h4 id="case-2-not-output-layer">Case 2. Not Output Layer<a class="headerlink" href="#case-2-not-output-layer" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="https://imgur.com/4LO37Jp.png" /></p>
+<p>Compute $\partial C / \partial z$ recursively until we reach the output layer.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://imgur.com/PIJqv1u.png" /></p>
                 
                   
                 
