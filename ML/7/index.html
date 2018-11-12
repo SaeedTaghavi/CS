@@ -1027,10 +1027,15 @@
 <p>假設我們有以下參數：$\theta = \{w_1, w_2, \dots, b_1, b_2, \dots\}$</p>
 <p>我們會逐次更新參數如下：$\theta^0 \to \theta^1 \to \theta^2 \to \cdots$</p>
 <p>但因為有太多參數，所以我們必需「有效地」更新參數。</p>
-<p>給定 loss function：$L ( \theta ) = \sum _ { n = 1 } ^ { N } C ^ { n } ( \theta ) \to \frac { \partial L ( \theta ) } { \partial w } = \sum _ { n = 1 } ^ { N } \frac { \partial C ^ { n } ( \theta ) } { \partial w }$</p>
+<p>給定 loss function：</p>
+<p>\begin{align}
+L ( \theta ) &amp; = \sum _ { n = 1 } ^ { N } C ^ { n } ( \theta ) \\
+\to \frac { \partial L ( \theta ) } { \partial w } &amp; = \sum _ { n = 1 } ^ { N } \frac { \partial C ^ { n } ( \theta ) } { \partial w }
+\end{align}</p>
 <h2 id="backpropagation_1">Backpropagation<a class="headerlink" href="#backpropagation_1" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://imgur.com/CFHtwpb.png" /></p>
-<p>假設只考慮其中一個 neuron，則 $z = x_1w_1 + x_2w_2 + b$，我們所要求的 $\frac { \partial C } { \partial w } = \frac { \partial C } { \partial z } \frac { \partial z } { \partial w }$</p>
+<p>假設只考慮其中一個 neuron，則 $z = x_1w_1 + x_2w_2 + b$，我們所要求的是：</p>
+<p>$$\frac { \partial C } { \partial w } = \frac { \partial z } { \partial w } \frac { \partial C } { \partial z }$$</p>
 <p>透過 forward pass 和 backward pass 可分別算出：</p>
 <ul>
 <li>Forward pass: Compute $\partial z / \partial w$ for all parameters</li>
@@ -1044,7 +1049,7 @@
 <p>其實就是 input value 前面所接的值。</p>
 <p>你要算出這個 neural network 裡面的每一個 weight 對它的 activation function 的 input $z$ 的偏微分，你就把你的 input 丟進去。然後，計算每一個 neuron 的 output 就結束了。</p>
 <h3 id="backward-pass">Backward pass<a class="headerlink" href="#backward-pass" title="Permanent link">&para;</a></h3>
-<p>要計算出 $\frac { \partial C } { \partial z }$ 是非常複雜的，但我們可以透過 chain rule 做些拆解。</p>
+<p>要計算出 $\frac { \partial C } { \partial z }$ 是非常複雜的，但我們可以透過 chain rule 做些拆解：</p>
 <p><img alt="" src="https://imgur.com/C67xQpB.png" /></p>
 <p>\begin{align}
 \frac { \partial C } { \partial z } &amp; = \frac { \partial a } { \partial z } \frac { \partial C } { \partial a } \\
