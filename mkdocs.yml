@@ -86,10 +86,12 @@ nav:
       - Final: OS/final.md
   - Machine Learning:
     - Preface: ML/index.md
-    - Regression - Case Study: ML/1.md
-    - Where does the error com from?: ML/2.md
-    - Gradient Descent: ML/3.md
-    - Classification: ML/4.md
-    - Logistic Regression: ML/5.md
-    - Deep Learning: ML/6.md
-    - Backpropagation: ML/7.md
+    - Lec 1 - Regression - Case Study: ML/1.md
+    - Lec 2 - Where does the error com from?: ML/2.md
+    - Lec 3 - Gradient Descent: ML/3.md
+    - Lec 4 - Classification: ML/4.md
+    - Lec 5 - Logistic Regression: ML/5.md
+    - Lec 6 - Deep Learning: ML/6.md
+    - Lec 7 - Backpropagation: ML/7.md
+    - 'Lec 8 - "Hello world" of Deep Learning': ML/8.md
+    - Lec 9 - Tips for Deep Learning: ML/9.md
